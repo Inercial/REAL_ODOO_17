@@ -87,6 +87,7 @@
         "reports/report_stock_landed_cost_real.xml",
         "reports/report_stock_picking_real.xml",
         "views/l10n_mx_edi_advance_view.xml",
+        "reports/order_preparation_format.xml",
     ],
     "installable": True,
     "assets": {
