@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<templates xml:space="preserve">
+    <t t-inherit="analytic.AnalyticDistributionPopup" t-inherit-mode="extension">
+        <xpath expr="//table/tbody/tr[td[hasclass('o_field_x2many_list_row_add')]]" position="replace" />
+    </t>
+</templates>

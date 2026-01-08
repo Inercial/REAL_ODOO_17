@@ -1,0 +1,125 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* report_sale_order_real
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 17.0+e\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-10-08 22:34+0000\n"
+"PO-Revision-Date: 2025-10-08 22:34+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: report_sale_order_real
+#: model:ir.actions.report,print_report_name:report_sale_order_real.action_report_saleorder_order
+msgid "'Order - %s' % (object.name)"
+msgstr "'Pedido - %s' % (object.name)"
+
+#. module: report_sale_order_real
+#: model:ir.actions.report,print_report_name:report_sale_order_real.action_report_saleorder_quotation
+msgid "'Quotation - %s' % (object.name)"
+msgstr "'Cotización - %s' % (object.name)"
+
+#. module: report_sale_order_real
+#: model_terms:ir.ui.view,arch_db:report_sale_order_real.report_sale_order_real
+msgid "<strong>Date</strong>"
+msgstr "<strong>Fecha</strong>"
+
+#. module: report_sale_order_real
+#: model_terms:ir.ui.view,arch_db:report_sale_order_real.report_sale_order_real
+msgid "<strong>Invoicing Address</strong>"
+msgstr "<strong>Dirección de facturación</strong>"
+
+#. module: report_sale_order_real
+#: model_terms:ir.ui.view,arch_db:report_sale_order_real.report_sale_order_real
+msgid "<strong>Order Reference</strong>"
+msgstr "<strong>Referencia de pedido</strong>"
+
+#. module: report_sale_order_real
+#: model_terms:ir.ui.view,arch_db:report_sale_order_real.report_sale_order_real
+msgid "<strong>Salesperson</strong>"
+msgstr "<strong>Vendedor</strong>"
+
+#. module: report_sale_order_real
+#: model_terms:ir.ui.view,arch_db:report_sale_order_real.report_sale_order_real
+msgid "<strong>Shipping Address</strong>"
+msgstr "<strong>Dirección de envío</strong>"
+
+#. module: report_sale_order_real
+#: model_terms:ir.ui.view,arch_db:report_sale_order_real.report_sale_order_real
+msgid "<strong>Terms and Conditions</strong>"
+msgstr "<strong>Términos y Condiciones</strong>"
+
+#. module: report_sale_order_real
+#: model_terms:ir.ui.view,arch_db:report_sale_order_real.report_sale_order_real
+msgid "<strong>Tons</strong>"
+msgstr "<strong>Toneladas</strong>"
+
+#. module: report_sale_order_real
+#: model_terms:ir.ui.view,arch_db:report_sale_order_real.report_sale_order_real
+msgid "<strong>Way Of Shipment</strong>"
+msgstr "<strong>Forma de envío</strong>"
+
+#. module: report_sale_order_real
+#: model_terms:ir.ui.view,arch_db:report_sale_order_real.report_sale_order_order_title
+msgid "L-001"
+msgstr ""
+
+#. module: report_sale_order_real
+#: model:ir.actions.report,name:report_sale_order_real.action_report_saleorder_order
+msgid "Order"
+msgstr "Pedido"
+
+#. module: report_sale_order_real
+#: model:ir.actions.report,name:report_sale_order_real.action_report_saleorder_quotation
+#: model_terms:ir.ui.view,arch_db:report_sale_order_real.report_sale_order_quotation_title
+msgid "Quotation"
+msgstr "Cotización"
+
+#. module: report_sale_order_real
+#: model_terms:ir.ui.view,arch_db:report_sale_order_real.report_sale_order_real
+msgid "RFC:"
+msgstr ""
+
+#. module: report_sale_order_real
+#: model_terms:ir.ui.view,arch_db:report_sale_order_real.report_sale_order_order_title
+msgid "SAT Code"
+msgstr "Código SAT"
+
+#. module: report_sale_order_real
+#: model_terms:ir.ui.view,arch_db:report_sale_order_real.report_sale_order_order_title
+msgid "Sale Order"
+msgstr "Orden de venta"
+
+#. module: report_sale_order_real
+#: model:ir.model,name:report_sale_order_real.model_sale_order
+msgid "Sales Order"
+msgstr "Orden de venta"
+
+#. module: report_sale_order_real
+#: model:ir.model,name:report_sale_order_real.model_sale_order_line
+msgid "Sales Order Line"
+msgstr "Línea de la orden de venta"
+
+#. module: report_sale_order_real
+#: model:ir.model.fields,field_description:report_sale_order_real.field_sale_order__total_tons_display
+#: model:ir.model.fields,field_description:report_sale_order_real.field_sale_order_line__tons_display
+#: model_terms:ir.ui.view,arch_db:report_sale_order_real.report_sale_order_real
+#: model_terms:ir.ui.view,arch_db:report_sale_order_real.report_sale_order_real_form
+msgid "Tons"
+msgstr "Toneladas"
+
+#. module: report_sale_order_real
+#: model_terms:ir.ui.view,arch_db:report_sale_order_real.report_sale_order_real_form
+msgid "Tons:"
+msgstr "Toneladas:"
+
+#. module: report_sale_order_real
+#: model_terms:ir.ui.view,arch_db:report_sale_order_real.report_sale_order_real_form
+msgid "Total Tons"
+msgstr "Total de Toneladas"

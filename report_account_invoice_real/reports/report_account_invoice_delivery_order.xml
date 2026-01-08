@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <template id="report_account_invoice_delivery_order_1">
+        <div class="page" style="font-size:16px;">
+            <div name="title" class="text-center">
+                <strong class="text-decoration-underline" style="font-size:28px">ENVIOS DE MERCANCIA</strong>
+            </div>
+
+            <div name="table_info">
+                <table class="table table-sm"> <thead>
+                        <tr>
+                            <th class="text-center">FECHA</th>
+                            <th class="text-center">VIA DE EMBARQUE</th>
+                            <th class="text-center">FOLIO</th>
+                            <th class="text-center">CLIENTE</th>
+                            <th class="text-right">TOTAL</th> <th class="text-right">TONELADAS</th>
+                        </tr>
+                    </thead>
+                    <tbody class="invoice_tbody">
+                        <t t-foreach="docs" t-as="o">
+                            <tr>
+                                <td class="text-center">
+                                    <span t-esc="o.invoice_date" t-options='{"widget": "date"}' />
+                                </td>
+                                <td class="text-center">
+                                    <span t-esc="o.way_of_shipment_id.name" />
+                                </td>
+                                <td class="text-center">
+                                    <span t-esc="o.name" />
+                                </td>
+                                <td> <span t-esc="o.partner_id.name" />
+                                </td>
+                                <td class="text-right">
+                                    <span
+                                        t-esc="o.amount_total"
+                                        t-options='{"widget": "monetary", "display_currency": o.currency_id}'
+                                    />
+                                </td>
+                                <td class="text-right">
+                                    <span t-esc="o.tons_display" t-options='{"widget": "float", "precision": 2}' />
+                                </td>
+                            </tr>
+                        </t>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </template>
+
+    <template id="report_account_invoice_delivery_order_real">
+        <t t-call="web.html_container">
+            <t t-call="web.external_layout">
+                <t t-call="report_account_invoice_real.report_account_invoice_delivery_order_1" />
+            </t>
+        </t>
+    </template>
+
+    </odoo>

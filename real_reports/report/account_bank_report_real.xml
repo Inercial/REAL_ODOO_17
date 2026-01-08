@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+
+    <!-- PIVOT VIEWS -->
+
+    <record id="view_account_bank_report_real_pivot" model="ir.ui.view">
+         <field name="name">account.bank.report.real.pivot</field>
+         <field name="model">account.bank.report.real</field>
+         <field name="arch" type="xml">
+             <pivot string="Journal Analysis" disable_linking="True" sample="1">
+                 <field name="date" type="row" />
+             </pivot>
+         </field>
+    </record>
+
+    <!-- TREE VIEWS -->
+
+    <record model="ir.ui.view" id="account_bank_report_real_tree">
+        <field name="name">account_bank_report_real.tree</field>
+        <field name="model">account.bank.report.real</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="date" />
+                <field name="account_name" />
+                <field name="partner_id" optional="show" />
+                <field name="l10n_edi_employee_id" optional="show" />
+                <field name="description" />
+                <field name="reference" />
+                <field name="check_number" />
+                <field name="amount" sum="Total Amount" />
+                <field name="currency_id" optional="hide" />
+                <field name="l10n_mx_edi_payment_method_id" optional="hide" />
+                <field name="state" optional="show" />
+            </tree>
+        </field>
+    </record>
+
+    <!-- SEARCH VIEWS -->
+
+    <record id="view_account_bank_report_real_search" model="ir.ui.view">
+        <field name="name">account.bank.report.real.search</field>
+        <field name="model">account.bank.report.real</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="reference" />
+                <separator />
+                <filter
+                    domain="[('date','=', ((context_today()-datetime.timedelta(days=1)).strftime('%Y-%m-%d')))]"
+                    name="yesterday"
+                    string="Yesterday"
+                />
+                <separator />
+                <filter domain="[('l10n_mx_edi_payment_method_id','=', 1)]" name="cash" string="Cash" />
+                <filter domain="[('l10n_mx_edi_payment_method_id','=', 2)]" name="check" string="Check" />
+                <filter
+                    domain="[('l10n_mx_edi_payment_method_id','=', 3)]"
+                    name="transfer"
+                    string="Electronic Transfer"
+                />
+                <filter domain="[('l10n_mx_edi_payment_method_id','not in', [1, 2, 3])]" name="other" string="Other" />
+            </search>
+        </field>
+    </record>
+
+    <!-- ACTIONS -->
+
+    <record id="action_account_bank_moves_bank_report_real" model="ir.actions.act_window">
+        <field name="name">Bank Expenses</field>
+        <field name="res_model">account.bank.report.real</field>
+        <field name="view_mode">tree,pivot</field>
+        <field name="context">{
+            'search_default_yesterday': 1,
+        }</field>
+    </record>
+
+    <record id="bank_expenses_report_real" model="ir.actions.report">
+        <field name="name">Bank Expenses Report</field>
+        <field name="model">account.bank.report.real</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">real_reports.bank_expenses_report</field>
+        <field name="report_file">real_reports.bank_expenses_report</field>
+        <field name="print_report_name">'Bank Expenses Report'</field>
+        <field name="attachment" />
+        <field name="binding_model_id" ref="model_account_bank_report_real" />
+        <field name="binding_type">report</field>
+        <field name="paperformat_id" ref="paperformat_real_reports" />
+    </record>
+
+    <!-- MENU ITEMS -->
+    <menuitem
+        id="action_account_bank_moves_journal_report_real_menu"
+        name="Bank Expense Report"
+        parent="account_reports_menu"
+        action="action_account_bank_moves_bank_report_real"
+    />
+
+    <!-- TEMPLATES -->
+
+    <template id="bank_expenses_report">
+        <t t-call="web.html_container">
+            <t t-call="web.external_layout" t-lang="es_MX">
+                <div class="page">
+                    <center><h3>Bank Expenses Report</h3></center>
+                    <center><p>From: <span t-esc="min([x.date for x in docs]).strftime('%d/%m/%Y')" /> To: <span
+                                t-esc="max([x.date for x in docs]).strftime('%d/%m/%Y')"
+                            /></p></center>
+                    <table style="font-size: 12px;" class="table table-bordered table-sm">
+                        <tr>
+                            <th>Date</th>
+                            <th>Account</th>
+                            <th>Customer</th>
+                            <th>Employee</th>
+                            <th>Description</th>
+                            <th>Reference</th>
+                            <th>Check</th>
+                            <th>Amount</th>
+                        </tr>
+                        <t t-foreach="docs" t-as="doc">
+                            <tr>
+                                <td><span t-field="doc.date" /></td>
+                                <td><span t-field="doc.account_name" /></td>
+                                <td><span t-field="doc.partner_id" /></td>
+                                <td><span t-field="doc.l10n_edi_employee_id" /></td>
+                                <td><span t-field="doc.description" /></td>
+                                <td><span t-field="doc.reference" /></td>
+                                <td><span t-field="doc.check_number" /></td>
+                                <td style="text-align: right;">$<span
+                                        t-esc="'{0:,.2f}'.format(abs(doc.amount))"
+                                    /></td>
+                            </tr>
+                        </t>
+                        <tr>
+                            <td colspan="7" />
+                            <td style="text-align: right;">$<span
+                                    t-esc="'{0:,.2f}'.format(abs(sum(docs.mapped('amount'))))"
+                                /></td>
+                        </tr>
+                    </table>
+                </div>
+            </t>
+        </t>
+    </template>
+</odoo>

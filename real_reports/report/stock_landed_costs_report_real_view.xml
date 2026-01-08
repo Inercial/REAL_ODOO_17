@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+
+    <!-- PIVOT VIEWS -->
+
+    <record id="view_stock_landed_costs_report_real_pivot" model="ir.ui.view">
+         <field name="name">stock.landed.cost.report.real.pivot</field>
+         <field name="model">stock.landed.cost.report.real</field>
+         <field name="arch" type="xml">
+             <pivot>
+                <field name="product_id" type="row" />
+                <field name="quantity" type="measure" />
+                <field name="former_unit_cost" type="measure" />
+                <field name="unit_additional_landed_cost" type="measure" />
+             </pivot>
+         </field>
+    </record>
+
+    <!-- TREE VIEWS -->
+
+    <record model="ir.ui.view" id="stock_landed_costs_report_real_tree">
+        <field name="name">stock_landed_costs_report_real.tree</field>
+        <field name="model">stock.landed.cost.report.real</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="date" />
+                <field name="product_id" />
+                <field name="expense_product_id" optional="show" />
+                <field name="quantity" sum="Quantity" optional="show" />
+                <field name="former_unit_cost" />
+                <field name="unit_additional_landed_cost" />
+                <field name="category_id" optional="hide" />
+                <field name="parent_category_id" optional="hide" />
+            </tree>
+        </field>
+    </record>
+
+    <!-- SEARCH VIEWS -->
+
+    <record id="view_stock_landed_costs_report_real_search" model="ir.ui.view">
+        <field name="name">stock.landed.cost.report.real.search</field>
+        <field name="model">stock.landed.cost.report.real</field>
+        <field name="arch" type="xml">
+            <search>
+                <separator />
+                <field name="category_id" />
+                <field name="product_id" />
+                <separator />
+                <filter domain="[('parent_category_id.name','=', 'MP POLVOS')]" name="mp_polvos" string="MP Polvos" />
+                <separator />
+                <filter
+                    domain="[('parent_category_id.name','=', 'MP PINTURAS Y PASTAS')]"
+                    name="mp_pinturas_y_pastas"
+                    string="MP Pinturas y Pastas"
+                />
+                <separator />
+                <filter
+                    domain="['|', ('parent_category_id.name','=', 'MP PINTURAS Y PASTAS'), ('parent_category_id.name','=', 'MP POLVOS')]"
+                    name="mp_all"
+                    string="MP"
+                />
+            </search>
+        </field>
+    </record>
+
+    <!-- ACTIONS -->
+
+    <record id="action_stock_landed_costs_report_real_view" model="ir.actions.act_window">
+        <field name="name">Raw Material Freight</field>
+        <field name="res_model">stock.landed.cost.report.real</field>
+        <field name="view_mode">tree,pivot</field>
+        <field name="search_view_id" ref="view_stock_landed_costs_report_real_search" />
+        <field
+            name="view_ids"
+            eval="[
+            (5, 0, 0),
+            (0, 0, {
+                'view_mode':'pivot',
+                'view_id': ref('view_stock_landed_costs_report_real_pivot'),
+            }),
+        ]"
+        />
+    </record>
+
+    <!-- MENU ITEMS -->
+    <menuitem
+        id="purchase_reports_menu"
+        name="Purchase Reports"
+        parent="spreadsheet_dashboard.spreadsheet_dashboard_menu_root"
+    />
+    <menuitem
+        id="action_stock_landed_costs_report_real_menu"
+        name="Raw Material Freight"
+        parent="purchase_reports_menu"
+        action="action_stock_landed_costs_report_real_view"
+    />
+
+</odoo>

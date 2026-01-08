@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+
+    <template
+        id="report_account_invoice_credit_journal_1"
+        inherit_id="report_account_invoice_real.report_account_invoice_journal_base"
+        primary="True"
+    />
+
+    <template
+        id="report_account_invoice_credit_journal_2"
+        inherit_id="report_account_invoice_real.report_account_invoice_credit_journal_1"
+        priority="1000"
+    >
+        <xpath expr="//div[@name='title']" position="replace">
+            <div name="title" class="text-center">
+                <strong class="text-decoration-underline" style="font-size:28px">DIARIO DE NOTAS DE CRÉDITO</strong>
+            </div>
+        </xpath>
+
+        <xpath expr="//th[@name='th_user']" position="replace">
+            <th name="th_user" class="text-center">CLIENTE</th>
+        </xpath>
+        <xpath expr="//th[@name='th_user']" position="after">
+            <th name="th_type" class="text-center">TIPO DE N.C</th>
+        </xpath>
+        <xpath expr="//td[@name='td_user']" position="after">
+            <td name="td_type" class="text-center">
+                <span t-field="o.rectified_invoices" />
+            </td>
+        </xpath>
+    </template>
+
+    <template id="report_account_invoice_credit_journal_real">
+        <t t-call="web.html_container">
+            <t t-call="web.external_layout">
+                <t t-call="report_account_invoice_real.report_account_invoice_credit_journal_2" />
+            </t>
+        </t>
+    </template>
+</odoo>

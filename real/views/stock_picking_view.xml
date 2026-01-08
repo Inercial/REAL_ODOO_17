@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="real_stock_picking_form" model="ir.ui.view">
+        <field name="name">real.stock.picking.form</field>
+        <field name="model">stock.picking</field>
+        <field name="inherit_id" ref="stock.view_picking_form" />
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='location_id']" position="before">
+                <field name="way_of_shipment_id" />
+                <field name="hide_picking_block" options="{'always_reload': 1}" invisible="1" />
+                <field name="machine_id" />
+            </xpath>
+        </field>
+    </record>
+
+    <record id="real_view_picking_internal_search" model="ir.ui.view">
+        <field name="name">real.view.picking.internal.search</field>
+        <field name="model">stock.picking</field>
+        <field name="inherit_id" ref="stock.view_picking_internal_search" />
+        <field name="arch" type="xml">
+            <xpath expr="//filter[@name='picking_type']" position="after">
+                <filter
+                    string="Way Of Shipment Type"
+                    name="way_shipment_type_id"
+                    domain="[]"
+                    context="{'group_by': 'way_shipment_type_id'}"
+                />
+            </xpath>
+        </field>
+    </record>
+
+    <record id="view_picking_tree" model="ir.ui.view">
+        <field name="name"> view.picking.tree</field>
+        <field name="model">stock.picking</field>
+        <field name="inherit_id" ref="stock.vpicktree" />
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='location_dest_id']" position="after">
+                <field name="way_of_shipment_id" />
+            </xpath>
+        </field>
+    </record>
+
+    <record id="stock_valuation_layer_picking_remove_groups" model="ir.ui.view">
+        <field name="name">stock.valuation.layer.picking.remove.groups</field>
+        <field name="model">stock.picking</field>
+        <field name="inherit_id" ref="stock_account.stock_valuation_layer_picking" />
+        <field name="arch" type="xml">
+            <xpath expr="//button[@name='action_view_stock_valuation_layers']" position="attributes">
+                <attribute name="groups" />
+            </xpath>
+        </field>
+    </record>
+
+</odoo>

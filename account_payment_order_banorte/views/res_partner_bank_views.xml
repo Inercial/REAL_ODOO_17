@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record model="ir.ui.view" id="res_partner_bank_form">
+        <field name="name">res_partner_bank.form</field>
+        <field name="model">res.partner.bank</field>
+        <field name="inherit_id" ref="base.view_partner_bank_form" />
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='partner_id']" position="after">
+                <field name="operation_type" required="1" />
+            </xpath>
+            <xpath expr="//field[@name='acc_holder_name']" position="after">
+                <field name="id_supplier" invisible="operation_type == '01'" required="operation_type != '01'" />
+                <field name="supplier_reference" />
+            </xpath>
+        </field>
+    </record>
+
+    <record model="ir.ui.view" id="view_partner_bank_tree_visible_holder">
+        <field name="name">view.partner.bank.tree.mx.inherit</field>
+        <field name="model">res.partner.bank</field>
+        <field name="inherit_id" ref="base.view_partner_bank_tree" />
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='acc_holder_name']" position="attributes">
+                <attribute name="invisible">0</attribute>
+            </xpath>
+        </field>
+    </record>
+</odoo>

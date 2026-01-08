@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+
+    <!-- PIVOT VIEWS -->
+
+    <record id="view_account_invoice_report_real_pivot" model="ir.ui.view">
+         <field name="name">account.invoice.report.real.pivot</field>
+         <field name="model">account.invoice.report.real</field>
+         <field name="arch" type="xml">
+             <pivot string="Invoices Analysis" disable_linking="True" sample="1">
+                 <field name="date" type="row" />
+             </pivot>
+         </field>
+    </record>
+
+    <!-- TREE VIEWS -->
+
+    <record model="ir.ui.view" id="account_invoice_report_real_tree">
+        <field name="name">account_invoice_report_real.tree</field>
+        <field name="model">account.invoice.report.real</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="date" />
+                <field name="account_name" />
+                <field name="partner_id" optional="show" />
+                <field name="description" />
+                <field name="reference" />
+                <field name="amount" sum="Total Amount" />
+                <field name="currency_id" optional="hide" />
+            </tree>
+        </field>
+    </record>
+
+    <!-- SEARCH VIEWS -->
+
+    <record id="view_account_invoice_report_real_search" model="ir.ui.view">
+        <field name="name">account.invoice.report.real.search</field>
+        <field name="model">account.invoice.report.real</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="reference" />
+                <separator />
+                <filter
+                    domain="[('date','=', ((context_today()-datetime.timedelta(days=1)).strftime('%Y-%m-%d')))]"
+                    name="yesterday"
+                    string="Yesterday"
+                />
+                <separator />
+                <filter domain="[('l10n_mx_edi_payment_method_id','=', 1)]" name="cash" string="Cash" />
+                <filter domain="[('l10n_mx_edi_payment_method_id','=', 2)]" name="check" string="Check" />
+                <filter
+                    domain="[('l10n_mx_edi_payment_method_id','=', 3)]"
+                    name="transfer"
+                    string="Electronic Transfer"
+                />
+                <filter domain="[('l10n_mx_edi_payment_method_id','not in', [1, 2, 3])]" name="other" string="Other" />
+            </search>
+        </field>
+    </record>
+
+    <!-- ACTIONS -->
+
+    <record id="action_account_bank_moves_check_report_real" model="ir.actions.act_window">
+        <field name="name">Bank Receipts by Check</field>
+        <field name="res_model">account.invoice.report.real</field>
+        <field name="view_mode">tree</field>
+        <field name="context">{
+            'search_default_check': 1,
+            'search_default_yesterday': 1,
+        }</field>
+    </record>
+
+    <record id="action_account_bank_moves_transfer_report_real" model="ir.actions.act_window">
+        <field name="name">Bank Receipts by Electronic Transfer</field>
+        <field name="res_model">account.invoice.report.real</field>
+        <field name="view_mode">tree</field>
+        <field name="context">{
+            'search_default_transfer': 1,
+            'search_default_yesterday': 1,
+        }</field>
+    </record>
+
+    <record id="action_account_bank_moves_cash_report_real" model="ir.actions.act_window">
+        <field name="name">Bank Receipts by Cash</field>
+        <field name="res_model">account.invoice.report.real</field>
+        <field name="view_mode">tree</field>
+        <field name="context">{
+            'search_default_cash': 1,
+            'search_default_yesterday': 1,
+        }</field>
+    </record>
+
+    <record id="action_account_bank_moves_other_report_real" model="ir.actions.act_window">
+        <field name="name">Bank Receipts by Other</field>
+        <field name="res_model">account.invoice.report.real</field>
+        <field name="view_mode">tree</field>
+        <field name="context">{
+            'search_default_other': 1,
+            'search_default_yesterday': 1,
+        }</field>
+    </record>
+
+    <record id="action_account_invoice_fcr_real_report_real" model="ir.actions.act_window">
+        <field name="name">Reportes FCR</field>
+        <field name="res_model">account.fcr.report</field>
+        <field name="view_mode">form</field>
+    </record>
+
+    <!-- MENU ITEMS -->
+
+    <menuitem
+        id="account_reports_menu"
+        name="Accounting Reports"
+        parent="spreadsheet_dashboard.spreadsheet_dashboard_menu_root"
+    />
+    <menuitem
+        id="action_account_bank_moves_check_report_real_menu"
+        name="Bank Check Report"
+        parent="account_reports_menu"
+        action="action_account_bank_moves_check_report_real"
+    />
+    <menuitem
+        id="action_account_bank_moves_transfer_report_real_menu"
+        name="Bank Electronic Transfer Report"
+        parent="account_reports_menu"
+        action="action_account_bank_moves_transfer_report_real"
+    />
+    <menuitem
+        id="action_account_bank_moves_cash_report_real_menu"
+        name="Bank Cash Report"
+        parent="account_reports_menu"
+        action="action_account_bank_moves_cash_report_real"
+    />
+    <menuitem
+        id="action_account_bank_moves_other_report_real_menu"
+        name="Bank Other Report"
+        parent="account_reports_menu"
+        action="action_account_bank_moves_other_report_real"
+    />
+    <menuitem
+        id="action_account_invoice_fcr_real_report_menu"
+        name="Reportes FCR"
+        parent="account_reports_menu"
+        action="action_account_invoice_fcr_real_report_real"
+    />
+</odoo>

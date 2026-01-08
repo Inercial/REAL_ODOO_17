@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record model="ir.ui.view" id="account_fcr_report">
+        <field name="name">account_fcr_report.form</field>
+        <field name="model">account.fcr.report</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="rep_select" required="1" />
+                            <field name="date_start" required="1" />
+                            <field name="date_end" required="1" />
+                        </group>
+                        <button name="action_print_report" string="PDF" type="object" class="oe_highlight" />
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_account_fcr_template" model="ir.actions.report">
+        <field name="name">Reportes FCR</field>
+        <field name="model">account.fcr.report</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">real_reports.account_fcr_template</field>
+        <field name="report_file">real_reports.account_fcr_template</field>
+        <field name="binding_model_id" ref="model_account_fcr_report" />
+    </record>
+</odoo>

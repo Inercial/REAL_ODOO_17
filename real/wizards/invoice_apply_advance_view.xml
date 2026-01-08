@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="view_invoice_apply_advance_real" model="ir.ui.view">
+        <field name="name">view.invoice.apply.advance</field>
+        <field name="model">invoice.apply.advance</field>
+        <field name="inherit_id" ref="l10n_mx_edi_advance.invoice_apply_advance_view_form" />
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='amount']" position="before">
+                <field name="advance_date" />
+            </xpath>
+            <xpath expr="//field[@name='amount_available']" position="after">
+                <field name="advance_total" />
+            </xpath>
+        </field>
+    </record>
+</odoo>

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record model="ir.ui.view" id="general_ledger_audit_report">
+        <field name="name">general_ledger_audit.form</field>
+        <field name="model">general.ledger.audit</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="rep_select" required="1" />
+                            <field name="date_start" required="1" />
+                            <field name="date_end" required="1" />
+                        </group>
+                        <button name="action_print_report" string="PDF" type="object" class="oe_highlight" />
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_general_ledger_audit_template" model="ir.actions.report">
+        <field name="name">general ledger audit</field>
+        <field name="model">general.ledger.audit</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">real_reports.general_ledger_audit_template</field>
+        <field name="report_file">real_reports.general_ledger_audit_template</field>
+        <field name="binding_model_id" ref="model_general_ledger_audit" />
+    </record>
+
+    <record id="action_general_ledger_audit_template_real" model="ir.actions.act_window">
+        <field name="name">general ledger audit</field>
+        <field name="res_model">general.ledger.audit</field>
+        <field name="view_mode">form</field>
+    </record>
+
+    <menuitem
+        id="action_general_ledger_audit_template_real_menu"
+        name="general ledger audit"
+        parent="account_reports_menu"
+        action="action_general_ledger_audit_template_real"
+    />
+
+</odoo>

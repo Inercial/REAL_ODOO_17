@@ -1,0 +1,198 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* account_move_reversal
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 14.0+e\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-05-17 15:58+0000\n"
+"PO-Revision-Date: 2021-05-17 15:58+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: account_move_reversal
+#: model:ir.model,name:account_move_reversal.model_account_move_reversal
+msgid "Account Move Reversal"
+msgstr "Revocación de movimiento en cuenta"
+
+#. module: account_move_reversal
+#: model:ir.model.fields.selection,name:account_move_reversal.selection__account_move__rectified_invoices__advance_refund
+#: model:ir.model.fields.selection,name:account_move_reversal.selection__account_move_reversal__rectified_invoices__advance_refund
+msgid "Advance refund"
+msgstr "Devolución de anticipo"
+
+#. module: account_move_reversal
+#: model:ir.model.fields.selection,name:account_move_reversal.selection__account_move__rectified_invoices__application_of_advance
+#: model:ir.model.fields.selection,name:account_move_reversal.selection__account_move_reversal__rectified_invoices__application_of_advance
+msgid "Application of Advance"
+msgstr "Aplicación de Anticipos"
+
+#. module: account_move_reversal
+#: model:ir.model.fields.selection,name:account_move_reversal.selection__account_move__rectified_invoices__broken_shipping_material
+#: model:ir.model.fields.selection,name:account_move_reversal.selection__account_move_reversal__rectified_invoices__broken_shipping_material
+msgid "Broken shipping material"
+msgstr "Material roto de embarques"
+
+#. module: account_move_reversal
+#: model:ir.model.fields.selection,name:account_move_reversal.selection__account_move__rectified_invoices__custom_err
+#: model:ir.model.fields.selection,name:account_move_reversal.selection__account_move_reversal__rectified_invoices__custom_err
+msgid "Customer error"
+msgstr "Error del cliente"
+
+#. module: account_move_reversal
+#: model:ir.model.fields.selection,name:account_move_reversal.selection__account_move__rectified_invoices__customer_not_received
+#: model:ir.model.fields.selection,name:account_move_reversal.selection__account_move_reversal__rectified_invoices__customer_not_received
+msgid "Customer not received"
+msgstr "X No recibió el cliente"
+
+#. module: account_move_reversal
+#: model:ir.model.fields.selection,name:account_move_reversal.selection__account_move__rectified_invoices__damaged_material
+#: model:ir.model.fields.selection,name:account_move_reversal.selection__account_move_reversal__rectified_invoices__damaged_material
+msgid "Damaged Material"
+msgstr "X Material dañado"
+
+#. module: account_move_reversal
+#: model:ir.model.fields.selection,name:account_move_reversal.selection__account_move__rectified_invoices__did_not_leave_plant
+#: model:ir.model.fields.selection,name:account_move_reversal.selection__account_move_reversal__rectified_invoices__did_not_leave_plant
+msgid "Did not leave the plant"
+msgstr "X No salió de la planta"
+
+#. module: account_move_reversal
+#: model:ir.model.fields.selection,name:account_move_reversal.selection__account_move__rectified_invoices__different_prices
+#: model:ir.model.fields.selection,name:account_move_reversal.selection__account_move_reversal__rectified_invoices__different_prices
+msgid "Different prices"
+msgstr "X Diferencia en precio"
+
+#. module: account_move_reversal
+#: model:ir.model.fields.selection,name:account_move_reversal.selection__account_move__rectified_invoices__discounts_promp_payment
+#: model:ir.model.fields.selection,name:account_move_reversal.selection__account_move_reversal__rectified_invoices__discounts_promp_payment
+msgid "Discounts for prompt payment"
+msgstr "Descuentos por pronto pago"
+
+#. module: account_move_reversal
+#: model:ir.model.fields,field_description:account_move_reversal.field_account_move__display_name
+#: model:ir.model.fields,field_description:account_move_reversal.field_account_move_reversal__display_name
+msgid "Display Name"
+msgstr "Nombre mostrado"
+
+#. module: account_move_reversal
+#: model:ir.model.fields,field_description:account_move_reversal.field_account_move__id
+#: model:ir.model.fields,field_description:account_move_reversal.field_account_move_reversal__id
+msgid "ID"
+msgstr "ID (Identificador)"
+
+#. module: account_move_reversal
+#: model:ir.model,name:account_move_reversal.model_account_move
+msgid "Journal Entry"
+msgstr "Asiento contable"
+
+#. module: account_move_reversal
+#: model:ir.model.fields,field_description:account_move_reversal.field_account_move____last_update
+#: model:ir.model.fields,field_description:account_move_reversal.field_account_move_reversal____last_update
+msgid "Last Modified on"
+msgstr "Última modificación en"
+
+#. module: account_move_reversal
+#: model:ir.model.fields.selection,name:account_move_reversal.selection__account_move__rectified_invoices__logistics_err
+#: model:ir.model.fields.selection,name:account_move_reversal.selection__account_move_reversal__rectified_invoices__logistics_err
+msgid "Logistics error"
+msgstr "Error logistica"
+
+#. module: account_move_reversal
+#: model:ir.model.fields.selection,name:account_move_reversal.selection__account_move__rectified_invoices__material_exit_sample
+#: model:ir.model.fields.selection,name:account_move_reversal.selection__account_move_reversal__rectified_invoices__material_exit_sample
+msgid "Material exit as sample"
+msgstr "Devolución para muestra"
+
+#. module: account_move_reversal
+#: model:ir.model.fields.selection,name:account_move_reversal.selection__account_move__rectified_invoices__non_rotating_material
+#: model:ir.model.fields.selection,name:account_move_reversal.selection__account_move_reversal__rectified_invoices__non_rotating_material
+msgid "Non-rotating material"
+msgstr "Material sin rotación"
+
+#. module: account_move_reversal
+#: model:ir.model.fields.selection,name:account_move_reversal.selection__account_move__rectified_invoices__physical_retur
+#: model:ir.model.fields.selection,name:account_move_reversal.selection__account_move_reversal__rectified_invoices__physical_retur
+msgid "Physical return"
+msgstr "X Devolución Física"
+
+#. module: account_move_reversal
+#: model:ir.model.fields.selection,name:account_move_reversal.selection__account_move__rectified_invoices__rebilling_others
+#: model:ir.model.fields.selection,name:account_move_reversal.selection__account_move_reversal__rectified_invoices__rebilling_others
+msgid "Rebilling Others"
+msgstr "X Refacturación Otros"
+
+#. module: account_move_reversal
+#: model:ir.model.fields.selection,name:account_move_reversal.selection__account_move__rectified_invoices__rebilling_date
+#: model:ir.model.fields.selection,name:account_move_reversal.selection__account_move_reversal__rectified_invoices__rebilling_date
+msgid "Rebilling by date"
+msgstr "X Refacturación por fecha"
+
+#. module: account_move_reversal
+#: model:ir.model.fields.selection,name:account_move_reversal.selection__account_move__rectified_invoices__rebilling_type_payment
+#: model:ir.model.fields.selection,name:account_move_reversal.selection__account_move_reversal__rectified_invoices__rebilling_type_payment
+msgid "Rebilling by type of payment"
+msgstr "X Refacturación por forma de pago"
+
+#. module: account_move_reversal
+#: model:ir.model.fields,field_description:account_move_reversal.field_account_bank_statement_line__rectified_invoices
+#: model:ir.model.fields,field_description:account_move_reversal.field_account_move__rectified_invoices
+#: model:ir.model.fields,field_description:account_move_reversal.field_account_move_reversal__rectified_invoices
+#: model:ir.model.fields,field_description:account_move_reversal.field_account_payment__rectified_invoices
+#: model_terms:ir.ui.view,arch_db:account_move_reversal.view_account_move_reversal_real
+#: model_terms:ir.ui.view,arch_db:account_move_reversal.view_move_form_rectified_invoices_real
+msgid "Rectified Invoices"
+msgstr "Facturas rectificativas"
+
+#. module: account_move_reversal
+#: model:ir.model.fields.selection,name:account_move_reversal.selection__account_move__rectified_invoices__return_invoice_paid
+#: model:ir.model.fields.selection,name:account_move_reversal.selection__account_move_reversal__rectified_invoices__return_invoice_paid
+msgid "Return invoice paid"
+msgstr "X Devolución de Factura pagada"
+
+#. module: account_move_reversal
+#: model:ir.model.fields.selection,name:account_move_reversal.selection__account_move__rectified_invoices__seller_error
+#: model:ir.model.fields.selection,name:account_move_reversal.selection__account_move_reversal__rectified_invoices__seller_error
+msgid "Seller error"
+msgstr "Error del asesor de ventas"
+
+#. module: account_move_reversal
+#: model:ir.model.fields.selection,name:account_move_reversal.selection__account_move__rectified_invoices__shipment_delivery_mistake
+#: model:ir.model.fields.selection,name:account_move_reversal.selection__account_move_reversal__rectified_invoices__shipment_delivery_mistake
+msgid "Shipment delivery mistake"
+msgstr "Error en material embarcado"
+
+#. module: account_move_reversal
+#: model:ir.model.fields.selection,name:account_move_reversal.selection__account_move__rectified_invoices__special_discounts
+#: model:ir.model.fields.selection,name:account_move_reversal.selection__account_move_reversal__rectified_invoices__special_discounts
+msgid "Special discounts"
+msgstr "Descuentos especiales"
+
+#. module: account_move_reversal
+#: model:ir.model.fields.selection,name:account_move_reversal.selection__account_move__rectified_invoices__transfer_other_client
+#: model:ir.model.fields.selection,name:account_move_reversal.selection__account_move_reversal__rectified_invoices__transfer_other_client
+msgid "Transfer to other client"
+msgstr "X Traspaso a otro Cliente"
+
+#. module: account_move_reversal
+#: model:ir.model.fields.selection,name:account_move_reversal.selection__account_move__rectified_invoices__unassigned
+#: model:ir.model.fields.selection,name:account_move_reversal.selection__account_move_reversal__rectified_invoices__unassigned
+msgid "Unassigned"
+msgstr "Sin asignar"
+
+#. module: account_move_reversal
+#: model:ir.model.fields.selection,name:account_move_reversal.selection__account_move__rectified_invoices__uncollectible_account
+#: model:ir.model.fields.selection,name:account_move_reversal.selection__account_move_reversal__rectified_invoices__uncollectible_account
+msgid "Uncollectible account"
+msgstr "Cuenta Incobrable"
+
+#. module: account_move_reversal
+#: model:ir.model.fields.selection,name:account_move_reversal.selection__account_move__rectified_invoices__wet_shipping_material
+#: model:ir.model.fields.selection,name:account_move_reversal.selection__account_move_reversal__rectified_invoices__wet_shipping_material
+msgid "Wet shipping material"
+msgstr "Material mojado de embarques"

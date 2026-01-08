@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <template id="report_stock_picking_real" inherit_id="stock.report_picking">
+        <xpath expr="//div[@name='div_sched_date']" position="after">
+            <div class="col-auto" name="div_date_done">
+                <strong t-translate="yes">Date of validation:</strong>
+                <p class="m-0" t-field="o.date_done" />
+            </div>
+            <div class="col-auto" name="div_total_tons">
+                <strong t-translate="yes">Tons:</strong>
+                <p t-esc="'%.2f' % sum(o.move_ids_without_package.mapped('tons_display'))" />
+            </div>
+        </xpath>
+        <xpath expr="//th[@name='th_product']" position="after">
+            <th name="th_tons">
+                <strong t-translate="yes">Tons</strong>
+            </th>
+        </xpath>
+        <xpath expr="//tr/td[1]" position="after">
+            <td>
+                <span t-field="ml.tons_display" />
+            </td>
+        </xpath>
+    </template>
+
+    <template id="report_deliveryslip_real" inherit_id="stock.report_deliveryslip" priority="1000">
+        <xpath expr="//t[@t-foreach='docs']" position="replace">
+            <t t-foreach="docs" t-as="o">
+                <t t-set="o" t-value="o.with_context(lang=o._get_report_lang())" />
+                <t t-call="stock.report_delivery_document" t-value="o" />
+            </t>
+        </xpath>
+    </template>
+
+    <template id="report_stock_picking_real_delivery" inherit_id="stock.report_delivery_document">
+        <xpath expr="//div[@name='div_sched_date']" position="before">
+            <t t-if="o.way_of_shipment_id">
+                <div class="col-auto" name="div_way_of_shipment_id">
+                    <strong t-translate="yes">Way Of Shipment:</strong>
+                    <p style="padding-right: 10px" t-esc="o.way_of_shipment_id.name" />
+                </div>
+            </t>
+        </xpath>
+    </template>
+
+</odoo>

@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <template id="account_fcr_template">
+        <t t-call="web.html_container">
+            <t t-call="web.external_layout">
+                <div class="page">
+                    <table style="width: 100%; border: none;" border="0">
+                        <tr>
+                            <td
+                                style="font-size: 35px; text-align: left; font-weight: bold; background-color: #FFFFFF; border: none;"
+                            >
+                                <t t-esc="title" />
+                            </td>
+                            <td style="font-size: 35px; text-align: right; background-color: #FFFFFF; border: none;">
+                                <t t-esc="code" />
+                            </td>
+                        </tr>
+                    </table>
+                    <div style="font-size: 12px;">
+                        <div>
+                            fecha de impresion: <t t-esc="today" />
+                        </div>
+                        <div style="font-weight: bold;">
+                            fecha inicial: <t t-esc="date_start" />
+                        </div>
+                        <div style="font-weight: bold;">
+                            fecha final: <t t-esc="date_end" />
+                        </div>
+                    </div>
+                    <t t-foreach="div_dep" t-as="dep">
+                        <h3><t t-esc="dep" /></h3>
+                        <table class="table table-sm table-bordered" name="table" style="font-size: 12px; width:100%">
+                            <thead>
+                                <tr>
+                                    <th width="30%">GRUPO</th>
+                                    <th width="30%">CUENTA ANALITICA</th>
+                                    <th width="30%">CUENTA CONTABLE</th>
+                                    <th width="10%">IMPORTE</th>
+                                </tr>
+                            </thead>
+                            <t t-set="dep_total" t-value="0" />
+                            <t t-foreach="div_group[dep]" t-as="group">
+                                <tbody>
+                                    <t
+                                        t-set="group_total"
+                                        t-value="sum(line[4] for line in query if line[0] == dep and line[1] == group)"
+                                    />
+                                    <t t-foreach="query" t-as="line">
+                                        <t t-if="line[0] == dep and line[1] == group">
+                                            <tr>
+                                                <td><t t-esc="line[1]" /></td>
+                                                <td><t t-esc="line[2]" /></td>
+                                                <td><t t-esc="line[3]" /></td>
+                                                <td>$<span t-esc="'{0:,.2f}'.format(line[4])" /></td>
+                                            </tr>
+                                        </t>
+                                    </t>
+                                    <tr>
+                                        <td colspan="3" style="text-align: right;">SUBTOTAL:</td>
+                                        <td style="text-align: left; border: none;">
+                                            $<span t-esc="'{0:,.2f}'.format(group_total)" />
+                                        </td>
+                                    </tr>
+                                    <t t-set="dep_total" t-value="dep_total + group_total" />
+                                </tbody>
+                            </t>
+                            <tr>
+                                <td colspan="3" style="text-align: right; font-weight: bold;">TOTAL:</td>
+                                <td style="font-weight: bold; border: none;">
+                                    $<span t-esc="'{0:,.2f}'.format(dep_total)" />
+                                </td>
+                            </tr>
+                        </table>
+                    </t>
+                    <div class="text-right" style="font-weight: bold;">
+                        SUMA TOTAL: $<span t-esc="'{0:,.2f}'.format(sum_total)" />
+                    </div>
+                </div>
+            </t>
+        </t>
+    </template>
+</odoo>

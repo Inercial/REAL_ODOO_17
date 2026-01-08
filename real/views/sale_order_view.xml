@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="sale.model_sale_order_action_quotation_sent" model="ir.actions.server">
+        <field name="name">Mark Quotation as Sent</field>
+        <field name="model_id" ref="sale.model_sale_order" />
+        <field name="binding_model_id" ref="sale.model_sale_order" />
+        <field name="binding_view_types">form,list</field>
+        <field name="state">code</field>
+        <field name="code">for record in records:
+    action = record.action_quotation_sent()
+        </field>
+    </record>
+
+    <record id="real_sale_order_form" model="ir.ui.view">
+        <field name="name">real.sale.order.form</field>
+        <field name="model">sale.order</field>
+        <field eval="100" name="priority" />
+        <field name="inherit_id" ref="sale.view_order_form" />
+        <field name="arch" type="xml">
+            <xpath expr="//header/button[4]" position="replace">
+                <button
+                    name="%(sale.action_view_sale_advance_payment_inv)d"
+                    string="Create Invoice"
+                    type="action"
+                    context="{'default_advance_payment_method': 'delivered'}"
+                    invisible="invoice_status != 'no' or state != 'sale'"
+                />
+            </xpath>
+            <xpath expr="//button[@name='action_confirm'][1]" position="attributes">
+                <attribute name="groups">real.res_groups_can_confirm_sales</attribute>
+            </xpath>
+            <xpath expr="//button[@name='action_confirm'][2]" position="attributes">
+                <attribute name="groups">real.res_groups_can_confirm_sales</attribute>
+            </xpath>
+            <xpath expr="//button[@name='action_cancel']" position="attributes">
+                <attribute name="groups">real.res_groups_can_cancel_sales</attribute>
+                <attribute name="confirm">Do you want to CANCEL this sale order?</attribute>
+            </xpath>
+            <xpath expr="//field[@name='partner_invoice_id']" position="attributes">
+                <attribute name="readonly">not can_modify_invoice</attribute>
+                <attribute name="domain">[('id', '=', partner_id)]</attribute>
+            </xpath>
+            <xpath expr="//field[@name='partner_invoice_id']" position="before">
+                <field name="child_tag_ids" invisible="1" />
+                <field name="can_modify_invoice" invisible="1" />
+                <field name="can_modify_quotation_date" invisible="1" />
+                <field name="can_modify_pricelist" invisible="1" />
+                <field name="invoice_status" invisible="1" />
+                <field name="partner_invoice_id" invisible="1" />
+                <field name="require_signature" invisible="1" />
+            </xpath>
+            <xpath expr="//field[@name='partner_id']" position="attributes">
+                <attribute
+                    name="domain"
+                >['|',('company_id','=',False),('company_id', '=', company_id),('is_company', '=', True)]</attribute>
+            </xpath>
+            <xpath expr="//field[@name='partner_shipping_id']" position="attributes">
+                <attribute name="domain">[('id', 'in', child_tag_ids)]</attribute>
+            </xpath>
+            <xpath expr="//page[@name='other_information']" position="after">
+                <page string="Shipping Marketing" name="shipping_marketing">
+                    <field name="comment_marketing" placeholder="Add marketing submission note" />
+                </page>
+            </xpath>
+            <xpath expr="//field[@name='date_order']" position="attributes">
+                <attribute name="readonly">not can_modify_quotation_date</attribute>
+            </xpath>
+            <xpath expr="//page[@name='order_lines']/field/tree/field[@name='name']" position="before">
+                <field name="can_modify_price_unit" column_invisible="True" />
+                <field name="can_modify_tax_id" column_invisible="True" />
+                <field name="can_modify_customer_lead" column_invisible="True" />
+                <field name="can_modify_line_description" column_invisible="True" />
+            </xpath>
+            <xpath expr="//page[@name='order_lines']/field/tree/field[@name='name']" position="attributes">
+                <attribute name="readonly">not can_modify_line_description</attribute>
+            </xpath>
+            <xpath expr="//page[@name='order_lines']/field/tree/field[@name='price_unit']" position="attributes">
+                <attribute name="readonly">not can_modify_price_unit</attribute>
+            </xpath>
+            <xpath expr="//page[@name='order_lines']/field/tree/field[@name='tax_id']" position="attributes">
+                <attribute name="readonly">not can_modify_tax_id</attribute>
+            </xpath>
+            <xpath expr="//page[@name='order_lines']/field/tree/field[@name='customer_lead']" position="attributes">
+                <attribute name="readonly">not can_modify_customer_lead</attribute>
+            </xpath>
+            <xpath expr="//page[@name='order_lines']/field/tree/field[@name='product_uom']" position="attributes">
+                <attribute name="readonly">not can_modify_customer_lead</attribute>
+            </xpath>
+            <xpath expr="//page[@name='order_lines']/field/tree/field[@name='price_unit']" position="after">
+                <field name="line_volume" />
+            </xpath>
+            <xpath expr="//page[@name='other_information']" position="attributes">
+                <attribute name="groups">real.res_groups_can_view_sales_other_info</attribute>
+            </xpath>
+            <xpath expr="//header/button[3]" position="attributes">
+                <attribute name="groups">real.res_groups_sale_order_customer_invoice_button</attribute>
+            </xpath>
+            <xpath expr="//header/button[4]" position="attributes">
+                <attribute name="groups">real.res_groups_sale_order_customer_invoice_button</attribute>
+            </xpath>
+            <xpath expr="//field[@name='partner_shipping_id']" position="after">
+                <field name="way_of_shipment_id" />
+                <field name="order_signal" options="{'always_reload': 1}" invisible="1" />
+            </xpath>
+            <xpath expr="//field[@name='analytic_account_id']" position="attributes">
+                <attribute name="readonly">invoice_count != 0 and state == 'sale'</attribute>
+                <attribute name="required">True</attribute>
+            </xpath>
+            <xpath expr="//field[@name='tax_totals']" position="before">
+                <field name="total_volume" readonly="1" />
+            </xpath>
+            <xpath expr="//tree/field[@name='name']" position="attributes">
+                <attribute name="always_reload">True</attribute>
+            </xpath>
+            <xpath expr="//group[@name='sale_shipping']/label[@for='commitment_date']" position="before">
+                <field name="x_studio_estatus_embarques" string="Estatus embarque" />
+                <field name="x_studio_text_field_v3Z0L" string="Celular fletero" />
+            </xpath>
+            <xpath expr="//group[@name='order_details']" position="inside">
+                <field name="x_studio_indicaciones_especiales" />
+            </xpath>
+        </field>
+    </record>
+
+    <record id="real_view_order_tree" model="ir.ui.view">
+        <field name="name">sale.order.tree</field>
+        <field name="model">sale.order</field>
+        <field eval="100" name="priority" />
+        <field name="inherit_id" ref="sale.view_order_tree" />
+        <field name="arch" type="xml">
+            <xpath expr="//tree/field[@name='name']" position="after">
+                <field
+                    name="out_pending"
+                    options="{'always_reload': 1}"
+                    decoration-success="out_pending == 'avail'"
+                    decoration-danger="out_pending == 'not_avail'"
+                    widget="badge"
+                    optional="show"
+                    readonly="1"
+                />
+                <field
+                    name="order_signal"
+                    options="{'always_reload': 1}"
+                    decoration-success="order_signal == 'on_time'"
+                    decoration-warning="order_signal == 'due_soon'"
+                    decoration-danger="order_signal == 'overdue'"
+                    widget="badge"
+                    optional="show"
+                    readonly="1"
+                />
+            </xpath>
+            <xpath expr="//tree/field[@name='amount_total']" position="after">
+                <field name="total_tons_display" sum="Total Tons" />
+            </xpath>
+            <xpath expr="//tree/field[@name='user_id']" position="after">
+                <field name="x_studio_zona_1" />
+                <field name="way_of_shipment_id" />
+                <field name="note" />
+            </xpath>
+            <xpath expr="//tree" position="attributes">
+                <attribute name="decoration-success">order_signal == 'on_time'</attribute>
+                <attribute name="decoration-warning">order_signal == 'due_soon'</attribute>
+                <attribute name="decoration-danger">order_signal == 'overdue'</attribute>
+                <attribute name="multi_edit">1</attribute>
+            </xpath>
+        </field>
+    </record>
+</odoo>

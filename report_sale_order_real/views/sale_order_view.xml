@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="report_sale_order_real_form" model="ir.ui.view">
+        <field name="name">report_sale_order_real_form</field>
+        <field name="model">sale.order</field>
+        <field eval="100" name="priority" />
+        <field name="inherit_id" ref="sale.view_order_form" />
+        <field name="arch" type="xml">
+            <xpath
+                expr="//page[@name='order_lines']/field[@name='order_line']/tree/field[@name='product_uom']"
+                position="after"
+            >
+                <field name="tons_display" string="Tons" optional="hide" />
+            </xpath>
+            <xpath
+                expr="//page[@name='order_lines']/field[@name='order_line']/form/group/group/field[@name='price_unit']"
+                position="before"
+            >
+                <field name="tons_display" string="Tons" />
+            </xpath>
+            <xpath
+                expr="//page[@name='order_lines']/field[@name='order_line']/kanban/field[@name='company_id']"
+                position="after"
+            >
+                <field name="tons_display" string="Tons" invisible="1" />
+            </xpath>
+            <xpath
+                expr="//page[@name='order_lines']/field[@name='order_line']/kanban/templates/t/div[1]/t[1]/div[1]"
+                position="after"
+            >
+                <div class="row">
+                    <div class="col-12 text-muted">
+                        <span>
+                            Tons:
+                            <t t-esc="record.tons_display.value" />
+                        </span>
+                    </div>
+                </div>
+            </xpath>
+            <xpath expr="//field[@name='tax_totals']" position="before">
+                <field name="total_tons_display" string="Total Tons" />
+            </xpath>
+        </field>
+    </record>
+</odoo>

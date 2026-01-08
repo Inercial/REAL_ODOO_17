@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="res_partner_category_group" model="res.partner.category">
+        <field name="name">Group</field>
+    </record>
+    <record id="res_partner_category_supplier_freight" model="res.partner.category">
+        <field name="name">Supplier Freight</field>
+    </record>
+</odoo>

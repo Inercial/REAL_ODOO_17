@@ -1,0 +1,229 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <template id="report_account_invoice_vendor_base">
+        <div class="page" style="font-size:16px;">
+            <div name="title" class="text-center">
+                <strong>DEFAULT</strong>
+                <div class="text-end">
+                    <strong>DEFAULT</strong>
+                </div>
+            </div>
+
+            <div name="general_info" class="mb-2 mt-2">
+                <div name="first_line" class="row mb-2">
+                    <div class="col-4 text-start">
+                        <span class="text-decoration-underline">Fecha:</span><br />
+                        <span><t t-esc="o.invoice_date" /></span>
+                    </div>
+                    <div class="col-4 text-start">
+                        <span class="text-decoration-underline">Diario:</span><br />
+                        <span><t t-esc="o.currency_id.name" /></span>
+                    </div>
+                </div>
+
+                <div name="second_line" class="row">
+                    <div class="col-4 text-start">
+                        <span class="text-decoration-underline">RFC del proveedor:</span><br />
+                        <span><t t-esc="o.partner_id.vat" /></span>
+                    </div>
+                    <div class="col-4 text-start">
+                        <span class="text-decoration-underline">Proveedor:</span><br />
+                        <span><t t-esc="o.partner_id.name" /></span>
+                    </div>
+                </div>
+            </div>
+
+            <div name="table_info">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th name="th_name" class="text-center">
+                                <span>NOMBRE</span>
+                            </th>
+                            <th name="th_description" class="text-center">
+                                <span>DESCRIPCIÓN</span>
+                            </th>
+                            <th name="th_analityc" class="text-center">
+                                <span>CUENTA ANALITICA</span>
+                            </th>
+                            <th name="th_quantity" class="text-center">
+                                <span>CANTIDAD</span>
+                            </th>
+                            <th name="th_unit_price" class="text-center">
+                                <span>PRECIO UNITARIO</span>
+                            </th>
+                            <th name="th_total" class="text-center">
+                                <span>TOTAL</span>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody class="invoice_tbody">
+                        <t t-set="current_subtotal" t-value="0" />
+                        <t
+                            t-set="lines"
+                            t-value="o.invoice_line_ids.sorted(key=lambda l: (-l.sequence, l.date, l.move_name, -l.id), reverse=True)"
+                        />
+                        <t t-foreach="lines" t-as="line">
+                            <t
+                                t-set="current_subtotal"
+                                t-value="current_subtotal + line.price_subtotal"
+                                groups="account.group_show_line_subtotals_tax_excluded"
+                            />
+                            <t
+                                t-set="current_subtotal"
+                                t-value="current_subtotal + line.price_total"
+                                groups="account.group_show_line_subtotals_tax_included"
+                            />
+                            <tr>
+                                <t t-if="line.display_type == 'product'" name="account_invoice_line_accountable">
+                                    <td name="td_name" class="text-center">
+                                        <span t-esc="line.product_id.name" />
+                                    </td>
+                                    <td name="td_description">
+                                        <span t-field="line.name" t-options="{'widget': 'text'}" />
+                                    </td>
+                                    <td name="td_analityc" class="text-center">
+                                        <span>
+                                            <div t-foreach="(line.analytic_distribution or {})" t-as="distribution">
+                                                <t
+                                                    t-set="distribution_ids"
+                                                    t-value="[int(x.strip()) for x in distribution.split(',')]"
+                                                />
+                                                <t
+                                                    t-raw="'&lt;br/&gt;'.join(line.env['account.analytic.account'].browse(distribution_ids).mapped('name'))"
+                                                />:
+                                                <t t-out="line.analytic_distribution.get(distribution)" />
+                                            </div>
+                                        </span>
+                                    </td>
+                                    <td name="td_quantity" class="text-center">
+                                        <span t-esc="line.quantity" />
+                                    </td>
+                                    <td name="td_price_unit" class="text-center">
+                                        <span t-esc="'%.2f'% line.price_unit" />
+                                    </td>
+                                    <td name="td_total" class="text-center">
+                                        <span t-field="line.price_subtotal" />
+                                    </td>
+                                </t>
+                                <t t-if="line.display_type == 'line_section'">
+                                    <td colspan="99">
+                                        <span t-field="line.name" t-options="{'widget': 'text'}" />
+                                    </td>
+                                    <t t-set="current_section" t-value="line" />
+                                    <t t-set="current_subtotal" t-value="0" />
+                                    </t>
+                                    <t t-if="line.display_type == 'line_note'">
+                                    <td colspan="99">
+                                        <span t-field="line.name" t-options="{'widget': 'text'}" />
+                                    </td>
+                                </t>
+                            </tr>
+                            <t
+                                t-if="current_section and (line_last or lines[line_index+1].display_type == 'line_section')"
+                            >
+                                <tr class="is-subtotal text-right">
+                                <td colspan="99">
+                                    <strong class="mr16">Subtotal</strong>
+                                    <span
+                                            t-esc="current_subtotal"
+                                            t-options="{'widget': 'monetary', 'display_currency': o.currency_id}"
+                                        />
+                                </td>
+                                </tr>
+                            </t>
+                        </t>
+                    </tbody>
+                </table>
+            </div>
+
+            <div name="table_totals" class="row mt-2 justify-content-end">
+                <div class="col-5 ">
+                    <table style="width:100%;">
+                        <tbody>
+                            <tr style="border-top: 1px solid black;">
+                                <td class="text-start" style="border-right: 0.1px solid white;">
+                                    <strong>SUBTOTAL</strong>
+                                </td>
+                                <td class="text-end">
+                                    <span
+                                        t-esc="o.amount_untaxed"
+                                        t-options="{'widget': 'monetary', 'display_currency': o.currency_id}"
+                                    />
+                                </td>
+                            </tr>
+
+                            <t t-foreach="o.tax_totals.get('subtotals')" t-as="subtotal">
+                                <t t-set="subtotal_to_show" t-value="subtotal['name']" />
+
+                                <t
+                                    t-foreach="o.tax_totals['groups_by_subtotal'][subtotal_to_show]"
+                                    t-as="amount_by_group"
+                                >
+                                    <t t-set="display_tax_base" t-value="o.tax_totals['display_tax_base']" />
+                                    <tr>
+                                        <t t-if="o.tax_totals['display_tax_base']">
+                                            <td>
+                                                <span t-esc="amount_by_group['tax_group_name']" />
+                                                <span
+                                                    t-if="not amount_by_group['hide_base_amount']"
+                                                    class="text-nowrap"
+                                                > on
+                                                    <t t-esc="amount_by_group['formatted_tax_group_base_amount']" />
+                                                </span>
+                                            </td>
+                                            <td class="text-end o_price_total">
+                                                <span
+                                                    class="text-nowrap"
+                                                    t-out="amount_by_group['formatted_tax_group_amount']"
+                                                >1.05</span>
+                                            </td>
+                                        </t>
+                                        <t t-else="">
+                                            <td>
+                                                <span t-out="amount_by_group['tax_group_name']">Tax 15%</span>
+                                            </td>
+                                            <td class="text-end o_price_total">
+                                                <span
+                                                    class="text-nowrap"
+                                                    t-out="amount_by_group['formatted_tax_group_amount']"
+                                                >4.05</span>
+                                            </td>
+                                        </t>
+                                    </tr>
+                                </t>
+                            </t>
+
+                            <tr>
+                                <td
+                                    class="text-start"
+                                    style="background-color: #AF131A; border-right: 0.1px solid #AF131A;"
+                                >
+                                    <strong>TOTAL</strong>
+                                </td>
+                                <td class="text-end" style="background-color: #AF131A;">
+                                    <span
+                                        t-esc="o.amount_total"
+                                        t-options="{'widget': 'monetary', 'display_currency': o.currency_id}"
+                                    />
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="mb-5">
+                <span class="text-decoration-underline">Términos y condiciones:</span>
+                <span t-field="o.narration" />
+            </div>
+
+            <div class="row mt-5">
+                <div class="col-4 text-center border-top mx-auto">
+                    <span>FIRMA</span>
+                </div>
+            </div>
+
+        </div>
+    </template>
+</odoo>

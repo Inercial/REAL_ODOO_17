@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+
+    <template id="report_stock_picking_real_1">
+        <div class="page" style="font-size:16px;">
+            <div class="text-end" style="font-size:20px">
+                <span>L-067</span>
+            </div>
+            <div class="text-center" style="font-size:20px">
+                <strong style="font-size:30px">PREPARACION DE MUESTRA</strong><br />
+            </div>
+            <div class="text-end" style="font-size:20px">
+                <strong t-field="o.name" />
+            </div>
+
+            <div class="row mt-2">
+                <div class="col-4">
+                    <span>FOLIO SOLICITUD DE EXIS.:</span><br />
+                    <span t-field="o.origin" />
+                </div>
+                <div class="col-4">
+                    <span>CLIENTE:</span><br />
+                    <span t-field="o.partner_id" />
+                </div>
+                <div class="col-4">
+                    <span>FECHA:</span><br />
+                    <span t-field="o.date_done" t-options='{"widget": "date"}' />
+                </div>
+            </div>
+            <div class="row mt-2">
+                <div class="col-4">
+                    <span>VIA DE EMBARQUE:</span><br />
+                    <span t-field="o.way_of_shipment_id" />
+                </div>
+                <div class="col-4">
+                    <span>TONELADAS:</span><br />
+                    <span t-field="o.tons_display" />
+                </div>
+            </div>
+
+            <div class="mt-2">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th class="text-start">
+                                <span>PRODUCTO</span>
+                            </th>
+                            <th class="text-center">
+                                <span>CANT.</span>
+                            </th>
+                            <th class="text-center">
+                                <span>REVISIÓN</span>
+                            </th>
+                            <th class="text-center">
+                                <span>REVISIÓN ARRIBA DEL VEHICULO</span>
+                            </th>
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <t t-set="lines" t-value="o.move_ids" />
+                        <t t-foreach="lines" t-as="line">
+                            <tr>
+                                <td class="text-start">
+                                    <span t-field="line.product_id" />
+                                </td>
+
+                                <td class="text-center">
+                                    <span t-field="line.quantity" />
+                                </td>
+
+                                <td class="text-center">
+                                </td>
+
+                                <td class="text-center">
+                                </td>
+                            </tr>
+                        </t>
+                    </tbody>
+                </table>
+            </div>
+
+            <div>
+                <span>OBSERVACIONES:</span><br />
+                <span
+                >____________________________________________________________________________________________________________________</span><br
+                />
+                <span
+                >____________________________________________________________________________________________________________________</span>
+            </div>
+
+            <div>
+                <strong>NOTAS:</strong><br />
+                <div class="row">
+                    <div class="col-6 text-center">
+                        <strong>NO.TARIMAS: _____________________</strong>
+                    </div>
+                    <div class="col-6 text-center">
+                        <strong>_________________________________</strong><br />
+                        <strong>MONTACARGUISTA</strong>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </template>
+
+    <template id="report_stock_picking_real">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="o">
+                <t t-set="lang" t-value="o.company_id.partner_id.lang" />
+                <t t-set="o" t-value="o.with_context(lang=lang)" />
+                <t t-if="not company">
+                    <t t-if="company_id">
+                        <t t-set="company" t-value="company_id" />
+                    </t>
+                    <t t-elif="o and 'company_id' in o and o.company_id.sudo()">
+                        <t t-set="company" t-value="o.company_id.sudo()" />
+                    </t>
+                    <t t-else="else">
+                        <t t-set="company" t-value="res_company" />
+                    </t>
+                </t>
+                <t t-call="web.external_layout_boxed">
+                    <t t-call="real.report_stock_picking_real_1" />
+                </t>
+            </t>
+        </t>
+    </template>
+
+    <record id="action_report_stock_picking_real" model="ir.actions.report">
+        <field name="name">PREPARACION MUESTRA REAL</field>
+        <field name="model">stock.picking</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">real.report_stock_picking_real</field>
+        <field name="report_file">real.report_stock_picking_real</field>
+        <field name="binding_model_id" ref="stock.model_stock_picking" />
+        <field name="binding_type">report</field>
+    </record>
+</odoo>

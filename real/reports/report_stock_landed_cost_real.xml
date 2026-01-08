@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+
+    <template id="report_stock_landed_cost_real_1">
+        <div class="page" style="font-size:16px;">
+            <div class="text-end" style="font-size:30px">
+                <strong t-field="o.name" />
+            </div>
+
+            <div class="row mt-2">
+                <div class="col-4">
+                    <span>Fecha:</span><br />
+                    <span t-field="o.date" />
+                </div>
+                <div class="col-4">
+                    <span>Factura:</span><br />
+                    <span t-field="o.vendor_bill_id" />
+                </div>
+                <div class="col-4">
+                    <span>Aplica en:</span><br />
+                    <span t-field="o.target_model" />
+                </div>
+            </div>
+
+            <div class="mt-2">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th class="text-start">
+                                <span>CONCEPTO</span>
+                            </th>
+                            <th class="text-center">
+                                <span>COSTO</span>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <t t-set="lines" t-value="o.cost_lines" />
+                        <t t-foreach="lines" t-as="line">
+                            <tr>
+                                <td><span t-field="line.product_id.name" /></td>
+                                <td class="text-center"><span t-field="line.price_unit" /></td>
+                            </tr>
+                        </t>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="mt-2">
+                <t t-set="adjustment_lines" t-value="o.valuation_adjustment_lines" />
+
+                <table class="table table-sm">
+                    <thead>
+                        <tr>
+                            <th class="text-start">CONCEPTO</th>
+                            <th class="text-start">NOMBRE</th>
+                            <th>COSTO</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <t t-foreach="adjustment_lines" t-as="adj_line">
+                            <tr>
+                                <td><span t-field="adj_line.cost_line_id.name" /></td>
+                                <td><span t-field="adj_line.product_id.name" /></td>
+                                <td class="text-center"><span
+                                        t-field="adj_line.additional_landed_cost"
+                                        t-options='{"widget": "monetary", "display_currency": o.company_id.currency_id}'
+                                    /></td>
+                            </tr>
+                        </t>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="clearfix">
+                <div id="total" class="row justify-content-end">
+                    <div class="col-4">
+                        <table class="table table-sm">
+                            <tr class="border-black o_total">
+                                <td><strong>Total</strong></td>
+                                <td class="text-end">
+                                    <span
+                                        t-field="o.amount_total"
+                                        t-options="{'widget': 'monetary', 'display_currency': o.currency_id}"
+                                    />
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+
+            </div>
+
+    </template>
+
+    <template id="report_stock_landed_cost_real">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="o">
+                <t t-set="lang" t-value="o.company_id.partner_id.lang" />
+                <t t-set="o" t-value="o.with_context(lang=lang)" />
+                <t t-if="not company">
+                    <t t-if="company_id">
+                        <t t-set="company" t-value="company_id" />
+                    </t>
+                    <t t-elif="o and 'company_id' in o and o.company_id.sudo()">
+                        <t t-set="company" t-value="o.company_id.sudo()" />
+                    </t>
+                    <t t-else="else">
+                        <t t-set="company" t-value="res_company" />
+                    </t>
+                </t>
+                <t t-call="web.external_layout_boxed">
+                    <t t-call="real.report_stock_landed_cost_real_1" />
+                </t>
+            </t>
+        </t>
+    </template>
+
+    <record id="action_report_stock_landed_cost_real" model="ir.actions.report">
+        <field name="name">Costo en destino REAL</field>
+        <field name="model">stock.landed.cost</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">real.report_stock_landed_cost_real</field>
+        <field name="report_file">real.report_stock_landed_cost_real</field>
+        <field name="binding_model_id" ref="stock_landed_costs.model_stock_landed_cost" />
+        <field name="binding_type">report</field>
+    </record>
+</odoo>

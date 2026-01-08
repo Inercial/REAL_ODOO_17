@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="action_report_invoice_original" model="ir.actions.report">
+        <field name="name">VENTAS-FACTURA ORIGINAL</field>
+        <field name="model">account.move</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">report_account_invoice_real.report_invoice_original_real</field>
+        <field name="report_file">report_account_invoice_real.report_invoice_original_real</field>
+        <field name="binding_model_id" ref="account.model_account_move" />
+        <field name="binding_type">report</field>
+    </record>
+
+    <record id="action_report_invoice_original_without_amount_real" model="ir.actions.report">
+        <field name="name">VENTAS-FACTURA SIN IMPORTE</field>
+        <field name="model">account.move</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">report_account_invoice_real.report_invoice_original_without_amount_real</field>
+        <field name="report_file">report_account_invoice_real.report_invoice_original_without_amount_real</field>
+        <field name="binding_model_id" ref="account.model_account_move" />
+        <field name="binding_type">report</field>
+    </record>
+
+    <record id="action_report_invoice_credit_memo_real" model="ir.actions.report">
+        <field name="name">VENTAS-NOTA DE CRÉDITO</field>
+        <field name="model">account.move</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">report_account_invoice_real.report_invoice_credit_memo_real</field>
+        <field name="report_file">report_account_invoice_real.report_invoice_credit_memo_real</field>
+        <field name="binding_model_id" ref="account.model_account_move" />
+        <field name="binding_type">report</field>
+    </record>
+
+    <record id="action_report_account_invoice_attachment_nc_real" model="ir.actions.report">
+        <field name="name">VENTAS-NC ANEXO</field>
+        <field name="model">account.move</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">report_account_invoice_real.report_account_invoice_attachment_nc_real</field>
+        <field name="report_file">report_account_invoice_real.report_account_invoice_attachment_nc_real</field>
+        <field name="binding_model_id" ref="account.model_account_move" />
+        <field name="binding_type">report</field>
+    </record>
+
+    <record id="action_report_invoice_instructions_real" model="ir.actions.report">
+        <field name="name">VENTAS-HOJA DE INSTRUCCIONES</field>
+        <field name="model">account.move</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">report_account_invoice_real.report_invoice_instructions_real</field>
+        <field name="report_file">report_account_invoice_real.report_invoice_instructions_real</field>
+        <field name="binding_model_id" ref="account.model_account_move" />
+        <field name="binding_type">report</field>
+    </record>
+
+    <record id="action_report_account_invoice_vendor_bill_real" model="ir.actions.report">
+        <field name="name">COMPRAS-FACTURA DE PROVEEDOR</field>
+        <field name="model">account.move</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">report_account_invoice_real.report_account_invoice_vendor_bill_real</field>
+        <field name="report_file">report_account_invoice_real.report_account_invoice_vendor_bill_real</field>
+        <field name="binding_model_id" ref="account.model_account_move" />
+        <field name="binding_type">report</field>
+    </record>
+
+    <record id="action_report_account_invoice_vendor_credit_note_real" model="ir.actions.report">
+        <field name="name">COMPRAS-NOTA DE CREDITO</field>
+        <field name="model">account.move</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">report_account_invoice_real.report_account_invoice_vendor_credit_note_real</field>
+        <field name="report_file">report_account_invoice_real.report_account_invoice_vendor_credit_note_real</field>
+        <field name="binding_model_id" ref="account.model_account_move" />
+        <field name="binding_type">report</field>
+    </record>
+
+    <record id="action_report_account_invoice_delivery_order_real" model="ir.actions.report">
+        <field name="name">ENVIOS DE MERCANCIA</field>
+        <field name="model">account.move</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">report_account_invoice_real.report_account_invoice_delivery_order_real</field>
+        <field name="report_file">report_account_invoice_real.report_account_invoice_delivery_order_real</field>
+        <field name="binding_model_id" ref="account.model_account_move" />
+        <field name="binding_type">report</field>
+    </record>
+
+    <record id="action_report_account_invoice_sales_journal_real" model="ir.actions.report">
+        <field name="name">DIARIO DE VENTAS</field>
+        <field name="model">account.move</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">report_account_invoice_real.report_account_invoice_sales_journal_real</field>
+        <field name="report_file">report_account_invoice_real.report_account_invoice_sales_journal_real</field>
+        <field name="binding_model_id" ref="account.model_account_move" />
+        <field name="binding_type">report</field>
+    </record>
+
+    <record id="action_report_account_invoice_credit_journal_real" model="ir.actions.report">
+        <field name="name">DIARIO DE NOTAS DE CREDITO</field>
+        <field name="model">account.move</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">report_account_invoice_real.report_account_invoice_credit_journal_real</field>
+        <field name="report_file">report_account_invoice_real.report_account_invoice_credit_journal_real</field>
+        <field name="binding_model_id" ref="account.model_account_move" />
+        <field name="binding_type">report</field>
+    </record>
+
+    <record id="action_report_account_invoice_purchase_journal_real" model="ir.actions.report">
+        <field name="name">DIARIO DE COMPRAS</field>
+        <field name="model">account.move</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">report_account_invoice_real.report_account_invoice_purchase_journal_real</field>
+        <field name="report_file">report_account_invoice_real.report_account_invoice_purchase_journal_real</field>
+        <field name="binding_model_id" ref="account.model_account_move" />
+        <field name="binding_type">report</field>
+    </record>
+
+    <record id="action_report_invoice_poliza_real" model="ir.actions.report">
+        <field name="name">POLIZA</field>
+        <field name="model">account.move</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">report_account_invoice_real.report_invoice_poliza_real</field>
+        <field name="report_file">report_account_invoice_real.report_invoice_poliza_real</field>
+        <field name="binding_model_id" ref="account.model_account_move" />
+        <field name="binding_type">report</field>
+    </record>
+
+
+</odoo>

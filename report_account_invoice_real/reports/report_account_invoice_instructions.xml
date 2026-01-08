@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+
+    <template id="report_invoice_instructions_real_1">
+        <t t-set="lang" t-value="o.partner_id.lang or o.company_id.partner_id.lang" />
+        <t t-set="o" t-value="o.with_context(lang=lang)" />
+        <t t-if="not company">
+            <t t-if="company_id">
+                <t t-set="company" t-value="company_id" />
+            </t>
+            <t t-elif="o and 'company_id' in o and o.company_id.sudo()">
+                <t t-set="company" t-value="o.company_id.sudo()" />
+            </t>
+            <t t-else="else">
+                <t t-set="company" t-value="res_company" />
+            </t>
+        </t>
+        <div class="page">
+            <div class="header row border-bottom " style="height:100px;">
+                <div class="col-6">
+                    <img
+                        t-if="company.logo"
+                        t-att-src="image_data_uri(company.logo)"
+                        alt="Logo"
+                        style="height:100%; width:auto; object-fit:contain;"
+                    />
+                </div>
+                <div class="col-6 text-end" style="font-size:14px;">
+                    <span>RECUBRIMIENTOS Y ADHESIVOS DE LA LAGUNA</span><br />
+                    <span>Circuito Enrique de Lara 280</span><br />
+                    <span>27019 Torreón, COA</span><br />
+                    <span>Mexico</span><br />
+                </div>
+            </div>
+
+
+            <div style="font-size:14px; text-align: right;">
+                <strong style="font-size:30px;text-decoration: underline;">L-071</strong><br />
+                <span>Ult. Actualizacion 02 julio 2024</span>
+            </div>
+
+            <div class="mb-3" style="text-align: center; font-size:20px; text-transform: uppercase;">
+                <strong><t t-esc="o.partner_id.name" /></strong><br />
+                <strong><t t-esc="o.partner_shipping_id.name" /></strong>
+            </div>
+
+            <div class="mb-3" style="text-align: center; font-size:20px;">
+                <span style="font-size:16px;">Direccion del cliente</span><br />
+                <span
+                    t-if="o.partner_shipping_id.street"
+                    style="text-transform: uppercase;"
+                    t-esc="o.partner_shipping_id.street"
+                /><br />
+                <span t-if="o.partner_shipping_id.city" style="text-transform: uppercase;"> <t
+                        t-esc="o.partner_shipping_id.city"
+                    /></span><br />
+                <span t-if="o.partner_shipping_id.country_id" style="text-transform: uppercase;"><t
+                        t-esc="o.partner_shipping_id.country_id.name"
+                    /></span>
+            </div>
+
+            <div class="mb-3" style="text-align: center; font-size:20px;">
+                <span style="font-size:16px;">Telefono del cliente</span><br />
+                <span><t t-esc="o.partner_shipping_id.phone" /></span>
+            </div>
+
+            <div class="mb-3" style="text-align: center; font-size:20px;">
+                <span style="font-size:16px;">Nombre y telefono del asesor de ventas</span><br />
+                <span style="text-transform: uppercase;"><t t-esc="o.invoice_user_id.name" /></span><br />
+                <span><t t-esc="o.invoice_user_id.phone" /></span>
+            </div>
+
+            <div class="row mb-2">
+                <div class="col-6 text-center">
+                    <span>Folio Factura</span><br />
+                    <span style="font-size:20px"><t t-esc="o.name" /></span>
+                </div>
+                <div class="col-6 text-center">
+                    <span>Fecha Factura</span><br />
+                    <span style="font-size:20px"><t t-esc="o.invoice_date" /></span>
+                </div>
+            </div>
+
+            <div style="font-size:18px; text-align: justify;">
+                <p>
+                    1.- EN CASO DE QUE EL CLIENTE SOLICITE ENTREGAR EN LUGAR DIFERENTE AL QUE SE LE INDICO,
+                    FAVOR DE COMUNICARSE CON CLAUDIA LORENA GARCIA RODRIGUEZ, ANTES DE MOVER LA
+                    MERCANCIA.<br />
+                    2.- FAVOR DE REGRESAR A REALSA COPIAS DE FACTURAS CON NOMBRE, FIRMA Y FECHA DE
+                    RECIBIDO.<br />
+                    3.- CUALQUIER EVENTUALIDAD QUE PASE REPORTARLA INMEDIATAMENTE A LAS PERSONAS QUE
+                    VIENEN LOS DATOS ABAJO PARA QUE LE DEN SOLUCION, NO RETIRARSE SIN DAR AVISO.<br />
+                    4.- SI FALTA ALGUNO DE ESTOS PAPELES O MATERIAL AL MOMENTO DE ENTREGAR, NO SE
+                    TOMARÁ LA FACTURA A REVISION Y NO SE PAGARA EL FLETE HASTA QUE LA PAPELERIA ESTE
+                    COMPLETA O EL PROBLEMA SOLUCIONADO.<br />
+                    5.- FAVOR DE ENLONAR BIEN EL MATERIAL, PARA EVITAR BULTOS MOJADOS. MATERIAL MOJADO
+                    O FALTANTE SE LE COBRARA AL FLETERO.
+                </p>
+            </div>
+
+            <div class="row">
+                <div class="col-6">
+                    <span style="text-decoration: underline;">Este documento no se debe de firmar de recibido </span>
+                </div>
+                <div class="col-6 text-center">
+                    <span>Claudia García</span><br />
+                    <span>Gerente de Logística</span><br />
+                    <span>Cel. 871 736 6993</span><br />
+                    <span>Tel. 871 750 6465 ext. 107</span>
+                </div>
+            </div>
+
+            <div t-attf-class="footer o_standard_footer o_company_#{company.id}_layout">
+                <div class="text-center" style="border-top: 1px solid black;">
+                    <ul class="list-inline mb4">
+                        <div t-field="company.report_footer" />
+                    </ul>
+
+                    <div t-if="report_type == 'pdf'" class="text-muted">
+                        Page: <span class="page" /> / <span class="topage" />
+                    </div>
+                    <div t-if="report_type == 'pdf' and display_name_in_footer" class="text-muted">
+                        <span t-out="o.name">(document name)</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </template>
+
+    <template id="report_invoice_instructions_real_2">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="o">
+                <t t-call="web.basic_layout">
+                    <t t-call="report_account_invoice_real.report_invoice_instructions_real_1" />
+                </t>
+            </t>
+        </t>
+    </template>
+
+    <template id="report_invoice_instructions_real">
+        <t t-call="report_account_invoice_real.report_invoice_instructions_real_2" />
+    </template>
+</odoo>

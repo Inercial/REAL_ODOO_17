@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="view_stock_request_partner_real" model="ir.ui.view">
+        <field name="name">view.stock.request.real</field>
+        <field name="model">stock.request.order</field>
+        <field name="inherit_id" ref="stock_request.stock_request_order_form" />
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='expected_date']" position="after">
+                <field name="way_of_shipment_id" />
+            </xpath>
+            <xpath
+                expr="//form[1]/sheet[1]/group[1]/group[2]/field[@name='procurement_group_id']"
+                position="attributes"
+            >
+                <attribute name="invisible">1</attribute>
+            </xpath>
+            <xpath expr="//form[1]/sheet[1]/group[1]/group[2]/field[@name='route_id']" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath>
+            <xpath expr="//form[1]/sheet[1]/group[1]/group[2]/field[@name='location_id']" position="after">
+                <field name="x_studio_descripcin_1" string="Descripción" />
+            </xpath>
+            <xpath expr="//form[1]/sheet[1]/group[1]/group[1]/field[@name='expected_date']" position="before">
+                <field name="child_tag_ids" invisible="1" />
+                <field name="child_tag_required" invisible="1" />
+                <field
+                    name="partner_shipping_id"
+                    domain="[('id', 'in', child_tag_ids)]"
+                    readonly="state not in 'draft'"
+                    required="child_tag_required == True"
+                />
+            </xpath>
+
+            <xpath
+                expr="//page[@name='items']/field[@name='stock_request_ids']/tree/field[@name='name']"
+                position="attributes"
+            >
+                <attribute name="column_invisible">1</attribute>
+            </xpath>
+            <xpath
+                expr="//page[@name='items']/field[@name='stock_request_ids']/tree/field[@name='route_id']"
+                position="attributes"
+            >
+                <attribute name="column_invisible">1</attribute>
+            </xpath>
+            <xpath
+                expr="//page[@name='items']/field[@name='stock_request_ids']/tree/field[@name='product_uom_id']"
+                position="attributes"
+            >
+                <attribute name="column_invisible">1</attribute>
+            </xpath>
+            <xpath
+                expr="//page[@name='items']/field[@name='stock_request_ids']/tree/field[@name='state']"
+                position="attributes"
+            >
+                <attribute name="column_invisible">1</attribute>
+            </xpath>
+            <xpath
+                expr="//page[@name='items']/field[@name='stock_request_ids']/tree/field[@name='partner_id']"
+                position="attributes"
+            >
+                <attribute name="column_invisible">1</attribute>
+            </xpath>
+            <xpath
+                expr="//page[@name='items']/field[@name='stock_request_ids']/tree/field[@name='analytic_distribution']"
+                position="attributes"
+            >
+                <attribute name="column_invisible">1</attribute>
+            </xpath>
+            <xpath expr="//field[@name='analytic_distribution']" position="after">
+                <field name="analytic_distribution" invisible="1"/>
+            </xpath>
+            <xpath
+                expr="//page[@name='items']/field[@name='stock_request_ids']/tree/field[@name='qty_in_progress']"
+                position="attributes"
+            >
+                <attribute name="column_invisible">1</attribute>
+            </xpath>
+            <xpath
+                expr="//page[@name='items']/field[@name='stock_request_ids']/tree/field[@name='qty_done']"
+                position="attributes"
+            >
+                <attribute name="column_invisible">1</attribute>
+            </xpath>
+            <xpath expr="//page[@name='items']/field[@name='stock_request_ids']" position="attributes">
+                <attribute name="readonly">
+                    state != 'draft' or analytic_distribution == False
+                </attribute>
+            </xpath>
+
+        </field>
+    </record>
+
+    <record id="view_stock_request_order_tree_real" model="ir.ui.view">
+        <field name="name">view.stock.request.order.tree.real</field>
+        <field name="model">stock.request.order</field>
+        <field name="inherit_id" ref="stock_request.stock_request_order_tree" />
+        <field name="priority" eval="100" />
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='name']" position="replace">
+                <field name="name" string="Folio" />
+            </xpath>
+            <xpath expr="//field[@name='name']" position="after">
+                <field name="create_date" />
+                <field name="partner_id" />
+                <field name="partner_shipping_id" />
+                <field name="way_of_shipment_id" />
+                <field name="create_uid" />
+                <field
+                    name="analytic_distribution"
+                    groups="analytic.group_analytic_accounting"
+                    widget="analytic_distribution"
+                    string="Cuenta Analítica"
+                />
+            </xpath>
+            <xpath expr="//field[@name='warehouse_id']" position="after">
+                <field name="x_studio_descripcin_1" />
+            </xpath>
+        </field>
+    </record>
+
+</odoo>

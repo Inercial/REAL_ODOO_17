@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+
+    <!-- PIVOT VIEWS -->
+
+    <record id="view_quant_report_real_pivot" model="ir.ui.view">
+         <field name="name">quant.report.real.pivot</field>
+         <field name="model">quant.report.real</field>
+         <field name="arch" type="xml">
+             <pivot string="Quant Analysis">
+                <field name="product_name" type="row" />
+                <field name="quantity" type="measure" />
+                <field name="commited_qty" type="measure" />
+                <field name="available" type="measure" />
+                <field name="tons" type="measure" />
+                <field name="qty_in_production" type="measure" />
+             </pivot>
+         </field>
+    </record>
+
+    <!-- TREE VIEWS -->
+
+    <record model="ir.ui.view" id="quant_report_real_tree">
+        <field name="name">quant_report_real.tree</field>
+        <field name="model">quant.report.real</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="product_id" />
+                <field name="quantity" sum="Quantity" />
+                <field name="commited_qty" optional="show" sum="Commited Qty" />
+                <field name="available" optional="show" sum="Available" />
+                <field name="qty_in_production" optional="show" sum="Qty in Production" />
+                <field name="tons" sum="Tons" />
+            </tree>
+        </field>
+    </record>
+
+    <!-- SEARCH VIEWS -->
+
+    <record id="view_quant_report_real_search" model="ir.ui.view">
+        <field name="name">quant.report.real.search</field>
+        <field name="model">quant.report.real</field>
+        <field name="arch" type="xml">
+            <search>
+                <separator />
+                <field name="category_id" />
+                <field name="location_id" />
+                <field name="product_id" />
+                <separator />
+                <filter domain="[('parent_category_id.name','=', 'PT POLVOS')]" name="pt_polvos" string="PT Polvos" />
+                <separator />
+                <filter
+                    domain="[('parent_category_id.name','=', 'PT PINTURAS Y PASTAS')]"
+                    name="pt_pinturas_y_pastas"
+                    string="PT Pinturas y Pastas"
+                />
+                <separator />
+                <filter
+                    domain="['|', ('parent_category_id.name','=', 'PT PINTURAS Y PASTAS'), ('parent_category_id.name','=', 'PT POLVOS')]"
+                    name="pt_all"
+                    string="PT"
+                />
+            </search>
+        </field>
+    </record>
+
+    <!-- ACTIONS -->
+
+    <record id="action_quant_analysis" model="ir.actions.act_window">
+        <field name="name">Inventory Analysis</field>
+        <field name="res_model">quant.report.real</field>
+        <field name="view_mode">tree,pivot</field>
+        <field name="search_view_id" ref="view_quant_report_real_search" />
+        <field name="context">{
+            'search_default_pt_all': 1,
+        }</field>
+        <field
+            name="view_ids"
+            eval="[
+            (5, 0, 0),
+            (0, 0, {
+                'view_mode':'pivot',
+                'view_id': ref('view_quant_report_real_pivot'),
+            }),
+        ]"
+        />
+    </record>
+
+    <!-- MENU ITEMS -->
+
+    <menuitem
+        id="quant_reports_menu"
+        name="Inventory Reports"
+        parent="spreadsheet_dashboard.spreadsheet_dashboard_menu_root"
+    />
+    <menuitem
+        id="action_quant_analysis_report_menu"
+        name="Inventory Analysis"
+        parent="quant_reports_menu"
+        action="action_quant_analysis"
+    />
+
+</odoo>

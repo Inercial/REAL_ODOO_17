@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo noupdate="1">
+    <record id="banorte_credit_transfer" model="account.payment.method">
+        <field name="name">Banorte Credit Transfer to suppliers</field>
+        <field name="code">banorte_credit_transfer</field>
+        <field name="payment_type">outbound</field>
+        <field name="bank_account_required" eval="True" />
+        <field name="generate_payment_file" eval="True" />
+        <field name="filename_prefix">PP</field>
+    </record>
+    <record id="banorte_service_payment" model="account.payment.method">
+        <field name="name">Banorte Service Payment</field>
+        <field name="code">banorte_service_payment</field>
+        <field name="payment_type">outbound</field>
+        <field name="bank_account_required" eval="True" />
+        <field name="generate_payment_file" eval="True" />
+        <field name="filename_prefix">PC</field>
+    </record>
+</odoo>

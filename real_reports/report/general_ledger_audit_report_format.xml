@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <template id="general_ledger_audit_template">
+        <t t-call="web.html_container">
+            <t t-call="web.external_layout">
+                <div class="page">
+                    <table style="width: 100%; border: none;" border="0">
+                        <tr>
+                            <td
+                                style="font-size: 35px; text-align: left; font-weight: bold; background-color: #FFFFFF; border: none;"
+                            >
+                                <t t-esc="title" />
+                            </td>
+                        </tr>
+                    </table>
+                    <div style="font-size: 12px;">
+                        <div>
+                            fecha de impresion: <t t-esc="today" />
+                        </div>
+                        <div style="font-weight: bold;">
+                            fecha inicial: <t t-esc="date_start" />
+                        </div>
+                        <div style="font-weight: bold;">
+                            fecha final: <t t-esc="date_end" />
+                        </div>
+                    </div>
+                    <t t-foreach="div_dep" t-as="dep">
+                        <h3><t t-esc="dep" /></h3>
+                        <table class="table table-sm table-bordered" name="table" style="font-size: 12px; width:100%">
+                            <thead>
+                                <tr>
+                                    <th width="30%">NOMBRE</th>
+                                    <th width="10%">MES</th>
+                                    <th width="20%">DEBE</th>
+                                    <th width="20%">HABER</th>
+                                    <th width="20%">SALDO</th>
+                                </tr>
+                            </thead>
+                            <t t-set="dep_total" t-value="0" />
+                            <t t-foreach="div_group[dep]" t-as="group">
+                                <tbody>
+                                    <t
+                                        t-set="group_total"
+                                        t-value="sum(line[4] for line in query if line[0] == dep and line[1] == group)"
+                                    />
+                                    <t t-foreach="query" t-as="line">
+                                        <t t-if="line[0] == dep and line[1] == group">
+                                            <tr>
+                                                <td><t t-esc="line[1]" /></td>
+                                                <td><t t-esc="line[2]" /></td>
+                                                <td>$<span t-esc="'{0:,.2f}'.format(line[3])" /></td>
+                                                <td>$<span t-esc="'{0:,.2f}'.format(line[4])" /></td>
+                                                <td>$<span t-esc="'{0:,.2f}'.format(line[5])" /></td>
+                                            </tr>
+                                        </t>
+                                    </t>
+                                </tbody>
+                            </t>
+                        </table>
+                    </t>
+                    <div class="text-right" style="font-weight: bold;">
+                        TOTAL DEBE: $<span t-esc="'{0:,.2f}'.format(sum_total1)" />
+                    </div>
+                    <div class="text-right" style="font-weight: bold;">
+                        TOTAL HABER: $<span t-esc="'{0:,.2f}'.format(sum_total2)" />
+                    </div>
+                    <div class="text-right" style="font-weight: bold;">
+                        TOTAL SALDO: $<span t-esc="'{0:,.2f}'.format(sum_total3)" />
+                    </div>
+                </div>
+            </t>
+        </t>
+    </template>
+</odoo>

@@ -1,0 +1,22 @@
+<odoo>
+    <record model="ir.ui.view" id="mx_edi_advance_tree">
+        <field name="name">mx_edi_advance.tree</field>
+        <field name="model">l10n_mx_edi.advance</field>
+        <field name="inherit_id" ref="l10n_mx_edi_advance.l10n_mx_edi_advance_view_tree" />
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='name']" position="after">
+                <field name="x_studio_notas" optional="show" />
+            </xpath>
+        </field>
+    </record>
+    <record model="ir.ui.view" id="mx_edi_advance_form">
+        <field name="name">mx_edi_advance.form</field>
+        <field name="model">l10n_mx_edi.advance</field>
+        <field name="inherit_id" ref="l10n_mx_edi_advance.l10n_mx_edi_advance_view_form" />
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='partner_id']" position="after">
+                <field name="x_studio_notas" />
+            </xpath>
+        </field>
+    </record>
+</odoo>

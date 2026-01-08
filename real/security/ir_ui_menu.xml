@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record model="ir.ui.menu" id="sale.menu_sale_invoicing">
+        <field name="groups_id" eval="[
+        (4, ref('real.res_groups_can_see_menu_to_invoice')),
+        ]" />
+    </record>
+    <record model="ir.ui.menu" id="sale.product_menu_catalog">
+        <field name="groups_id" eval="[
+        (4, ref('real.res_groups_can_see_menu_products_sales')),
+        ]" />
+    </record>
+    <record model="ir.ui.menu" id="crm.crm_menu_root">
+        <field name="groups_id" eval="[
+        (4, ref('real.res_groups_can_see_menu_crm_root')),
+        ]" />
+    </record>
+    <record model="ir.ui.menu" id="sale_crm.sale_order_menu_quotations_crm">
+        <field name="groups_id" eval="[
+        (4, ref('real.res_groups_can_see_menu_quotations_crm')),
+        ]" />
+    </record>
+    <record model="ir.ui.menu" id="sale.menu_product_pricelist_main">
+        <field
+            name="groups_id"
+            eval="[
+        (4, ref('real.res_groups_can_access_pricelist_id')),
+        (4, ref('real.res_groups_can_see_variants_and_rates')),
+        ]"
+        />
+    </record>
+    <!-- <record model="ir.ui.menu" id="sale.menu_product">
+        <field name="groups_id" eval="[
+        (4, ref('real.res_groups_can_see_variants_and_rates')),
+        ]" />
+    </record> -->
+    <record model="ir.ui.menu" id="sale.menu_products">
+        <field name="groups_id" eval="[
+        (4, ref('real.res_groups_can_see_variants_and_rates')),
+        ]" />
+    </record>
+    <record model="ir.ui.menu" id="account.menu_finance_receivables">
+        <field
+            name="groups_id"
+            eval="[
+            (4, ref('real.res_groups_only_see_customer_invoices')),
+            (4, ref('real.res_groups_see_all_invoices')),
+        ]"
+        />
+    </record>
+    <record model="ir.ui.menu" id="account.menu_action_move_out_invoice_type">
+        <field
+            name="groups_id"
+            eval="[
+            (4, ref('real.res_groups_only_see_customer_invoices')),
+            (4, ref('real.res_groups_see_all_invoices')),
+        ]"
+        />
+    </record>
+    <record model="ir.ui.menu" id="account.menu_finance_payables">
+        <field name="groups_id" eval="[
+            (4, ref('real.res_groups_see_all_invoices')),
+        ]" />
+    </record>
+    <record model="ir.ui.menu" id="account.menu_action_move_out_refund_type">
+        <field name="groups_id" eval="[
+            (4, ref('real.res_groups_see_all_invoices')),
+        ]" />
+    </record>
+    <record model="ir.ui.menu" id="account.menu_action_move_out_receipt_type">
+        <field name="groups_id" eval="[
+            (4, ref('real.res_groups_see_all_invoices')),
+        ]" />
+    </record>
+    <record model="ir.ui.menu" id="account.menu_action_account_payments_receivable">
+        <field name="groups_id" eval="[
+            (4, ref('real.res_groups_see_all_invoices')),
+        ]" />
+    </record>
+    <record model="ir.ui.menu" id="account_followup.customer_statements_menu">
+        <field name="groups_id" eval="[
+            (4, ref('real.res_groups_see_all_invoices')),
+        ]" />
+    </record>
+    <!-- <record model="ir.ui.menu" id="stock.menu_action_inventory_form">
+        <field name="active" eval="0" />
+    </record> -->
+    <record id="mrp.menu_procurement_compute_mrp" model="ir.ui.menu">
+        <field name="groups_id" eval="[(5, 0, 0)]" />
+    </record>
+    <record id="stock.menu_procurement_compute" model="ir.ui.menu">
+        <field name="groups_id" eval="[(5, 0, 0)]" />
+    </record>
+</odoo>

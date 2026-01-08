@@ -1,0 +1,29 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+mrp_equipment_read,mrp_equipment_read,real.model_mrp_equipment,mrp.group_mrp_user,1,0,0,0
+way_of_shipment_type_read,way_of_shipment_type_read,real.model_way_of_shipment_type,base.group_user,1,1,1,1
+mrp_equipment_manager,mrp_equipment_manager,real.model_mrp_equipment,mrp.group_mrp_manager,1,1,1,1
+sale_order_readonly,sale_order_readonly,sale.model_sale_order,real.res_groups_extra_permissions_sale_order_readonly,1,0,0,0
+product_template_read_write,product_template_read_write,product.model_product_template,real.res_groups_product_template_read_write,1,1,0,0
+product_product_read_write_create,product_product_read_write_create,product.model_product_product,real.res_groups_product_product_read_write_create,1,1,1,0
+product_template_read_write_create,product_template_read_write_create,product.model_product_template,real.res_groups_product_product_read_write_create,1,1,1,0
+product_product_read_write,product_product_read_write,product.model_product_product,real.res_groups_product_template_read_write,1,1,0,0
+product_pricelist_read_write,product_pricelist_read_write,product.model_product_pricelist,real.res_groups_product_pricelist_read_write,1,1,0,0
+product_pricelist_read,product_pricelist_read,product.model_product_pricelist,real.res_groups_product_pricelist_read,1,0,0,0
+product_product_read,product_product_read,product.model_product_product,real.res_groups_product_template_read,1,0,0,0
+product_template_read,product_template_read,product.model_product_template,real.res_groups_product_template_read,1,0,0,0
+crm.access_crm_lead,crm.lead,model_crm_lead,sales_team.group_sale_salesman,1,0,0,0
+access_crm_lead,crm.lead,model_crm_lead,real.res_groups_can_create_crm_lead,1,1,1,0
+
+purchase.access_res_partner_purchase_manager,res.partner.purchase.manager,base.model_res_partner,purchase.group_purchase_manager,1,0,0,0
+sale.access_res_partner_sale_manager,res.partner.sale.manager,base.model_res_partner,sales_team.group_sale_manager,1,0,0,0
+mrp.access_product_group_res_partner_mrp_manager,res_partner group_mrp_manager,base.model_res_partner,mrp.group_mrp_manager,1,0,0,0
+stock.access_product_group_res_partner_stock_manager,res_partner group_stock_manager,base.model_res_partner,stock.group_stock_manager,1,0,0,0
+crm.access_res_partner,res.partner.crm.user,base.model_res_partner,sales_team.group_sale_salesman,1,0,0,0
+account.access_res_partner_group_account_manager,res_partner group_account_manager,account.model_res_partner,account.group_account_manager,1,0,0,0
+purchase.access_res_partner_purchase_user,res.partner purchase,purchase.model_res_partner,purchase.group_purchase_user,1,0,0,0
+mrp_dump_truck_driver_read,mrp_dump_truck_driver_read,real.model_mrp_dump_truck_driver,mrp.group_mrp_user,1,0,0,0
+mrp_dump_truck_driver_manager,mrp_dump_truck_driver_manager,real.model_mrp_dump_truck_driver,mrp.group_mrp_manager,1,1,1,1
+mrp_license_plate_read,mrp_license_plate_read,real.model_mrp_license_plate,mrp.group_mrp_user,1,0,0,0
+mrp_license_plate_manager,mrp_license_plate_manager,real.model_mrp_license_plate,mrp.group_mrp_manager,1,1,1,1
+product_category_class_manager,product_category_class_manager,real.model_product_category_class,stock.group_stock_manager,1,1,1,1
+mrp_production_overflow_manager,mrp_production_overflow_manager,real.model_mrp_production_overflow,stock.group_stock_manager,1,1,1,1

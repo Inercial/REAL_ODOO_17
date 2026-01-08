@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record model="ir.ui.view" id="stock_move_kanban_real_form">
+        <field name="name">stock_move_kanban_real.form</field>
+        <field name="model">stock.move</field>
+        <field name="priority">10000</field>
+        <field name="inherit_id" ref="stock.view_move_kandan" />
+        <field name="arch" type="xml">
+            <xpath expr="//div[hasclass('o_kanban_record_body')]" position="inside">
+                <div invisible="is_inventory">
+                    <span>Tons <field name="tons_display" /></span>
+                </div>
+            </xpath>
+        </field>
+    </record>
+</odoo>

@@ -1,0 +1,1914 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* real_reports
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 17.0+e\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-10-08 22:06+0000\n"
+"PO-Revision-Date: 2025-10-08 22:06+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: real_reports
+#: model_terms:ir.ui.view,arch_db:real_reports.costs_and_prices_template
+msgid "% M.P."
+msgstr ""
+
+#. module: real_reports
+#: model:ir.actions.report,print_report_name:real_reports.bank_expenses_report_real
+msgid "'Bank Expenses Report'"
+msgstr "Informe de gastos bancarios"
+
+#. module: real_reports
+#: model:ir.actions.report,print_report_name:real_reports.credit_note_report_real
+msgid "'Credit Note Report'"
+msgstr "'Informe de nota de crédito'"
+
+#. module: real_reports
+#: model_terms:ir.ui.view,arch_db:real_reports.freight_line_template
+msgid "<b style=\"font-size: 30px\">L-009</b><br/>"
+msgstr ""
+
+#. module: real_reports
+#: model_terms:ir.ui.view,arch_db:real_reports.costs_and_prices_template
+msgid "<b style=\"font-size: 30px\">P-075</b><br/>"
+msgstr ""
+
+#. module: real_reports
+#: model_terms:ir.ui.view,arch_db:real_reports.costs_and_prices_template
+msgid "<b>Costos y Precios por Líneas</b>"
+msgstr ""
+
+#. module: real_reports
+#: model_terms:ir.ui.view,arch_db:real_reports.freight_line_template
+msgid "<b>Maniobras Incluidas en Precio</b>"
+msgstr ""
+
+#. module: real_reports
+#: model:ir.model.fields.selection,name:real_reports.selection__account_fcr_report__rep_select__reporte_fcr
+#: model:ir.model.fields.selection,name:real_reports.selection__general_ledger_audit__rep_select__reporte_fcr
+msgid "A-055"
+msgstr ""
+
+#. module: real_reports
+#: model:ir.model.fields.selection,name:real_reports.selection__account_fcr_report__rep_select__reporte_fcr_complemento
+#: model:ir.model.fields.selection,name:real_reports.selection__general_ledger_audit__rep_select__reporte_fcr_complemento
+msgid "A-055-B"
+msgstr ""
+
+#. module: real_reports
+#: model:ir.model.fields,field_description:real_reports.field_account_bank_report_real__account_id
+#: model:ir.model.fields,field_description:real_reports.field_account_invoice_report_real__account_id
+#: model:ir.model.fields,field_description:real_reports.field_expense_report_real__account_id
+#: model:ir.model.fields,field_description:real_reports.field_mrp_report_real__account
+#: model:ir.model.fields,field_description:real_reports.field_sale_invoice_report_real__account_id
+#: model_terms:ir.ui.view,arch_db:real_reports.bank_expenses_report
+msgid "Account"
+msgstr "Cuenta"
+
+#. module: real_reports
+#: model:ir.model,name:real_reports.model_account_bank_report_real
+msgid "Account Bank Report for Real"
+msgstr "Reporte de Bancos"
+
+#. module: real_reports
+#: model:ir.model,name:real_reports.model_account_invoice_report_real
+msgid "Account Invoice Report for Real"
+msgstr "Reporte de Facturación"
+
+#. module: real_reports
+#: model:ir.model.fields,field_description:real_reports.field_account_bank_report_real__account_name
+#: model:ir.model.fields,field_description:real_reports.field_account_invoice_report_real__account_name
+msgid "Account Name"
+msgstr "Nombre de la cuenta"
+
+#. module: real_reports
+#: model:ir.model.fields,field_description:real_reports.field_kardex_report_real__accounting_date
+msgid "Accounting Date"
+msgstr "Fecha contable"
+
+#. module: real_reports
+#: model:ir.ui.menu,name:real_reports.account_reports_menu
+msgid "Accounting Reports"
+msgstr "Reportes Contabilidad"
+
+#. module: real_reports
+#: model:ir.model.fields.selection,name:real_reports.selection__sale_invoice_report_real__l10n_mx_edi_usage__g01
+msgid "Acquisition of merchandise"
+msgstr "Adquisición de mercancías"
+
+#. module: real_reports
+#: model:ir.model.fields.selection,name:real_reports.selection__credit_report_real__rectified_invoices__advance_refund
+#: model:ir.model.fields.selection,name:real_reports.selection__sale_invoice_report_real__rectified_invoices__advance_refund
+msgid "Advance refund"
+msgstr "Reembolso anticipado"
+
+#. module: real_reports
+#: model:ir.model.fields,field_description:real_reports.field_account_bank_report_real__amount
+#: model:ir.model.fields,field_description:real_reports.field_account_invoice_report_real__amount
+#: model_terms:ir.ui.view,arch_db:real_reports.bank_expenses_report
+#: model_terms:ir.ui.view,arch_db:real_reports.credit_note_report
+msgid "Amount"
+msgstr "Importe"
+
+#. module: real_reports
+#: model:ir.model.fields.selection,name:real_reports.selection__credit_report_real__rectified_invoices__application_of_advance
+#: model:ir.model.fields.selection,name:real_reports.selection__sale_invoice_report_real__rectified_invoices__application_of_advance
+msgid "Application of Advance"
+msgstr "Aplicación de Anticipos"
+
+#. module: real_reports
+#: model:ir.model.fields,field_description:real_reports.field_quant_report_real__available
+#: model_terms:ir.ui.view,arch_db:real_reports.quant_report_real_tree
+msgid "Available"
+msgstr "Disponible"
+
+#. module: real_reports
+#: model:ir.model.fields,field_description:real_reports.field_report_stock_quant_real__available_space
+msgid "Available Space"
+msgstr "Espacio Disponible"
+
+#. module: real_reports
+#: model:ir.model.fields,field_description:real_reports.field_expense_report_real__balance
+#: model_terms:ir.ui.view,arch_db:real_reports.account_expense_real_tree
+msgid "Balance"
+msgstr "Saldo"
+
+#. module: real_reports
+#: model:ir.ui.menu,name:real_reports.action_account_bank_moves_cash_report_real_menu
+msgid "Bank Cash Report"
+msgstr "Reporte Efectivo Banco"
+
+#. module: real_reports
+#: model:ir.ui.menu,name:real_reports.action_account_bank_moves_check_report_real_menu
+msgid "Bank Check Report"
+msgstr "Reporte Cheques Banco"
+
+#. module: real_reports
+#: model:ir.ui.menu,name:real_reports.action_account_bank_moves_transfer_report_real_menu
+msgid "Bank Electronic Transfer Report"
+msgstr "Reporte Transferencia Electrónica Banco"
+
+#. module: real_reports
+#: model:ir.ui.menu,name:real_reports.action_account_bank_moves_journal_report_real_menu
+msgid "Bank Expense Report"
+msgstr "Reporte de Egresos"
+
+#. module: real_reports
+#: model:ir.actions.act_window,name:real_reports.action_account_bank_moves_bank_report_real
+msgid "Bank Expenses"
+msgstr "Egresos"
+
+#. module: real_reports
+#: model:ir.actions.report,name:real_reports.bank_expenses_report_real
+#: model_terms:ir.ui.view,arch_db:real_reports.bank_expenses_report
+msgid "Bank Expenses Report"
+msgstr "Informe de gastos bancarios"
+
+#. module: real_reports
+#: model:ir.ui.menu,name:real_reports.action_account_bank_moves_other_report_real_menu
+msgid "Bank Other Report"
+msgstr "Reporte Banco Otros"
+
+#. module: real_reports
+#: model:ir.actions.act_window,name:real_reports.action_account_bank_moves_cash_report_real
+msgid "Bank Receipts by Cash"
+msgstr "Recibos Bancarios en Efectivo"
+
+#. module: real_reports
+#: model:ir.actions.act_window,name:real_reports.action_account_bank_moves_check_report_real
+msgid "Bank Receipts by Check"
+msgstr "Recibos Bancarios en Cheque"
+
+#. module: real_reports
+#: model:ir.actions.act_window,name:real_reports.action_account_bank_moves_transfer_report_real
+msgid "Bank Receipts by Electronic Transfer"
+msgstr "Recibos Bancarios en Transferencia Electrónica"
+
+#. module: real_reports
+#: model:ir.actions.act_window,name:real_reports.action_account_bank_moves_other_report_real
+msgid "Bank Receipts by Other"
+msgstr "Recibos Bancarios por Otros"
+
+#. module: real_reports
+#: model:ir.model.fields,field_description:real_reports.field_report_stock_quant_real__batch_number
+msgid "Batch Number"
+msgstr "Numero de batidas"
+
+#. module: real_reports
+#: model:ir.model.fields,field_description:real_reports.field_report_stock_quant_real__batch_size
+msgid "Batch Size"
+msgstr "Tamaño de batidas"
+
+#. module: real_reports
+#: model:ir.model.fields.selection,name:real_reports.selection__credit_report_real__rectified_invoices__broken_shipping_material
+#: model:ir.model.fields.selection,name:real_reports.selection__sale_invoice_report_real__rectified_invoices__broken_shipping_material
+msgid "Broken shipping material"
+msgstr "Material roto de embarques"
+
+#. module: real_reports
+#: model_terms:ir.ui.view,arch_db:real_reports.costs_and_prices_template
+msgid "CANTIDAD"
+msgstr ""
+
+#. module: real_reports
+#: model_terms:ir.ui.view,arch_db:real_reports.costs_and_prices_template
+msgid "CATEGORIA HIJA"
+msgstr ""
+
+#. module: real_reports
+#: model_terms:ir.ui.view,arch_db:real_reports.view_expense_report_real_wiz
+#: model_terms:ir.ui.view,arch_db:real_reports.view_stock_kardex_report
+msgid "CONFIRM"
+msgstr "CONFIRMAR"
+
+#. module: real_reports
+#: model_terms:ir.ui.view,arch_db:real_reports.costs_and_prices_template
+msgid "COSTO"
+msgstr ""
+
+#. module: real_reports
+#: model_terms:ir.ui.view,arch_db:real_reports.costs_and_prices_template
+msgid "COSTO LINEA"
+msgstr ""
+
+#. module: real_reports
+#: model_terms:ir.ui.view,arch_db:real_reports.account_fcr_template
+msgid "CUENTA ANALITICA"
+msgstr ""
+
+#. module: real_reports
+#: model_terms:ir.ui.view,arch_db:real_reports.account_fcr_template
+msgid "CUENTA CONTABLE"
+msgstr ""
+
+#. module: real_reports
+#: model:ir.model.fields.selection,name:real_reports.selection__sale_invoice_report_real__state__cancel
+#: model_terms:ir.ui.view,arch_db:real_reports.view_expense_report_real_wiz
+#: model_terms:ir.ui.view,arch_db:real_reports.view_stock_kardex_report
+#: model_terms:ir.ui.view,arch_db:real_reports.wizard_report_mrp_request
+msgid "Cancel"
+msgstr "Cancelar"
+
+#. module: real_reports
+#: model_terms:ir.ui.view,arch_db:real_reports.view_account_bank_report_real_search
+#: model_terms:ir.ui.view,arch_db:real_reports.view_account_invoice_report_real_search
+msgid "Cash"
+msgstr "Efectivo"
+
+#. module: real_reports
+#: model:ir.model.fields,field_description:real_reports.field_mrp_report_real__category_id
+#: model:ir.model.fields,field_description:real_reports.field_quant_report_real__category_id
+#: model:ir.model.fields,field_description:real_reports.field_sale_invoice_report_real__category_id
+#: model:ir.model.fields,field_description:real_reports.field_stock_landed_cost_report_real__category_id
+msgid "Category"
+msgstr "Categoría"
+
+#. module: real_reports
+#: model:ir.model.fields,field_description:real_reports.field_mrp_report_real__category_name
+#: model:ir.model.fields,field_description:real_reports.field_quant_report_real__category_name
+msgid "Category Name"
+msgstr "Nombre Categoria"
+
+#. module: real_reports
+#: model_terms:ir.ui.view,arch_db:real_reports.bank_expenses_report
+#: model_terms:ir.ui.view,arch_db:real_reports.view_account_bank_report_real_search
+#: model_terms:ir.ui.view,arch_db:real_reports.view_account_invoice_report_real_search
+msgid "Check"
+msgstr "Cheque"
+
+#. module: real_reports
+#: model:ir.model.fields,field_description:real_reports.field_account_bank_report_real__check_number
+msgid "Check Number"
+msgstr "Número de cheque"
+
+#. module: real_reports
+#: model:ir.model.fields,field_description:real_reports.field_sale_invoice_report_real__city
+msgid "City"
+msgstr "Ciudad"
+
+#. module: real_reports
+#: model:ir.actions.act_window,name:real_reports.action_action_collection_report_real
+#: model:ir.ui.menu,name:real_reports.action_collection_report_real_menu
+msgid "Collection by Salesman"
+msgstr "Cobranza por Vendedor"
+
+#. module: real_reports
+#: model:ir.model,name:real_reports.model_collection_report_real
+msgid "Collection by salesman"
+msgstr "Cobranza por Vendedor"
+
+#. module: real_reports
+#: model:ir.model.fields,field_description:real_reports.field_quant_report_real__commited_qty
+#: model_terms:ir.ui.view,arch_db:real_reports.quant_report_real_tree
+msgid "Commited Qty"
+msgstr "Cant. Comprometida"
+
+#. module: real_reports
+#: model:ir.model.fields,field_description:real_reports.field_quant_report_real__commited_tons
+msgid "Commited Tons"
+msgstr "Toneladas comprometidas"
+
+#. module: real_reports
+#: model:ir.model.fields.selection,name:real_reports.selection__sale_invoice_report_real__l10n_mx_edi_usage__i04
+msgid "Computer equipment and accessories"
+msgstr "Equipo de cómputo y accesorios"
+
+#. module: real_reports
+#: model_terms:ir.ui.view,arch_db:real_reports.credit_note_report
+#: model_terms:ir.ui.view,arch_db:real_reports.view_kardex_report_real_pivot
+msgid "Concept"
+msgstr "Concepto"
+
+#. module: real_reports
+#: model:ir.model.fields.selection,name:real_reports.selection__sale_invoice_report_real__l10n_mx_edi_usage__i01
+msgid "Constructions"
+msgstr "Construcciones"
+
+#. module: real_reports
+#: model:ir.actions.act_window,name:real_reports.action_production_consumption_report_real
+#: model:ir.ui.menu,name:real_reports.action_production_consumption_report_real_menu
+msgid "Consumption of loads"
+msgstr "Consumo de Cargas"
+
+#. module: real_reports
+#: model:ir.actions.act_window,name:real_reports.actionproduction_consumption_report_real_by_equipment
+#: model:ir.ui.menu,name:real_reports.actionproduction_consumption_report_real_by_equipment_menu
+msgid "Consumption of loads by equipment"
+msgstr "Consumo de Cargas por Maquina"
+
+#. module: real_reports
+#: model:ir.actions.act_window,name:real_reports.action_mrp_costs_and_prices_report
+#: model:ir.actions.report,name:real_reports.costs_and_prices_report_template
+#: model:ir.ui.menu,name:real_reports.action_mrp_costs_and_prices_report_menu
+msgid "Costos y Precios por Lineas"
+msgstr ""
+
+#. module: real_reports
+#: model:ir.model,name:real_reports.model_costs_and_prices_report
+msgid "Costs and Prices Report"
+msgstr "Reporte Costos y Precios por Lineas"
+
+#. module: real_reports
+#: model:ir.model,name:real_reports.model_report_real_reports_costs_and_prices_template
+msgid "Costs and Prices Template"
+msgstr "Plantilla de Costos y Precios"
+
+#. module: real_reports
+#: model:ir.model.fields,field_description:real_reports.field_account_fcr_report__create_uid
+#: model:ir.model.fields,field_description:real_reports.field_costs_and_prices_report__create_uid
+#: model:ir.model.fields,field_description:real_reports.field_expense_report_real__create_uid
+#: model:ir.model.fields,field_description:real_reports.field_expense_report_real_wiz__create_uid
+#: model:ir.model.fields,field_description:real_reports.field_freight_line_report__create_uid
+#: model:ir.model.fields,field_description:real_reports.field_general_ledger_audit__create_uid
+#: model:ir.model.fields,field_description:real_reports.field_kardex_report_real__create_uid
+#: model:ir.model.fields,field_description:real_reports.field_report_kardex_report_wiz__create_uid
+#: model:ir.model.fields,field_description:real_reports.field_report_stock_quant_real__create_uid
+#: model:ir.model.fields,field_description:real_reports.field_wizard_report_mrp_request__create_uid
+msgid "Created by"
+msgstr "Creado por"
+
+#. module: real_reports
+#: model:ir.model.fields,field_description:real_reports.field_account_fcr_report__create_date
+#: model:ir.model.fields,field_description:real_reports.field_costs_and_prices_report__create_date
+#: model:ir.model.fields,field_description:real_reports.field_expense_report_real__create_date
+#: model:ir.model.fields,field_description:real_reports.field_expense_report_real_wiz__create_date
+#: model:ir.model.fields,field_description:real_reports.field_freight_line_report__create_date
+#: model:ir.model.fields,field_description:real_reports.field_general_ledger_audit__create_date
+#: model:ir.model.fields,field_description:real_reports.field_kardex_report_real__create_date
+#: model:ir.model.fields,field_description:real_reports.field_report_kardex_report_wiz__create_date
+#: model:ir.model.fields,field_description:real_reports.field_report_stock_quant_real__create_date
+#: model:ir.model.fields,field_description:real_reports.field_wizard_report_mrp_request__create_date
+msgid "Created on"
+msgstr "Creado el"
+
+#. module: real_reports
+#: model:ir.model.fields,field_description:real_reports.field_expense_report_real__credit
+#: model_terms:ir.ui.view,arch_db:real_reports.account_expense_real_tree
+msgid "Credit"
+msgstr "Crédito"
+
+#. module: real_reports
+#: model:ir.model.fields.selection,name:real_reports.selection__sale_invoice_report_real__move_type__out_refund
+msgid "Credit Note"
+msgstr "Factura rectificativa"
+
+#. module: real_reports
+#: model:ir.model.fields,field_description:real_reports.field_credit_report_real__credit_note_date
+msgid "Credit Note Date"
+msgstr "Fecha de Nota de Crédito"
+
+#. module: real_reports
+#: model:ir.actions.act_window,name:real_reports.action_credit_note_report_real
+#: model:ir.actions.report,name:real_reports.credit_note_report_real
+#: model_terms:ir.ui.view,arch_db:real_reports.credit_note_report
+msgid "Credit Note Report"
+msgstr "Informe de nota de crédito"
+
+#. module: real_reports
+#: model:ir.actions.act_window,name:real_reports.action_sale_invoice_traveling_leaf_credit_note_report_real
+#: model:ir.ui.menu,name:real_reports.action_sale_invoice_traveling_leaf_credit_note_report_real_menu
+msgid "Credit Note Traveling Leaf"
+msgstr "Hoja Viajera de Nota de Crédito"
+
+#. module: real_reports
+#: model_terms:ir.ui.view,arch_db:real_reports.view_credit_report_real_search
+#: model_terms:ir.ui.view,arch_db:real_reports.view_sale_invoice_report_real_search
+msgid "Credit Note Type"
+msgstr "Tipo de Notas de Crédito"
+
+#. module: real_reports
+#: model_terms:ir.ui.view,arch_db:real_reports.view_sale_invoice_report_real_search
+msgid "Credit Notes"
+msgstr "Notas de crédito"
+
+#. module: real_reports
+#: model:ir.model,name:real_reports.model_credit_report_real
+msgid "Credit Report for Real"
+msgstr "Informe de Notas de Crédito"
+
+#. module: real_reports
+#: model:ir.model.fields,field_description:real_reports.field_account_bank_report_real__currency_id
+#: model:ir.model.fields,field_description:real_reports.field_account_invoice_report_real__currency_id
+#: model:ir.model.fields,field_description:real_reports.field_collection_report_real__currency_id
+#: model:ir.model.fields,field_description:real_reports.field_credit_report_real__currency_id
+#: model:ir.model.fields,field_description:real_reports.field_sale_invoice_report_real__currency_id
+msgid "Currency"
+msgstr "Moneda"
+
+#. module: real_reports
+#: model_terms:ir.ui.view,arch_db:real_reports.bank_expenses_report
+#: model_terms:ir.ui.view,arch_db:real_reports.credit_note_report
+msgid "Customer"
+msgstr "Cliente"
+
+#. module: real_reports
+#: model:ir.model.fields.selection,name:real_reports.selection__credit_report_real__rectified_invoices__custom_err
+#: model:ir.model.fields.selection,name:real_reports.selection__sale_invoice_report_real__rectified_invoices__custom_err
+msgid "Customer error"
+msgstr "Error del cliente"
+
+#. module: real_reports
+#: model:ir.model.fields.selection,name:real_reports.selection__credit_report_real__rectified_invoices__customer_not_received
+#: model:ir.model.fields.selection,name:real_reports.selection__sale_invoice_report_real__rectified_invoices__customer_not_received
+msgid "Customer not received"
+msgstr "No recibió el cliente"
+
+#. module: real_reports
+#: model_terms:ir.ui.view,arch_db:real_reports.general_ledger_audit_template
+msgid "DEBE"
+msgstr ""
+
+#. module: real_reports
+#: model_terms:ir.ui.view,arch_db:real_reports.credit_note_report
+msgid "DIF."
+msgstr ""
+
+#. module: real_reports
+#: model:ir.model.fields.selection,name:real_reports.selection__credit_report_real__rectified_invoices__damaged_material
+#: model:ir.model.fields.selection,name:real_reports.selection__sale_invoice_report_real__rectified_invoices__damaged_material
+msgid "Damaged Material"
+msgstr "Material dañado"
+
+#. module: real_reports
+#: model:ir.model.fields,field_description:real_reports.field_account_bank_report_real__date
+#: model:ir.model.fields,field_description:real_reports.field_account_invoice_report_real__date
+#: model:ir.model.fields,field_description:real_reports.field_expense_report_real__date
+#: model:ir.model.fields,field_description:real_reports.field_kardex_report_real__date
+#: model:ir.model.fields,field_description:real_reports.field_production_consumption_report_real__date
+#: model:ir.model.fields,field_description:real_reports.field_stock_landed_cost_report_real__date
+#: model_terms:ir.ui.view,arch_db:real_reports.bank_expenses_report
+#: model_terms:ir.ui.view,arch_db:real_reports.credit_note_report
+msgid "Date"
+msgstr "Fecha"
+
+#. module: real_reports
+#: model:ir.model.fields,field_description:real_reports.field_mrp_report_real__date_deadline
+msgid "Date Deadline"
+msgstr "Fecha Limite"
+
+#. module: real_reports
+#: model:ir.model.fields,field_description:real_reports.field_account_fcr_report__date_end
+#: model:ir.model.fields,field_description:real_reports.field_costs_and_prices_report__date_end
+#: model:ir.model.fields,field_description:real_reports.field_freight_line_report__date_end
+#: model:ir.model.fields,field_description:real_reports.field_general_ledger_audit__date_end
+msgid "Date End"
+msgstr "Fecha Final"
+
+#. module: real_reports
+#: model:ir.model.fields,field_description:real_reports.field_mrp_report_real__date_finished
+msgid "Date Finished"
+msgstr "Fecha de Finalización"
+
+#. module: real_reports
+#: model:ir.model.fields,field_description:real_reports.field_mrp_report_real__date_planned_start
+msgid "Date Planned Start"
+msgstr "Fecha de Comienzo Planificada"
+
+#. module: real_reports
+#: model:ir.model.fields,field_description:real_reports.field_account_fcr_report__date_start
+#: model:ir.model.fields,field_description:real_reports.field_costs_and_prices_report__date_start
+#: model:ir.model.fields,field_description:real_reports.field_freight_line_report__date_start
+#: model:ir.model.fields,field_description:real_reports.field_general_ledger_audit__date_start
+#: model:ir.model.fields,field_description:real_reports.field_mrp_report_real__date_start
+msgid "Date Start"
+msgstr "Fecha Inicial"
+
+#. module: real_reports
+#: model:ir.model.fields,field_description:real_reports.field_collection_report_real__days_invoice
+#: model:ir.model.fields,field_description:real_reports.field_credit_report_real__days_invoice
+msgid "Days Invoice"
+msgstr "Días Factura"
+
+#. module: real_reports
+#: model:ir.model.fields,field_description:real_reports.field_expense_report_real__debit
+#: model_terms:ir.ui.view,arch_db:real_reports.account_expense_real_tree
+msgid "Debit"
+msgstr "Débito"
+
+#. module: real_reports
+#: model:ir.model.fields,field_description:real_reports.field_quant_report_real__default_code
+#: model:ir.model.fields,field_description:real_reports.field_sale_invoice_report_real__default_code
+msgid "Default Code"
+msgstr "Código por Defecto"
+
+#. module: real_reports
+#: model:ir.model.fields,field_description:real_reports.field_sale_invoice_report_real__delivery_city
+msgid "Delivery City"
+msgstr "Ciudad de Entrega"
+
+#. module: real_reports
+#: model:ir.model.fields.selection,name:real_reports.selection__sale_invoice_report_real__l10n_mx_edi_usage__d09
+msgid "Deposits in savings accounts, premiums based on pension plans."
+msgstr ""
+"Depósitos en cuentas para el ahorro, primas que tengan como base planes de "
+"pensiones."
+
+#. module: real_reports
+#: model:ir.model.fields,field_description:real_reports.field_account_bank_report_real__description
+#: model:ir.model.fields,field_description:real_reports.field_account_invoice_report_real__description
+#: model:ir.model.fields,field_description:real_reports.field_sale_invoice_report_real__description
+#: model_terms:ir.ui.view,arch_db:real_reports.bank_expenses_report
+msgid "Description"
+msgstr "Descripción"
+
+#. module: real_reports
+#: model:ir.model.fields.selection,name:real_reports.selection__sale_invoice_report_real__l10n_mx_edi_usage__i05
+msgid "Dices, dies, molds, matrices and tooling"
+msgstr "Dados, troqueles, moldes, matrices y herramental"
+
+#. module: real_reports
+#: model:ir.model.fields.selection,name:real_reports.selection__credit_report_real__rectified_invoices__did_not_leave_plant
+#: model:ir.model.fields.selection,name:real_reports.selection__sale_invoice_report_real__rectified_invoices__did_not_leave_plant
+msgid "Did not leave the plant"
+msgstr "No salió de la planta"
+
+#. module: real_reports
+#: model:ir.model.fields.selection,name:real_reports.selection__credit_report_real__rectified_invoices__different_prices
+#: model:ir.model.fields.selection,name:real_reports.selection__sale_invoice_report_real__rectified_invoices__different_prices
+msgid "Different prices"
+msgstr "Diferencia en precio"
+
+#. module: real_reports
+#: model:ir.model.fields.selection,name:real_reports.selection__credit_report_real__rectified_invoices__discounts_promp_payment
+#: model:ir.model.fields.selection,name:real_reports.selection__sale_invoice_report_real__rectified_invoices__discounts_promp_payment
+msgid "Discounts for prompt payment"
+msgstr "Descuentos por pronto pago"
+
+#. module: real_reports
+#: model:ir.model.fields,field_description:real_reports.field_account_bank_report_real__display_name
+#: model:ir.model.fields,field_description:real_reports.field_account_fcr_report__display_name
+#: model:ir.model.fields,field_description:real_reports.field_account_invoice_report_real__display_name
+#: model:ir.model.fields,field_description:real_reports.field_collection_report_real__display_name
+#: model:ir.model.fields,field_description:real_reports.field_costs_and_prices_report__display_name
+#: model:ir.model.fields,field_description:real_reports.field_credit_report_real__display_name
+#: model:ir.model.fields,field_description:real_reports.field_expense_report_real__display_name
+#: model:ir.model.fields,field_description:real_reports.field_expense_report_real_wiz__display_name
+#: model:ir.model.fields,field_description:real_reports.field_freight_line_report__display_name
+#: model:ir.model.fields,field_description:real_reports.field_general_ledger_audit__display_name
+#: model:ir.model.fields,field_description:real_reports.field_kardex_report_real__display_name
+#: model:ir.model.fields,field_description:real_reports.field_mrp_report_real__display_name
+#: model:ir.model.fields,field_description:real_reports.field_production_consumption_report_real__display_name
+#: model:ir.model.fields,field_description:real_reports.field_quant_report_real__display_name
+#: model:ir.model.fields,field_description:real_reports.field_report_kardex_report_wiz__display_name
+#: model:ir.model.fields,field_description:real_reports.field_report_stock_quant_real__display_name
+#: model:ir.model.fields,field_description:real_reports.field_sale_invoice_report_real__display_name
+#: model:ir.model.fields,field_description:real_reports.field_stock_landed_cost_report_real__display_name
+#: model:ir.model.fields,field_description:real_reports.field_wizard_report_mrp_request__display_name
+msgid "Display Name"
+msgstr "Nombre mostrado"
+
+#. module: real_reports
+#: model:ir.model.fields,field_description:real_reports.field_sale_invoice_report_real__document_amount_total
+msgid "Document Amount Total"
+msgstr "Monto Total del Documento"
+
+#. module: real_reports
+#: model:ir.model.fields,field_description:real_reports.field_sale_invoice_report_real__document_amount_untaxed
+msgid "Document Amount Untaxed"
+msgstr "Monto libre Impuestos del Documento"
+
+#. module: real_reports
+#: model:ir.model.fields,field_description:real_reports.field_sale_invoice_report_real__document_day
+msgid "Document Day"
+msgstr "Dia del Documento"
+
+#. module: real_reports
+#: model:ir.model.fields,field_description:real_reports.field_sale_invoice_report_real__document_day_name
+msgid "Document Day Name"
+msgstr "Nombre del dia del Documento"
+
+#. module: real_reports
+#: model:ir.model.fields,field_description:real_reports.field_sale_invoice_report_real__document_month
+msgid "Document Month"
+msgstr "Mes del Documento"
+
+#. module: real_reports
+#: model:ir.model.fields,field_description:real_reports.field_sale_invoice_report_real__document_month_year
+msgid "Document Month Year"
+msgstr "Documento Mes Año"
+
+#. module: real_reports
+#: model:ir.model.fields,field_description:real_reports.field_sale_invoice_report_real__document_year
+msgid "Document Year"
+msgstr "Año del Documento"
+
+#. module: real_reports
+#: model:ir.model.fields.selection,name:real_reports.selection__sale_invoice_report_real__l10n_mx_edi_usage__d04
+msgid "Donations"
+msgstr "Donativos"
+
+#. module: real_reports
+#: model:ir.model.fields.selection,name:real_reports.selection__sale_invoice_report_real__state__draft
+msgid "Draft"
+msgstr "Borrador"
+
+#. module: real_reports
+#: model_terms:ir.ui.view,arch_db:real_reports.view_account_bank_report_real_search
+#: model_terms:ir.ui.view,arch_db:real_reports.view_account_invoice_report_real_search
+msgid "Electronic Transfer"
+msgstr "Transferencia Electrónica"
+
+#. module: real_reports
+#: model:ir.model.fields,field_description:real_reports.field_account_bank_report_real__l10n_edi_employee_id
+#: model_terms:ir.ui.view,arch_db:real_reports.bank_expenses_report
+msgid "Employee"
+msgstr "Empleado"
+
+#. module: real_reports
+#: model:ir.model.fields,field_description:real_reports.field_mrp_report_real__equipment_id
+#: model:ir.model.fields,field_description:real_reports.field_production_consumption_report_real__equipment_id
+msgid "Equipment"
+msgstr "Nombre de la máquina"
+
+#. module: real_reports
+#: model:ir.model.fields,field_description:real_reports.field_mrp_report_real__equipment_name
+msgid "Equipment Name"
+msgstr "Nombre Máquina"
+
+#. module: real_reports
+#: model:ir.model.fields,field_description:real_reports.field_report_stock_quant_real__excess
+msgid "Excess"
+msgstr "Excedente"
+
+#. module: real_reports
+#: model:ir.model.fields,field_description:real_reports.field_stock_landed_cost_report_real__expense_product_id
+msgid "Expense Product"
+msgstr "Producto de gastos"
+
+#. module: real_reports
+#: model:ir.actions.act_window,name:real_reports.action_account_expense_report_real
+#: model:ir.actions.act_window,name:real_reports.action_account_expense_report_real_wiz
+#: model:ir.ui.menu,name:real_reports.action_account_expense_report_real_menu
+#: model_terms:ir.ui.view,arch_db:real_reports.view_account_expense_report
+msgid "Expense Report"
+msgstr "Informe de gastos"
+
+#. module: real_reports
+#: model:ir.model,name:real_reports.model_expense_report_real
+msgid "Expense Report for Real"
+msgstr "Informe de gastos de Real"
+
+#. module: real_reports
+#: model:ir.model.fields,field_description:real_reports.field_expense_report_real__name
+msgid "Expenses"
+msgstr "Gastos"
+
+#. module: real_reports
+#: model:ir.model,name:real_reports.model_account_fcr_report
+msgid "FCR Report"
+msgstr "Reporte FCR"
+
+#. module: real_reports
+#: model:ir.model,name:real_reports.model_report_real_reports_account_fcr_template
+#: model:ir.model,name:real_reports.model_report_real_reports_general_ledger_audit_template
+msgid "FCR template"
+msgstr "Plantilla FCR"
+
+#. module: real_reports
+#: model_terms:ir.ui.view,arch_db:real_reports.costs_and_prices_template
+msgid "FLETE LINEA"
+msgstr ""
+
+#. module: real_reports
+#: model:ir.model.fields,field_description:real_reports.field_wizard_report_mrp_request__date_to_foreing
+#: model_terms:ir.ui.view,arch_db:real_reports.wizard_report_mrp_request
+msgid "Foreing"
+msgstr "Extranjero"
+
+#. module: real_reports
+#: model:ir.model.fields,field_description:real_reports.field_sale_invoice_report_real__forklift
+msgid "Forklift"
+msgstr "Máquina elevadora"
+
+#. module: real_reports
+#: model:ir.model.fields,field_description:real_reports.field_stock_landed_cost_report_real__former_unit_cost
+msgid "Former Unit Cost"
+msgstr "Costo unitario anterior"
+
+#. module: real_reports
+#: model:ir.model.fields,field_description:real_reports.field_sale_invoice_report_real__freight_cost
+msgid "Freight Cost"
+msgstr "Costo Flete"
+
+#. module: real_reports
+#: model:ir.model.fields,field_description:real_reports.field_sale_invoice_report_real__freight_cost_ton
+msgid "Freight Cost by Ton"
+msgstr "Costo del flete por Tonelada"
+
+#. module: real_reports
+#: model:ir.model,name:real_reports.model_freight_line_report
+msgid "Freight Line Report"
+msgstr "Reporte Maniobras Incluidas en Precio"
+
+#. module: real_reports
+#: model:ir.model,name:real_reports.model_report_real_reports_freight_line_template
+msgid "Freight Line Template"
+msgstr "Plantilla de línea de flete"
+
+#. module: real_reports
+#: model:ir.model.fields,field_description:real_reports.field_sale_invoice_report_real__freight_total
+msgid "Freight Total"
+msgstr "Flete Total"
+
+#. module: real_reports
+#: model:ir.model.fields,field_description:real_reports.field_sale_invoice_report_real__freight_total_with_tax
+msgid "Freight Total With Tax"
+msgstr "Flete Total con Impuesto"
+
+#. module: real_reports
+#: model:ir.model.fields,field_description:real_reports.field_sale_invoice_report_real__freight_weight
+msgid "Freight Weight"
+msgstr "Peso Flete"
+
+#. module: real_reports
+#: model:ir.model.fields,field_description:real_reports.field_expense_report_real_wiz__date_from
+#: model:ir.model.fields,field_description:real_reports.field_report_kardex_report_wiz__date_from
+msgid "From"
+msgstr "Desde"
+
+#. module: real_reports
+#: model_terms:ir.ui.view,arch_db:real_reports.bank_expenses_report
+#: model_terms:ir.ui.view,arch_db:real_reports.credit_note_report
+msgid "From:"
+msgstr "Desde:"
+
+#. module: real_reports
+#: model:ir.model.fields.selection,name:real_reports.selection__sale_invoice_report_real__l10n_mx_edi_usage__d03
+msgid "Funeral expenses"
+msgstr "Gastos funerales"
+
+#. module: real_reports
+#: model_terms:ir.ui.view,arch_db:real_reports.account_fcr_template
+msgid "GRUPO"
+msgstr ""
+
+#. module: real_reports
+#: model:ir.model.fields.selection,name:real_reports.selection__sale_invoice_report_real__l10n_mx_edi_usage__g03
+msgid "General expenses"
+msgstr "Gastos en general"
+
+#. module: real_reports
+#: model:ir.model.fields,field_description:real_reports.field_sale_invoice_report_real__grouped_category_id
+msgid "Grouped"
+msgstr "Agrupados"
+
+#. module: real_reports
+#: model_terms:ir.ui.view,arch_db:real_reports.general_ledger_audit_template
+msgid "HABER"
+msgstr ""
+
+#. module: real_reports
+#: model:ir.model.fields,field_description:real_reports.field_account_bank_report_real__id
+#: model:ir.model.fields,field_description:real_reports.field_account_fcr_report__id
+#: model:ir.model.fields,field_description:real_reports.field_account_invoice_report_real__id
+#: model:ir.model.fields,field_description:real_reports.field_collection_report_real__id
+#: model:ir.model.fields,field_description:real_reports.field_costs_and_prices_report__id
+#: model:ir.model.fields,field_description:real_reports.field_credit_report_real__id
+#: model:ir.model.fields,field_description:real_reports.field_expense_report_real__id
+#: model:ir.model.fields,field_description:real_reports.field_expense_report_real_wiz__id
+#: model:ir.model.fields,field_description:real_reports.field_freight_line_report__id
+#: model:ir.model.fields,field_description:real_reports.field_general_ledger_audit__id
+#: model:ir.model.fields,field_description:real_reports.field_kardex_report_real__id
+#: model:ir.model.fields,field_description:real_reports.field_mrp_report_real__id
+#: model:ir.model.fields,field_description:real_reports.field_production_consumption_report_real__id
+#: model:ir.model.fields,field_description:real_reports.field_quant_report_real__id
+#: model:ir.model.fields,field_description:real_reports.field_report_kardex_report_wiz__id
+#: model:ir.model.fields,field_description:real_reports.field_report_stock_quant_real__id
+#: model:ir.model.fields,field_description:real_reports.field_sale_invoice_report_real__id
+#: model:ir.model.fields,field_description:real_reports.field_stock_landed_cost_report_real__id
+#: model:ir.model.fields,field_description:real_reports.field_wizard_report_mrp_request__id
+msgid "ID"
+msgstr "Identificación"
+
+#. module: real_reports
+#: model_terms:ir.ui.view,arch_db:real_reports.account_fcr_template
+msgid "IMPORTE"
+msgstr ""
+
+#. module: real_reports
+#: model:ir.model.fields,field_description:real_reports.field_kardex_report_real__incoming
+#: model_terms:ir.ui.view,arch_db:real_reports.kardex_report_real_tree
+msgid "Incoming"
+msgstr "Entradas"
+
+#. module: real_reports
+#: model:ir.actions.act_window,name:real_reports.action_quant_analysis
+#: model:ir.ui.menu,name:real_reports.action_quant_analysis_report_menu
+msgid "Inventory Analysis"
+msgstr "Análisis de Inventarios"
+
+#. module: real_reports
+#: model:ir.ui.menu,name:real_reports.quant_reports_menu
+msgid "Inventory Reports"
+msgstr "Reportes de Inventario"
+
+#. module: real_reports
+#: model:ir.model.fields.selection,name:real_reports.selection__sale_invoice_report_real__move_type__out_invoice
+msgid "Invoice"
+msgstr "Factura"
+
+#. module: real_reports
+#: model:ir.model.fields,field_description:real_reports.field_credit_report_real__invoice_date
+#: model:ir.model.fields,field_description:real_reports.field_sale_invoice_report_real__invoice_date
+msgid "Invoice Date"
+msgstr "Fecha de factura"
+
+#. module: real_reports
+#: model:ir.model.fields,field_description:real_reports.field_sale_invoice_report_real__invoice_date_due
+msgid "Invoice Date Due"
+msgstr "Fecha Vencimiento Factura"
+
+#. module: real_reports
+#: model:ir.model.fields,field_description:real_reports.field_collection_report_real__invoice_name
+msgid "Invoice Name"
+msgstr "Folio de Factura"
+
+#. module: real_reports
+#: model:ir.model.fields,field_description:real_reports.field_sale_invoice_report_real__invoice_user_id
+msgid "Invoice User"
+msgstr "Usuario de la Factura"
+
+#. module: real_reports
+#: model:ir.ui.menu,name:real_reports.action_credit_note_report_real_menu
+msgid "Invoice/Credit Note Report"
+msgstr "Informe de factura / nota de crédito"
+
+#. module: real_reports
+#: model_terms:ir.ui.view,arch_db:real_reports.view_sale_invoice_report_real_search
+msgid "Invoices"
+msgstr "Facturas"
+
+#. module: real_reports
+#: model_terms:ir.ui.view,arch_db:real_reports.view_account_invoice_report_real_pivot
+msgid "Invoices Analysis"
+msgstr "Análisis de facturas"
+
+#. module: real_reports
+#: model:ir.model.fields,field_description:real_reports.field_account_bank_report_real__journal_id
+#: model:ir.model.fields,field_description:real_reports.field_expense_report_real__journal_id
+#: model_terms:ir.ui.view,arch_db:real_reports.view_account_expense_real_search
+msgid "Journal"
+msgstr "Diario"
+
+#. module: real_reports
+#: model_terms:ir.ui.view,arch_db:real_reports.view_account_bank_report_real_pivot
+msgid "Journal Analysis"
+msgstr "Análisis de diarios"
+
+#. module: real_reports
+#: model:ir.model.fields,field_description:real_reports.field_kardex_report_real__account_move_id
+msgid "Journal Entry"
+msgstr "Asiento contable"
+
+#. module: real_reports
+#: model:ir.ui.menu,name:real_reports.menu_movs_report
+msgid "Kardex Analysis"
+msgstr "Kardex de los articulos"
+
+#. module: real_reports
+#: model:ir.model.fields,field_description:real_reports.field_account_invoice_report_real__l10n_mx_edi_payment_method_id
+msgid "L10N Mx Edi Payment Method"
+msgstr "L10n Méstodo de pago"
+
+#. module: real_reports
+#: model:ir.model.fields,field_description:real_reports.field_account_fcr_report__write_uid
+#: model:ir.model.fields,field_description:real_reports.field_costs_and_prices_report__write_uid
+#: model:ir.model.fields,field_description:real_reports.field_expense_report_real__write_uid
+#: model:ir.model.fields,field_description:real_reports.field_expense_report_real_wiz__write_uid
+#: model:ir.model.fields,field_description:real_reports.field_freight_line_report__write_uid
+#: model:ir.model.fields,field_description:real_reports.field_general_ledger_audit__write_uid
+#: model:ir.model.fields,field_description:real_reports.field_kardex_report_real__write_uid
+#: model:ir.model.fields,field_description:real_reports.field_report_kardex_report_wiz__write_uid
+#: model:ir.model.fields,field_description:real_reports.field_report_stock_quant_real__write_uid
+#: model:ir.model.fields,field_description:real_reports.field_wizard_report_mrp_request__write_uid
+msgid "Last Updated by"
+msgstr "Última actualización por"
+
+#. module: real_reports
+#: model:ir.model.fields,field_description:real_reports.field_account_fcr_report__write_date
+#: model:ir.model.fields,field_description:real_reports.field_costs_and_prices_report__write_date
+#: model:ir.model.fields,field_description:real_reports.field_expense_report_real__write_date
+#: model:ir.model.fields,field_description:real_reports.field_expense_report_real_wiz__write_date
+#: model:ir.model.fields,field_description:real_reports.field_freight_line_report__write_date
+#: model:ir.model.fields,field_description:real_reports.field_general_ledger_audit__write_date
+#: model:ir.model.fields,field_description:real_reports.field_kardex_report_real__write_date
+#: model:ir.model.fields,field_description:real_reports.field_report_kardex_report_wiz__write_date
+#: model:ir.model.fields,field_description:real_reports.field_report_stock_quant_real__write_date
+#: model:ir.model.fields,field_description:real_reports.field_wizard_report_mrp_request__write_date
+msgid "Last Updated on"
+msgstr "Última actualización el"
+
+#. module: real_reports
+#: model_terms:ir.ui.view,arch_db:real_reports.view_module_search
+msgid "Last Week"
+msgstr "Semana Pasada"
+
+#. module: real_reports
+#: model_terms:ir.ui.view,arch_db:real_reports.view_sale_invoice_by_liter_report_real_pivot
+msgid "Liters"
+msgstr "Litros"
+
+#. module: real_reports
+#: model:ir.actions.act_window,name:real_reports.action_sale_invoice_by_liter_report_real
+#: model:ir.ui.menu,name:real_reports.sale_invoice_by_liter_real_report_menu
+#: model_terms:ir.ui.view,arch_db:real_reports.view_sale_invoice_by_liter_report_real_pivot
+msgid "Liters sold by seller"
+msgstr "Litros Vendidos por Vendedor"
+
+#. module: real_reports
+#: model:ir.model.fields,field_description:real_reports.field_wizard_report_mrp_request__date_to
+#: model_terms:ir.ui.view,arch_db:real_reports.wizard_report_mrp_request
+msgid "Local"
+msgstr ""
+
+#. module: real_reports
+#: model:ir.actions.act_window,name:real_reports.action_view_local_foreigner_report
+msgid "Local/Foreigner Report"
+msgstr "Local/Foraneo Reporte"
+
+#. module: real_reports
+#: model:ir.model.fields,field_description:real_reports.field_quant_report_real__location_id
+msgid "Location"
+msgstr "Ubicación"
+
+#. module: real_reports
+#: model:ir.model.fields,field_description:real_reports.field_mrp_report_real__location_dest_id
+msgid "Location Dest"
+msgstr "Ubicación Destino"
+
+#. module: real_reports
+#: model:ir.model.fields,field_description:real_reports.field_mrp_report_real__location_src_id
+msgid "Location Src"
+msgstr "Ubicación "
+
+#. module: real_reports
+#: model:ir.model.fields.selection,name:real_reports.selection__credit_report_real__rectified_invoices__logistics_err
+#: model:ir.model.fields.selection,name:real_reports.selection__sale_invoice_report_real__rectified_invoices__logistics_err
+msgid "Logistics error"
+msgstr "Error logistica"
+
+#. module: real_reports
+#: model_terms:ir.ui.view,arch_db:real_reports.general_ledger_audit_template
+msgid "MES"
+msgstr ""
+
+#. module: real_reports
+#: model_terms:ir.ui.view,arch_db:real_reports.view_stock_landed_costs_report_real_search
+msgid "MP"
+msgstr ""
+
+#. module: real_reports
+#: model_terms:ir.ui.view,arch_db:real_reports.view_stock_landed_costs_report_real_search
+msgid "MP Pinturas y Pastas"
+msgstr ""
+
+#. module: real_reports
+#: model_terms:ir.ui.view,arch_db:real_reports.view_stock_landed_costs_report_real_search
+msgid "MP Polvos"
+msgstr ""
+
+#. module: real_reports
+#: model:ir.model.fields.selection,name:real_reports.selection__sale_invoice_report_real__l10n_mx_edi_usage__d08
+msgid "Mandatory School Transportation Expenses"
+msgstr "Gastos de transportación escolar obligatoria."
+
+#. module: real_reports
+#: model:ir.actions.act_window,name:real_reports.action_sale_invoice_freight_line_report_real
+#: model:ir.actions.report,name:real_reports.action_freight_line_report_template
+#: model:ir.ui.menu,name:real_reports.action_sale_invoice_freight_line_report_real_menu
+msgid "Maniobras Incluidas en Precio"
+msgstr ""
+
+#. module: real_reports
+#: model:ir.model.fields.selection,name:real_reports.selection__credit_report_real__rectified_invoices__material_exit_sample
+#: model:ir.model.fields.selection,name:real_reports.selection__sale_invoice_report_real__rectified_invoices__material_exit_sample
+msgid "Material exit as sample"
+msgstr "Devolución para muestra"
+
+#. module: real_reports
+#: model:ir.model.fields,field_description:real_reports.field_collection_report_real__max_date
+msgid "Max Date"
+msgstr "Fecha Máxima"
+
+#. module: real_reports
+#: model:ir.model.fields.selection,name:real_reports.selection__sale_invoice_report_real__l10n_mx_edi_usage__d02
+msgid "Medical expenses for disability"
+msgstr "Gastos médicos por incapacidad o discapacidad"
+
+#. module: real_reports
+#: model:ir.model.fields.selection,name:real_reports.selection__sale_invoice_report_real__l10n_mx_edi_usage__d07
+msgid "Medical insurance premiums"
+msgstr "Primas por seguros de gastos médicos"
+
+#. module: real_reports
+#: model:ir.model.fields.selection,name:real_reports.selection__sale_invoice_report_real__l10n_mx_edi_usage__d01
+msgid "Medical, dental and hospital expenses."
+msgstr "Honorarios médicos, dentales y gastos hospitalarios"
+
+#. module: real_reports
+#: model:ir.model.fields,field_description:real_reports.field_account_bank_report_real__move_id
+#: model:ir.model.fields,field_description:real_reports.field_account_invoice_report_real__move_id
+msgid "Move"
+msgstr "Asiento"
+
+#. module: real_reports
+#: model:ir.model.fields,field_description:real_reports.field_account_bank_report_real__move_name
+#: model:ir.model.fields,field_description:real_reports.field_account_invoice_report_real__move_name
+msgid "Move Name"
+msgstr "Nombre del Movimiento"
+
+#. module: real_reports
+#: model:ir.model.fields,field_description:real_reports.field_sale_invoice_report_real__move_type
+msgid "Move Type"
+msgstr "Tipo de movimiento"
+
+#. module: real_reports
+#: model:ir.model,name:real_reports.model_mrp_report_real
+msgid "Mrp Report for Real"
+msgstr "Reporte MRP para Real"
+
+#. module: real_reports
+#: model_terms:ir.ui.view,arch_db:real_reports.freight_line_template
+#: model_terms:ir.ui.view,arch_db:real_reports.general_ledger_audit_template
+msgid "NOMBRE"
+msgstr ""
+
+#. module: real_reports
+#: model:ir.model.fields,field_description:real_reports.field_credit_report_real__name
+#: model:ir.model.fields,field_description:real_reports.field_kardex_report_real__name
+#: model:ir.model.fields,field_description:real_reports.field_mrp_report_real__name
+#: model:ir.model.fields,field_description:real_reports.field_sale_invoice_report_real__name
+msgid "Name"
+msgstr "Nombre"
+
+#. module: real_reports
+#. odoo-python
+#: code:addons/real_reports/wizard/wizard_report_mrp_request.py:0
+#, python-format
+msgid "No records found"
+msgstr "No se encontraron registros"
+
+#. module: real_reports
+#: model:ir.model.fields.selection,name:real_reports.selection__credit_report_real__rectified_invoices__non_rotating_material
+#: model:ir.model.fields.selection,name:real_reports.selection__sale_invoice_report_real__rectified_invoices__non_rotating_material
+msgid "Non-rotating material"
+msgstr "Material sin rotación"
+
+#. module: real_reports
+#: model_terms:ir.ui.view,arch_db:real_reports.credit_note_report
+msgid "Number"
+msgstr "Número"
+
+#. module: real_reports
+#: model:ir.model.fields.selection,name:real_reports.selection__sale_invoice_report_real__l10n_mx_edi_usage__i02
+msgid "Office furniture and equipment investment"
+msgstr "Mobilario y equipo de oficina por inversiones"
+
+#. module: real_reports
+#: model:ir.model.fields,field_description:real_reports.field_sale_invoice_report_real__order_pricelist_id
+msgid "Order Pricelist"
+msgstr "Orden de la Lista de Precio"
+
+#. module: real_reports
+#: model_terms:ir.ui.view,arch_db:real_reports.view_account_bank_report_real_search
+#: model_terms:ir.ui.view,arch_db:real_reports.view_account_invoice_report_real_search
+msgid "Other"
+msgstr "Otro"
+
+#. module: real_reports
+#: model:ir.model.fields.selection,name:real_reports.selection__sale_invoice_report_real__l10n_mx_edi_usage__i08
+msgid "Other machinery and equipment"
+msgstr "Otra maquinaria y equipo"
+
+#. module: real_reports
+#: model:ir.model.fields,field_description:real_reports.field_kardex_report_real__outgoing
+#: model_terms:ir.ui.view,arch_db:real_reports.kardex_report_real_tree
+msgid "Outgoing"
+msgstr "Salidas"
+
+#. module: real_reports
+#: model_terms:ir.ui.view,arch_db:real_reports.account_fcr_report
+#: model_terms:ir.ui.view,arch_db:real_reports.costs_and_prices_report_view
+#: model_terms:ir.ui.view,arch_db:real_reports.freight_line_report_view
+#: model_terms:ir.ui.view,arch_db:real_reports.general_ledger_audit_report
+msgid "PDF"
+msgstr ""
+
+#. module: real_reports
+#: model_terms:ir.ui.view,arch_db:real_reports.view_mrp_report_real_search
+#: model_terms:ir.ui.view,arch_db:real_reports.view_quant_report_real_search
+msgid "PT"
+msgstr ""
+
+#. module: real_reports
+#: model_terms:ir.ui.view,arch_db:real_reports.view_mrp_report_real_search
+#: model_terms:ir.ui.view,arch_db:real_reports.view_sale_invoice_report_real_search
+msgid "PT Emulsiones"
+msgstr ""
+
+#. module: real_reports
+#: model_terms:ir.ui.view,arch_db:real_reports.view_mrp_report_real_search
+msgid "PT Emulsiones en Proceso"
+msgstr ""
+
+#. module: real_reports
+#: model_terms:ir.ui.view,arch_db:real_reports.view_quant_report_real_search
+msgid "PT Pinturas y Pastas"
+msgstr ""
+
+#. module: real_reports
+#: model_terms:ir.ui.view,arch_db:real_reports.view_mrp_report_real_search
+#: model_terms:ir.ui.view,arch_db:real_reports.view_quant_report_real_search
+#: model_terms:ir.ui.view,arch_db:real_reports.view_sale_invoice_report_real_search
+msgid "PT Polvos"
+msgstr ""
+
+#. module: real_reports
+#: model:ir.model.fields,field_description:real_reports.field_kardex_report_real__parent_category_id
+#: model:ir.model.fields,field_description:real_reports.field_mrp_report_real__parent_category_id
+#: model:ir.model.fields,field_description:real_reports.field_quant_report_real__parent_category_id
+#: model:ir.model.fields,field_description:real_reports.field_sale_invoice_report_real__parent_category_id
+#: model:ir.model.fields,field_description:real_reports.field_stock_landed_cost_report_real__parent_category_id
+msgid "Parent Category"
+msgstr "Categoría madre"
+
+#. module: real_reports
+#: model:ir.model.fields,field_description:real_reports.field_account_bank_report_real__partner_id
+#: model:ir.model.fields,field_description:real_reports.field_account_invoice_report_real__partner_id
+#: model:ir.model.fields,field_description:real_reports.field_collection_report_real__partner_id
+#: model:ir.model.fields,field_description:real_reports.field_credit_report_real__partner_id
+#: model:ir.model.fields,field_description:real_reports.field_sale_invoice_report_real__partner_id
+msgid "Partner"
+msgstr "Empresa"
+
+#. module: real_reports
+#: model:ir.model.fields,field_description:real_reports.field_sale_invoice_report_real__partner_category_id
+msgid "Partner Category"
+msgstr "Categoría del Cliente"
+
+#. module: real_reports
+#: model:ir.model.fields,field_description:real_reports.field_sale_invoice_report_real__partner_create_date
+msgid "Partner Create Date"
+msgstr "Fecha Creación del Cliente"
+
+#. module: real_reports
+#: model:ir.model.fields,field_description:real_reports.field_sale_invoice_report_real__partner_pricelist_id
+msgid "Partner Pricelist"
+msgstr "Lista de Precio del Cliente"
+
+#. module: real_reports
+#: model:ir.model.fields,field_description:real_reports.field_sale_invoice_report_real__partner_shipping_create_date
+msgid "Partner Shipping Create Date"
+msgstr "Fecha de creación de envío dek Cliente"
+
+#. module: real_reports
+#: model_terms:ir.ui.view,arch_db:real_reports.credit_note_report
+msgid "Payment"
+msgstr "Pago"
+
+#. module: real_reports
+#: model:ir.model.fields,field_description:real_reports.field_collection_report_real__payment_date
+#: model:ir.model.fields,field_description:real_reports.field_credit_report_real__payment_date
+msgid "Payment Date"
+msgstr "Fecha de pago"
+
+#. module: real_reports
+#: model:ir.model.fields,field_description:real_reports.field_account_bank_report_real__l10n_mx_edi_payment_method_id
+msgid "Payment Method"
+msgstr "Método de pago"
+
+#. module: real_reports
+#: model:ir.model.fields.selection,name:real_reports.selection__sale_invoice_report_real__l10n_mx_edi_usage__d10
+msgid "Payments for educational services (Colegiatura)"
+msgstr "Pagos por servicios educativos (colegiaturas)"
+
+#. module: real_reports
+#: model:ir.model.fields,field_description:real_reports.field_report_stock_quant_real__pending_qty_foreign
+msgid "Pending Qty Foreign"
+msgstr "Cantidad pendiente foraneo"
+
+#. module: real_reports
+#: model:ir.model.fields,field_description:real_reports.field_report_stock_quant_real__pending_qty_local
+msgid "Pending Qty Local"
+msgstr "Cantidad pendiente local"
+
+#. module: real_reports
+#: model:ir.model.fields,field_description:real_reports.field_report_stock_quant_real__pending_total
+msgid "Pending Total"
+msgstr "Cantidad producto no asignado total"
+
+#. module: real_reports
+#: model:ir.model.fields.selection,name:real_reports.selection__credit_report_real__rectified_invoices__physical_retur
+#: model:ir.model.fields.selection,name:real_reports.selection__sale_invoice_report_real__rectified_invoices__physical_retur
+msgid "Physical return"
+msgstr "X Devolución Física"
+
+#. module: real_reports
+#: model:ir.model.fields.selection,name:real_reports.selection__sale_invoice_report_real__state__posted
+msgid "Posted"
+msgstr "Publicado"
+
+#. module: real_reports
+#: model:ir.model.fields,field_description:real_reports.field_sale_invoice_report_real__price_unit
+msgid "Price Unit"
+msgstr "Precio Unitario"
+
+#. module: real_reports
+#: model:ir.model.fields,field_description:real_reports.field_kardex_report_real__product_id
+#: model:ir.model.fields,field_description:real_reports.field_mrp_report_real__product_id
+#: model:ir.model.fields,field_description:real_reports.field_production_consumption_report_real__product_id
+#: model:ir.model.fields,field_description:real_reports.field_quant_report_real__product_id
+#: model:ir.model.fields,field_description:real_reports.field_report_stock_quant_real__product_id
+#: model:ir.model.fields,field_description:real_reports.field_sale_invoice_report_real__product_id
+#: model:ir.model.fields,field_description:real_reports.field_stock_landed_cost_report_real__product_id
+msgid "Product"
+msgstr "Producto"
+
+#. module: real_reports
+#: model:ir.model.fields,field_description:real_reports.field_kardex_report_real__category_id
+msgid "Product Category"
+msgstr "Categoría de producto"
+
+#. module: real_reports
+#: model:ir.model.fields,field_description:real_reports.field_mrp_report_real__product_name
+#: model:ir.model.fields,field_description:real_reports.field_quant_report_real__product_name
+#: model:ir.model.fields,field_description:real_reports.field_sale_invoice_report_real__product_name
+msgid "Product Name"
+msgstr "Nombre del Product"
+
+#. module: real_reports
+#: model:ir.model.fields,field_description:real_reports.field_mrp_report_real__product_qty
+msgid "Product Qty"
+msgstr "Cant. producto"
+
+#. module: real_reports
+#: model:ir.model.fields,field_description:real_reports.field_mrp_report_real__product_uom_qty
+msgid "Product Uom Qty"
+msgstr "Cantidad de Medida del Producto"
+
+#. module: real_reports
+#: model:ir.model.fields,field_description:real_reports.field_report_stock_quant_real__product_uom_qty_foreign
+msgid "Product Uom Qty Foreign"
+msgstr "Cantidad del producto en UoM Extranjera"
+
+#. module: real_reports
+#: model:ir.model.fields,field_description:real_reports.field_report_stock_quant_real__product_uom_qty_local
+msgid "Product Uom Qty Local"
+msgstr "Cantidad del producto en UoM local"
+
+#. module: real_reports
+#: model_terms:ir.ui.view,arch_db:real_reports.view_mrp_polvos_report_real_pivot
+#: model_terms:ir.ui.view,arch_db:real_reports.view_mrp_report_real_pivot
+msgid "Production Analysis"
+msgstr "Análisis de Producción"
+
+#. module: real_reports
+#: model:ir.actions.act_window,name:real_reports.action_mrp_report_emulsiones
+msgid "Production Analysis PYP"
+msgstr "Análisis de Producción PYP"
+
+#. module: real_reports
+#: model:ir.actions.act_window,name:real_reports.action_mrp_report_polvos
+msgid "Production Analysis Polvos"
+msgstr "Análisis de Producción Polvos"
+
+#. module: real_reports
+#: model:ir.model,name:real_reports.model_production_consumption_report_real
+msgid "Production Consumption Report for Real"
+msgstr "Informe de consumo de producción"
+
+#. module: real_reports
+#: model:ir.ui.menu,name:real_reports.action_mrp_report_emulsiones_menu
+msgid "Production Emulsiones"
+msgstr "Producción de Emulsiones"
+
+#. module: real_reports
+#: model:ir.ui.menu,name:real_reports.action_mrp_report_polvos_menu
+msgid "Production Polvos"
+msgstr "Producción Polvos"
+
+#. module: real_reports
+#: model:ir.ui.menu,name:real_reports.mrp_reports_menu
+msgid "Production Reports"
+msgstr "Reportes MRP"
+
+#. module: real_reports
+#: model:ir.ui.menu,name:real_reports.purchase_reports_menu
+msgid "Purchase Reports"
+msgstr "Reportes de Compra"
+
+#. module: real_reports
+#: model:ir.model.fields,field_description:real_reports.field_mrp_report_real__qty_bom
+msgid "Qty Bom"
+msgstr "Cantidad Bom"
+
+#. module: real_reports
+#: model:ir.model.fields,field_description:real_reports.field_quant_report_real__qty_in_production
+msgid "Qty In Production"
+msgstr "Cant en producción"
+
+#. module: real_reports
+#: model:ir.model.fields,field_description:real_reports.field_mrp_report_real__qty_producing
+msgid "Qty Producing"
+msgstr "Cantidad producida"
+
+#. module: real_reports
+#: model_terms:ir.ui.view,arch_db:real_reports.quant_report_real_tree
+msgid "Qty in Production"
+msgstr "Cantidad en producción"
+
+#. module: real_reports
+#: model_terms:ir.ui.view,arch_db:real_reports.view_quant_report_real_pivot
+msgid "Quant Analysis"
+msgstr "Análisis Inventario"
+
+#. module: real_reports
+#: model:ir.model,name:real_reports.model_quant_report_real
+msgid "Quant Report for Real"
+msgstr "Reporte Inventario par Real"
+
+#. module: real_reports
+#: model:ir.model.fields,field_description:real_reports.field_production_consumption_report_real__product_uom_qty
+#: model:ir.model.fields,field_description:real_reports.field_quant_report_real__quantity
+#: model:ir.model.fields,field_description:real_reports.field_sale_invoice_report_real__quantity
+#: model:ir.model.fields,field_description:real_reports.field_stock_landed_cost_report_real__quantity
+#: model_terms:ir.ui.view,arch_db:real_reports.quant_report_real_tree
+#: model_terms:ir.ui.view,arch_db:real_reports.stock_landed_costs_report_real_tree
+msgid "Quantity"
+msgstr "Cantidad"
+
+#. module: real_reports
+#: model:ir.actions.act_window,name:real_reports.action_stock_landed_costs_report_real_view
+#: model:ir.ui.menu,name:real_reports.action_stock_landed_costs_report_real_menu
+msgid "Raw Material Freight"
+msgstr "Flete de Materias Primas"
+
+#. module: real_reports
+#: model:ir.model.fields.selection,name:real_reports.selection__sale_invoice_report_real__l10n_mx_edi_usage__d05
+msgid "Real interest effectively paid for mortgage loans (room house)"
+msgstr ""
+"Intereses reales efectivamente pagados por créditos hipotecarios (casa "
+"habitación)"
+
+#. module: real_reports
+#: model:ir.model.fields.selection,name:real_reports.selection__credit_report_real__rectified_invoices__rebilling_others
+#: model:ir.model.fields.selection,name:real_reports.selection__sale_invoice_report_real__rectified_invoices__rebilling_others
+msgid "Rebilling Others"
+msgstr "Refacturación Otros"
+
+#. module: real_reports
+#: model:ir.model.fields.selection,name:real_reports.selection__credit_report_real__rectified_invoices__rebilling_date
+#: model:ir.model.fields.selection,name:real_reports.selection__sale_invoice_report_real__rectified_invoices__rebilling_date
+msgid "Rebilling by date"
+msgstr "Refacturación por fecha"
+
+#. module: real_reports
+#: model:ir.model.fields.selection,name:real_reports.selection__credit_report_real__rectified_invoices__rebilling_type_payment
+#: model:ir.model.fields.selection,name:real_reports.selection__sale_invoice_report_real__rectified_invoices__rebilling_type_payment
+msgid "Rebilling by type of payment"
+msgstr "Refacturación por forma de pago"
+
+#. module: real_reports
+#: model:ir.model.fields,field_description:real_reports.field_credit_report_real__rectified_invoices
+#: model:ir.model.fields,field_description:real_reports.field_sale_invoice_report_real__rectified_invoices
+msgid "Rectified Invoices"
+msgstr "Facturas rectificativas"
+
+#. module: real_reports
+#: model:ir.model.fields,field_description:real_reports.field_account_bank_report_real__reference
+#: model:ir.model.fields,field_description:real_reports.field_account_invoice_report_real__reference
+#: model:ir.model.fields,field_description:real_reports.field_expense_report_real__ref
+#: model:ir.model.fields,field_description:real_reports.field_kardex_report_real__reference
+#: model_terms:ir.ui.view,arch_db:real_reports.bank_expenses_report
+msgid "Reference"
+msgstr "Referencia"
+
+#. module: real_reports
+#: model:ir.model.fields,field_description:real_reports.field_account_fcr_report__rep_select
+#: model:ir.model.fields,field_description:real_reports.field_general_ledger_audit__rep_select
+msgid "Report"
+msgstr "Reporte"
+
+#. module: real_reports
+#: model:ir.model,name:real_reports.model_report_real_reports_credit_note_report
+msgid "Report For Credit Notes"
+msgstr "Informe para notas de crédito"
+
+#. module: real_reports
+#. odoo-python
+#: code:addons/real_reports/wizard/kardex_report_real_wizard.py:0
+#, python-format
+msgid "Report Kardex"
+msgstr "Reporte  Kardex"
+
+#. module: real_reports
+#. odoo-python
+#: code:addons/real_reports/wizard/wizard_report_mrp_request.py:0
+#, python-format
+msgid "Report Sale "
+msgstr "Reporte de ventas"
+
+#. module: real_reports
+#. odoo-python
+#: code:addons/real_reports/wizard/expense_report_real_wizard.py:0
+#, python-format
+msgid "Report expense"
+msgstr "Reporte de gastos"
+
+#. module: real_reports
+#: model:ir.model,name:real_reports.model_report_stock_quant_real
+msgid "Report quant real"
+msgstr "Informe real de cantidad"
+
+#. module: real_reports
+#: model:ir.model,name:real_reports.model_stock_landed_cost_report_real
+msgid "Report to show landed cost per unit"
+msgstr "Informe para mostrar el costo en destino por unidad"
+
+#. module: real_reports
+#: model:ir.actions.act_window,name:real_reports.action_account_invoice_fcr_real_report_real
+#: model:ir.actions.report,name:real_reports.action_account_fcr_template
+#: model:ir.ui.menu,name:real_reports.action_account_invoice_fcr_real_report_menu
+msgid "Reportes FCR"
+msgstr ""
+
+#. module: real_reports
+#: model:ir.model.fields,field_description:real_reports.field_report_stock_quant_real__reserved_availability_foreign
+msgid "Reserved Availability Foreign"
+msgstr "Disponibilidad reservada extranjera"
+
+#. module: real_reports
+#: model:ir.model.fields,field_description:real_reports.field_report_stock_quant_real__reserved_availability_local
+msgid "Reserved Availability Local"
+msgstr "Disponibilidad reservada local"
+
+#. module: real_reports
+#: model:ir.model.fields.selection,name:real_reports.selection__credit_report_real__rectified_invoices__return_invoice_paid
+#: model:ir.model.fields.selection,name:real_reports.selection__sale_invoice_report_real__rectified_invoices__return_invoice_paid
+msgid "Return invoice paid"
+msgstr "Devolución de Factura pagada"
+
+#. module: real_reports
+#: model:ir.model.fields.selection,name:real_reports.selection__sale_invoice_report_real__l10n_mx_edi_usage__g02
+msgid "Returns, discounts or bonuses"
+msgstr "Devoluciones, descuentos o bonificaciones"
+
+#. module: real_reports
+#: model_terms:ir.ui.view,arch_db:real_reports.freight_line_template
+msgid "Revision: 11/03/2024"
+msgstr ""
+
+#. module: real_reports
+#: model_terms:ir.ui.view,arch_db:real_reports.costs_and_prices_template
+msgid "Revision: 15/03/2024"
+msgstr ""
+
+#. module: real_reports
+#: model_terms:ir.ui.view,arch_db:real_reports.general_ledger_audit_template
+msgid "SALDO"
+msgstr ""
+
+#. module: real_reports
+#: model_terms:ir.ui.view,arch_db:real_reports.account_fcr_template
+msgid "SUBTOTAL:"
+msgstr ""
+
+#. module: real_reports
+#: model_terms:ir.ui.view,arch_db:real_reports.account_fcr_template
+msgid "SUMA TOTAL: $"
+msgstr ""
+
+#. module: real_reports
+#: model:ir.model.fields,field_description:real_reports.field_sale_invoice_report_real__sale_id
+msgid "Sale"
+msgstr "Ventas"
+
+#. module: real_reports
+#: model:ir.model,name:real_reports.model_sale_invoice_report_real
+msgid "Sale Invoice Report for Real"
+msgstr "Reporte Ventas Facturas para Real"
+
+#. module: real_reports
+#: model:ir.ui.menu,name:real_reports.sale_reports_menu
+msgid "Sale Reports"
+msgstr "Reportes de Ventas"
+
+#. module: real_reports
+#: model:ir.actions.act_window,name:real_reports.action_sale_invoice_traveling_leaf_report_real
+#: model:ir.ui.menu,name:real_reports.sale_invoice_traveling_leaf_real_report_menu
+msgid "Sales Traveling Leaf"
+msgstr "Hoja Viajera Ventas"
+
+#. module: real_reports
+#: model:ir.model.fields,field_description:real_reports.field_collection_report_real__invoice_user_id
+#: model_terms:ir.ui.view,arch_db:real_reports.view_module_search
+msgid "Salesman"
+msgstr "Vendedor"
+
+#. module: real_reports
+#: model:ir.model.fields.selection,name:real_reports.selection__sale_invoice_report_real__l10n_mx_edi_usage__i07
+msgid "Satellite communications"
+msgstr "Comunicaciones satelitales"
+
+#. module: real_reports
+#: model:ir.model.fields,field_description:real_reports.field_sale_invoice_report_real__seller_id
+msgid "Seller"
+msgstr "Vendedor"
+
+#. module: real_reports
+#: model:ir.model.fields.selection,name:real_reports.selection__credit_report_real__rectified_invoices__seller_error
+#: model:ir.model.fields.selection,name:real_reports.selection__sale_invoice_report_real__rectified_invoices__seller_error
+msgid "Seller error"
+msgstr "Error del asesor de ventas"
+
+#. module: real_reports
+#: model:ir.model.fields.selection,name:real_reports.selection__credit_report_real__rectified_invoices__shipment_delivery_mistake
+#: model:ir.model.fields.selection,name:real_reports.selection__sale_invoice_report_real__rectified_invoices__shipment_delivery_mistake
+msgid "Shipment delivery mistake"
+msgstr "Error en material embarcado"
+
+#. module: real_reports
+#: model:ir.model.fields,field_description:real_reports.field_sale_invoice_report_real__partner_shipping_id
+msgid "Shipping Address"
+msgstr "Dirección de Envío"
+
+#. module: real_reports
+#: model:ir.model.fields,field_description:real_reports.field_kardex_report_real__origin
+msgid "Source Document"
+msgstr "Documento de origen"
+
+#. module: real_reports
+#: model:ir.model.fields.selection,name:real_reports.selection__credit_report_real__rectified_invoices__special_discounts
+#: model:ir.model.fields.selection,name:real_reports.selection__sale_invoice_report_real__rectified_invoices__special_discounts
+msgid "Special discounts"
+msgstr "Descuentos especiales"
+
+#. module: real_reports
+#: model:ir.model.fields,field_description:real_reports.field_account_bank_report_real__state
+#: model:ir.model.fields,field_description:real_reports.field_sale_invoice_report_real__state
+msgid "State"
+msgstr "Estado"
+
+#. module: real_reports
+#: model:ir.model.fields,field_description:real_reports.field_kardex_report_real__stock_move_id
+msgid "Stock Move"
+msgstr "Movimiento de inventario"
+
+#. module: real_reports
+#: model:ir.model.fields,field_description:real_reports.field_kardex_report_real__stock_valuation_layer_id
+msgid "Stock Valuation Layer"
+msgstr "Capa de valoración de stock"
+
+#. module: real_reports
+#: model:ir.model.fields,field_description:real_reports.field_sale_invoice_report_real__subtotal
+msgid "Subtotal"
+msgstr ""
+
+#. module: real_reports
+#: model_terms:ir.ui.view,arch_db:real_reports.costs_and_prices_template
+msgid "TONS"
+msgstr "Toneladas"
+
+#. module: real_reports
+#: model_terms:ir.ui.view,arch_db:real_reports.general_ledger_audit_template
+msgid "TOTAL DEBE: $"
+msgstr ""
+
+#. module: real_reports
+#: model_terms:ir.ui.view,arch_db:real_reports.general_ledger_audit_template
+msgid "TOTAL HABER: $"
+msgstr ""
+
+#. module: real_reports
+#: model_terms:ir.ui.view,arch_db:real_reports.freight_line_template
+msgid "TOTAL MANIOBRAS INCLUIDAS EN PRECIO"
+msgstr ""
+
+#. module: real_reports
+#: model_terms:ir.ui.view,arch_db:real_reports.general_ledger_audit_template
+msgid "TOTAL SALDO: $"
+msgstr ""
+
+#. module: real_reports
+#: model_terms:ir.ui.view,arch_db:real_reports.account_fcr_template
+msgid "TOTAL:"
+msgstr ""
+
+#. module: real_reports
+#: model:ir.model.fields.selection,name:real_reports.selection__sale_invoice_report_real__l10n_mx_edi_usage__i06
+msgid "Telephone communications"
+msgstr "Comunicaciones telefónicas"
+
+#. module: real_reports
+#. odoo-python
+#: code:addons/real_reports/report/account_fcr_report_real.py:0
+#: code:addons/real_reports/report/costs_and_prices_report_real.py:0
+#: code:addons/real_reports/report/freight_line_report_real.py:0
+#: code:addons/real_reports/report/general_ledger_audit_report_real.py:0
+#, python-format
+msgid "The start date cannot be greater than the end date."
+msgstr "La fecha inicial no puede ser mayor a la fecha final"
+
+#. module: real_reports
+#: model:ir.model.fields,field_description:real_reports.field_expense_report_real_wiz__date_to
+#: model:ir.model.fields,field_description:real_reports.field_report_kardex_report_wiz__date_to
+msgid "To"
+msgstr "A"
+
+#. module: real_reports
+#: model:ir.model.fields.selection,name:real_reports.selection__sale_invoice_report_real__l10n_mx_edi_usage__p01
+msgid "To define"
+msgstr "Por definir"
+
+#. module: real_reports
+#: model_terms:ir.ui.view,arch_db:real_reports.bank_expenses_report
+#: model_terms:ir.ui.view,arch_db:real_reports.credit_note_report
+msgid "To:"
+msgstr "A:"
+
+#. module: real_reports
+#: model:ir.model.fields,field_description:real_reports.field_mrp_report_real__tons
+#: model:ir.model.fields,field_description:real_reports.field_quant_report_real__tons
+#: model:ir.model.fields,field_description:real_reports.field_sale_invoice_report_real__tons_display
+#: model_terms:ir.ui.view,arch_db:real_reports.quant_report_real_tree
+msgid "Tons"
+msgstr "Toneladas"
+
+#. module: real_reports
+#: model:ir.model.fields,field_description:real_reports.field_sale_invoice_report_real__tons_litres
+msgid "Tons Litres"
+msgstr "Litros Totales"
+
+#. module: real_reports
+#: model:ir.actions.act_window,name:real_reports.action_sale_invoice_by_tons_report_real
+#: model:ir.ui.menu,name:real_reports.sale_invoice_by_tons_real_report_menu
+#: model_terms:ir.ui.view,arch_db:real_reports.view_sale_invoice_by_tons_report_real_pivot
+msgid "Tons sold by seller"
+msgstr "Toneladas Vendidas por Vendedor"
+
+#. module: real_reports
+#: model:ir.model.fields,field_description:real_reports.field_collection_report_real__total
+#: model:ir.model.fields,field_description:real_reports.field_credit_report_real__total
+#: model:ir.model.fields,field_description:real_reports.field_sale_invoice_report_real__total
+#: model_terms:ir.ui.view,arch_db:real_reports.collection_report_real_tree
+msgid "Total"
+msgstr ""
+
+#. module: real_reports
+#: model_terms:ir.ui.view,arch_db:real_reports.collection_report_real_tree
+msgid "Total 0 - 60"
+msgstr ""
+
+#. module: real_reports
+#: model:ir.model.fields,field_description:real_reports.field_collection_report_real__total_0_60
+msgid "Total 0 60"
+msgstr ""
+
+#. module: real_reports
+#: model_terms:ir.ui.view,arch_db:real_reports.collection_report_real_tree
+msgid "Total 61 +"
+msgstr ""
+
+#. module: real_reports
+#: model_terms:ir.ui.view,arch_db:real_reports.account_bank_report_real_tree
+#: model_terms:ir.ui.view,arch_db:real_reports.account_invoice_report_real_tree
+msgid "Total Amount"
+msgstr "Importe total"
+
+#. module: real_reports
+#: model:ir.model.fields,field_description:real_reports.field_collection_report_real__total_more_60
+msgid "Total More 60"
+msgstr "Total más 60"
+
+#. module: real_reports
+#: model:ir.model.fields,field_description:real_reports.field_sale_invoice_report_real__total_sale_no_freight
+msgid "Total Sale No Freight"
+msgstr "Venta Total sin Flete"
+
+#. module: real_reports
+#: model:ir.model.fields,field_description:real_reports.field_sale_invoice_report_real__total_sale_no_freight_with_tax
+msgid "Total Sale No Freight With Tax"
+msgstr "Venta Total sin Flete con Impuestos"
+
+#. module: real_reports
+#: model:ir.model.fields.selection,name:real_reports.selection__credit_report_real__rectified_invoices__transfer_other_client
+#: model:ir.model.fields.selection,name:real_reports.selection__sale_invoice_report_real__rectified_invoices__transfer_other_client
+msgid "Transfer to other client"
+msgstr "Traspaso a otro Cliente"
+
+#. module: real_reports
+#: model:ir.model.fields.selection,name:real_reports.selection__sale_invoice_report_real__l10n_mx_edi_usage__i03
+msgid "Transportation equipment"
+msgstr "Equipo de transporte"
+
+#. module: real_reports
+#: model_terms:ir.ui.view,arch_db:real_reports.view_sale_invoice_traveling_leaf_report_real_pivot
+msgid "Traveling Leaf for Sales"
+msgstr "Hoja Viajera para ventas"
+
+#. module: real_reports
+#: model:ir.model.fields.selection,name:real_reports.selection__credit_report_real__rectified_invoices__unassigned
+#: model:ir.model.fields.selection,name:real_reports.selection__sale_invoice_report_real__rectified_invoices__unassigned
+msgid "Unassigned"
+msgstr "Sin asignar"
+
+#. module: real_reports
+#: model:ir.model.fields.selection,name:real_reports.selection__credit_report_real__rectified_invoices__uncollectible_account
+#: model:ir.model.fields.selection,name:real_reports.selection__sale_invoice_report_real__rectified_invoices__uncollectible_account
+msgid "Uncollectible account"
+msgstr "Cuenta Incobrable"
+
+#. module: real_reports
+#: model:ir.model.fields,field_description:real_reports.field_stock_landed_cost_report_real__unit_additional_landed_cost
+msgid "Unit Additional Landed Cost"
+msgstr "Costo adicional de aterrizaje unitario"
+
+#. module: real_reports
+#: model:ir.model.fields,field_description:real_reports.field_sale_invoice_report_real__unit_price_no_freight
+msgid "Unit Price No Freight"
+msgstr "Precio Unitario son Flete"
+
+#. module: real_reports
+#: model:ir.model.fields,field_description:real_reports.field_sale_invoice_report_real__l10n_mx_edi_usage
+msgid "Usage"
+msgstr "Uso"
+
+#. module: real_reports
+#: model_terms:ir.ui.view,arch_db:real_reports.costs_and_prices_template
+msgid "VENTA"
+msgstr ""
+
+#. module: real_reports
+#: model:ir.model.fields,field_description:real_reports.field_quant_report_real__volume
+msgid "Volume"
+msgstr "Volumen"
+
+#. module: real_reports
+#: model:ir.model.fields.selection,name:real_reports.selection__sale_invoice_report_real__l10n_mx_edi_usage__d06
+msgid "Voluntary contributions to SAR"
+msgstr "Aportaciones voluntarias al SAR"
+
+#. module: real_reports
+#: model:ir.model.fields,field_description:real_reports.field_mrp_report_real__waste
+msgid "Waste"
+msgstr "Desperdicio"
+
+#. module: real_reports
+#: model:ir.model.fields,field_description:real_reports.field_sale_invoice_report_real__way_of_shipment_id
+msgid "Way Of Shipment"
+msgstr "Via de Embarque"
+
+#. module: real_reports
+#: model:ir.model.fields,field_description:real_reports.field_quant_report_real__weight
+#: model:ir.model.fields,field_description:real_reports.field_sale_invoice_report_real__weight
+msgid "Weight"
+msgstr "Peso"
+
+#. module: real_reports
+#: model:ir.model.fields.selection,name:real_reports.selection__credit_report_real__rectified_invoices__wet_shipping_material
+#: model:ir.model.fields.selection,name:real_reports.selection__sale_invoice_report_real__rectified_invoices__wet_shipping_material
+msgid "Wet shipping material"
+msgstr "Material mojado de embarques"
+
+#. module: real_reports
+#: model:ir.model,name:real_reports.model_expense_report_real_wiz
+msgid "Wizard to create expense reports "
+msgstr "wizard para crear el reporte de gastos"
+
+#. module: real_reports
+#: model:ir.model,name:real_reports.model_report_kardex_report_wiz
+msgid "Wizard to create kardex reports of stock moves"
+msgstr "Wizard para creacion del reporte de kardex"
+
+#. module: real_reports
+#: model:ir.model,name:real_reports.model_wizard_report_mrp_request
+msgid "Wizard to view report of MRP Request"
+msgstr "Wizard para ver el informe de la solicitud de MRP"
+
+#. module: real_reports
+#: model_terms:ir.ui.view,arch_db:real_reports.view_account_bank_report_real_search
+#: model_terms:ir.ui.view,arch_db:real_reports.view_account_invoice_report_real_search
+#: model_terms:ir.ui.view,arch_db:real_reports.view_credit_report_real_search
+#: model_terms:ir.ui.view,arch_db:real_reports.view_mrp_report_real_search
+#: model_terms:ir.ui.view,arch_db:real_reports.view_production_consumption_report_real_search
+#: model_terms:ir.ui.view,arch_db:real_reports.view_sale_invoice_report_real_search
+msgid "Yesterday"
+msgstr "Ayer"
+
+#. module: real_reports
+#: model_terms:ir.ui.view,arch_db:real_reports.account_fcr_template
+#: model_terms:ir.ui.view,arch_db:real_reports.general_ledger_audit_template
+msgid "fecha de impresion:"
+msgstr ""
+
+#. module: real_reports
+#: model_terms:ir.ui.view,arch_db:real_reports.account_fcr_template
+#: model_terms:ir.ui.view,arch_db:real_reports.costs_and_prices_template
+#: model_terms:ir.ui.view,arch_db:real_reports.freight_line_template
+#: model_terms:ir.ui.view,arch_db:real_reports.general_ledger_audit_template
+msgid "fecha final:"
+msgstr ""
+
+#. module: real_reports
+#: model_terms:ir.ui.view,arch_db:real_reports.account_fcr_template
+#: model_terms:ir.ui.view,arch_db:real_reports.costs_and_prices_template
+#: model_terms:ir.ui.view,arch_db:real_reports.freight_line_template
+#: model_terms:ir.ui.view,arch_db:real_reports.general_ledger_audit_template
+msgid "fecha inicial:"
+msgstr ""
+
+#. module: real_reports
+#: model:ir.actions.act_window,name:real_reports.action_general_ledger_audit_template_real
+#: model:ir.actions.report,name:real_reports.action_general_ledger_audit_template
+#: model:ir.ui.menu,name:real_reports.action_general_ledger_audit_template_real_menu
+msgid "general ledger audit"
+msgstr "Auditoría del libro mayor"
+
+#. module: real_reports
+#: model:ir.model,name:real_reports.model_general_ledger_audit
+msgid "general.ledger.audit"
+msgstr ""
+
+#. module: real_reports
+#. odoo-python
+#: code:addons/real_reports/wizard/wizard_report_mrp_request.py:0
+#, python-format
+msgid "has no defined time zone"
+msgstr "No tiene zona horaria"
+
+#. module: real_reports
+#: model:ir.actions.act_window,name:real_reports.action_stock_kardex_report
+msgid "inventory Kardex Report"
+msgstr "Reporte de inventario de kardex"
+
+#. module: real_reports
+#: model_terms:ir.ui.view,arch_db:real_reports.view_kardex_report_real_pivot
+msgid "kardex Report"
+msgstr "Reporte kardex"
+
+#. module: real_reports
+#: model:ir.model,name:real_reports.model_kardex_report_real
+msgid "kardex Report for Real"
+msgstr "Reporte Kardex de real"
+
+#. module: real_reports
+#: model_terms:ir.ui.view,arch_db:real_reports.view_report_stock_quant_real_search
+msgid "product"
+msgstr "producto"
+
+#. module: real_reports
+#: model_terms:ir.ui.view,arch_db:real_reports.wizard_report_mrp_request
+msgid "report mrp request"
+msgstr "Reporte de solicitud de fabricación"
+
+#. module: real_reports
+#: model_terms:ir.ui.view,arch_db:real_reports.wizard_report_mrp_request
+msgid "view report"
+msgstr "Vista de reporte"

@@ -1,0 +1,67 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* report_stock_picking_real
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 17.0+e\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-07-10 16:36+0000\n"
+"PO-Revision-Date: 2025-07-10 16:36+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: report_stock_picking_real
+#: model_terms:ir.ui.view,arch_db:report_stock_picking_real.report_stock_picking_real
+msgid "Date of validation:"
+msgstr "Via de Embarque:"
+
+#. module: report_stock_picking_real
+#: model:ir.model,name:report_stock_picking_real.model_stock_move_line
+msgid "Product Moves (Stock Move Line)"
+msgstr "Movimientos de producto (línea de movimiento de stock)"
+
+#. module: report_stock_picking_real
+#: model:ir.model,name:report_stock_picking_real.model_stock_move
+msgid "Stock Move"
+msgstr "Movimiento de stock"
+
+#. module: report_stock_picking_real
+#: model:ir.model.fields,field_description:report_stock_picking_real.field_stock_move__tons_display
+#: model:ir.model.fields,field_description:report_stock_picking_real.field_stock_picking__tons_display
+#: model_terms:ir.ui.view,arch_db:report_stock_picking_real.report_stock_picking_real
+#: model_terms:ir.ui.view,arch_db:report_stock_picking_real.report_stock_picking_real_form
+#: model_terms:ir.ui.view,arch_db:report_stock_picking_real.stock_move_kanban_real_form
+#: model_terms:ir.ui.view,arch_db:report_stock_picking_real.view_stock_move_line_kanban_real
+msgid "Tons"
+msgstr "Toneladas"
+
+#. module: report_stock_picking_real
+#: model:ir.model.fields,field_description:report_stock_picking_real.field_stock_move_line__tons_display
+msgid "Tons line"
+msgstr "Toneladas"
+
+#. module: report_stock_picking_real
+#: model_terms:ir.ui.view,arch_db:report_stock_picking_real.report_delivery_document_real
+#: model_terms:ir.ui.view,arch_db:report_stock_picking_real.report_stock_picking_real
+msgid "Tons:"
+msgstr "Toneladas"
+
+#. module: report_stock_picking_real
+#: model:ir.model,name:report_stock_picking_real.model_stock_picking
+msgid "Transfer"
+msgstr "Transferir"
+
+#. module: report_stock_picking_real
+#: model_terms:ir.ui.view,arch_db:report_stock_picking_real.report_stock_picking_real_delivery
+msgid "Way Of Shipment:"
+msgstr "Via de Embarque"
+
+#. module: report_stock_picking_real
+#: model_terms:ir.ui.view,arch_db:report_stock_picking_real.report_delivery_document_real
+msgid "id=\"report_delivery_document"
+msgstr ""

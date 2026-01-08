@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record model="ir.ui.view" id="real_crm_lead_form_two">
+        <field name="name">real.crm.lead.form.two</field>
+        <field name="model">crm.lead</field>
+        <field name="inherit_id" ref="sale_crm.crm_case_form_view_oppor" />
+        <field name="arch" type="xml">
+            <xpath expr="//button[@name='action_sale_quotations_new']" position="attributes">
+                <attribute name="invisible">True</attribute>
+            </xpath>
+        </field>
+    </record>
+    <record model="ir.ui.view" id="real_crm_lead_form">
+        <field name="name">real.crm.lead.form</field>
+        <field name="model">crm.lead</field>
+        <field name="inherit_id" ref="crm.crm_lead_view_form" />
+        <field name="arch" type="xml">
+            <xpath expr="//button[@name='action_set_won_rainbowman']" position="before">
+                <field name="current_user_can_win_opportunities" invisible="True" />
+            </xpath>
+            <xpath expr="//button[@name='action_set_won_rainbowman']" position="attributes">
+                <attribute
+                    name="invisible"
+                >not active or probability == 100 or type == 'lead' or not current_user_can_win_opportunities</attribute>
+            </xpath>
+        </field>
+    </record>
+</odoo>

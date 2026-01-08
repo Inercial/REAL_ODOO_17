@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <template id="report_sale_order_real" inherit_id="sale.report_saleorder_document" priority="1000">
+        <xpath expr="//div[@id='informations']" position="replace">
+            <div class="row">
+                <div class="col-auto mw-100 mb-2 text-center">
+                    <strong>Invoicing Address</strong>
+                    <span class="m-0 d-block" t-field="doc.partner_invoice_id" />
+                    <span class="m-0 d-block">RFC: <span t-field="doc.partner_id.vat" /></span>
+
+                </div>
+                <div class="col-auto mw-100 mb-2 text-center">
+                    <strong>Shipping Address</strong>
+                    <span class="m-0 d-block" t-field="doc.partner_shipping_id" />
+                </div>
+                <div class="col-auto mw-100 mb-2 text-center">
+                    <strong>Order Reference</strong>
+                    <span class="m-0 d-block" t-field="doc.name" />
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-4 mw-100 mb-2 text-center">
+                    <strong>Salesperson</strong>
+                    <span class="m-0 d-block" t-field="doc.user_id" />
+                </div>
+                <div class="col-4 mw-100 mb-2 text-center">
+                    <strong>Date</strong>
+                    <span class="m-0 d-block" t-field="doc.date_order" />
+                </div>
+                <div class="col-4" />
+            </div>
+            <div class="row">
+                <div class="col-4 mw-100 mb-2 text-center">
+                    <strong>Way Of Shipment</strong>
+                    <span class="m-0 d-block" t-field="doc.way_of_shipment_id" />
+                </div>
+                <div class="col-4" />
+                <div class="col-4 mw-100 mb-2 text-center">
+                    <strong>Tons</strong>
+                    <span class="m-0 d-block" t-esc="'%.2f' % sum(doc.order_line.mapped('tons_display'))" />
+                </div>
+            </div>
+        </xpath>
+        <xpath expr="//th[@name='th_taxes']" position="after">
+            <th class="text-center" name="th_tons">Tons</th>
+        </xpath>
+        <xpath expr="//td[@name='td_taxes']" position="after">
+            <td class="text-center" name="td_tons">
+                <span t-field="line.tons_display" />
+            </td>
+        </xpath>
+        <xpath expr="//t[@t-set='information_block']" position="replace" />
+        <xpath expr="//t[@t-set='address']" position="replace" />
+        <xpath expr="//div/div/span[@name='order_note']" position="before">
+            <strong>Terms and Conditions</strong>
+        </xpath>
+
+    </template>
+</odoo>

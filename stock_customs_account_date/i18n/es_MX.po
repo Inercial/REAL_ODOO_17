@@ -1,0 +1,36 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* stock_customs_account_date
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 17.0+e\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-10-08 22:41+0000\n"
+"PO-Revision-Date: 2025-10-08 22:41+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: stock_customs_account_date
+#: model:ir.model.fields,field_description:stock_customs_account_date.field_stock_picking__accounting_date
+msgid "Accounting Date"
+msgstr "Fecha contable"
+
+#. module: stock_customs_account_date
+#: model:ir.model.fields,field_description:stock_customs_account_date.field_stock_picking__exchange_rate
+msgid "Exchange Rate"
+msgstr "Tipo de Cambio"
+
+#. module: stock_customs_account_date
+#: model:ir.model,name:stock_customs_account_date.model_stock_move
+msgid "Stock Move"
+msgstr "Movimiento de stock"
+
+#. module: stock_customs_account_date
+#: model:ir.model,name:stock_customs_account_date.model_stock_picking
+msgid "Transfer"
+msgstr "Traslado"

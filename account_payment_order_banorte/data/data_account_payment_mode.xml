@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="payment_mode_outbound_banorte" model="account.payment.mode">
+        <field name="name">Banorte Transfer to Suppliers</field>
+        <field name="company_id" ref="base.main_company" />
+        <field name="bank_account_link">variable</field>
+        <field name="payment_order_ok">True</field>
+        <field name="payment_method_id" ref="account_payment_order_banorte.banorte_credit_transfer" />
+    </record>
+</odoo>

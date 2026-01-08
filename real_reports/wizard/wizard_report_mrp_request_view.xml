@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record model="ir.ui.view" id="wizard_report_mrp_request">
+        <field name="name">wizard_report_mrp_request.form</field>
+        <field name="model">wizard.report.mrp.request</field>
+        <field name="arch" type="xml">
+            <form string="report mrp request">
+                <group string="Local">
+                    <div>
+                        <field name="date_to" />
+                    </div>
+                </group>
+                <group string="Foreing">
+                    <div>
+                        <field name="date_to_foreing" />
+                    </div>
+                </group>
+                <footer>
+                    <button string='view report' name="confirm_report" type="object" class="btn-primary" />
+                    <button string="Cancel" class="btn-secondary" special="cancel" />
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_view_local_foreigner_report" model="ir.actions.act_window">
+        <field name="name">Local/Foreigner Report</field>
+        <field name="res_model">wizard.report.mrp.request</field>
+        <field name="view_mode">form</field>
+        <field name="view_id" ref="wizard_report_mrp_request" />
+        <field name="target">new</field>
+    </record>
+
+    <menuitem
+        id="mrp.report_wizard_local_foring"
+        name="Local/Foreigner Report"
+        parent="mrp.menu_mrp_reporting"
+        action="action_view_local_foreigner_report"
+    />
+</odoo>

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record model="ir.ui.view" id="mrp_production_form">
+        <field name="name">mrp.production.form</field>
+        <field name="model">mrp.production</field>
+        <field name="inherit_id" ref="mrp.mrp_production_form_view" />
+        <field name="priority" eval="1000" />
+        <field name="arch" type="xml">
+            <xpath expr="//div[@name='bom_div']" position="after">
+                <field name="equipment_id" />
+                <field name="hide_dump_info" invisible="1" />
+                <field name="driver" invisible="hide_dump_info" />
+                <field name="plate" invisible="hide_dump_info" />
+                <field name="x_studio_frmula" />
+            </xpath>
+            <xpath expr="//button[@name='button_unbuild']" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath>
+            <xpath expr="//button[@name='action_cancel']" postion="attributes">
+                <attribute name="groups">real.res_groups_can_see_button_action_cancel_in_mrp_production</attribute>
+            </xpath>
+            <xpath expr="//button[@name='action_cancel']" position="replace">
+                <button
+                    name="action_cancel"
+                    type="object"
+                    string="Cancelar"
+                    groups="real.res_groups_can_see_button_action_cancel_in_mrp_production"
+                />
+            </xpath>
+        </field>
+    </record>
+</odoo>

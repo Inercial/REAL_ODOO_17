@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <!-- PIVOT VIEWS -->
+
+    <record id="view_mrp_report_real_pivot" model="ir.ui.view">
+         <field name="name">mrp.report.real.pivot</field>
+         <field name="model">mrp.report.real</field>
+         <field name="arch" type="xml">
+             <pivot string="Production Analysis">
+                 <field name="equipment_name" type="row" />
+                 <field name="product_uom_qty" type="measure" />
+                 <field name="qty_producing" type="measure" />
+                 <field name="waste" type="measure" />
+             </pivot>
+         </field>
+    </record>
+
+    <record id="view_mrp_polvos_report_real_pivot" model="ir.ui.view">
+         <field name="name">mrp.report.real.pivot</field>
+         <field name="model">mrp.report.real</field>
+         <field name="arch" type="xml">
+             <pivot string="Production Analysis" display_quantity="1">
+                 <field name="equipment_name" type="row" />
+                 <field name="product_uom_qty" type="measure" />
+                 <field name="qty_producing" type="measure" />
+                 <field name="waste" type="measure" />
+                 <field name="tons" type="measure" />
+             </pivot>
+         </field>
+    </record>
+
+    <!-- SEARCH VIEWS -->
+
+    <record id="view_mrp_report_real_search" model="ir.ui.view">
+        <field name="name">mrp.report.real.search</field>
+        <field name="model">mrp.report.real</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="product_id" />
+                <filter
+                    domain="[('date_finished', '=', (context_today() - datetime.timedelta(days=1)).strftime('%Y-%m-%d'))]"
+                    name="yesterday"
+                    string="Yesterday"
+                />
+                <separator />
+                <filter domain="[('parent_category_id.name','=', 'PT POLVOS')]" name="pt_polvos" string="PT Polvos" />
+                <separator />
+                <filter
+                    domain="[('parent_category_id.name','=', 'PT EMULSIONES')]"
+                    name="pt_emulsiones"
+                    string="PT Emulsiones"
+                />
+                <separator />
+                <filter
+                    domain="[('parent_category_id.name','=', 'PT EMULSIONES EN PROCESO')]"
+                    name="pt_emulsiones_en_proceso"
+                    string="PT Emulsiones en Proceso"
+                />
+                <separator />
+                <filter
+                    domain="['|', ('parent_category_id.name','=', 'PT EMULSIONES'), ('parent_category_id.name','=', 'PT POLVOS')]"
+                    name="pt_all"
+                    string="PT"
+                />
+            </search>
+        </field>
+    </record>
+
+    <!-- ACTIONS -->
+
+    <record id="action_mrp_report_emulsiones" model="ir.actions.act_window">
+        <field name="name">Production Analysis PYP</field>
+        <field name="res_model">mrp.report.real</field>
+        <field name="view_mode">pivot</field>
+        <field name="context">{
+            'search_default_pt_emulsiones_en_proceso': 1,
+            'search_default_yesterday': 1,
+        }</field>
+        <field
+            name="view_ids"
+            eval="[
+            (5, 0, 0),
+            (0, 0, {
+                'view_mode':'pivot',
+                'view_id': ref('view_mrp_report_real_pivot'),
+            }),
+        ]"
+        />
+    </record>
+
+    <record id="action_mrp_report_polvos" model="ir.actions.act_window">
+        <field name="name">Production Analysis Polvos</field>
+        <field name="res_model">mrp.report.real</field>
+        <field name="view_mode">pivot</field>
+        <field name="context">{
+            'search_default_pt_polvos': 1,
+            'search_default_yesterday': 1,
+        }</field>
+        <field
+            name="view_ids"
+            eval="[
+            (5, 0, 0),
+            (0, 0, {
+                'view_mode':'pivot',
+                'view_id': ref('view_mrp_polvos_report_real_pivot'),
+            }),
+        ]"
+        />
+    </record>
+
+    <record id="action_mrp_costs_and_prices_report" model="ir.actions.act_window">
+        <field name="name">Costos y Precios por Lineas</field>
+        <field name="res_model">costs.and.prices.report</field>
+        <field name="view_mode">form</field>
+    </record>
+
+    <!-- MENU ITEMS -->
+
+    <menuitem
+        id="mrp_reports_menu"
+        name="Production Reports"
+        parent="spreadsheet_dashboard.spreadsheet_dashboard_menu_root"
+    />
+    <menuitem
+        id="action_mrp_report_emulsiones_menu"
+        name="Production Emulsiones"
+        parent="mrp_reports_menu"
+        action="action_mrp_report_emulsiones"
+    />
+    <menuitem
+        id="action_mrp_report_polvos_menu"
+        name="Production Polvos"
+        parent="mrp_reports_menu"
+        action="action_mrp_report_polvos"
+    />
+    <menuitem
+        id="action_mrp_costs_and_prices_report_menu"
+        name="Costos y Precios por Lineas"
+        parent="mrp_reports_menu"
+        action="action_mrp_costs_and_prices_report"
+    />
+</odoo>

@@ -1,0 +1,1810 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* real
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 17.0+e\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-10-08 21:56+0000\n"
+"PO-Revision-Date: 2025-10-08 21:56+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: real
+#. odoo-python
+#: code:addons/real/models/stock_production_lot.py:0
+#, python-format
+msgid ""
+"1 letter indicating the stamp (Machine) color.\n"
+"6 Digits for the date in format ddmmyy.\n"
+"2 Digits for consecutive number.\n"
+"\n"
+"Example: A31122001"
+msgstr ""
+"1 letra que indica el color del sello (Máquina).\n"
+"6 Dígitos de la fecha en formato ddmmyy.\n"
+"2 Dígitos para número consecutivo.\n"
+"\n"
+"Ejemplo: A31122001"
+
+#. module: real
+#. odoo-python
+#: code:addons/real/models/stock_production_lot.py:0
+#, python-format
+msgid ""
+"6 Digits for the date in format ddmmyy.\n"
+"2 Digits for consecutive number.\n"
+"3 Letters\n"
+"3 Digits\n"
+"\n"
+"Example: 31122001AAA000"
+msgstr ""
+"6 Dígitos de la fecha en formato ddmmyy.\n"
+"2 Dígitos para número consecutivo.\n"
+"3 Letras\n"
+"3 Dígitos\n"
+"\n"
+"Ejemplo: 31122001AAA000"
+
+#. module: real
+#: model:res.groups,comment:real.res_users_role_manufacturing_res_groups
+#: model:res.groups,comment:real.res_users_role_marketing_res_groups
+#: model:res.groups,comment:real.res_users_role_operations_res_groups
+#: model:res.groups,comment:real.res_users_role_sales_manager_res_groups
+#: model:res.groups,comment:real.res_users_role_seller_res_groups
+#: model:res.groups,comment:real.res_users_role_shipments_res_groups
+msgid "<p><br></p>"
+msgstr ""
+
+#. module: real
+#: model:ir.model.fields,field_description:real.field_stock_valuation_layer__accounting_date
+msgid "Accounting Date"
+msgstr "Fecha contable"
+
+#. module: real
+#: model:ir.model.fields,field_description:real.field_mrp_dump_truck_driver__active
+#: model:ir.model.fields,field_description:real.field_mrp_license_plate__active
+msgid "Active"
+msgstr "Activo"
+
+#. module: real
+#: model_terms:ir.ui.view,arch_db:real.real_sale_order_form
+msgid "Add marketing submission note"
+msgstr "Agregar nota de envío de marketing"
+
+#. module: real
+#: model_terms:ir.ui.view,arch_db:real.view_res_partner_real
+msgid "Address"
+msgstr "Dirección"
+
+#. module: real
+#: model:ir.model.fields,field_description:real.field_invoice_apply_advance_detail__advance_date
+msgid "Advance Date"
+msgstr "Fecha de anticipo"
+
+#. module: real
+#: model:ir.model.fields,field_description:real.field_invoice_apply_advance_detail__advance_total
+msgid "Advance Total"
+msgstr "Fecha de anticipo"
+
+#. module: real
+#: model:ir.model,name:real.model_account_aged_partner_balance_report_handler
+msgid "Aged Partner Balance Custom Handler"
+msgstr "Gestor personalizado de los balances antiguos del partner"
+
+#. module: real
+#: model:res.groups,name:real.res_groups_allow_win_opportunities
+msgid "Allow win opportunities"
+msgstr "Permitir ganar oportunidades"
+
+#. module: real
+#: model:ir.model.fields,field_description:real.field_sale_order__analytic_account_id
+msgid "Analytic Account"
+msgstr "Cuenta analítica"
+
+#. module: real
+#: model:crm.stage,name:real.model_crm_stage_approval_management
+msgid "Approval Management"
+msgstr "Propuesta"
+
+#. module: real
+#: model_terms:ir.ui.view,arch_db:real.mrp_request_tree
+msgid "Approve"
+msgstr "Aprobar"
+
+#. module: real
+#: model_terms:ir.ui.view,arch_db:real.view_mrp_production_overflow_form
+msgid "Are you sure you want to proceed with this operation?"
+msgstr "¿Está seguro que desea proceder con esta operación?"
+
+#. module: real
+#: model:ir.model.fields,field_description:real.field_mrp_request__available_qty
+msgid "Available Qty"
+msgstr "Can en Stock"
+
+#. module: real
+#: model_terms:ir.ui.view,arch_db:real.view_res_partner_real
+msgid "Avatar"
+msgstr ""
+
+#. module: real
+#: model:ir.model.fields,field_description:real.field_account_payment__reonciliation_date
+#: model_terms:ir.ui.view,arch_db:real.account_payment_search
+msgid "Bank Reconciliation Date"
+msgstr "Fecha de conciliación bancaria"
+
+#. module: real
+#: model:ir.model.fields,field_description:real.field_mrp_request_create_mo__alternative_bom_id
+msgid "Bill of Materials"
+msgstr "Lista de materiales"
+
+#. module: real
+#: model:ir.model.fields,field_description:real.field_sale_order__block_order
+msgid "Block Order"
+msgstr "Orden Bloqueada"
+
+#. module: real
+#: model:res.groups,name:real.res_groups_can_add_mp_products
+msgid "Can Add MP Products"
+msgstr "Puede Agregar Productos MP"
+
+#. module: real
+#: model:res.groups,name:real.res_groups_can_archive
+msgid "Can Archive Sales"
+msgstr "Puede archivar ventas"
+
+#. module: real
+#: model:res.groups,name:real.res_groups_can_cancel_sales
+msgid "Can Cancel Sale Orders"
+msgstr "Puede cancelar órdenes de venta"
+
+#. module: real
+#: model:res.groups,name:real.res_groups_can_change_lead_stages
+msgid "Can Change Lead Stages"
+msgstr "Puede cambiar las etapas de los clientes potenciales"
+
+#. module: real
+#: model:res.groups,name:real.res_groups_can_confirm_sales_with_different_pricelist
+msgid "Can Confirm Sales with different pricelist"
+msgstr "Puede confirmar ventas con diferentes listas de precios"
+
+#. module: real
+#: model:res.groups,name:real.res_groups_can_create_crm_lead
+msgid "Can Create CRM Leads"
+msgstr "Puede crear clientes potenciales de CRM"
+
+#. module: real
+#: model:ir.model.fields,field_description:real.field_sale_order_line__can_modify_customer_lead
+msgid "Can Modify Customer Lead"
+msgstr "Puede modificar el cliente potencial"
+
+#. module: real
+#: model:res.groups,name:real.res_groups_can_modify_customer_lead
+msgid "Can Modify Customer Lead In Sale Order"
+msgstr "Puede modificar el cliente potencial en orden de venta"
+
+#. module: real
+#: model:res.groups,name:real.res_groups_can_modify_line_description
+msgid "Can Modify Description In Sale Order"
+msgstr "Puede modificar la descripción en orden de venta"
+
+#. module: real
+#: model:ir.model.fields,field_description:real.field_sale_order__can_modify_invoice
+msgid "Can Modify Invoice"
+msgstr "Puede modificar la factura"
+
+#. module: real
+#: model:res.groups,name:real.res_groups_can_access_partner_invoice_id
+msgid "Can Modify Invoice Address In Sale Order"
+msgstr "Puede modificar la dirección de la factura en el pedido de venta"
+
+#. module: real
+#: model:ir.model.fields,field_description:real.field_sale_order_line__can_modify_line_description
+msgid "Can Modify Line Description"
+msgstr "Puede modificar la descripción de línea"
+
+#. module: real
+#: model:res.groups,name:real.res_groups_can_access_payment_term_id
+msgid "Can Modify Payment Terms In Sale Order"
+msgstr "Puede modificar los términos de pago en orden de venta"
+
+#. module: real
+#: model:ir.model.fields,field_description:real.field_sale_order_line__can_modify_price_unit
+msgid "Can Modify Price Unit"
+msgstr "Puede modificar la unidad de precio"
+
+#. module: real
+#: model:ir.model.fields,field_description:real.field_sale_order__can_modify_pricelist
+msgid "Can Modify Pricelist"
+msgstr "Puede modificar la lista de precios"
+
+#. module: real
+#: model:res.groups,name:real.res_groups_can_access_pricelist_id
+msgid "Can Modify Pricelist In Sale Order"
+msgstr "Puede modificar la lista de precios en orden de venta"
+
+#. module: real
+#: model:ir.model.fields,field_description:real.field_sale_order__can_modify_quotation_date
+msgid "Can Modify Quotation Date"
+msgstr "Puede modificar la fecha de cotización"
+
+#. module: real
+#: model:res.groups,name:real.res_groups_can_access_date_order
+msgid "Can Modify Quotation Date In Sale Order"
+msgstr "Puede modificar la fecha de cotización en orden de venta"
+
+#. module: real
+#: model:ir.model.fields,field_description:real.field_sale_order_line__can_modify_tax_id
+msgid "Can Modify Tax"
+msgstr "Puede modificar impuestos"
+
+#. module: real
+#: model:res.groups,name:real.res_groups_can_access_tax_id
+msgid "Can Modify Tax Id In Sale Order"
+msgstr ""
+"Puede modificar el número de identificación fiscal en el pedido de venta"
+
+#. module: real
+#: model:res.groups,name:real.res_groups_can_access_price_unit
+msgid "Can Modify Unit Price In Sale Order"
+msgstr "Puede modificar el precio unitario en orden de venta"
+
+#. module: real
+#: model:res.groups,name:real.res_groups_only_view_confirmed_sales
+msgid "Can Only View Confirmed Sales"
+msgstr "Solo puede ver las ventas confirmadas"
+
+#. module: real
+#: model:res.groups,name:real.res_groups_only_see_customer_invoices
+msgid "Can Only View Customer Invoices"
+msgstr "Solo puede ver las facturas de los clientes"
+
+#. module: real
+#: model:res.groups,name:real.res_groups_product_product_read_write_create
+msgid "Can Read Write Create Product Product"
+msgstr "Puede leer, escribir y crear plantillas de producto"
+
+#. module: real
+#: model:res.groups,name:real.res_groups_product_pricelist_read
+#: model:res.groups,name:real.res_groups_product_pricelist_read_write
+msgid "Can Read Write Product Pricelist"
+msgstr "Puede leer y escribir la lista de precios del producto"
+
+#. module: real
+#: model:res.groups,name:real.res_groups_product_template_read
+#: model:res.groups,name:real.res_groups_product_template_read_write
+msgid "Can Read and Write Product Template"
+msgstr "Puede leer plantillas de productos"
+
+#. module: real
+#: model:res.groups,name:real.res_groups_can_see_assigned_partners
+msgid "Can See Assigned Partners"
+msgstr "Pueden ver socios asignados"
+
+#. module: real
+#: model:res.groups,name:real.res_groups_can_see_menu_products_sales
+msgid "Can See Products Menu"
+msgstr "Puede ver el menú Productos (Ventas)"
+
+#. module: real
+#: model:res.groups,name:real.res_groups_can_see_menu_quotations_crm
+msgid "Can See Quotation Menu In CRM"
+msgstr "Puede ver el menú de cotizaciones en CRM"
+
+#. module: real
+#: model:res.groups,name:real.res_groups_see_all_invoices
+msgid "Can View All Invoices"
+msgstr "Puede ver todas las facturas"
+
+#. module: real
+#: model:res.groups,name:real.res_groups_can_see_menu_crm_root
+msgid "Can View CRM"
+msgstr "Puede ver el menú CRM"
+
+#. module: real
+#: model:res.groups,name:real.res_groups_can_view_sales_other_info
+msgid "Can View Sale Other Info Page"
+msgstr "Puede ver la página de información adicional de venta"
+
+#. module: real
+#: model:res.groups,name:real.res_groups_can_access_crm
+msgid "Can access CRM"
+msgstr "Puede acceder a CRM"
+
+#. module: real
+#: model:res.groups,name:real.res_groups_can_confirm_sales
+msgid "Can confirm sales"
+msgstr "Puede confirmar ventas"
+
+#. module: real
+#: model:res.groups,name:real.res_groups_can_modify_sale_order_after_creation
+msgid "Can modify Sale Order after creation"
+msgstr "Puede modificar orden de venta"
+
+#. module: real
+#: model:res.groups,name:real.res_groups_can_see_button_button_bom_cost_in_product
+msgid "Can see button BOM Cost in products"
+msgstr "Puede ver botón costo de la lista de materiales"
+
+#. module: real
+#: model:res.groups,name:real.res_groups_can_see_button_action_cancel_in_mrp_production
+msgid "Can see button Cancel in Production Orders"
+msgstr "Puede ver el botón Cancelar en órdenes de producción"
+
+#. module: real
+#: model:res.groups,name:real.res_groups_can_see_button_draft_account_move
+msgid "Can see button Return to Draft in account moves"
+msgstr "Puede ver el botón Volver al borrador en pólizas contables"
+
+#. module: real
+#: model:res.groups,name:real.res_groups_can_see_menu_to_invoice
+msgid "Can see menu to invoice"
+msgstr "Puede ver el menú para facturar"
+
+#. module: real
+#: model:res.groups,name:real.res_groups_can_see_no_backorder_button
+msgid "Can see no backorder button"
+msgstr "No puedo ver ningún botón de pedido atrasado"
+
+#. module: real
+#: model:res.groups,name:real.res_groups_can_see_variants_and_rates
+msgid "Can see variants and rates"
+msgstr "Puede ver variantes y tarifas"
+
+#. module: real
+#: model_terms:ir.ui.view,arch_db:real.mrp_production_form
+msgid "Cancelar"
+msgstr ""
+
+#. module: real
+#: model_terms:ir.ui.view,arch_db:real.view_stock_move_real_filter
+msgid "Category"
+msgstr "Categoría"
+
+#. module: real
+#: model:ir.model.fields,field_description:real.field_product_category__category_class_id
+#: model:ir.ui.menu,name:real.product_category_class_menu
+msgid "Category Class"
+msgstr "Clase de Categoría"
+
+#. module: real
+#: model:ir.actions.act_window,name:real.action_product_category_class
+msgid "Category Classes"
+msgstr "Clases de Categoría"
+
+#. module: real
+#: model_terms:ir.ui.view,arch_db:real.real_sale_order_form
+msgid "Celular fletero"
+msgstr ""
+
+#. module: real
+#: model:ir.model.fields,field_description:real.field_stock_request_order__child_tag_required
+msgid "Child Tag Required"
+msgstr "Etiqueta hija requerida"
+
+#. module: real
+#: model:ir.model.fields,field_description:real.field_account_bank_statement_line__city_id
+#: model:ir.model.fields,field_description:real.field_account_move__city_id
+#: model:ir.model.fields,field_description:real.field_account_payment__city_id
+#: model_terms:ir.ui.view,arch_db:real.view_res_partner_real
+msgid "City"
+msgstr "Ciudad"
+
+#. module: real
+#: model:ir.model.fields,field_description:real.field_sale_order__comment_marketing
+msgid "Comment Marketing"
+msgstr "Comentarios Marketing"
+
+#. module: real
+#: model:ir.model.fields,field_description:real.field_res_partner__commercial_address
+#: model:ir.model.fields,field_description:real.field_res_users__commercial_address
+msgid "Commercial Address"
+msgstr "Dirección Comercial"
+
+#. module: real
+#: model:ir.model.fields,field_description:real.field_res_partner__commercial_name
+#: model:ir.model.fields,field_description:real.field_res_users__commercial_name
+msgid "Commercial Name"
+msgstr "Nombre Comercial"
+
+#. module: real
+#: model_terms:ir.ui.view,arch_db:real.view_res_partner_real
+msgid "Commercialization"
+msgstr "Comercialización"
+
+#. module: real
+#: model:ir.model,name:real.model_res_partner
+msgid "Contact"
+msgstr "Contacto"
+
+#. module: real
+#: model_terms:ir.ui.view,arch_db:real.view_res_partner_real
+msgid "Contact / Address"
+msgstr "Contacto/dirección"
+
+#. module: real
+#: model_terms:ir.ui.view,arch_db:real.view_res_partner_real
+msgid "Contact Name"
+msgstr "Nombre del contacto"
+
+#. module: real
+#: model_terms:ir.ui.view,arch_db:real.view_res_partner_real
+msgid "Contact image"
+msgstr "Imagen de Contacto"
+
+#. module: real
+#: model:ir.model.fields,field_description:real.field_account_bank_statement_line__child_tag_ids
+#: model:ir.model.fields,field_description:real.field_account_move__child_tag_ids
+#: model:ir.model.fields,field_description:real.field_account_payment__child_tag_ids
+#: model:ir.model.fields,field_description:real.field_res_partner__child_tag_ids
+#: model:ir.model.fields,field_description:real.field_res_users__child_tag_ids
+#: model:ir.model.fields,field_description:real.field_sale_order__child_tag_ids
+#: model:ir.model.fields,field_description:real.field_stock_request_order__child_tag_ids
+msgid "Contacts"
+msgstr "Contactos"
+
+#. module: real
+#: model_terms:ir.ui.view,arch_db:real.view_res_partner_real
+msgid "Contacts & Addresses"
+msgstr "Contactos y Direcciones"
+
+#. module: real
+#: model_terms:ir.ui.view,arch_db:real.view_res_partner_real
+msgid "Country"
+msgstr "País"
+
+#. module: real
+#: model:ir.model.fields,field_description:real.field_product_category_class__cpt
+msgid "Cpt"
+msgstr "CPT"
+
+#. module: real
+#: model_terms:ir.ui.view,arch_db:real.real_sale_order_form
+msgid "Create Invoice"
+msgstr "Crear Factura"
+
+#. module: real
+#: model:ir.model.fields,field_description:real.field_mrp_dump_truck_driver__create_uid
+#: model:ir.model.fields,field_description:real.field_mrp_equipment__create_uid
+#: model:ir.model.fields,field_description:real.field_mrp_license_plate__create_uid
+#: model:ir.model.fields,field_description:real.field_mrp_production_overflow__create_uid
+#: model:ir.model.fields,field_description:real.field_product_category_class__create_uid
+#: model:ir.model.fields,field_description:real.field_way_of_shipment_type__create_uid
+msgid "Created by"
+msgstr "Creado por"
+
+#. module: real
+#: model:ir.model.fields,field_description:real.field_mrp_dump_truck_driver__create_date
+#: model:ir.model.fields,field_description:real.field_mrp_equipment__create_date
+#: model:ir.model.fields,field_description:real.field_mrp_license_plate__create_date
+#: model:ir.model.fields,field_description:real.field_mrp_production_overflow__create_date
+#: model:ir.model.fields,field_description:real.field_product_category_class__create_date
+#: model:ir.model.fields,field_description:real.field_way_of_shipment_type__create_date
+msgid "Created on"
+msgstr "Creado en"
+
+#. module: real
+#: model_terms:ir.ui.view,arch_db:real.view_res_partner_real
+msgid "Credit and Collection"
+msgstr "Crédito y Cobranza"
+
+#. module: real
+#: model_terms:ir.ui.view,arch_db:real.view_res_partner_real
+msgid "Critico"
+msgstr ""
+
+#. module: real
+#: model:ir.model.fields,field_description:real.field_purchase_order__currency_copy
+msgid "Currency"
+msgstr "Moneda"
+
+#. module: real
+#: model:ir.model.fields,field_description:real.field_crm_lead__current_user_can_win_opportunities
+msgid "Current User Can Win Opportunities"
+msgstr "El usuario actual puede ganar oportunidades"
+
+#. module: real
+#: model:ir.model.fields,field_description:real.field_mrp_production__date_planned_start
+msgid "Date Planned Start"
+msgstr "Fecha prevista"
+
+#. module: real
+#: model:ir.model.fields,field_description:real.field_way_of_shipment_type__days_to_delivery
+msgid "Days To Delivery"
+msgstr "Días hasta la entrega"
+
+#. module: real
+#: model:ir.model.fields,field_description:real.field_res_users__default_analytic_account_id
+msgid "Default Analytic Account"
+msgstr "Cuenta analítica predeterminada"
+
+#. module: real
+#: model_terms:ir.ui.view,arch_db:real.view_res_partner_real
+msgid "Delivery"
+msgstr "Entrega"
+
+#. module: real
+#: model:ir.model.fields,field_description:real.field_stock_request_order__partner_shipping_id
+msgid "Delivery Address"
+msgstr "Dirección de entrega"
+
+#. module: real
+#: model_terms:ir.ui.view,arch_db:real.view_stock_request_partner_real
+msgid "Descripción"
+msgstr ""
+
+#. module: real
+#: model_terms:ir.ui.view,arch_db:real.view_account_move_form_real
+msgid "Destination city"
+msgstr "Ciudad destino"
+
+#. module: real
+#: model_terms:ir.ui.view,arch_db:real.view_account_move_form_real
+msgid "Destination state"
+msgstr "Estado destino"
+
+#. module: real
+#: model:ir.model,name:real.model_invoice_apply_advance_detail
+msgid "Detail to advances on each invoice."
+msgstr "Detalle de anticipos en cada factura."
+
+#. module: real
+#: model:ir.model.fields,field_description:real.field_mrp_dump_truck_driver__display_name
+#: model:ir.model.fields,field_description:real.field_mrp_equipment__display_name
+#: model:ir.model.fields,field_description:real.field_mrp_license_plate__display_name
+#: model:ir.model.fields,field_description:real.field_mrp_production_overflow__display_name
+#: model:ir.model.fields,field_description:real.field_product_category_class__display_name
+#: model:ir.model.fields,field_description:real.field_way_of_shipment_type__display_name
+msgid "Display Name"
+msgstr "Nombre desplegado"
+
+#. module: real
+#: model_terms:ir.ui.view,arch_db:real.view_account_move_form_real
+msgid "Do you want to CANCEL this account move?"
+msgstr "Desea CANCELAR este asiento contable?"
+
+#. module: real
+#: model_terms:ir.ui.view,arch_db:real.real_sale_order_form
+msgid "Do you want to CANCEL this sale order?"
+msgstr "Desea CANCELAR esta orden de venta?"
+
+#. module: real
+#: model_terms:ir.ui.view,arch_db:real.view_account_move_form_real
+msgid "Do you want to RESET TO DRAFT this account move?"
+msgstr "Desea RESTABLECER A BORRADOR este asiento contable?"
+
+#. module: real
+#: model:ir.model.fields.selection,name:real.selection__res_partner__paydays__doesnotapply
+#: model:ir.model.fields.selection,name:real.selection__res_partner__review_day__doesnotapply
+msgid "Does not apply"
+msgstr "No aplica"
+
+#. module: real
+#: model_terms:ir.ui.view,arch_db:real.view_account_move_form_real
+msgid "Don't pay this invoice"
+msgstr "Bloqueada para pago"
+
+#. module: real
+#: model:ir.model.fields,field_description:real.field_mrp_production__driver
+msgid "Driver"
+msgstr "Chofer"
+
+#. module: real
+#: model:ir.model.fields,field_description:real.field_product_product__driver_commission
+msgid "Driver Commission"
+msgstr "Genera comisión a chofer?"
+
+#. module: real
+#: model:ir.model,name:real.model_mrp_dump_truck_driver
+msgid "Dump Truck Driver"
+msgstr "Chofer de Volteo"
+
+#. module: real
+#: model:ir.actions.act_window,name:real.action_mrp_dump_truck_driver
+#: model:ir.ui.menu,name:real.mrp_dump_truck_driver_menu
+msgid "Dump Truck Drivers"
+msgstr "Choferes de Volteo"
+
+#. module: real
+#: model:ir.model.fields,field_description:real.field_product_category__ebitda_report
+msgid "Ebitda Report"
+msgstr "Incluir en Reporte Ebitda"
+
+#. module: real
+#: model:ir.model,name:real.model_mrp_equipment
+#: model:ir.model.fields,field_description:real.field_mrp_production__equipment_id
+#: model:ir.model.fields,field_description:real.field_mrp_request_create_mo__equipment_id
+#: model:ir.model.fields,field_description:real.field_stock_move__equipment_id
+#: model:ir.model.fields,field_description:real.field_stock_move_line__equipment_id
+msgid "Equipment"
+msgstr "Nombre de la máquina"
+
+#. module: real
+#: model:ir.actions.act_window,name:real.action_mrp_equipment
+msgid "Equipments"
+msgstr "Equipos"
+
+#. module: real
+#: model_terms:ir.ui.view,arch_db:real.real_sale_order_form
+msgid "Estatus embarque"
+msgstr ""
+
+#. module: real
+#: model:ir.actions.server,name:real.validate_current_stage_server_action
+msgid "Execute Code"
+msgstr "Ejecutar Codigo"
+
+#. module: real
+#: model:ir.model,name:real.model_hr_expense
+msgid "Expense"
+msgstr "Gasto"
+
+#. module: real
+#: model_terms:ir.ui.view,arch_db:real.view_res_partner_real
+msgid "Fecha Alta de Cliente"
+msgstr ""
+
+#. module: real
+#: model:ir.model.fields,field_description:real.field_res_users__force_share
+msgid "Force Share"
+msgstr "Forzar compartir"
+
+#. module: real
+#: model:ir.model.fields,field_description:real.field_mrp_request__forecasted_qty
+msgid "Forecasted Qty"
+msgstr "Pendientes para Pedidos"
+
+#. module: real
+#: model_terms:ir.ui.view,arch_db:real.mrp_request_tree
+msgid "Foreign orders"
+msgstr "Pedidos foraneos"
+
+#. module: real
+#: model:ir.model.fields,field_description:real.field_mrp_request__foreigner
+msgid "Foreigner"
+msgstr "Foraneo"
+
+#. module: real
+#: model_terms:ir.ui.view,arch_db:real.view_res_partner_real
+msgid "Forklift Loading"
+msgstr "Carga con montcargas"
+
+#. module: real
+#: model:ir.model.fields,field_description:real.field_account_move_line__freight_cost
+#: model:ir.model.fields,field_description:real.field_res_partner__freight_cost
+#: model:ir.model.fields,field_description:real.field_res_users__freight_cost
+msgid "Freight Cost"
+msgstr "Costo Flete"
+
+#. module: real
+#: model:ir.model.fields,field_description:real.field_product_product__freight_weight
+msgid "Freight Weight"
+msgstr "Peso Flete"
+
+#. module: real
+#: model_terms:ir.ui.view,arch_db:real.view_account_move_form_real
+msgid "Freight destination"
+msgstr "Destino flete"
+
+#. module: real
+#: model:ir.model.fields.selection,name:real.selection__res_partner__paydays__friday
+#: model:ir.model.fields.selection,name:real.selection__res_partner__review_day__friday
+msgid "Friday"
+msgstr "Viernes"
+
+#. module: real
+#: model:ir.model.fields,field_description:real.field_res_partner__full_record
+#: model:ir.model.fields,field_description:real.field_res_users__full_record
+#: model_terms:ir.ui.view,arch_db:real.view_res_partner_real
+msgid "Full Record"
+msgstr "Expediente completo"
+
+#. module: real
+#: model:res.partner.category,name:real.res_partner_category_group
+msgid "Group"
+msgstr "Grupo"
+
+#. module: real
+#: model:ir.model.fields,field_description:real.field_sale_advance_payment_inv__has_pending_sample
+msgid "Has Pending Sample"
+msgstr "Tiene muestra pendiente"
+
+#. module: real
+#: model:ir.model.fields,field_description:real.field_purchase_order_line__has_restriction
+msgid "Has Restriction"
+msgstr "Tiene restricción"
+
+#. module: real
+#: model:res.groups,name:real.res_groups_hide_picking_block
+msgid "Hide (un)block picking button"
+msgstr "Ocultar boton para (des)bloquear picking"
+
+#. module: real
+#: model:ir.model.fields,field_description:real.field_mrp_production__hide_dump_info
+msgid "Hide Dump Info"
+msgstr "Ocultar info volteo"
+
+#. module: real
+#: model:ir.model.fields,field_description:real.field_stock_picking__hide_picking_block
+msgid "Hide Picking Block"
+msgstr "“Ocultar bloqueo de recolección"
+
+#. module: real
+#: model:ir.model.fields,field_description:real.field_mrp_dump_truck_driver__id
+#: model:ir.model.fields,field_description:real.field_mrp_equipment__id
+#: model:ir.model.fields,field_description:real.field_mrp_license_plate__id
+#: model:ir.model.fields,field_description:real.field_mrp_production_overflow__id
+#: model:ir.model.fields,field_description:real.field_product_category_class__id
+#: model:ir.model.fields,field_description:real.field_way_of_shipment_type__id
+msgid "ID"
+msgstr "ID (Identificador)"
+
+#. module: real
+#: model_terms:ir.ui.view,arch_db:real.view_res_partner_real
+msgid "Internal notes..."
+msgstr "Notas internas..."
+
+#. module: real
+#. odoo-python
+#: code:addons/real/models/stock_production_lot.py:0
+#, python-format
+msgid "Invalid date: Month %(month)s has no day %(day)s"
+msgstr ""
+
+#. module: real
+#: model_terms:ir.ui.view,arch_db:real.view_res_partner_real
+msgid "Invoice"
+msgstr "Facturas de clientes"
+
+#. module: real
+#. odoo-python
+#: code:addons/real/models/account_payment_line.py:0
+#: code:addons/real/wizards/account_payment_line_create.py:0
+#, python-format
+msgid ""
+"Invoice blocked for payment: \n"
+"%s "
+msgstr ""
+"Factura bloqueada para pago: \n"
+"%s "
+
+#. module: real
+#: model:ir.model,name:real.model_account_invoice_report
+msgid "Invoices Statistics"
+msgstr "Estadísticas de facturas"
+
+#. module: real
+#: model:ir.model.fields,field_description:real.field_account_bank_statement_line__is_freight_supplier
+#: model:ir.model.fields,field_description:real.field_account_move__is_freight_supplier
+#: model:ir.model.fields,field_description:real.field_account_payment__is_freight_supplier
+msgid "Is Freight Supplier"
+msgstr "Es proveedor de flete"
+
+#. module: real
+#: model:ir.model.fields,field_description:real.field_product_category__is_mp_category
+msgid "Is MP Category"
+msgstr "Es Categoria MP"
+
+#. module: real
+#: model:ir.model.fields,field_description:real.field_res_partner__contact_is_customer
+#: model:ir.model.fields,field_description:real.field_res_users__contact_is_customer
+msgid "Is customer?"
+msgstr "Es cliente?"
+
+#. module: real
+#: model:ir.model.fields,field_description:real.field_res_partner__contact_is_supplier
+#: model:ir.model.fields,field_description:real.field_res_users__contact_is_supplier
+msgid "Is supplier?"
+msgstr "Es proveedor?"
+
+#. module: real
+#: model_terms:ir.ui.view,arch_db:real.view_mrp_production_overflow_form
+msgid "It is processing more than 10 units originally scheduled."
+msgstr "Está procesando más de 10 unidades de las originalmente programadas."
+
+#. module: real
+#: model:ir.model,name:real.model_account_move
+msgid "Journal Entry"
+msgstr "Asiento contable"
+
+#. module: real
+#: model:ir.model,name:real.model_account_move_line
+msgid "Journal Item"
+msgstr "Apunte contable"
+
+#. module: real
+#: model:ir.model.fields,field_description:real.field_mrp_dump_truck_driver__write_uid
+#: model:ir.model.fields,field_description:real.field_mrp_equipment__write_uid
+#: model:ir.model.fields,field_description:real.field_mrp_license_plate__write_uid
+#: model:ir.model.fields,field_description:real.field_mrp_production_overflow__write_uid
+#: model:ir.model.fields,field_description:real.field_product_category_class__write_uid
+#: model:ir.model.fields,field_description:real.field_way_of_shipment_type__write_uid
+msgid "Last Updated by"
+msgstr "Última modificación por..."
+
+#. module: real
+#: model:ir.model.fields,field_description:real.field_mrp_dump_truck_driver__write_date
+#: model:ir.model.fields,field_description:real.field_mrp_equipment__write_date
+#: model:ir.model.fields,field_description:real.field_mrp_license_plate__write_date
+#: model:ir.model.fields,field_description:real.field_mrp_production_overflow__write_date
+#: model:ir.model.fields,field_description:real.field_product_category_class__write_date
+#: model:ir.model.fields,field_description:real.field_way_of_shipment_type__write_date
+msgid "Last Updated on"
+msgstr "Última modificación en..."
+
+#. module: real
+#: model:ir.model,name:real.model_crm_lead
+msgid "Lead/Opportunity"
+msgstr "Lead/oportunidad"
+
+#. module: real
+#: model:ir.model,name:real.model_mrp_license_plate
+msgid "License Plate"
+msgstr "Placa de Camion"
+
+#. module: real
+#: model:ir.actions.act_window,name:real.action_mrp_license_plate
+#: model:ir.ui.menu,name:real.mrp_license_plate_menu
+msgid "License Plates"
+msgstr "Placas de Camiones"
+
+#. module: real
+#: model:ir.model.fields,field_description:real.field_res_partner__loads
+#: model:ir.model.fields,field_description:real.field_res_users__loads
+msgid "Loads"
+msgstr "Carga con montacargas"
+
+#. module: real
+#: model:ir.model.fields,field_description:real.field_mrp_request__local
+msgid "Local"
+msgstr ""
+
+#. module: real
+#: model_terms:ir.ui.view,arch_db:real.mrp_request_tree
+msgid "Local orders"
+msgstr "Pedidos locales"
+
+#. module: real
+#: model_terms:ir.ui.view,arch_db:real.view_res_partner_real
+msgid "Logo"
+msgstr ""
+
+#. module: real
+#: model:ir.model,name:real.model_stock_lot
+msgid "Lot/Serial"
+msgstr "Número de serie/lote"
+
+#. module: real
+#: model:ir.ui.menu,name:real.mrp_equipment_menu
+msgid "MRP Equipment"
+msgstr "Equipos"
+
+#. module: real
+#: model:ir.model.fields,field_description:real.field_stock_picking__machine_id
+msgid "Machine"
+msgstr "Máquina"
+
+#. module: real
+#: model:ir.model,name:real.model_mrp_request
+msgid "Manufacturing Request"
+msgstr "Solicitud de fabricación"
+
+#. module: real
+#: model:ir.model,name:real.model_stock_warehouse_orderpoint
+msgid "Minimum Inventory Rule"
+msgstr "Regla de inventario mínimo"
+
+#. module: real
+#: model_terms:ir.ui.view,arch_db:real.view_res_partner_real
+msgid "Mobile:"
+msgstr "Móvil:"
+
+#. module: real
+#: model:ir.model.fields.selection,name:real.selection__res_partner__paydays__monday
+#: model:ir.model.fields.selection,name:real.selection__res_partner__review_day__monday
+msgid "Monday"
+msgstr "Lunes"
+
+#. module: real
+#: model:ir.model.fields,field_description:real.field_mrp_production_overflow__mrp_production_ids
+msgid "Mrp Production"
+msgstr "Órdenes de Producción"
+
+#. module: real
+#: model:ir.model,name:real.model_mrp_production_overflow
+msgid "Mrp Production Overflow"
+msgstr "Desborde MRP"
+
+#. module: real
+#: model:ir.model.fields,field_description:real.field_mrp_dump_truck_driver__name
+#: model:ir.model.fields,field_description:real.field_mrp_equipment__name
+#: model:ir.model.fields,field_description:real.field_mrp_license_plate__name
+#: model:ir.model.fields,field_description:real.field_product_category_class__name
+msgid "Name"
+msgstr "Nombre"
+
+#. module: real
+#: model_terms:ir.ui.view,arch_db:real.view_mrp_production_overflow_form
+msgid "No"
+msgstr ""
+
+#. module: real
+#: model:ir.model.fields,field_description:real.field_mrp_request_create_mo__order_qty
+msgid "No. of Orders"
+msgstr "No. de Batidas"
+
+#. module: real
+#: model_terms:ir.ui.view,arch_db:real.view_account_move_form_real
+msgid "Número de Tarimas"
+msgstr ""
+
+#. module: real
+#: model:ir.model.fields,field_description:real.field_stock_valuation_layer__picking_type_id
+msgid "Operation Type"
+msgstr "Tipo de operación"
+
+#. module: real
+#: model_terms:ir.ui.view,arch_db:real.view_res_partner_real
+msgid "Operations"
+msgstr "Operaciones"
+
+#. module: real
+#: model:ir.model.fields,field_description:real.field_sale_order__order_signal
+msgid "Order Signal"
+msgstr "Semáforo"
+
+#. module: real
+#: model:ir.model.fields,field_description:real.field_sale_order__out_pending
+msgid "Out Pending"
+msgstr "Producto"
+
+#. module: real
+#: model:ir.actions.act_window,name:real.action_outgoing_picking_move
+#: model:ir.ui.menu,name:real.menu_outgoing_products
+msgid "Outgoing Products"
+msgstr "Productos a Entregar"
+
+#. module: real
+#: model_terms:ir.ui.view,arch_db:real.view_stock_move_real_filter
+msgid "PT PINTURAS Y PASTAS"
+msgstr "PT Pinturas y Pastas"
+
+#. module: real
+#: model_terms:ir.ui.view,arch_db:real.view_stock_move_real_filter
+msgid "PT POLVOS"
+msgstr "PT Polvos"
+
+#. module: real
+#: model:ir.model.fields,field_description:real.field_hr_expense__payment_mode
+msgid "Paid By"
+msgstr "Pagado por"
+
+#. module: real
+#: model_terms:ir.ui.view,arch_db:real.view_res_partner_real
+msgid "Pamphlet"
+msgstr "Folletos"
+
+#. module: real
+#: model:ir.model.fields,field_description:real.field_res_partner__pamphletes
+#: model:ir.model.fields,field_description:real.field_res_users__pamphletes
+msgid "Pamphletes"
+msgstr "Folletos"
+
+#. module: real
+#: model:ir.model.fields,field_description:real.field_mrp_request__parent_category_id
+#: model:ir.model.fields,field_description:real.field_stock_move__parent_category_id
+#: model:ir.model.fields,field_description:real.field_stock_move_line__parent_category_id
+#: model:ir.model.fields,field_description:real.field_stock_quant__parent_category_id
+#: model:ir.model.fields,field_description:real.field_stock_valuation_layer__parent_category_id
+#: model:ir.model.fields,field_description:real.field_stock_warehouse_orderpoint__parent_category_id
+#: model_terms:ir.ui.view,arch_db:real.view_stock_move_real_filter
+msgid "Parent Category"
+msgstr "Categoría madre"
+
+#. module: real
+#: model_terms:ir.ui.view,arch_db:real.view_res_partner_real
+msgid "Particular Data"
+msgstr "Datos Particulares"
+
+#. module: real
+#: model:ir.model.fields,field_description:real.field_res_partner__paydays
+#: model:ir.model.fields,field_description:real.field_res_users__paydays
+#: model_terms:ir.ui.view,arch_db:real.view_res_partner_real
+msgid "Paydays"
+msgstr "Días de pago"
+
+#. module: real
+#: model:ir.model,name:real.model_account_payment_line
+msgid "Payment Lines"
+msgstr "Líneas de pago"
+
+#. module: real
+#: model:ir.model,name:real.model_account_payment_order
+msgid "Payment Order"
+msgstr "Orden de pago"
+
+#. module: real
+#: model:ir.model,name:real.model_account_payment
+msgid "Payments"
+msgstr "Pagos"
+
+#. module: real
+#: model:ir.model.fields,field_description:real.field_mrp_request__qty_to_max
+msgid "Pending Max Inv"
+msgstr "Pendiente Inventario Máximo"
+
+#. module: real
+#. odoo-python
+#: code:addons/real/models/mrp_production.py:0
+#, python-format
+msgid "Permission Error: You are not allowed to cancel a production order."
+msgstr "Error de permiso: no puede cancelar una orden de producción."
+
+#. module: real
+#: model_terms:ir.ui.view,arch_db:real.view_res_partner_real
+msgid "Phone:"
+msgstr "Teléfono:"
+
+#. module: real
+#. odoo-python
+#: code:addons/real/models/stock_move.py:0
+#, python-format
+msgid "Picking"
+msgstr "Albarán"
+
+#. module: real
+#: model:ir.model.fields,field_description:real.field_stock_move__picking_note
+msgid "Picking Notes"
+msgstr "Notas"
+
+#. module: real
+#: model:ir.model.fields,field_description:real.field_mrp_production__plate
+msgid "Plate"
+msgstr "Placa"
+
+#. module: real
+#: model_terms:ir.ui.view,arch_db:real.view_category_form_inherit_custom
+msgid "Porcentaje"
+msgstr ""
+
+#. module: real
+#: model:ir.model.fields,field_description:real.field_account_bank_statement_line__previous_folio
+#: model:ir.model.fields,field_description:real.field_account_move__previous_folio
+#: model:ir.model.fields,field_description:real.field_account_payment__previous_folio
+msgid "Previous Folio"
+msgstr "Folio previo"
+
+#. module: real
+#: model:ir.model.fields,field_description:real.field_account_invoice_report__price_unit_without_freight
+#: model:ir.model.fields,field_description:real.field_account_move_line__price_unit_without_freight
+msgid "Price Unit Without Freight"
+msgstr "Precio Unitario Sin Flete"
+
+#. module: real
+#: model:ir.model.fields,field_description:real.field_res_partner__pricers
+#: model:ir.model.fields,field_description:real.field_res_users__pricers
+#: model_terms:ir.ui.view,arch_db:real.view_res_partner_real
+msgid "Pricers"
+msgstr "Preciadores"
+
+#. module: real
+#: model:ir.model.fields,field_description:real.field_mrp_request_create_mo__product_id
+msgid "Product"
+msgstr "Producto"
+
+#. module: real
+#: model:ir.model,name:real.model_product_category
+#: model:ir.model.fields,field_description:real.field_stock_move__product_category_id
+msgid "Product Category"
+msgstr "Categoría de producto"
+
+#. module: real
+#: model:ir.model,name:real.model_product_category_class
+msgid "Product Category Class"
+msgstr "Clase de Categoría de Producto"
+
+#. module: real
+#: model:ir.model.fields,field_description:real.field_mrp_request__product_max_qty
+msgid "Product Max Qty"
+msgstr "Cantidad máxima"
+
+#. module: real
+#: model:ir.model.fields,field_description:real.field_mrp_request__product_min_qty
+msgid "Product Min Qty"
+msgstr "Cantidad mínima"
+
+#. module: real
+#: model:ir.model,name:real.model_stock_move_line
+msgid "Product Moves (Stock Move Line)"
+msgstr "Movimientos de producto (línea de movimiento de stock)"
+
+#. module: real
+#: model:ir.model.fields,field_description:real.field_mrp_request_create_mo__product_tmpl_id
+msgid "Product Template"
+msgstr "Plantilla de producto"
+
+#. module: real
+#: model:ir.model,name:real.model_product_product
+msgid "Product Variant"
+msgstr "Variante del producto"
+
+#. module: real
+#: model:ir.model,name:real.model_mrp_production
+msgid "Production Order"
+msgstr "Orden de producción"
+
+#. module: real
+#: model:ir.model.fields,field_description:real.field_res_partner__prompt_payment
+#: model:ir.model.fields,field_description:real.field_res_users__prompt_payment
+#: model_terms:ir.ui.view,arch_db:real.view_res_partner_real
+msgid "Prompt Payment"
+msgstr "Pronto pago"
+
+#. module: real
+#: model:ir.model.fields,field_description:real.field_res_partner__prompt_payment_days
+#: model:ir.model.fields,field_description:real.field_res_users__prompt_payment_days
+msgid "Prompt Payment Days"
+msgstr "Días de pronto pago"
+
+#. module: real
+#: model:ir.model,name:real.model_purchase_order
+msgid "Purchase Order"
+msgstr "Orden de compra"
+
+#. module: real
+#: model:ir.model,name:real.model_purchase_order_line
+msgid "Purchase Order Line"
+msgstr "Línea de orden de compra"
+
+#. module: real
+#: model:ir.model.fields,field_description:real.field_mrp_request__qty_in_production
+msgid "Qty In Production"
+msgstr "Cant en producción"
+
+#. module: real
+#: model:ir.model.fields,field_description:real.field_stock_warehouse_orderpoint__qty_min
+msgid "Qty Min"
+msgstr "Mínimo planificador"
+
+#. module: real
+#: model:ir.model.fields,field_description:real.field_mrp_request__qty_multiple
+msgid "Qty Multiple"
+msgstr "Multiplo"
+
+#. module: real
+#: model:ir.model.fields,field_description:real.field_mrp_production__qty_of_block
+msgid "Qty Of Block"
+msgstr ""
+
+#. module: real
+#: model:ir.model.fields,field_description:real.field_mrp_request__qty_ordered
+msgid "Qty Ordered"
+msgstr "Ctd, pedida"
+
+#. module: real
+#: model_terms:ir.ui.view,arch_db:real.view_stock_move_outgoing_products_real
+msgid "Quantity"
+msgstr "Cantidad"
+
+#. module: real
+#: model:ir.model,name:real.model_stock_quant
+msgid "Quants"
+msgstr "Existencias"
+
+#. module: real
+#: model:ir.model,name:real.model_account_resequence_wizard
+msgid "Remake the sequence of Journal Entries."
+msgstr "Rehaga la secuencia de los asientos contables."
+
+#. module: real
+#: model:ir.model.fields,field_description:real.field_res_partner__review_day
+#: model:ir.model.fields,field_description:real.field_res_users__review_day
+msgid "Review Day"
+msgstr "Días de revisión"
+
+#. module: real
+#: model_terms:ir.ui.view,arch_db:real.view_res_partner_real
+msgid "Review Days"
+msgstr "Días de revisión"
+
+#. module: real
+#: model:res.groups,name:real.res_users_role_accounting_res_groups
+msgid "Role Accounting"
+msgstr "Rol de Contabilidad"
+
+#. module: real
+#: model:res.groups,name:real.res_users_role_collection_res_groups
+msgid "Role Collection"
+msgstr "Rol de CxC"
+
+#. module: real
+#: model:res.groups,name:real.res_users_role_foreign_shipments_res_groups
+msgid "Role Foreign Shipments"
+msgstr "Rol de Embarques Foraneo"
+
+#. module: real
+#: model:res.groups,name:real.res_users_role_manufacturing_res_groups
+msgid "Role Manufacturing"
+msgstr "Rol de Producción"
+
+#. module: real
+#: model:res.groups,name:real.res_users_role_marketing_res_groups
+msgid "Role Marketing"
+msgstr "Rol de Director de Comercialización"
+
+#. module: real
+#: model:res.groups,name:real.res_users_role_operations_res_groups
+msgid "Role Operations"
+msgstr "Rol de Gerente de Operaciones"
+
+#. module: real
+#: model:res.groups,name:real.res_users_role_payments_res_groups
+msgid "Role Payments"
+msgstr "Rol de Pagos"
+
+#. module: real
+#: model:res.groups,name:real.res_users_role_sales_manager_res_groups
+msgid "Role Sales Manager"
+msgstr "Rol de Gerente de Ventas"
+
+#. module: real
+#: model:res.groups,name:real.res_users_role_seller_res_groups
+msgid "Role Seller"
+msgstr "Rol de Vendedor"
+
+#. module: real
+#: model:res.groups,name:real.res_users_role_shipments_res_groups
+msgid "Role Shipments"
+msgstr "Rol de Embarques"
+
+#. module: real
+#: model:res.groups,name:real.res_users_role_shopping_res_groups
+msgid "Role Shopping"
+msgstr "Rol de Compras"
+
+#. module: real
+#: model:ir.model,name:real.model_stock_scheduler_compute
+msgid "Run Scheduler Manually"
+msgstr "Ejecutar planificador manualmente"
+
+#. module: real
+#. odoo-python
+#: code:addons/real/models/stock_move.py:0
+#: model:ir.model.fields,field_description:real.field_stock_move__sale_order_id
+#, python-format
+msgid "Sale Order"
+msgstr "Pedido de venta"
+
+#. module: real
+#: model:res.groups,name:real.res_groups_sale_order_customer_invoice_button
+msgid "Sale Order Customer Invoice Button"
+msgstr "Botón de factura de cliente de orden de venta"
+
+#. module: real
+#: model:res.groups,name:real.res_groups_extra_permissions_sale_order_readonly
+msgid "Sale Order Readonly"
+msgstr "Pedido de venta de solo lectura"
+
+#. module: real
+#: model:ir.model,name:real.model_sale_advance_payment_inv
+msgid "Sales Advance Payment Invoice"
+msgstr "Factura de anticipo de ventas"
+
+#. module: real
+#: model:ir.model,name:real.model_sale_order
+msgid "Sales Order"
+msgstr "Orden de venta"
+
+#. module: real
+#: model:ir.model,name:real.model_sale_order_line
+msgid "Sales Order Line"
+msgstr "Línea de la orden de venta"
+
+#. module: real
+#: model:ir.model.fields,field_description:real.field_res_partner__sales_phone
+#: model:ir.model.fields,field_description:real.field_res_users__sales_phone
+msgid "Sales Phone"
+msgstr "Teléfono de Ventas"
+
+#. module: real
+#: model_terms:ir.ui.view,arch_db:real.view_stock_move_real_filter
+msgid "Salesman"
+msgstr "Vendedor"
+
+#. module: real
+#: model:ir.model.fields,field_description:real.field_stock_move__salesman_id
+#: model:ir.model.fields,field_description:real.field_stock_picking__salesman_id
+msgid "Salesperson"
+msgstr "Vendedor"
+
+#. module: real
+#: model_terms:ir.ui.view,arch_db:real.view_res_partner_real
+msgid "Sample Display"
+msgstr "Muestrarios mostrador"
+
+#. module: real
+#: model:ir.model.fields,field_description:real.field_res_partner__samples
+#: model:ir.model.fields,field_description:real.field_res_users__samples
+msgid "Samples"
+msgstr "Muestrarios"
+
+#. module: real
+#: model:ir.model.fields.selection,name:real.selection__res_partner__paydays__saturday
+#: model:ir.model.fields.selection,name:real.selection__res_partner__review_day__saturday
+msgid "Saturday"
+msgstr "Sábado"
+
+#. module: real
+#: model_terms:ir.ui.view,arch_db:real.view_stock_move_outgoing_products_real
+msgid "See Picking"
+msgstr "Ver picking"
+
+#. module: real
+#: model_terms:ir.ui.view,arch_db:real.view_stock_move_outgoing_products_real
+msgid "See Sale Order"
+msgstr "Ver orden de Venta"
+
+#. module: real
+#: model_terms:ir.ui.view,arch_db:real.real_sale_order_form
+msgid "Shipping Marketing"
+msgstr "Envíos Mercadotecnia"
+
+#. module: real
+#: model:ir.model.fields,field_description:real.field_res_partner__special_info
+#: model:ir.model.fields,field_description:real.field_res_users__special_info
+msgid "Special Info"
+msgstr "Indicaciones especiales"
+
+#. module: real
+#: model:ir.model.fields,field_description:real.field_account_bank_statement_line__state_id
+#: model:ir.model.fields,field_description:real.field_account_move__state_id
+#: model:ir.model.fields,field_description:real.field_account_payment__state_id
+#: model_terms:ir.ui.view,arch_db:real.view_res_partner_real
+msgid "State"
+msgstr "Provincia"
+
+#. module: real
+#: model:ir.model,name:real.model_stock_landed_cost_lines
+msgid "Stock Landed Cost Line"
+msgstr "Línea de costo en destino de existencias"
+
+#. module: real
+#: model:ir.model,name:real.model_stock_move
+msgid "Stock Move"
+msgstr "Movimiento de stock"
+
+#. module: real
+#: model:ir.model,name:real.model_stock_request_order
+msgid "Stock Request Order"
+msgstr "Pedido de existencias"
+
+#. module: real
+#: model:ir.model,name:real.model_stock_rule
+msgid "Stock Rule"
+msgstr "Regla de inventario"
+
+#. module: real
+#: model:ir.model,name:real.model_stock_valuation_layer
+msgid "Stock Valuation Layer"
+msgstr "Capa de valoración de existencias"
+
+#. module: real
+#: model:ir.model.fields,field_description:real.field_account_bank_statement_line__stop_inv
+#: model:ir.model.fields,field_description:real.field_account_move__stop_inv
+#: model:ir.model.fields,field_description:real.field_account_payment__stop_inv
+msgid "Stop Inv"
+msgstr "Bloqueada para pago"
+
+#. module: real
+#: model_terms:ir.ui.view,arch_db:real.view_res_partner_real
+msgid "Street 2..."
+msgstr "Calle 2..."
+
+#. module: real
+#: model_terms:ir.ui.view,arch_db:real.view_res_partner_real
+msgid "Street..."
+msgstr "Calle..."
+
+#. module: real
+#: model:ir.model.fields.selection,name:real.selection__res_partner__paydays__sunday
+#: model:ir.model.fields.selection,name:real.selection__res_partner__review_day__sunday
+msgid "Sunday"
+msgstr "Domingo"
+
+#. module: real
+#: model:res.partner.category,name:real.res_partner_category_supplier_freight
+msgid "Supplier Freight"
+msgstr "Proveedor de Flete"
+
+#. module: real
+#: model_terms:ir.ui.view,arch_db:real.account_move_invoice_tree
+msgid "Supplier Invoices"
+msgstr "Factura de proveedor"
+
+#. module: real
+#: model_terms:ir.ui.view,arch_db:real.view_account_move_form_real
+msgid "Tarimas"
+msgstr ""
+
+#. module: real
+#. odoo-python
+#: code:addons/real/models/stock_production_lot.py:0
+#, python-format
+msgid ""
+"The date is not within the allowed range.\n"
+"(date_min)%s - %(date_max)s"
+msgstr ""
+"La fecha no está dentro del rango permitido.\n"
+"%(date_min)s - %(date_max)s"
+
+#. module: real
+#. odoo-python
+#: code:addons/real/models/stock_picking.py:0
+#, python-format
+msgid "The destination location of each line must match that of the picking"
+msgstr "La ubicacion destino de cada linea debe ser igual a la del picking"
+
+#. module: real
+#. odoo-python
+#: code:addons/real/models/stock_production_lot.py:0
+#, python-format
+msgid ""
+"The name of the lot does not meet the defined standard\n"
+"\n"
+"%(definition)s"
+msgstr ""
+"El nombre del lote no cumple con el estándar definido.\n"
+"\n"
+"%(definition)s"
+
+#. module: real
+#. odoo-python
+#: code:addons/real/models/stock_picking.py:0
+#, python-format
+msgid "The origin location of each line must match that of the picking"
+msgstr "La ubicacion origen de cada linea debe ser igual a la del picking"
+
+#. module: real
+#. odoo-python
+#: code:addons/real/models/sale_order.py:0
+#, python-format
+msgid "The pricelist cannot be different from the shipping address."
+msgstr "La lista de precios no puede ser dierente de la dirección de envío."
+
+#. module: real
+#. odoo-python
+#: code:addons/real/models/account_move.py:0
+#, python-format
+msgid "The xml is missing or the pdf is missing"
+msgstr "Falta el archivo xml o el pdf"
+
+#. module: real
+#. odoo-python
+#: code:addons/real/models/l10n_mx_account_diot.py:0
+#, python-format
+msgid ""
+"There are more than 80 items in this list, click here to see all of them"
+msgstr ""
+"Hay más de 80 elementos en esta lista, haga clic aquí para verlos todos"
+
+#. module: real
+#. odoo-python
+#: code:addons/real/models/account_move.py:0
+#, python-format
+msgid ""
+"These invoices are blocked for payment. \n"
+"Blocked invoices: %s "
+msgstr ""
+"Estas facturas estan bloqueadas para pago. \n"
+"Facturas bloqueadas: %s "
+
+#. module: real
+#: model_terms:ir.ui.view,arch_db:real.real_sale_advance_payment_inv_view
+msgid "This customer has a sample pending."
+msgstr "Este cliente tiene una muestra pendiente."
+
+#. module: real
+#: model:ir.model.fields,help:real.field_res_partner__paydays
+#: model:ir.model.fields,help:real.field_res_users__paydays
+msgid "This field help to know when the paydays are."
+msgstr "Este campo ayuda a conocer cuando son los días de pago."
+
+#. module: real
+#: model:ir.model.fields,help:real.field_res_partner__review_day
+#: model:ir.model.fields,help:real.field_res_users__review_day
+msgid "This field help to know when the reviews days are."
+msgstr "Este campo ayuda a conocer cuando son los días de revisión."
+
+#. module: real
+#. odoo-python
+#: code:addons/real/models/account_payment.py:0
+#, python-format
+msgid ""
+"This supplier has invoices blocked for payment. \n"
+"Blocked invoices: %s "
+msgstr ""
+"Este proveedor tiene facturas bloquedas para pago. \n"
+"Facturas bloqueadas: %s "
+
+#. module: real
+#: model:ir.model.fields.selection,name:real.selection__res_partner__paydays__thursday
+#: model:ir.model.fields.selection,name:real.selection__res_partner__review_day__thursday
+msgid "Thursday"
+msgstr "Jueves"
+
+#. module: real
+#: model:ir.model.fields,field_description:real.field_account_bank_statement_line__tons_display
+#: model:ir.model.fields,field_description:real.field_account_move__tons_display
+#: model:ir.model.fields,field_description:real.field_account_move_line__tons_display
+#: model:ir.model.fields,field_description:real.field_account_payment__tons_display
+#: model:ir.model.fields,field_description:real.field_product_product__tons_display
+#: model_terms:ir.ui.view,arch_db:real.product_product_tree
+#: model_terms:ir.ui.view,arch_db:real.view_stock_move_outgoing_products_real
+msgid "Tons"
+msgstr "Toneladas"
+
+#. module: real
+#. odoo-python
+#: code:addons/real/models/l10n_mx_account_diot.py:0
+#, python-format
+msgid "Total"
+msgstr ""
+
+#. module: real
+#: model:ir.model.fields,field_description:real.field_sale_order__total_volume
+msgid "Total volume"
+msgstr "Total de volumen"
+
+#. module: real
+#: model:ir.model,name:real.model_stock_picking
+msgid "Transfer"
+msgstr "Traslado"
+
+#. module: real
+#: model:ir.model.fields.selection,name:real.selection__res_partner__paydays__tuesday
+#: model:ir.model.fields.selection,name:real.selection__res_partner__review_day__tuesday
+msgid "Tuesday"
+msgstr "Martes"
+
+#. module: real
+#: model:ir.model.fields,field_description:real.field_stock_valuation_layer__unit_cost
+msgid "Unit Value"
+msgstr "Valor unitario"
+
+#. module: real
+#: model_terms:ir.ui.view,arch_db:real.view_stock_move_outgoing_products_real
+msgid "Unit of Measure"
+msgstr "Unidad de medida"
+
+#. module: real
+#: model:ir.model,name:real.model_res_users
+msgid "User"
+msgstr "Usuario"
+
+#. module: real
+#: model:base.automation,name:real.validate_current_stage
+msgid "Validate Current Stage"
+msgstr "Validar Etapa Actual"
+
+#. module: real
+#: model:ir.model.fields,field_description:real.field_res_partner__visit_frequency
+#: model:ir.model.fields,field_description:real.field_res_users__visit_frequency
+msgid "Visit Frequency"
+msgstr "Frecuencia de Visita"
+
+#. module: real
+#: model:ir.model.fields,field_description:real.field_sale_order_line__line_volume
+msgid "Volume"
+msgstr "Volumen"
+
+#. module: real
+#: model:ir.model.fields,field_description:real.field_account_bank_statement_line__way_of_shipment_id
+#: model:ir.model.fields,field_description:real.field_account_move__way_of_shipment_id
+#: model:ir.model.fields,field_description:real.field_account_payment__way_of_shipment_id
+#: model:ir.model.fields,field_description:real.field_res_partner__way_of_shipment_id
+#: model:ir.model.fields,field_description:real.field_res_users__way_of_shipment_id
+#: model:ir.model.fields,field_description:real.field_sale_order__way_of_shipment_id
+#: model:ir.model.fields,field_description:real.field_stock_move__way_of_shipment_id
+#: model:ir.model.fields,field_description:real.field_stock_picking__way_of_shipment_id
+#: model:ir.model.fields,field_description:real.field_stock_request_order__way_of_shipment_id
+msgid "Way Of Shipment"
+msgstr "Via de Embarque"
+
+#. module: real
+#: model:ir.model,name:real.model_way_of_shipment_type
+#: model:ir.model.fields,field_description:real.field_way_of_shipment_type__name
+#: model:ir.ui.menu,name:real.way_of_shipment_type_menu
+#: model_terms:ir.ui.view,arch_db:real.real_view_picking_internal_search
+#: model_terms:ir.ui.view,arch_db:real.way_of_shipment_type_real_tree_form
+msgid "Way Of Shipment Type"
+msgstr "Tipo de Vía de Embarque"
+
+#. module: real
+#: model:ir.actions.act_window,name:real.action_way_of_shipment_type
+msgid "Way Of Shipment.type"
+msgstr "Tipo de Vía de Embarque"
+
+#. module: real
+#: model:ir.model.fields,field_description:real.field_account_bank_statement_line__way_shipment_type_id
+#: model:ir.model.fields,field_description:real.field_account_move__way_shipment_type_id
+#: model:ir.model.fields,field_description:real.field_account_payment__way_shipment_type_id
+#: model:ir.model.fields,field_description:real.field_res_partner__way_shipment_type_id
+#: model:ir.model.fields,field_description:real.field_res_users__way_shipment_type_id
+#: model:ir.model.fields,field_description:real.field_sale_order__way_shipment_type_id
+#: model:ir.model.fields,field_description:real.field_stock_move__way_of_shipment_type_id
+#: model:ir.model.fields,field_description:real.field_stock_picking__way_shipment_type_id
+#: model:ir.model.fields,field_description:real.field_stock_request_order__way_shipment_type_id
+msgid "Way Shipment Type"
+msgstr "Tipo de Vía de Embarque"
+
+#. module: real
+#: model_terms:ir.ui.view,arch_db:real.view_stock_move_real_filter
+msgid "Way of Shipment"
+msgstr "Via de Embarque"
+
+#. module: real
+#: model_terms:ir.ui.view,arch_db:real.view_stock_move_real_filter
+msgid "Way of Shipment Type"
+msgstr "Tipo de Vía de Embarque"
+
+#. module: real
+#: model:ir.model.fields.selection,name:real.selection__res_partner__paydays__wednesday
+#: model:ir.model.fields.selection,name:real.selection__res_partner__review_day__wednesday
+msgid "Wednesday"
+msgstr "Miércoles"
+
+#. module: real
+#: model:ir.model,name:real.model_mrp_request_create_mo
+msgid "Wizard to create Manufacturing Orders"
+msgstr "Asistente para crear órdenes de fabricación"
+
+#. module: real
+#: model:ir.model,name:real.model_account_payment_line_create
+msgid "Wizard to create payment lines"
+msgstr "Asistente para crear líneas de pago"
+
+#. module: real
+#: model_terms:ir.ui.view,arch_db:real.view_mrp_production_overflow_form
+msgid "Yes"
+msgstr "Si"
+
+#. module: real
+#. odoo-python
+#: code:addons/real/models/sale_order.py:0
+#, python-format
+msgid "You are not allowed to change the payment term"
+msgstr "No se le permite cambiar el plazo de pago"
+
+#. module: real
+#. odoo-python
+#: code:addons/real/models/sale_order.py:0
+#, python-format
+msgid "You are not allowed to edit a Sale Order."
+msgstr "No se le permite modificar una orden de venta."
+
+#. module: real
+#. odoo-python
+#: code:addons/real/models/crm_lead.py:0
+#, python-format
+msgid "You are not allowed to mark an opportunity as won."
+msgstr "No se le permite marcar una oportunidad como ganada."
+
+#. module: real
+#. odoo-python
+#: code:addons/real/models/stock_landed_cost.py:0
+#, python-format
+msgid "You can not select a split method different of By Quantity"
+msgstr "No puedes seleccionar un método de division diferente a Por Cantidad"
+
+#. module: real
+#. odoo-python
+#: code:addons/real/models/crm_lead.py:0
+#, python-format
+msgid "You can't go back to a previous stage."
+msgstr "No puedes volver a una etapa anterior."
+
+#. module: real
+#. odoo-python
+#: code:addons/real/models/purchase_order_line.py:0
+#, python-format
+msgid "You cannot add products with categories of MP"
+msgstr "No puedes agregar productos con categorias de tipo MP"
+
+#. module: real
+#. odoo-python
+#: code:addons/real/models/crm_lead.py:0
+#, python-format
+msgid "You cannot change the stage of an opportunity that is already won."
+msgstr "No se puede cambiar la etapa de una oportunidad que ya está ganada."
+
+#. module: real
+#. odoo-python
+#: code:addons/real/models/sale_order.py:0
+#, python-format
+msgid "You cannot edit this quotation."
+msgstr "No puede editar este documento."
+
+#. module: real
+#. odoo-python
+#: code:addons/real/models/account_move.py:0
+#, python-format
+msgid ""
+"You cannot publish a supplier invoice if you do not have the pdf and xml "
+"attached"
+msgstr ""
+"No puede publicar una factura de proveedor si no tiene el archivo pdf y el "
+"xml adjuntos"
+
+#. module: real
+#. odoo-python
+#: code:addons/real/models/sale_order.py:0
+#, python-format
+msgid "You cannot save quotes without lines."
+msgstr "No puedes guardar cotizaciones sin líneas."
+
+#. module: real
+#: model:ir.actions.act_window,name:real.action_mrp_production_overflow
+msgid "You produced more than initial demand"
+msgstr "Produjo más que la demanda inicial"
+
+#. module: real
+#. odoo-python
+#: code:addons/real/models/sale_order.py:0
+#, python-format
+msgid "Your not allowed to create quotations"
+msgstr "No tienes permitido crear cotizaciones"
+
+#. module: real
+#: model_terms:ir.ui.view,arch_db:real.view_res_partner_real
+msgid "ZIP"
+msgstr "C.P."
+
+#. module: real
+#: model:ir.model.fields.selection,name:real.selection__sale_order__out_pending__avail
+msgid "available"
+msgstr "disponible"
+
+#. module: real
+#: model:ir.model.fields.selection,name:real.selection__sale_order__order_signal__due_soon
+msgid "due soon"
+msgstr "próximo a vencer"
+
+#. module: real
+#: model_terms:ir.ui.view,arch_db:real.view_res_partner_real
+msgid "e.g. Mr."
+msgstr "Por ejemplo, Mr."
+
+#. module: real
+#: model_terms:ir.ui.view,arch_db:real.view_res_partner_real
+msgid "e.g. Sales Director"
+msgstr "Por ejemplo, Director de Ventas"
+
+#. module: real
+#: model_terms:ir.ui.view,arch_db:real.account_move_search
+msgid "it is an expense"
+msgstr "Es un gasto"
+
+#. module: real
+#: model_terms:ir.ui.view,arch_db:real.account_move_search
+msgid "it is not an expense"
+msgstr "No es un gasto"
+
+#. module: real
+#: model:ir.model.fields.selection,name:real.selection__sale_order__out_pending__not_avail
+msgid "not available"
+msgstr "no disponible"
+
+#. module: real
+#: model:ir.model.fields.selection,name:real.selection__sale_order__order_signal__on_time
+msgid "on time"
+msgstr "a tiempo"
+
+#. module: real
+#: model:ir.model.fields.selection,name:real.selection__sale_order__order_signal__overdue
+msgid "overdue"
+msgstr "vencido"

@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <!-- PIVOT VIEWS -->
+
+    <record id="view_sale_invoice_by_liter_report_real_pivot" model="ir.ui.view">
+         <field name="name">sale.invoice.by.liter.report.real.pivot</field>
+         <field name="model">sale.invoice.report.real</field>
+         <field name="arch" type="xml">
+             <pivot string="Liters sold by seller">
+                 <field name="invoice_user_id" type="row" />
+                 <field name="tons_litres" type="measure" string="Liters" />
+             </pivot>
+         </field>
+    </record>
+
+    <record id="view_sale_invoice_by_tons_report_real_pivot" model="ir.ui.view">
+         <field name="name">sale.invoice.by.tons.report.real.pivot</field>
+         <field name="model">sale.invoice.report.real</field>
+         <field name="arch" type="xml">
+             <pivot string="Tons sold by seller">
+                 <field name="invoice_user_id" type="row" />
+                 <field name="tons_display" type="measure" />
+             </pivot>
+         </field>
+    </record>
+
+    <record id="view_sale_invoice_traveling_leaf_report_real_pivot" model="ir.ui.view">
+         <field name="name">sale.invoice.traveling.leaf.report.real.pivot</field>
+         <field name="model">sale.invoice.report.real</field>
+         <field name="arch" type="xml">
+             <pivot string="Traveling Leaf for Sales">
+                 <field name="parent_category_id" type="row" />
+                 <field name="total_sale_no_freight_with_tax" type="measure" />
+                 <field name="freight_total_with_tax" type="measure" />
+                 <field name="tons_display" type="measure" />
+                 <field name="tons_litres" type="measure" />
+             </pivot>
+         </field>
+    </record>
+
+    <!-- TREE VIEWS -->
+
+    <record model="ir.ui.view" id="sale_invoice_tree_credit_note_tree">
+        <field name="name">sale_invoice_tree_credit_note.tree</field>
+        <field name="model">sale.invoice.report.real</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="description" />
+                <field name="name" />
+                <field name="partner_id" />
+                <field name="invoice_date" />
+                <field name="invoice_date_due" />
+                <field name="total" />
+            </tree>
+        </field>
+    </record>
+
+    <!-- SEARCH VIEWS -->
+
+    <record id="view_sale_invoice_report_real_search" model="ir.ui.view">
+        <field name="name">sale.invoice.report.real.search</field>
+        <field name="model">sale.invoice.report.real</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="invoice_date" />
+                <filter
+                    domain="[('invoice_date','=', ((context_today()-datetime.timedelta(days=1)).strftime('%Y-%m-%d')))]"
+                    name="yesterday"
+                    string="Yesterday"
+                />
+                <separator />
+                <filter domain="[('move_type','=', 'out_invoice')]" name="move_type_out_invoice" string="Invoices" />
+                <filter domain="[('move_type','=', 'out_refund')]" name="move_type_out_refund" string="Credit Notes" />
+                <separator />
+                <filter domain="[('parent_category_id.name','=', 'PT POLVOS')]" name="pt_polvos" string="PT Polvos" />
+                <separator />
+                <filter
+                    domain="[('parent_category_id.name','=', 'PT EMULSIONES')]"
+                    name="pt_emulsiones"
+                    string="PT Emulsiones"
+                />
+                <filter
+                    string="Credit Note Type"
+                    name="credit_note_type"
+                    context="{'group_by':'rectified_invoices'}"
+                />
+            </search>
+        </field>
+    </record>
+
+    <!-- ACTIONS -->
+
+    <record id="action_sale_invoice_by_liter_report_real" model="ir.actions.act_window">
+        <field name="name">Liters sold by seller</field>
+        <field name="res_model">sale.invoice.report.real</field>
+        <field name="view_mode">pivot,graph</field>
+        <field name="context">{
+            'search_default_yesterday': 1,
+            'search_default_pt_emulsiones': 1,
+        }</field>
+        <field
+            name="view_ids"
+            eval="[
+            (5,0,0),
+            (0,0,{'view_mode':'pivot', 'view_id': ref('view_sale_invoice_by_liter_report_real_pivot')}),
+        ]"
+        />
+    </record>
+
+    <record id="action_sale_invoice_by_tons_report_real" model="ir.actions.act_window">
+        <field name="name">Tons sold by seller</field>
+        <field name="res_model">sale.invoice.report.real</field>
+        <field name="view_mode">pivot,graph</field>
+        <field name="context">{
+            'search_default_yesterday': 1,
+            'search_default_pt_polvos': 1,
+        }</field>
+        <field
+            name="view_ids"
+            eval="[
+            (5, 0, 0),
+            (0, 0, {
+                'view_mode':'pivot',
+                'view_id': ref('view_sale_invoice_by_tons_report_real_pivot'),
+            }),
+        ]"
+        />
+    </record>
+
+    <record id="action_sale_invoice_traveling_leaf_report_real" model="ir.actions.act_window">
+        <field name="name">Sales Traveling Leaf</field>
+        <field name="res_model">sale.invoice.report.real</field>
+        <field name="view_mode">pivot,graph</field>
+        <field name="context">{
+            'search_default_yesterday':1,
+        }</field>
+        <field
+            name="view_ids"
+            eval="[
+            (5, 0, 0),
+            (0, 0, {
+                'view_mode':'pivot',
+                'view_id': ref('view_sale_invoice_traveling_leaf_report_real_pivot'),
+            }),
+        ]"
+        />
+    </record>
+
+    <record id="action_sale_invoice_traveling_leaf_credit_note_report_real" model="ir.actions.act_window">
+        <field name="name">Credit Note Traveling Leaf</field>
+        <field name="res_model">sale.invoice.report.real</field>
+        <field name="view_mode">tree</field>
+        <field name="context">{
+            'search_default_yesterday': 1,
+            'search_default_credit_note_type': 1,
+            'search_default_move_type_out_refund': 1,
+        }</field>
+        <field
+            name="view_ids"
+            eval="[
+            (5, 0, 0),
+            (0, 0, {
+                'view_mode':'tree',
+                'view_id': ref('sale_invoice_tree_credit_note_tree'),
+            }),
+        ]"
+        />
+    </record>
+
+    <record id="action_sale_invoice_freight_line_report_real" model="ir.actions.act_window">
+        <field name="name">Maniobras Incluidas en Precio</field>
+        <field name="res_model">freight.line.report</field>
+        <field name="view_mode">form</field>
+    </record>
+
+    <!-- MENU ITEMS -->
+
+    <menuitem
+        id="sale_reports_menu"
+        name="Sale Reports"
+        parent="spreadsheet_dashboard.spreadsheet_dashboard_menu_root"
+    />
+    <menuitem
+        id="sale_invoice_by_liter_real_report_menu"
+        name="Liters sold by seller"
+        parent="sale_reports_menu"
+        action="action_sale_invoice_by_liter_report_real"
+    />
+    <menuitem
+        id="sale_invoice_by_tons_real_report_menu"
+        name="Tons sold by seller"
+        parent="sale_reports_menu"
+        action="action_sale_invoice_by_tons_report_real"
+    />
+    <menuitem
+        id="sale_invoice_traveling_leaf_real_report_menu"
+        name="Sales Traveling Leaf"
+        parent="sale_reports_menu"
+        action="action_sale_invoice_traveling_leaf_report_real"
+    />
+    <menuitem
+        id="action_sale_invoice_traveling_leaf_credit_note_report_real_menu"
+        name="Credit Note Traveling Leaf"
+        parent="sale_reports_menu"
+        action="action_sale_invoice_traveling_leaf_credit_note_report_real"
+    />
+    <menuitem
+        id="action_sale_invoice_freight_line_report_real_menu"
+        name="Maniobras Incluidas en Precio"
+        parent="sale_reports_menu"
+        action="action_sale_invoice_freight_line_report_real"
+    />
+</odoo>

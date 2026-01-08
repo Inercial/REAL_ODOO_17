@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+
+    <template
+        id="report_invoice_original_without_amount_real_1"
+        inherit_id="report_account_invoice_real.report_account_invoice_base_real"
+        primary="True"
+    />
+
+
+    <template
+        id="report_invoice_original_without_amount_real_2"
+        inherit_id="report_account_invoice_real.report_invoice_original_without_amount_real_1"
+        priority="1000"
+    >
+        <xpath expr="//strong[@name='invoice_title_type']" position="replace">
+            <strong
+                name="invoice_title_type"
+                style="font-size:0.90rem;border-bottom: 2px solid black;"
+            >FACTURA CLIENTE</strong>
+        </xpath>
+
+        <xpath expr="//span[@name='UUID_origin']" position="replace" />
+        <xpath expr="//div[@name='header_right_col']/br[4]" position="replace" />
+
+        <xpath expr="//th[@name='th_uom']" position="after">
+            <th name="th_sat_code" class="text-center">
+                <span>CLAVE SAT</span>
+            </th>
+            <th name="th_sat_category" class="text-center">
+                <span>CATEGORIA SAT </span>
+            </th>
+        </xpath>
+        <xpath expr="//td[@name='td_uom']" position="after">
+            <td name="td_sat" class="text-center">
+                <span t-field="line.product_id.unspsc_code_id.code" />
+            </td>
+            <td name="td_sat_category" class="text-center">
+                <span t-field="line.product_id.unspsc_code_id.name" />
+            </td>
+        </xpath>
+
+        <xpath expr="//div[@name='table_invoice_lines']//th[@name='th_price_unit']" position="replace" />
+        <xpath expr="//div[@name='table_invoice_lines']//th[@name='th_subtotal']" position="replace" />
+        <xpath expr="//div[@name='table_invoice_lines']//td[@name='td_price_unit']" position="replace" />
+        <xpath expr="//div[@name='table_invoice_lines']//td[@name='td_subtotal']" position="replace" />
+
+        <xpath expr="//div[@name='table_totals']" position="replace" />
+        <xpath expr="//div[@name='total_amount_text']/span[@name='total_amount_text']" position="replace" />
+
+        <xpath expr="//div[@name='signature_section']" position="replace">
+            <div class="row pt-5" style="font-size:12px;">
+                <div class="col-4" />
+                <div style="border-top:1px dotted #000;" class="col-4 text-center">
+                    <span>NOMBRE Y FIRMA DEL CLIENTE</span>
+                </div>
+            </div>
+        </xpath>
+
+    </template>
+
+    <template id="report_invoice_original_without_amount_real_3">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="o">
+                <t t-call="web.basic_layout">
+                    <t
+                        t-call="report_account_invoice_real.report_invoice_original_without_amount_real_2"
+                        t-lang="o.partner_id.lang"
+                    />
+                </t>
+            </t>
+        </t>
+    </template>
+
+    <template id="report_invoice_original_without_amount_real">
+        <t t-call="report_account_invoice_real.report_invoice_original_without_amount_real_3" />
+    </template>
+</odoo>

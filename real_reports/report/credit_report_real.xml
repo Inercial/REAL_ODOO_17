@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+
+    <!-- TREE VIEWS -->
+
+    <record model="ir.ui.view" id="credit_tree_credit_note_tree">
+        <field name="name">credit_tree_credit_note.tree</field>
+        <field name="model">credit.report.real</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="rectified_invoices" />
+                <field name="name" />
+                <field name="partner_id" />
+                <field name="invoice_date" />
+                <field name="payment_date" />
+                <field name="days_invoice" />
+                <field name="total" />
+            </tree>
+        </field>
+    </record>
+
+    <!-- SEARCH VIEWS -->
+
+    <record id="view_credit_report_real_search" model="ir.ui.view">
+        <field name="name">credit.report.real.search</field>
+        <field name="model">credit.report.real</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="credit_note_date" />
+                <filter
+                    domain="[('credit_note_date','=', ((context_today()-datetime.timedelta(days=1)).strftime('%Y-%m-%d')))]"
+                    name="yesterday"
+                    string="Yesterday"
+                />
+                <separator />
+                <filter
+                    string="Credit Note Type"
+                    name="credit_note_type"
+                    context="{'group_by':'rectified_invoices'}"
+                />
+            </search>
+        </field>
+    </record>
+
+    <!-- ACTIONS -->
+
+    <record id="action_credit_note_report_real" model="ir.actions.act_window">
+        <field name="name">Credit Note Report</field>
+        <field name="res_model">credit.report.real</field>
+        <field name="view_mode">tree</field>
+        <field name="context">{
+            'search_default_yesterday': 1,
+            'search_default_credit_note_type': 1,
+            'search_default_move_type_out_refund': 1,
+        }</field>
+        <field
+            name="view_ids"
+            eval="[
+            (5, 0, 0),
+            (0, 0, {
+                'view_mode':'tree',
+                'view_id': ref('credit_tree_credit_note_tree'),
+            }),
+        ]"
+        />
+    </record>
+
+    <!-- MENU ITEMS -->
+    <menuitem
+        id="action_credit_note_report_real_menu"
+        name="Invoice/Credit Note Report"
+        parent="account_reports_menu"
+        action="action_credit_note_report_real"
+    />
+
+    <!-- TEMPLATES -->
+
+    <template id="credit_note_report">
+        <t t-call="web.html_container">
+            <t t-call="web.external_layout" t-lang="es_MX">
+                <div class="page">
+                    <center><h3>Credit Note Report</h3></center>
+                    <center><p>From: <span t-esc="min_date" /> To: <span t-esc="max_date" /></p></center>
+                    <t t-foreach="grouped_dict.keys()" t-as="note_type">
+                        <table style="font-size: 12px;" class="table table-bordered table-sm">
+                            <tr>
+                                <th colspan="7"><center t-field="grouped_dict[note_type][0].rectified_invoices" /></th>
+                            </tr>
+                            <tr>
+                                <th>Concept</th>
+                                <th>Number</th>
+                                <th>Customer</th>
+                                <th>Date</th>
+                                <th>Payment</th>
+                                <th>DIF.</th>
+                                <th>Amount</th>
+                            </tr>
+                            <t t-set="sum_total" t-value="0" />
+                            <t t-foreach="grouped_dict[note_type]" t-as="val">
+                                <tr>
+                                    <td><span t-field="val.rectified_invoices" /></td>
+                                    <td><span t-field="val.name" /></td>
+                                    <td><span t-field="val.partner_id" /></td>
+                                    <td><span t-field="val.invoice_date" /></td>
+                                    <td><span t-field="val.payment_date" /></td>
+                                    <td><span t-field="val.days_invoice" /></td>
+                                    <td style="text-align: right;">$<span
+                                            t-esc="'{0:,.2f}'.format(abs(val.total))"
+                                        /></td>
+                                </tr>
+                                <t t-set="sum_total" t-value="sum_total + abs(val.total)" />
+                            </t>
+                            <tr>
+                                <td colspan="6" />
+                                <td style="text-align: right;">$<span t-esc="'{0:,.2f}'.format(sum_total)" /></td>
+                            </tr>
+                        </table>
+                    </t>
+                </div>
+            </t>
+        </t>
+    </template>
+
+    <record id="paperformat_real_reports" model="report.paperformat">
+        <field name="name">Real Reports</field>
+        <field name="format">Letter</field>
+        <field name="orientation">Portrait</field>
+        <field name="margin_top">18</field>
+        <field name="margin_bottom">10</field>
+        <field name="margin_left">7</field>
+        <field name="margin_right">7</field>
+        <field name="header_line" eval="False" />
+        <field name="header_spacing">15</field>
+        <field name="dpi">90</field>
+    </record>
+
+    <record id="credit_note_report_real" model="ir.actions.report">
+        <field name="name">Credit Note Report</field>
+        <field name="model">credit.report.real</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">real_reports.credit_note_report</field>
+        <field name="report_file">real_reports.credit_note_report</field>
+        <field name="print_report_name">'Credit Note Report'</field>
+        <field name="attachment" />
+        <field name="binding_model_id" ref="model_credit_report_real" />
+        <field name="binding_type">report</field>
+        <field name="paperformat_id" ref="paperformat_real_reports" />
+    </record>
+
+</odoo>

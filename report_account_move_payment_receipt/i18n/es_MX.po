@@ -1,0 +1,192 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* report_account_move_payment_receipt
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 14.0+e\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-02-17 22:59+0000\n"
+"PO-Revision-Date: 2021-02-17 22:59+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: report_account_move_payment_receipt
+#: model_terms:ir.ui.view,arch_db:report_account_move_payment_receipt.report_account_move_payment_receipt_document
+msgid "<span> Emitter Acc. Ord.</span>"
+msgstr "<span> Emisor Cuenta Ord.</span>"
+
+#. module: report_account_move_payment_receipt
+#: model_terms:ir.ui.view,arch_db:report_account_move_payment_receipt.report_account_move_payment_receipt_document
+msgid "<span> | Certification Date:</span>"
+msgstr "<span> | Fecha de Certificación:</span>"
+
+#. module: report_account_move_payment_receipt
+#: model_terms:ir.ui.view,arch_db:report_account_move_payment_receipt.report_account_move_payment_receipt_document
+msgid "<span> | Emission Date:</span>"
+msgstr "<span> | Fecha de Emisión:</span>"
+
+#. module: report_account_move_payment_receipt
+#: model_terms:ir.ui.view,arch_db:report_account_move_payment_receipt.report_account_move_payment_receipt_document
+msgid "<span> | Expedition place:</span>"
+msgstr "<span> | Lugar de expedición:</span>"
+
+#. module: report_account_move_payment_receipt
+#: model_terms:ir.ui.view,arch_db:report_account_move_payment_receipt.report_account_move_payment_receipt_document
+msgid "<span> | Fiscal Folio:</span>"
+msgstr "<span> | Folio Fiscal:</span>"
+
+#. module: report_account_move_payment_receipt
+#: model_terms:ir.ui.view,arch_db:report_account_move_payment_receipt.report_account_move_payment_receipt_document
+msgid "<span> | Fiscal Regime:</span>"
+msgstr "<span> | Régimen Fiscal:</span>"
+
+#. module: report_account_move_payment_receipt
+#: model_terms:ir.ui.view,arch_db:report_account_move_payment_receipt.report_account_move_payment_receipt_document
+msgid "<span> | SAT Certificate:</span>"
+msgstr "<span> | Certificado SAT:</span>"
+
+#. module: report_account_move_payment_receipt
+#: model_terms:ir.ui.view,arch_db:report_account_move_payment_receipt.report_account_move_payment_receipt_document
+msgid "<span>Digital stamp SAT</span>"
+msgstr "<span>Sello digital de SAT</span>"
+
+#. module: report_account_move_payment_receipt
+#: model_terms:ir.ui.view,arch_db:report_account_move_payment_receipt.report_account_move_payment_receipt_document
+msgid "<span>Digital stamp of the emitter</span>"
+msgstr "<span>Sello digital del emisor</span>"
+
+#. module: report_account_move_payment_receipt
+#: model_terms:ir.ui.view,arch_db:report_account_move_payment_receipt.report_account_move_payment_receipt_document
+msgid "<span>Emitter Acc. Ben.</span>"
+msgstr "<span>Emisor Cuenta Ben.</span>"
+
+#. module: report_account_move_payment_receipt
+#: model_terms:ir.ui.view,arch_db:report_account_move_payment_receipt.report_account_move_payment_receipt_document
+msgid "<span>Emitter certificate:</span>"
+msgstr "<span>Certificado del emisor:</span>"
+
+#. module: report_account_move_payment_receipt
+#: model_terms:ir.ui.view,arch_db:report_account_move_payment_receipt.report_account_move_payment_receipt_document
+msgid "<span>Extra Info</span>"
+msgstr "<span>Información Extra</span>"
+
+#. module: report_account_move_payment_receipt
+#: model_terms:ir.ui.view,arch_db:report_account_move_payment_receipt.report_account_move_payment_receipt_document
+msgid "<span>Original chain complement of digital certification SAT</span>"
+msgstr ""
+"<span>Cadena original del complemento del certificado digital del SAT</span>"
+
+#. module: report_account_move_payment_receipt
+#: model_terms:ir.ui.view,arch_db:report_account_move_payment_receipt.report_account_move_payment_receipt_document
+msgid "<strong>Customer: </strong>"
+msgstr "<strong>Cliente: </strong>"
+
+#. module: report_account_move_payment_receipt
+#: model_terms:ir.ui.view,arch_db:report_account_move_payment_receipt.report_account_move_payment_receipt_document
+msgid "<strong>Memo: </strong>"
+msgstr ""
+
+#. module: report_account_move_payment_receipt
+#: model_terms:ir.ui.view,arch_db:report_account_move_payment_receipt.report_account_move_payment_receipt_document
+msgid "<strong>Payment Amount: </strong>"
+msgstr "<strong>Monto Pagado: </strong>"
+
+#. module: report_account_move_payment_receipt
+#: model_terms:ir.ui.view,arch_db:report_account_move_payment_receipt.report_account_move_payment_receipt_document
+msgid "<strong>Payment Date: </strong>"
+msgstr "<strong>Fecha Pago: </strong>"
+
+#. module: report_account_move_payment_receipt
+#: model_terms:ir.ui.view,arch_db:report_account_move_payment_receipt.report_account_move_payment_receipt_document
+msgid "<strong>Payment Method: </strong>"
+msgstr "<strong>Metodo Pago: </strong>"
+
+#. module: report_account_move_payment_receipt
+#: model_terms:ir.ui.view,arch_db:report_account_move_payment_receipt.report_account_move_payment_receipt_document
+msgid "<strong>This document is a printed representation of a CFDI</strong>"
+msgstr ""
+
+#. module: report_account_move_payment_receipt
+#: model_terms:ir.ui.view,arch_db:report_account_move_payment_receipt.report_account_move_payment_receipt_document
+msgid "Account Ben."
+msgstr "Cuenta Ben."
+
+#. module: report_account_move_payment_receipt
+#: model_terms:ir.ui.view,arch_db:report_account_move_payment_receipt.report_account_move_payment_receipt_document
+msgid "Account Ord."
+msgstr "Cuenta Ord."
+
+#. module: report_account_move_payment_receipt
+#: model_terms:ir.ui.view,arch_db:report_account_move_payment_receipt.report_account_move_payment_receipt_document
+msgid "Amount Paid"
+msgstr "Monto Pagado"
+
+#. module: report_account_move_payment_receipt
+#: model_terms:ir.ui.view,arch_db:report_account_move_payment_receipt.report_account_move_payment_receipt_document
+msgid "Balance"
+msgstr "Saldo"
+
+#. module: report_account_move_payment_receipt
+#: model_terms:ir.ui.view,arch_db:report_account_move_payment_receipt.report_account_move_payment_receipt_document
+msgid "Bank Name Acc. Ord."
+msgstr "Nombre del Banco Cuenta Ord."
+
+#. module: report_account_move_payment_receipt
+#: model_terms:ir.ui.view,arch_db:report_account_move_payment_receipt.report_account_move_payment_receipt_document
+msgid "Barcode"
+msgstr "Código de barras"
+
+#. module: report_account_move_payment_receipt
+#: model_terms:ir.ui.view,arch_db:report_account_move_payment_receipt.report_account_move_payment_receipt_document
+msgid "Currency"
+msgstr "Moneda"
+
+#. module: report_account_move_payment_receipt
+#: model_terms:ir.ui.view,arch_db:report_account_move_payment_receipt.report_account_move_payment_receipt_document
+msgid "Invoice"
+msgstr "Factura"
+
+#. module: report_account_move_payment_receipt
+#: model_terms:ir.ui.view,arch_db:report_account_move_payment_receipt.report_account_move_payment_receipt_document
+msgid "Invoice Date"
+msgstr "Fecha de la Factura"
+
+#. module: report_account_move_payment_receipt
+#: model_terms:ir.ui.view,arch_db:report_account_move_payment_receipt.report_account_move_payment_receipt_document
+msgid "Invoice Number"
+msgstr "Número de Factura"
+
+#. module: report_account_move_payment_receipt
+#: model_terms:ir.ui.view,arch_db:report_account_move_payment_receipt.report_account_move_payment_receipt_document
+msgid "Original Amount"
+msgstr "Monto Original"
+
+#. module: report_account_move_payment_receipt
+#: model_terms:ir.ui.view,arch_db:report_account_move_payment_receipt.report_account_move_payment_receipt_document
+msgid "Partiality"
+msgstr "Parcialidad"
+
+#. module: report_account_move_payment_receipt
+#: model:ir.actions.report,name:report_account_move_payment_receipt.action_report_account_payment_receipt
+msgid "Payment Receipt"
+msgstr "Recibo de Pago"
+
+#. module: report_account_move_payment_receipt
+#: model_terms:ir.ui.view,arch_db:report_account_move_payment_receipt.report_account_move_payment_receipt_document
+msgid "Payment Receipt:"
+msgstr "Recibo de Pago"
+
+#. module: report_account_move_payment_receipt
+#: model_terms:ir.ui.view,arch_db:report_account_move_payment_receipt.report_account_move_payment_receipt_document
+msgid "Previous balance"
+msgstr "Saldo anterior"
+
+#. module: report_account_move_payment_receipt
+#: model_terms:ir.ui.view,arch_db:report_account_move_payment_receipt.report_account_move_payment_receipt_document
+msgid "UUID"
+msgstr ""

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="mrp_equipment_real_tree" model="ir.ui.view">
+        <field name="name">mrp.equipment.real.tree</field>
+        <field name="model">mrp.equipment</field>
+        <field name="arch" type="xml">
+            <tree editable="top">
+                <field name="name" />
+            </tree>
+        </field>
+    </record>
+
+    <record id="action_mrp_equipment" model="ir.actions.act_window">
+        <field name="name">Equipments</field>
+        <field name="res_model">mrp.equipment</field>
+        <field name="view_mode">tree</field>
+    </record>
+
+
+    <menuitem id="mrp_equipment_menu" name="MRP Equipment" parent="mrp.menu_mrp_bom" action="action_mrp_equipment" />
+</odoo>

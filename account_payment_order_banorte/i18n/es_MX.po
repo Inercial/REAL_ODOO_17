@@ -1,0 +1,336 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* account_payment_order_banorte
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 17.0+e\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-10-08 21:26+0000\n"
+"PO-Revision-Date: 2025-10-08 21:26+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: account_payment_order_banorte
+#. odoo-python
+#: code:addons/account_payment_order_banorte/models/account_payment.py:0
+#, python-format
+msgid "A description for the payment must be provided"
+msgstr "Debe proporcionar una descripción (memo) del pago"
+
+#. module: account_payment_order_banorte
+#: model:ir.model.fields,help:account_payment_order_banorte.field_account_payment__create_payment_file
+#: model:ir.model.fields,help:account_payment_order_banorte.field_account_payment_method__generate_payment_file
+msgid ""
+"Activate this option if this payment method will generate a payment file to "
+"be uploaded to the bank."
+msgstr ""
+"Activa esta opción si este método de pago generará un archivo de pago a ser "
+"subido al banco."
+
+#. module: account_payment_order_banorte
+#: model:ir.model,name:account_payment_order_banorte.model_res_partner_bank
+msgid "Bank Accounts"
+msgstr "Cuentas bancarias"
+
+#. module: account_payment_order_banorte
+#: model:ir.model.fields,field_description:account_payment_order_banorte.field_res_partner__banorte_biller_id
+#: model:ir.model.fields,field_description:account_payment_order_banorte.field_res_users__banorte_biller_id
+msgid "Banorte Biller"
+msgstr "Número de Facturador Banorte"
+
+#. module: account_payment_order_banorte
+#: model:account.payment.method,name:account_payment_order_banorte.banorte_credit_transfer
+msgid "Banorte Credit Transfer to suppliers"
+msgstr "Transferencia de Crédito Banorte a proveedores"
+
+#. module: account_payment_order_banorte
+#: model:account.payment.method,name:account_payment_order_banorte.banorte_service_payment
+msgid "Banorte Service Payment"
+msgstr "Pago de Servicios Banorte"
+
+#. module: account_payment_order_banorte
+#: model:account.payment.mode,name:account_payment_order_banorte.payment_mode_outbound_banorte
+msgid "Banorte Transfer to Suppliers"
+msgstr "Transferencia Banorte a Proveedores"
+
+#. module: account_payment_order_banorte
+#: model:ir.model,name:account_payment_order_banorte.model_res_partner
+msgid "Contact"
+msgstr "Contacto"
+
+#. module: account_payment_order_banorte
+#: model:ir.model.fields,field_description:account_payment_order_banorte.field_account_payment__expiration_date
+msgid "Expiration Date"
+msgstr "Fecha de Vencimiento"
+
+#. module: account_payment_order_banorte
+#: model:ir.model.fields,help:account_payment_order_banorte.field_account_setup_bank_manual_config__supplier_reference
+#: model:ir.model.fields,help:account_payment_order_banorte.field_res_partner_bank__supplier_reference
+msgid ""
+"Field used to define reference of supplier, if it's not used the reference "
+"must be the invoices that are paid."
+msgstr ""
+"Campo utilizado para definir la referencia del proveedor, si no se utiliza "
+"la referencia será el folio de las facturas que se pagan."
+
+#. module: account_payment_order_banorte
+#: model:ir.model.fields,field_description:account_payment_order_banorte.field_account_payment_method__filename_prefix
+msgid "Filename Prefix"
+msgstr "Prefijo del Nombre del Archivo"
+
+#. module: account_payment_order_banorte
+#: model:ir.model.fields,field_description:account_payment_order_banorte.field_account_payment__create_payment_file
+#: model:ir.model.fields,field_description:account_payment_order_banorte.field_account_payment_method__generate_payment_file
+#: model_terms:ir.ui.view,arch_db:account_payment_order_banorte.account_payment_form_banorte
+msgid "Generate Payment File"
+msgstr "Genera archivo de pago"
+
+#. module: account_payment_order_banorte
+#: model:ir.model.fields,field_description:account_payment_order_banorte.field_account_setup_bank_manual_config__id_supplier
+#: model:ir.model.fields,field_description:account_payment_order_banorte.field_res_partner_bank__id_supplier
+msgid "ID Supplier"
+msgstr "ID Proveedor"
+
+#. module: account_payment_order_banorte
+#. odoo-python
+#: code:addons/account_payment_order_banorte/models/account_payment_order.py:0
+#, python-format
+msgid "ID Supplier for %(name)s is not defined"
+msgstr "ID Supplier for %(name)s no está definido"
+
+#. module: account_payment_order_banorte
+#. odoo-python
+#: code:addons/account_payment_order_banorte/models/account_payment.py:0
+#, python-format
+msgid "ID Supplier for %(partner)s is not defined"
+msgstr "ID Supplier for %(partner)s no está definido"
+
+#. module: account_payment_order_banorte
+#: model:ir.model,name:account_payment_order_banorte.model_account_journal
+msgid "Journal"
+msgstr "Diario"
+
+#. module: account_payment_order_banorte
+#: model:ir.model.fields,field_description:account_payment_order_banorte.field_account_payment_line_create__operation_type
+#: model:ir.model.fields,field_description:account_payment_order_banorte.field_account_setup_bank_manual_config__operation_type
+#: model:ir.model.fields,field_description:account_payment_order_banorte.field_res_partner_bank__operation_type
+msgid "Operation Type"
+msgstr "Tipo de operación"
+
+#. module: account_payment_order_banorte
+#. odoo-python
+#: code:addons/account_payment_order_banorte/models/account_payment_order.py:0
+#, python-format
+msgid "Operation type of supplier %(name)s is not defined"
+msgstr "El tipo de operación del proveedor %(name)s no está definido"
+
+#. module: account_payment_order_banorte
+#. odoo-python
+#: code:addons/account_payment_order_banorte/models/account_payment.py:0
+#, python-format
+msgid "Operation type of supplier %(partner)s is not defined"
+msgstr "El tipo de operación del proveedor %(partner)s no está definido"
+
+#. module: account_payment_order_banorte
+#: model:ir.model.fields.selection,name:account_payment_order_banorte.selection__account_payment_line_create__operation_type__01
+#: model:ir.model.fields.selection,name:account_payment_order_banorte.selection__res_partner_bank__operation_type__01
+msgid "Own"
+msgstr "Propias"
+
+#. module: account_payment_order_banorte
+#: model:ir.model.fields.selection,name:account_payment_order_banorte.selection__res_partner_bank__operation_type__12
+msgid "Pago de TdC AMEX"
+msgstr ""
+
+#. module: account_payment_order_banorte
+#: model:ir.model.fields.selection,name:account_payment_order_banorte.selection__res_partner_bank__operation_type__10
+msgid "Pago de TdC Banorte"
+msgstr ""
+
+#. module: account_payment_order_banorte
+#: model:ir.model.fields.selection,name:account_payment_order_banorte.selection__res_partner_bank__operation_type__11
+msgid "Pago de TdC Otros Bancos"
+msgstr ""
+
+#. module: account_payment_order_banorte
+#. odoo-python
+#: code:addons/account_payment_order_banorte/models/account_payment.py:0
+#, python-format
+msgid "Payment File"
+msgstr "Archivo de Pago"
+
+#. module: account_payment_order_banorte
+#: model:ir.model,name:account_payment_order_banorte.model_account_payment_method
+msgid "Payment Methods"
+msgstr "Métodos de pago"
+
+#. module: account_payment_order_banorte
+#: model:ir.model,name:account_payment_order_banorte.model_account_payment_order
+msgid "Payment Order"
+msgstr "Orden de pago"
+
+#. module: account_payment_order_banorte
+#: model:ir.model,name:account_payment_order_banorte.model_account_payment
+msgid "Payments"
+msgstr "Pagos"
+
+#. module: account_payment_order_banorte
+#: model:ir.model.fields,field_description:account_payment_order_banorte.field_account_payment__ref_1
+msgid "Ref 1"
+msgstr "Referencia 1"
+
+#. module: account_payment_order_banorte
+#: model:ir.model.fields,field_description:account_payment_order_banorte.field_account_payment__ref_2
+msgid "Ref 2"
+msgstr "Referencia 2"
+
+#. module: account_payment_order_banorte
+#: model:ir.model.fields.selection,name:account_payment_order_banorte.selection__account_payment_line_create__operation_type__04
+#: model:ir.model.fields.selection,name:account_payment_order_banorte.selection__res_partner_bank__operation_type__04
+msgid "SPEI"
+msgstr ""
+
+#. module: account_payment_order_banorte
+#: model:ir.model.fields,field_description:account_payment_order_banorte.field_account_payment__state_txt
+msgid "State Txt"
+msgstr "Estado Txt"
+
+#. module: account_payment_order_banorte
+#: model:ir.model.fields,help:account_payment_order_banorte.field_account_setup_bank_manual_config__id_supplier
+#: model:ir.model.fields,help:account_payment_order_banorte.field_res_partner_bank__id_supplier
+msgid "Supplier ID that must exist in the supplier database."
+msgstr "ID de proveedor que debe existir en la base de datos de proveedores."
+
+#. module: account_payment_order_banorte
+#: model:ir.model.fields,field_description:account_payment_order_banorte.field_account_setup_bank_manual_config__supplier_reference
+#: model:ir.model.fields,field_description:account_payment_order_banorte.field_res_partner_bank__supplier_reference
+msgid "Supplier Reference"
+msgstr "Referencia del proveedor"
+
+#. module: account_payment_order_banorte
+#: model:ir.model.fields.selection,name:account_payment_order_banorte.selection__account_payment_line_create__operation_type__05
+#: model:ir.model.fields.selection,name:account_payment_order_banorte.selection__res_partner_bank__operation_type__05
+msgid "TEF"
+msgstr ""
+
+#. module: account_payment_order_banorte
+#: model:ir.model.fields.selection,name:account_payment_order_banorte.selection__res_partner_bank__operation_type__09
+msgid "TdeC Empresariales Banorte"
+msgstr ""
+
+#. module: account_payment_order_banorte
+#. odoo-python
+#: code:addons/account_payment_order_banorte/models/account_payment.py:0
+#, python-format
+msgid "The AMEX account number must be 15 digits long"
+msgstr "El número de cuenta AMEX debe ser de 15 digitos"
+
+#. module: account_payment_order_banorte
+#. odoo-python
+#: code:addons/account_payment_order_banorte/models/account_payment_order.py:0
+#, python-format
+msgid "The CLABE for %(partner)s must be 15 digits and is %(count)d"
+msgstr "La CLABE de %(partner)s debe tener 15 dígitos y tiene %(count)d."
+
+#. module: account_payment_order_banorte
+#. odoo-python
+#: code:addons/account_payment_order_banorte/models/account_payment_order.py:0
+#, python-format
+msgid "The CLABE for %(partner)s must be 18 digits and is %(count)d"
+msgstr "La CLABE de %(partner)s debe tener 18 dígitos y tiene %(count)d."
+
+#. module: account_payment_order_banorte
+#. odoo-python
+#: code:addons/account_payment_order_banorte/models/account_payment.py:0
+#, python-format
+msgid "The bank account number must be 16 digits long"
+msgstr "El número de cuenta bancario debe ser de 16 digitos"
+
+#. module: account_payment_order_banorte
+#. odoo-python
+#: code:addons/account_payment_order_banorte/models/account_payment.py:0
+#, python-format
+msgid "The bank account number must not exceed 20 digits"
+msgstr "El número de cuenta bancario no debe exceder 20 digitos"
+
+#. module: account_payment_order_banorte
+#. odoo-python
+#: code:addons/account_payment_order_banorte/models/account_payment.py:0
+#, python-format
+msgid ""
+"The contact %(contact)s needs a valid email account of 40 chars maximum"
+msgstr ""
+"El contacto %(contact)s requiere un correo electrónico válido de 40 "
+"caracteres como máximo"
+
+#. module: account_payment_order_banorte
+#. odoo-python
+#: code:addons/account_payment_order_banorte/models/account_payment.py:0
+#: code:addons/account_payment_order_banorte/models/account_payment.py:0
+#, python-format
+msgid "The journal %(journal)s has no bank account defined"
+msgstr "El diario %(journal)s no tiene una cuenta bancaria definida"
+
+#. module: account_payment_order_banorte
+#. odoo-python
+#: code:addons/account_payment_order_banorte/models/account_payment.py:0
+#, python-format
+msgid "The partner %(partner)s has no Banorte biller ID defined"
+msgstr ""
+"El partner %(partner)s no tiene un Número de Facturador Banorte definido"
+
+#. module: account_payment_order_banorte
+#. odoo-python
+#: code:addons/account_payment_order_banorte/models/account_payment.py:0
+#, python-format
+msgid "The payment needs a reference of 40 characters maximum"
+msgstr "El pago necesita una referencia de 40 caracteres como máximo"
+
+#. module: account_payment_order_banorte
+#. odoo-python
+#: code:addons/account_payment_order_banorte/models/account_payment.py:0
+#, python-format
+msgid "The source and destination currency must be the same"
+msgstr "Las monedas origen y destino deben ser iguales"
+
+#. module: account_payment_order_banorte
+#. odoo-python
+#: code:addons/account_payment_order_banorte/models/account_payment.py:0
+#, python-format
+msgid "The system only supports MXN payments"
+msgstr "El sistema solo acepta pagos en MXN"
+
+#. module: account_payment_order_banorte
+#: model:ir.model.fields.selection,name:account_payment_order_banorte.selection__account_payment_line_create__operation_type__02
+#: model:ir.model.fields.selection,name:account_payment_order_banorte.selection__res_partner_bank__operation_type__02
+msgid "Third parties"
+msgstr "Terceros"
+
+#. module: account_payment_order_banorte
+#: model:ir.model,name:account_payment_order_banorte.model_account_payment_line_create
+msgid "Wizard to create payment lines"
+msgstr "Asistente para crear líneas de pago"
+
+#. module: account_payment_order_banorte
+#. odoo-python
+#: code:addons/account_payment_order_banorte/models/account_payment.py:0
+#: code:addons/account_payment_order_banorte/models/account_payment_order.py:0
+#, python-format
+msgid ""
+"You have the following errors: \n"
+"%(errors)s"
+msgstr ""
+"Tiene los siguientes errores: \n"
+"%(errors)s"
+
+#. module: account_payment_order_banorte
+#. odoo-python
+#: code:addons/account_payment_order_banorte/models/account_payment.py:0
+#, python-format
+msgid "You need to select a partner bank account"
+msgstr "Debe seleccionar la cuenta bancaria del contacto"

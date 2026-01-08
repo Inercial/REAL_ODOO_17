@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="banorte_check_report" model="ir.actions.report">
+        <field name="name">report_check_banorte_real.banorte_check_xlsx</field>
+        <field name="report_type">xlsx</field>
+        <field name="model">account.payment</field>
+        <field name="report_name">report_check_banorte_real.banorte_check_xlsx</field>
+        <field name="print_report_name">'Banorte Check %s' % object.name</field>
+    </record>
+</odoo>

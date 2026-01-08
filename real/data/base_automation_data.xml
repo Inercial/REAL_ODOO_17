@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="validate_current_stage" model="base.automation">
+        <field name="name">Validate Current Stage</field>
+        <field name="model_id" ref="crm.model_crm_lead" />
+        <field name="trigger_field_ids" eval="[(4,ref('crm.field_crm_lead__stage_id'))]" />
+        <field name="trigger">on_create_or_write</field>
+        <field name="active" eval="True" />
+    </record>
+    <record id="validate_current_stage_server_action" model="ir.actions.server">
+        <field name="name">Validate Current Stage</field>
+        <field name="state">code</field>
+        <field name="model_id" ref="crm.model_crm_lead" />
+        <field name="base_automation_id" ref="validate_current_stage" />
+        <field name="code">
+            for record in records:
+
+                # Seller Role
+                etapa_propuesta = env.ref('real.model_crm_stage_approval_management')
+                etapa_aprob_gcia = env.ref('crm.stage_lead1')
+                etapa_list_precios = env.ref('crm.stage_lead2')
+                etapa_alta_cli = env.ref('crm.stage_lead3')
+                current_stage = record.stage_id.id
+
+                # seller role
+                restrict_stages_seller = etapa_propuesta
+                restrict_stages_seller |= etapa_alta_cli
+                restrict_stages_seller |= etapa_aprob_gcia
+
+                # Marketing Role
+                restrict_stages_marketing = etapa_alta_cli
+
+                # Sales Manager Role
+                restrict_stages_sales_m = etapa_alta_cli
+
+                # Operations Rolereal_security.res_users_role_operations
+                restrict_stages_operations = etapa_list_precios
+                restrict_stages_operations |= etapa_propuesta
+                restrict_stages_operations |= etapa_aprob_gcia
+
+                has_role_seller = env.user.has_group("real.res_users_role_seller_res_groups")
+                has_role_marketing = env.user.has_group("real.res_users_role_marketing_res_groups")
+                has_role_sales_manager = env.user.has_group("real.res_users_role_sales_manager_res_groups")
+                has_role_role_operations = env.user.has_group("real.res_users_role_operations_res_groups")
+
+                if has_role_seller and current_stage in restrict_stages_seller.ids:
+                    raise Warning('Rol de Vendedor: No tienes permitido pasar a la Etapa: '+record.stage_id.name)
+
+                if has_role_marketing and current_stage in restrict_stages_marketing.ids:
+                    raise Warning('Rol Marketing: No tienes permitido pasar a la Etapa: '+record.stage_id.name)
+
+                if has_role_sales_manager and current_stage in restrict_stages_sales_m.ids:
+                    raise Warning('Rol Gerente de Ventas: No tienes permitido pasar a la Etapa: '+record.stage_id.name)
+
+                if has_role_role_operations and current_stage in restrict_stages_operations.ids:
+                    raise Warning('Rol operaciones: No tienes permitido pasar a la Etapa: '+record.stage_id.name)
+        </field>
+    </record>
+</odoo>

@@ -1,0 +1,55 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* report_check_banorte_real
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 17.0+e\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-10-08 22:30+0000\n"
+"PO-Revision-Date: 2025-10-08 22:30+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: report_check_banorte_real
+#: model:ir.actions.report,print_report_name:report_check_banorte_real.banorte_check_report
+msgid "'Banorte Check %s' % object.name"
+msgstr "'Cheque Banorte %s' % object.name"
+
+#. module: report_check_banorte_real
+#. odoo-python
+#: code:addons/report_check_banorte_real/models/account_payment.py:0
+#, python-format
+msgid "Banorte Check"
+msgstr "Cheque Banorte"
+
+#. module: report_check_banorte_real
+#. odoo-python
+#: code:addons/report_check_banorte_real/reports/banorte_check_report.py:0
+#, python-format
+msgid "Check"
+msgstr "Cheque"
+
+#. module: report_check_banorte_real
+#: model:ir.model,name:report_check_banorte_real.model_report_report_check_banorte_real_banorte_check_xlsx
+msgid "Check XLSX Report for Banorte"
+msgstr "Reporte XLSX de Banorte"
+
+#. module: report_check_banorte_real
+#: model:ir.model,name:report_check_banorte_real.model_res_currency
+msgid "Currency"
+msgstr "Divisa"
+
+#. module: report_check_banorte_real
+#: model:ir.model,name:report_check_banorte_real.model_account_payment
+msgid "Payments"
+msgstr "Pagos"
+
+#. module: report_check_banorte_real
+#: model:ir.actions.report,name:report_check_banorte_real.banorte_check_report
+msgid "report_check_banorte_real.banorte_check_xlsx"
+msgstr ""

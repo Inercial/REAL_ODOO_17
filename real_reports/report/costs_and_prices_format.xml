@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <template id="costs_and_prices_template">
+        <t t-call="web.html_container">
+            <t t-call="web.external_layout">
+                <div class="page">
+                    <table style="width: 100%; border: none;" border="0">
+                        <th style="font-size: 30px" scope="row">
+                            <b>Costos y Precios por Líneas</b>
+                        </th>
+                        <th style="text-align: right;" scope="row">
+                            <b style="font-size: 30px">P-075</b><br /><t>Revision: 15/03/2024</t>
+                        </th>
+                    </table>
+                    <div style="font-size: 12px;">
+                        <div style="font-weight: bold;">
+                            fecha inicial: <t t-esc="date_start" />
+                        </div>
+                        <div style="font-weight: bold;">
+                            fecha final: <t t-esc="date_end" />
+                        </div>
+                    </div>
+                    <t t-foreach="titles" t-as="title">
+                        <b t-esc="title" style="font-size: 20px" />
+                        <table class="table table-sm table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>CATEGORIA HIJA</th>
+                                    <th>TONS</th>
+                                    <th>COSTO LINEA</th>
+                                    <th>VENTA</th>
+                                    <th>FLETE LINEA</th>
+                                    <th>CANTIDAD</th>
+                                    <th>COSTO</th>
+                                    <th>VENTA</th>
+                                    <th>% M.P.</th>
+                                </tr>
+                            </thead>
+                            <t t-foreach="lines" t-as="line">
+                                <t t-if="title == line[0] and line[1] != 'TOTAL'">
+                                    <tr>
+                                        <td><t t-esc="line[1]" /></td>
+                                        <t t-if="line[0] == 'PT EMULSIONES'">
+                                            <td><t t-esc="'{0:,.2f}'.format(line[3])" /></td>
+                                        </t>
+                                        <t t-else="">
+                                            <td><t t-esc="'{0:,.2f}'.format(line[2])" /></td>
+                                        </t>
+                                        <td>$<t t-esc="'{0:,.2f}'.format(line[4])" /></td>
+                                        <td>$<t t-esc="'{0:,.2f}'.format(line[5])" /></td>
+                                        <td>$<t t-esc="'{0:,.2f}'.format(line[6])" /></td>
+                                        <td><t t-esc="'{0:,.0f}'.format(line[7])" /></td>
+                                        <td>$<t t-esc="'{0:,.2f}'.format(line[8])" /></td>
+                                        <td>$<t t-esc="'{0:,.2f}'.format(line[9])" /></td>
+                                        <td><t t-esc="'{0:,.1f}'.format(line[10])" />%</td>
+                                    </tr>
+                                </t>
+                                <t t-if="line[0] == title and line[1] == 'TOTAL'">
+                                    <tr>
+                                        <td />
+                                        <t t-if="line[0] == 'PT EMULSIONES'">
+                                            <td><t t-esc="'{0:,.2f}'.format(line[3])" /></td>
+                                        </t>
+                                        <t t-else="">
+                                            <td><t t-esc="'{0:,.2f}'.format(line[2])" /></td>
+                                        </t>
+                                        <td>$<t t-esc="'{0:,.2f}'.format(line[4])" /></td>
+                                        <td>$<t t-esc="'{0:,.2f}'.format(line[5])" /></td>
+                                        <td>$<t t-esc="'{0:,.2f}'.format(line[6])" /></td>
+                                        <td><t t-esc="'{0:,.0f}'.format(line[7])" /></td>
+                                        <td />
+                                        <td />
+                                        <td><t t-esc="'{0:,.1f}'.format(line[8])" />%</td>
+                                    </tr>
+                                </t>
+                            </t>
+                        </table>
+                    </t>
+                </div>
+            </t>
+        </t>
+    </template>
+</odoo>

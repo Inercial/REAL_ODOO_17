@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record model="ir.ui.view" id="collection_report_real_tree">
+        <field name="name">collection_report_real.tree</field>
+        <field name="model">collection.report.real</field>
+        <field name="arch" type="xml">
+            <tree expand="context.get('expand', False)">
+                <field name="invoice_name" />
+                <field name="invoice_user_id" optional="hide" />
+                <field name="payment_date" />
+                <field name="max_date" optional="hide" />
+                <field name="partner_id" />
+                <field name="days_invoice" />
+                <field name="total" sum="Total" />
+                <field name="total_0_60" sum="Total 0 - 60" />
+                <field name="total_more_60" sum="Total 61 +" />
+                <field name="currency_id" column_invisible="1" />
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_module_search" model="ir.ui.view">
+        <field name="name">collection.report.real</field>
+        <field name="model">collection.report.real</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="payment_date" />
+                <field name="invoice_user_id" />
+                <filter
+                    name="last_week"
+                    string="Last Week"
+                    domain="[
+                    ('max_date', '&gt;=', (context_today()-datetime.timedelta(days=7)).strftime('%Y-%m-%d')),
+                    ('max_date', '&lt;=', context_today().strftime('%Y-%m-%d')),
+                ]"
+                />
+                <filter name="group_by_salesman" string="Salesman" context="{'group_by' : 'invoice_user_id'}" />
+            </search>
+        </field>
+    </record>
+
+    <record id="action_action_collection_report_real" model="ir.actions.act_window">
+        <field name="name">Collection by Salesman</field>
+        <field name="res_model">collection.report.real</field>
+        <field name="view_mode">tree</field>
+        <field name="context">{
+            'search_default_last_week': 1,
+            'search_default_group_by_salesman': 1,
+            'expand': 1,
+        }</field>
+    </record>
+    <menuitem
+        id="action_collection_report_real_menu"
+        name="Collection by Salesman"
+        parent="account_reports_menu"
+        action="action_action_collection_report_real"
+    />
+</odoo>

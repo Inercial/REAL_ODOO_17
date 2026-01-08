@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <!-- PIVOT VIEWS -->
+    <record id="view_kardex_report_real_pivot" model="ir.ui.view">
+         <field name="name">kardex.report.real.pivot</field>
+         <field name="model">kardex.report.real</field>
+         <field name="arch" type="xml">
+             <pivot string="kardex Report">
+                <field name="name" type="row" string="Concept" />
+                <field name="incoming" type="measure" />
+                <field name="outgoing" type="measure" />
+             </pivot>
+         </field>
+    </record>
+    <!-- TREE VIEWS -->
+    <record model="ir.ui.view" id="kardex_report_real_tree">
+        <field name="name">kardex.report.real.tree</field>
+        <field name="model">kardex.report.real</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="date" optional="show" />
+                <field name="accounting_date" optional="show" />
+                <field name="product_id" />
+                <field name="name" />
+                <field name="origin" optional="hide" />
+                <field name="reference" optional="hide" />
+                <field name="category_id" optional="hide" />
+                <field name="parent_category_id" optional="hide" />
+                <field name="incoming" optional="show" sum="Incoming" />
+                <field name="outgoing" optional="show" sum="Outgoing" />
+                <field name="account_move_id" optional="hide" />
+                <field name="stock_move_id" optional="hide" />
+            </tree>
+        </field>
+    </record>
+</odoo>

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="mrp_license_plate_real_tree" model="ir.ui.view">
+        <field name="name">mrp.license.plate.real.tree</field>
+        <field name="model">mrp.license.plate</field>
+        <field name="arch" type="xml">
+            <tree editable="top">
+                <field name="name" />
+            </tree>
+        </field>
+    </record>
+
+    <record id="action_mrp_license_plate" model="ir.actions.act_window">
+        <field name="name">License Plates</field>
+        <field name="res_model">mrp.license.plate</field>
+        <field name="view_mode">tree</field>
+    </record>
+
+
+    <menuitem
+        id="mrp_license_plate_menu"
+        name="License Plates"
+        parent="mrp.menu_mrp_bom"
+        action="action_mrp_license_plate"
+    />
+</odoo>

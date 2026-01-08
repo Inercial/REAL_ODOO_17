@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+
+    <template id="report_saleorder_document_base_2" inherit_id="sale.report_saleorder_document" primary="True" />
+
+    <template
+        id="report_sale_order_quotation_title"
+        inherit_id="report_sale_order_real.report_saleorder_document_base_2"
+        priority="1000"
+    >
+        <xpath expr="//div[hasclass('page')]/h2[hasclass('mt-4')]" position="replace">
+            <h2 class="text-center mt-0 mb-5">Quotation</h2>
+        </xpath>
+    </template>
+
+    <template id="report_saleorder_raw_2">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="doc">
+                <t t-call="report_sale_order_real.report_sale_order_quotation_title" t-lang="doc.partner_id.lang" />
+            </t>
+        </t>
+    </template>
+
+    <template id="report_saleorder_2">
+        <t t-call="report_sale_order_real.report_saleorder_raw_2" />
+    </template>
+
+</odoo>

@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <!-- PIVOT VIEWS -->
+
+    <record id="view_production_consumption_report_real_pivot" model="ir.ui.view">
+         <field name="name">production.consumption.report.real</field>
+         <field name="model">production.consumption.report.real</field>
+         <field name="arch" type="xml">
+             <pivot>
+                <field name="product_id" type="row" />
+                <field name="product_uom_qty" type="measure" />
+             </pivot>
+         </field>
+    </record>
+
+    <record id="view_production_consumption_by_equipment_report_real_pivot" model="ir.ui.view">
+         <field name="name">production.consumption.report.real.by.equipment</field>
+         <field name="model">production.consumption.report.real</field>
+         <field name="arch" type="xml">
+             <pivot>
+                <field name="equipment_id" type="col" />
+                <field name="product_id" type="row" />
+                <field name="product_uom_qty" type="measure" />
+             </pivot>
+         </field>
+    </record>
+
+    <!-- SEARCH VIEWS -->
+
+    <record id="view_production_consumption_report_real_search" model="ir.ui.view">
+        <field name="name">production.consumption.report.real.search</field>
+        <field name="model">production.consumption.report.real</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="product_id" />
+                <filter
+                    domain="[('date', '=', (context_today() - datetime.timedelta(days=1)).strftime('%Y-%m-%d'))]"
+                    name="yesterday"
+                    string="Yesterday"
+                />
+            </search>
+        </field>
+    </record>
+
+    <!-- ACTIONS -->
+
+    <record id="action_production_consumption_report_real" model="ir.actions.act_window">
+        <field name="name">Consumption of loads</field>
+        <field name="res_model">production.consumption.report.real</field>
+        <field name="view_mode">pivot</field>
+        <field name="context">{
+            'search_default_yesterday': 1,
+        }</field>
+        <field
+            name="view_ids"
+            eval="[
+            (5,0,0),
+            (0,0,{'view_mode':'pivot', 'view_id': ref('view_production_consumption_report_real_pivot')}),
+        ]"
+        />
+    </record>
+
+    <record id="actionproduction_consumption_report_real_by_equipment" model="ir.actions.act_window">
+        <field name="name">Consumption of loads by equipment</field>
+        <field name="res_model">production.consumption.report.real</field>
+        <field name="view_mode">pivot</field>
+        <field name="context">{
+            'search_default_yesterday': 1,
+        }</field>
+        <field
+            name="view_ids"
+            eval="[
+            (5, 0, 0),
+            (0, 0, {
+                'view_mode':'pivot',
+                'view_id': ref('view_production_consumption_by_equipment_report_real_pivot'),
+            }),
+        ]"
+        />
+    </record>
+
+    <!-- MENU ITEMS -->
+
+    <menuitem
+        id="action_production_consumption_report_real_menu"
+        name="Consumption of loads"
+        parent="mrp_reports_menu"
+        action="action_production_consumption_report_real"
+    />
+    <menuitem
+        id="actionproduction_consumption_report_real_by_equipment_menu"
+        name="Consumption of loads by equipment"
+        parent="mrp_reports_menu"
+        action="actionproduction_consumption_report_real_by_equipment"
+    />
+
+</odoo>

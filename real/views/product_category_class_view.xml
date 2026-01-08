@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="product_category_class_real_tree" model="ir.ui.view">
+        <field name="name">product.category.class.real.tree</field>
+        <field name="model">product.category.class</field>
+        <field name="arch" type="xml">
+            <tree editable="top">
+                <field name="name" width="60%" />
+                <field name="cpt" width="40%" />
+            </tree>
+        </field>
+    </record>
+
+    <record id="action_product_category_class" model="ir.actions.act_window">
+        <field name="name">Category Classes</field>
+        <field name="res_model">product.category.class</field>
+        <field name="view_mode">tree</field>
+    </record>
+
+
+    <menuitem
+        id="product_category_class_menu"
+        name="Category Class"
+        parent="stock.menu_product_in_config_stock"
+        action="action_product_category_class"
+    />
+</odoo>

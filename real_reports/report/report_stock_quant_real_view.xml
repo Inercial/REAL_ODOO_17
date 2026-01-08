@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record model='ir.ui.view' id='report_stock_quant_real'>
+        <field name='name'>report_stock_quant_real.tree</field>
+        <field name='model'>report.stock.quant.real</field>
+        <field name='arch' type='xml'>
+            <tree>
+                <field name="product_id" />
+                <field name="pending_qty_local" />
+                <field name="pending_qty_foreign" />
+                <field name="pending_total" />
+                <field name="available_space" />
+                <field name="excess" />
+                <field name="batch_number" />
+            </tree>
+        </field>
+    </record>
+    <record id="view_report_stock_quant_real_search" model="ir.ui.view">
+        <field name="name">report_stock_quant_real.search</field>
+        <field name="model">report.stock.quant.real</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="product_id" />
+                <filter string="product" name="group_by_product_id" context="{'group_by':'product_id'}" />
+            </search>
+        </field>
+    </record>
+    <record id="action_report_stock_quant_real" model="ir.actions.act_window">
+        <field name="name" />
+        <field name="res_model">report.stock.quant.real</field>
+        <field name="view_mode">tree</field>
+        <field name="context">{
+            'search_default_group_by_product_id': 1,
+        }</field>
+    </record>
+</odoo>

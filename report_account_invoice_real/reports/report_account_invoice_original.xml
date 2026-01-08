@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+
+    <template
+        id="report_invoice_original_real_1"
+        inherit_id="report_account_invoice_real.report_account_invoice_base_real"
+        primary="True"
+    />
+
+    <template
+        id="report_invoice_original_real_2"
+        inherit_id="report_account_invoice_real.report_invoice_original_real_1"
+        priority="1000"
+    >
+        <xpath expr="//strong[@name='invoice_title_type']" position="replace">
+            <strong
+                name="invoice_title_type"
+                style="font-size:0.90rem;border-bottom: 2px solid black;"
+            >FACTURA ORIGINAL</strong>
+        </xpath>
+
+        <xpath expr="//th[@name='th_uom']" position="after">
+            <th name="th_sat" class="text-center">
+                <span>CLAVE SAT</span>
+            </th>
+        </xpath>
+        <xpath expr="//td[@name='td_uom']" position="after">
+            <td name="td_sat" class="text-center">
+                <span t-field="line.product_id.unspsc_code_id.code" />
+            </td>
+        </xpath>
+    </template>
+
+    <template id="report_invoice_original_real_3">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="o">
+                <t t-call="web.basic_layout">
+                    <t
+                        t-call="report_account_invoice_real.report_invoice_original_real_2"
+                        t-lang="o.partner_id.lang"
+                    />
+                </t>
+            </t>
+        </t>
+    </template>
+
+    <template id="report_invoice_original_real">
+        <t t-call="report_account_invoice_real.report_invoice_original_real_3" />
+    </template>
+</odoo>

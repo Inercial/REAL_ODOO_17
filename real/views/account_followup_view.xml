@@ -1,0 +1,12 @@
+<odoo>
+    <record id="customer_statements_form_view_readonly_maturity" model="ir.ui.view">
+        <field name="name">customer.statements.followup.readonly.maturity</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="account_followup.customer_statements_form_view"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='unreconciled_aml_ids']/tree/field[@name='date_maturity']" position="attributes">
+                <attribute name="readonly">1</attribute>
+            </xpath>
+        </field>
+    </record>
+</odoo>

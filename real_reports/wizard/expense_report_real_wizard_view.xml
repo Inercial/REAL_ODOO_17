@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>s
+    <record id="view_expense_report_real_wiz" model="ir.ui.view">
+        <field name="name">Expense Report</field>
+        <field name="model">expense.report.real.wiz</field>
+        <field name="arch" type="xml">
+            <form>
+                <group>
+                    <group>
+                        <field name="date_from" />
+                        <field name="date_to" />
+                    </group>
+                </group>
+                <footer>
+                    <button name="open_table" string="CONFIRM" type="object" class="btn-primary" />
+                    <button string="Cancel" class="btn-secondary" special="cancel" />
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_account_expense_report_real_wiz" model="ir.actions.act_window">
+        <field name="name">Expense Report</field>
+        <field name="res_model">expense.report.real.wiz</field>
+        <field name="view_mode">form</field>
+        <field name="view_id" ref="view_expense_report_real_wiz" />
+        <field name="target">new</field>
+    </record>
+
+    <menuitem
+        id="action_account_expense_report_real_menu"
+        name="Expense Report"
+        parent="account_reports_menu"
+        action="action_account_expense_report_real_wiz"
+    />
+
+</odoo>
