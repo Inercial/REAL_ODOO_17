@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <template id="purchase_order_report">
+        <t t-call="web.external_layout">
+            <t t-foreach="docs" t-as="o">
+                <t t-set="o" t-value="o.with_context(lang=o.partner_id.lang)" />
+                <main>
+                    <div class="page">
+                        <div class="row align-items-center mb-2">
+                            <div class="col-4" />
+                            <div class="col-4 text-center">
+                                <h3>
+                                    <u>ORDEN DE COMPRA</u>
+                                </h3>
+                            </div>
+                            <div class="col-4 text-end">
+                                <h3>A-002</h3>
+                            </div>
+                        </div>
+                        <div class="row mb-2">
+                            <div class="col-4">
+                                <strong>Fecha creación:</strong>
+                                <span t-field="o.create_date" />
+                            </div>
+                            <div class="col-4" />
+                            <div class="col-4 text-end">
+                                <h4 class="o_bold">
+                                    <span t-field="o.name" />
+                                </h4>
+                            </div>
+                        </div>
+                        <div class="row mb-2">
+                            <div class="col-6">
+                                <u>
+                                    <strong>Nombre del proveedor:</strong>
+                                </u>
+                                <br />
+                                <span t-field="o.partner_id.name" />
+                            </div>
+                            <div class="col-6">
+                                <u>
+                                    <strong>Moneda:</strong>
+                                </u>
+                                <br />
+                                <span t-field="o.currency_id.display_name" />
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <div class="col-4">
+                                <u>
+                                    <strong>RFC:</strong>
+                                </u>
+                                <br />
+                                <span t-field="o.partner_id.vat" />
+                            </div>
+                            <div class="col-4">
+                                <u>
+                                    <strong>Responsable:</strong>
+                                </u>
+                                <br />
+                                <span t-field="o.create_uid.name" />
+                            </div>
+                            <div class="col-4">
+                                <u>
+                                    <strong>Referencia proveedor:</strong>
+                                </u>
+                                <br />
+                                <span t-field="o.partner_ref" />
+                            </div>
+                        </div>
+                        <table class="table table-sm mt-3">
+                            <thead>
+                                <tr>
+                                    <th>Nombre</th>
+                                    <th>Descripción</th>
+                                    <th class="text-center">UoM</th>
+                                    <th>Cuenta analítica</th>
+                                    <th class="text-center">Precio</th>
+                                    <th class="text-center">Cantidad</th>
+                                    <th class="text-center">Impuesto</th>
+                                    <th class="text-center">Total</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <t t-foreach="o.order_line" t-as="line">
+                                    <tr t-if="not line.display_type">
+                                        <td>
+                                            <span t-field="line.product_id.name" />
+                                        </td>
+                                        <td>
+                                            <span t-field="line.name" />
+                                        </td>
+                                        <td class="text-center">
+                                            <span t-field="line.product_uom.display_name" />
+                                        </td>
+                                        <td>
+                                            <t t-set="account_name" t-value="''" />
+                                            <t t-foreach="(line.analytic_distribution or {}).keys()"
+                                                t-as="key">
+                                                <t t-if="not account_name">
+                                                    <t t-foreach="key.split(',')" t-as="acc_id">
+                                                        <t t-if="not account_name">
+                                                            <t t-set="acc"
+                                                                t-value="env['account.analytic.account'].browse(int(acc_id.strip()))" />
+                                                            <t
+                                                                t-if="acc.exists() and (not acc.plan_id or acc.plan_id.id != 78)">
+                                                                <t t-set="account_name"
+                                                                    t-value="acc.name" />
+                                                            </t>
+                                                        </t>
+                                                    </t>
+                                                </t>
+                                            </t>
+                                            <span t-esc="account_name" />
+                                        </td>
+                                        <td class="text-center">
+                                            <span t-field="line.price_unit"
+                                                t-options="{'widget': 'monetary', 'display_currency': o.currency_id}" />
+                                        </td>
+                                        <td class="text-center">
+                                            <span t-field="line.product_qty" />
+                                        </td>
+                                        <td class="text-center">
+                                            <span t-field="line.price_tax"
+                                                t-options="{'widget': 'monetary', 'display_currency': o.currency_id}" />
+                                        </td>
+                                        <td class="text-center">
+                                            <span t-field="line.price_total"
+                                                t-options="{'widget': 'monetary', 'display_currency': o.currency_id}" />
+                                        </td>
+                                    </tr>
+                                    <tr t-if="line.display_type">
+                                        <td colspan="8" class="fw-bold fst-italic">
+                                            <span t-field="line.name" />
+                                        </td>
+                                    </tr>
+                                </t>
+                            </tbody>
+                        </table>
+                        <div class="row mt-4">
+                            <div class="col-7" />
+                            <div class="col-5">
+                                <table class="table table-sm o_report_block_total">
+                                    <tr>
+                                        <td>
+                                            <strong>Subtotal</strong>
+                                        </td>
+                                        <td class="text-end">
+                                            <span t-field="o.amount_untaxed"
+                                                t-options="{'widget': 'monetary', 'display_currency': o.currency_id}" />
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Impuestos</td>
+                                        <td class="text-end">
+                                            <span t-field="o.amount_tax"
+                                                t-options="{'widget': 'monetary', 'display_currency': o.currency_id}" />
+                                        </td>
+                                    </tr>
+                                    <tr class="o_total">
+                                        <td>
+                                            <strong>Total</strong>
+                                        </td>
+                                        <td class="text-end">
+                                            <span t-field="o.amount_total"
+                                                t-options="{'widget': 'monetary', 'display_currency': o.currency_id}" />
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="mt-4">
+                            <strong>
+                                <u>Términos y condiciones:</u>
+                            </strong>
+                            <p t-field="o.notes" />
+                        </div>
+                        <div class="text-center mt-5">
+                            <p>________________________________________</p>
+                            <p>
+                                <strong>FIRMA DEL RESPONSABLE</strong>
+                            </p>
+                        </div>
+                    </div>
+                </main>
+            </t>
+        </t>
+    </template>
+
+    <record id="action_purchase_order_report" model="ir.actions.report">
+        <field name="name">Purchase Order</field>
+        <field name="model">purchase.order</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">real.purchase_order_report</field>
+        <field name="report_file">real.purchase_order_report</field>
+        <field name="binding_model_id" ref="purchase.model_purchase_order" />
+        <field name="binding_type">report</field>
+    </record>
+
+</odoo>
