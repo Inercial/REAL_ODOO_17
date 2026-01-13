@@ -1,0 +1,222 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <template id="order_preparation_tempate">
+        <t t-call="web.external_layout">
+            <t t-foreach="docs" t-as="doc">
+                <main>
+                    <div class="page h6">
+                        <table style="width:100%; border:0; background:#fff;">
+                            <tr>
+                                <td style="width:33%; background:#fff; border:0;"></td>
+                                <td
+                                    style="width:34%; text-align:center; white-space:nowrap; background:#fff; border:0;">
+                                    <span class="h3">
+                                        <u>
+                                            <b>PREPARACIÓN DE PEDIDO</b>
+                                        </u>
+                                    </span>
+                                </td>
+                                <td style="width:33%; text-align:right; background:#fff; border:0;">
+                                    <b>L-021</b>
+                                </td>
+                            </tr>
+                        </table>
+                        <br />
+                        <table style="width:100%; border:0; background:#fff;">
+                            <tr>
+                                <td
+                                    style="text-align:left; white-space:nowrap; background:#fff; border:0;">
+                                    <span class="h4">
+                                        <b>FOLIO DE LA FACTURA: __________________</b>
+                                    </span>
+                                </td>
+                                <td style="text-align:right; background:#fff; border:0;">
+                                    <span class="o_bold h2" t-field="doc.name" />
+                                </td>
+                            </tr>
+                        </table>
+                        <br />
+                        <div class="row" style="margin-bottom:15px">
+                            <div class="col-3">
+                                <span>
+                                    <strong>
+                                        <u>FOLIO PEDIDO:</u>
+                                    </strong>
+                                    <br />
+                                </span>
+                                <span t-field="doc.origin" />
+                            </div>
+                            <div class="col-6">
+                                <span>
+                                    <strong>
+                                        <u>CLIENTE:</u>
+                                    </strong>
+                                    <br />
+                                </span>
+                                <span t-field="doc.partner_id" />
+                            </div>
+                            <div class="col-3">
+                                <span>
+                                    <strong>
+                                        <u>FECHA:</u>
+                                    </strong>
+                                    <br />
+                                </span>
+                                <span t-field="doc.date_done" t-options-widget="&quot;date&quot;" />
+                            </div>
+                            <!-- <div class="col-1" /> -->
+                        </div>
+                        <div class="row">
+                            <div class="col-3">
+                                <span>
+                                    <strong>
+                                        <u>VIA DE EMBARQUE:</u>
+                                    </strong>
+                                    <br />
+                                </span>
+                                <span t-field="doc.way_of_shipment_id" />
+                            </div>
+                            <div class="col-6">
+                                <div class="row">
+                                    <div class="col-2">
+                                        <u>
+                                            <b>Dirección de entrega:</b>
+                                        </u>
+                                    </div>
+                                    <div class="col-10">
+                                        <div class="row">
+                                            <b>Calle:</b>
+                                            <span t-field="doc.partner_id.street_name" />
+                                        </div>
+                                        <t t-if="doc.partner_id.street_number">
+                                            <div class="row" style="white-space:nowrap;">
+                                                <b>Numero:</b>
+                                                <span t-field="doc.partner_id.street_number" />
+                                            </div>
+                                        </t>
+                                        <t t-if="doc.partner_id.street_number2">
+                                            <div class="row" style="white-space:nowrap;">
+                                                <b>Numero Interno:</b>
+                                                <span t-field="doc.partner_id.street_number2" />
+                                            </div>
+                                        </t>
+                                        <div class="row" style="white-space:nowrap;">
+                                            <b>Colonia:</b>
+                                            <span t-field="doc.partner_id.l10n_mx_edi_colony" />
+                                        </div>
+                                        <div class="row" style="white-space:nowrap;">
+                                            <b>Ciudad:</b>
+                                            <span t-field="doc.partner_id.city_id" />
+                                        </div>
+                                        <div class="row" style="white-space:nowrap;">
+                                            <b>Estado:</b>
+                                            <span t-field="doc.partner_id.state_id" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-3 h4"
+                                style="border:1px solid #000; padding:8px; text-align:center;">
+                                <strong>
+                                    <u>TONELADAS:</u>
+                                </strong>
+                                <br />
+                                <p style="margin:0;"
+                                    t-esc="'%.2f' % sum(doc.move_ids_without_package.mapped('tons_display'))" />
+                            </div>
+                        </div>
+                        <br />
+                        <table class="table-bordered" style="width:100%; table-layout:fixed;">
+                            <thead>
+                                <tr>
+                                    <th style="width:60%; text-align:left;">
+                                        Producto
+                                    </th>
+                                    <th style="width:10%; text-align:center;">
+                                        CANT.
+                                    </th>
+                                    <th style="width:30%; text-align:center; background-color:#fff">
+                                        REVISIÓN
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr
+                                    t-foreach="doc.move_ids_without_package.sorted(key=lambda b: b.product_id.name)"
+                                    t-as="table_line">
+                                    <td style="text-align:left; font-size: 19px;">
+                                        <span t-field="table_line.product_id.display_name" />
+                                    </td>
+                                    <td style="text-align:center;">
+                                        <span t-field="table_line.product_qty"
+                                            t-options-widget="&quot;integer&quot;" />
+                                    </td>
+                                    <td style="background-color:#fff">
+                                        <span />
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <br />
+                        <table style="width:100%; border:0; background:#fff;">
+                            <tr>
+                                <td style="width:1%; white-space:nowrap; border:0;">
+                                    <strong>Nota:</strong>
+                                </td>
+                                <td style="white-space:normal; background:#fff; border:0;">
+                                    <span t-esc="doc.note" />
+                                </td>
+                            </tr>
+                        </table>
+                        <table style="width:100%; border:0;">
+                            <tr>
+                                <td
+                                    style="width:1%; white-space:nowrap; vertical-align:top; border:0;">
+                                    <strong>ENVIOS MERCADOTECNIA: </strong>
+                                </td>
+                                <td
+                                    style="white-space:normal; vertical-align:top; background:#fff; border:0;">
+                                    <strong class="h4" t-field="doc.sale_id.comment_marketing" />
+                                </td>
+                            </tr>
+                        </table>
+                        <br />
+                        <br />
+                        <br />
+                        <br />
+                        <table style="width:100%; border:0;">
+                            <tr>
+                                <td style="width:33%; background:#fff; border:0;">
+                                    <span>
+                                        <p>NO. TARIMAS: _____________</p>
+                                    </span>
+                                </td>
+                                <td
+                                    style="width:34%; text-align:center; white-space:nowrap; background:#fff; border:0;">
+                                    <span> ________________________________________ <br />
+                                        MONTACARGUISTA RESPONSABLE</span>
+                                </td>
+                                <td
+                                    style="width:34%; text-align:center; white-space:nowrap; background:#fff; border:0;">
+                                    <span> ________________________________________ <br /> FIRMA DE
+                                        REVISIÓN</span>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </main>
+            </t>
+        </t>
+    </template>
+
+    <record id="action_order_preparation_tempate" model="ir.actions.report">
+        <field name="name">Order Preparation</field>
+        <field name="model">stock.picking</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">real.order_preparation_tempate</field>
+        <field name="report_file">real.order_preparation_tempate</field>
+        <field name="binding_model_id" ref="stock.model_stock_picking" />
+        <field name="binding_type">report</field>
+    </record>
+</odoo>
