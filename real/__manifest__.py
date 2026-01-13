@@ -88,6 +88,7 @@
         "reports/report_stock_picking_real.xml",
         "views/l10n_mx_edi_advance_view.xml",
         "reports/order_preparation_format.xml",
+        "reports/purchase_order_report.xml",
     ],
     "installable": True,
     "assets": {
