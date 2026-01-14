@@ -22,6 +22,7 @@
             <tree>
                 <field name="date" />
                 <field name="account_name" />
+                <field name="partner_category_ids" widget="many2many_tags" options="{'color_field': 'color'}"/>
                 <field name="partner_id" optional="show" />
                 <field name="l10n_edi_employee_id" optional="show" />
                 <field name="description" />
