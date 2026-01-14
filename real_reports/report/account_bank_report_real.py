@@ -21,9 +21,7 @@ class AccountBankReportReal(models.Model):
         comodel_name="res.partner",
         readonly=True,
     )
-    partner_category_ids = fields.Many2many(
-        comodel_name='res.partner.category',
-        compute='_compute_partner_category_ids',
+    partner_category_ids = fields.Char(
         string='Tags',
         readonly=True,
     )
@@ -72,10 +70,6 @@ class AccountBankReportReal(models.Model):
         readonly=True,
     )
 
-    def _compute_partner_category_ids(self):
-        for rec in self:
-            rec.partner_category_ids = rec.partner_id.category_id.filtered(lambda c: c.parent_path.startswith('398'))
-
     _depends = {
         "account.move.line": [
             "name",
@@ -116,6 +110,14 @@ class AccountBankReportReal(models.Model):
                 ELSE aml.balance END AS amount,
                 aml.currency_id,
                 aml.partner_id,
+                (
+                    SELECT COALESCE(STRING_AGG(rpc.name ->> 'es_MX', ', ' ORDER BY rpc.name ->> 'es_MX'), 'Sin categoría')
+                    FROM res_partner_res_partner_category_rel rel
+                    JOIN res_partner_category rpc
+                        ON rpc.id = rel.category_id
+                    WHERE rel.partner_id = aml.partner_id
+                    AND rpc.parent_id = 398
+                ) AS partner_category_names,
                 aa.name ->> 'en_US' AS account_name,
                 aa.id AS account_id,
                 am.state,
