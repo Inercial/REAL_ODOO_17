@@ -21,6 +21,12 @@ class AccountBankReportReal(models.Model):
         comodel_name="res.partner",
         readonly=True,
     )
+    partner_category_ids = fields.Many2many(
+        comodel_name='res.partner.category',
+        compute='_compute_partner_category_ids',
+        string='Tags',
+        readonly=True,
+    )
     move_id = fields.Many2one(
         comodel_name="account.move",
         readonly=True,
@@ -65,6 +71,10 @@ class AccountBankReportReal(models.Model):
     state = fields.Char(
         readonly=True,
     )
+
+    def _compute_partner_category_ids(self):
+        for rec in self:
+            rec.partner_category_ids = rec.partner_id.category_id.filtered(lambda c: c.parent_path.startswith('398'))
 
     _depends = {
         "account.move.line": [
