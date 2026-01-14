@@ -15,8 +15,15 @@
         <xpath expr="//div[@name='title']" position="replace">
             <div name="title" class="text-center">
                 <strong class="text-decoration-underline" style="font-size:28px">FACTURA DE PROVEEDOR</strong>
-                <div class="text-end">
-                    <strong style="font-size:20px"><t t-esc="o.name" /></strong>
+                <div class="row">
+                    <div class="col-5" style="text-align:left;">
+                        <u>Factura Proveedor:</u> <t t-esc="o.ref" />
+                    </div>
+                    <div class="col-5 offset-2 text-end">
+                        <strong style="font-size:20px">
+                            <t t-esc="o.name" />
+                        </strong>
+                    </div>
                 </div>
             </div>
         </xpath>
