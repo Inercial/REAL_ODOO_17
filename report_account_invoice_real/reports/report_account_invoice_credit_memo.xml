@@ -56,13 +56,10 @@
                     <span class="d-block">UUID RELACIONADO Y TIPO DE RELACION: <b><t
                             t-esc="o.l10n_mx_edi_cfdi_origin"
                         /></b></span>
-                    <span class="d-block">FOLIO ORIGEN:
-                        <t t-if="o.payment_ids">
-                            <t t-foreach="o.payment_ids" t-as="payment" t-index="idx">
-                                <b t-esc="payment.name" />
-                                <t t-if="idx + 1 != len(o.payment_ids)">, </t>
-                            </t>
-                        </t>
+                    <span class="d-block"> FACTURAS RECTIFICATIVAS: <b>
+                            <t
+                                t-esc="dict(o._fields['rectified_invoices']._description_selection(o.env)).get(o.rectified_invoices)" />
+                        </b>
                     </span>
 
                 </div>
