@@ -43,6 +43,7 @@
         "report/report_stock_quant_real_view.xml",
         "report/general_ledger_audit_report_format.xml",
         "report/general_ledger_audit_report_view.xml",
+        "report/report_cancelled_invoices_view.xml",
     ],
     "installable": True,
 }
