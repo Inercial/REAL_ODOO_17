@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <template id="report_cancelled_invoices_template">
+        <t t-call="web.html_container">
+            <t t-call="web.external_layout">
+                <div class="page">
+                    <table class="talbe table-borderless" style="width: 100%; border: none;"
+                        border="0">
+                        <tr>
+                            <td
+                                style="font-size: 35px; text-align: left; font-weight: bold; background-color: #FFFFFF; border: none;">
+                                Reporte de Facturas Canceladas de Meses Anteriores
+                            </td>
+                            <td
+                                style="font-size: 25px; text-align: right; background-color: #FFFFFF; border: none; white-space: nowrap;">
+                                CO-149
+                            </td>
+                        </tr>
+                    </table>
+                    <br />
+                    <div style="font-size: 12px;">
+                        <div>Fecha de impresion: <t t-esc="today" />
+                        </div>
+                        <div style="font-weight: bold;">Fecha Inicial: <t t-esc="date_start" />
+                        </div>
+                        <div style="font-weight: bold;">Fecha Final: <t t-esc="date_end" />
+                        </div>
+                    </div>
+                    <br />
+                    <table class="table table-sm table-bordered"
+                        style="font-size: 12px; width: 100%;">
+                        <thead>
+                            <tr>
+                                <th>Folio</th>
+                                <th>Tipo Documento</th>
+                                <th>Fecha Documento</th>
+                                <th>Fecha Cancelacion</th>
+                                <th>Cliente</th>
+                                <th>Vendedor</th>
+                                <th>Costo</th>
+                                <th>Importe total con IVA</th>
+                                <th>Toneladas</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <t t-foreach="query" t-as="line">
+                                <tr>
+                                    <td>
+                                        <t t-esc="line[0]" />
+                                    </td>
+                                    <td>
+                                        <t t-esc="line[1]" />- </td>
+                                    <td>
+                                        <t t-esc="line[2]" />
+                                    </td>
+                                    <td>
+                                        <t t-esc="line[3]" />
+                                    </td>
+                                    <td>
+                                        <t t-esc="line[4]" />
+                                    </td>
+                                    <td>
+                                        <t t-esc="line[5]" />
+                                    </td>
+                                    <td>
+                                        <t t-esc="'${:,.2f}'.format(line[6])" />
+                                    </td>
+                                    <td>
+                                        <t t-esc="'${:,.2f}'.format(line[7])" />
+                                    </td>
+                                    <td style="background: #FFFFFF;">
+                                        <t t-esc="'{:.2f}'.format(line[8])" />
+                                    </td>
+                                </tr>
+                            </t>
+                            <tr style="font-weight: bold;">
+                                <td colspan="6" style="text-align: right;">
+                                    TOTAL
+                                </td>
+                                <td>
+                                    <t t-esc="'${:,.2f}'.format(sum_costo_linea)" />
+                                </td>
+                                <td>
+                                    <t t-esc="'${:,.2f}'.format(sum_precio_con_iva_linea)" />
+                                </td>
+                                <td style="background: #FFFFFF;" />
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </t>
+        </t>
+    </template>
+
+    <record model="ir.ui.view" id="report_cancelled_invoices_form">
+        <field name="name">report_cancelled_invoices.form</field>
+        <field name="model">report.cancelled.invoices</field>
+        <field name="arch" type="xml">
+            <form string="Cancelled Invoices Report">
+                <sheet>
+                    <group>
+                        <group string="Date Range" col="2">
+                            <field name="date_start" required="1" />
+                            <field name="date_end" required="1" />
+                        </group>
+                    </group>
+                    <button
+                        name="action_print_report"
+                        type="object"
+                        string="Generate PDF"
+                        class="btn-primary"
+                        icon="fa-file-pdf-o" />
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_report_cancelled_invoices_template" model="ir.actions.report">
+        <field name="name">Cancelled Invoices Report</field>
+        <field name="model">report.cancelled.invoices</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">real_reports.report_cancelled_invoices_template</field>
+        <field name="report_file">real_reports.report_cancelled_invoices_template</field>
+        <field name="binding_model_id" ref="model_report_cancelled_invoices" />
+    </record>
+
+    <record id="action_report_cancelled_invoices_window" model="ir.actions.act_window">
+        <field name="name">Cancelled Invoices Report</field>
+        <field name="res_model">report.cancelled.invoices</field>
+        <field name="view_mode">form</field>
+        <field name="target">current</field>
+    </record>
+
+    <menuitem
+        id="menu_report_cancelled_invoices"
+        name="Cancelled Invoices Report"
+        parent="sale_reports_menu"
+        action="action_report_cancelled_invoices_window"
+    />
+
+</odoo>

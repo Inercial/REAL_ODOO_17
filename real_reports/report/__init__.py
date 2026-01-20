@@ -17,3 +17,4 @@ from . import account_fcr_report_real
 from . import freight_line_report_real
 from . import costs_and_prices_report_real
 from . import general_ledger_audit_report_real
+from . import report_cancelled_invoices
