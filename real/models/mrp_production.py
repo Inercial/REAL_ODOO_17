@@ -44,9 +44,9 @@ class MrpProduction(models.Model):
 
     # Validación para que cuando el usuario intente agregar una cantidad mayor a 10 a la original, salte un wizard que
     # pregunta si esto es correcto.
-    def _pre_button_mark_done(self):
-        sup = super()._pre_button_mark_done()
-        if (self.qty_producing > (self.product_qty + 10)) and not self.qty_of_block:
+    def pre_button_mark_done(self):
+        sup = super().pre_button_mark_done()
+        if ((self.qty_producing > (self.product_qty + 10)) or (self.qty_producing < (self.product_qty - 10))) and not self.qty_of_block:
             lines = []
             for order in self._get_quantity_produced_issues():
                 lines.append((0, 0, {"mrp_production_id": order.id, "to_backorder": True}))

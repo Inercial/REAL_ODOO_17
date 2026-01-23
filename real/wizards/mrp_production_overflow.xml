@@ -1,21 +1,28 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <odoo>
     <record id="view_mrp_production_overflow_form" model="ir.ui.view">
-        <field name="name">Create overflow</field>
+        <field name="name">Create Overflow</field>
         <field name="model">mrp.production.overflow</field>
         <field name="arch" type="xml">
-            <form>
-                <group>
-                    <p>
-                        It is processing more than 10 units originally scheduled.
-                        <p style="font-weight: bold;">
-                            Are you sure you want to proceed with this operation?
-                        </p>
-                    </p>
-                </group>
+            <form string="Confirm Overflow">
+                <sheet>
+                    <div class="alert alert-warning" role="alert"> You are about to process <b>more
+                        than 10 units</b> than originally scheduled. <br /> Do you want to continue
+                        with this operation? </div>
+                </sheet>
+
                 <footer>
-                    <button name="action_overflow" string="Yes" colspan="1" type="object" class="btn-primary" />
-                    <button string="No" class="btn-secondary" special="cancel" />
+                    <button
+                        string="Cancel"
+                        class="btn-secondary"
+                        special="cancel"
+                    />
+                    <button
+                        name="action_overflow"
+                        string="Yes, continue"
+                        type="object"
+                        class="btn-primary"
+                    />
                 </footer>
             </form>
         </field>
