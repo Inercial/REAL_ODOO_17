@@ -230,6 +230,11 @@
                     </group>
                 </page>
             </xpath>
+            <xpath
+                expr="//page[@name='sales_purchases']//field[@name='property_delivery_carrier_id']"
+                position="after">
+                <field name="x_studio_zona" invisible="company_type != 'person'" />
+            </xpath>
             <xpath expr="//field[@name='l10n_mx_edi_operator_licence']" position="before">
                 <field name="x_studio_fecha_alta_de_cliente" string="Fecha Alta de Cliente" />
             </xpath>
