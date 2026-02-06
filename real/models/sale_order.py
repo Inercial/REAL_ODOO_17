@@ -271,6 +271,11 @@ class SaleOrder(models.Model):
                         rec.out_pending = "not_avail"
                         break
 
+    def action_draft(self):
+        if self.state == "cancel":
+            self.x_studio_estatus_embarques = "1. En espera de producto" # type: ignore[attr-defined]
+        return super().action_draft()
+
 
 class SaleOrderLine(models.Model):
     _inherit = "sale.order.line"
