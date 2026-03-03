@@ -4,6 +4,33 @@
         <field name="model">mrp.request.create.mo</field>
         <field name="inherit_id" ref="mrp_request.mrp_request_create_mo_view" />
         <field name="arch" type="xml">
+            <xpath expr="//group[@name='origin']" position="replace">
+                <div class="o_row" style="align-items: baseline;">
+
+                    <span class="fw-bold">Request:</span>
+                    <h2>
+                        <field name="mrp_request_id" options='{"no_open": True}' />
+                    </h2>
+                    <span class="ms-3 fw-bold">Pending Qty:</span>
+                    <field name="pending_qty" class="oe_inline" />
+                    <button
+                        name="compute_product_line_ids"
+                        type="object"
+                        string="Compute lines"
+                        colspan="2"
+                        icon="fa-cogs"
+                    />
+                </div>
+                <field name="product_line_ids" nolabel="1">
+                    <tree>
+                        <field name="product_id" />
+                        <field name="product_uom_id" />
+                        <field name="product_qty" />
+                        <field name="available_qty" />
+                        <field name="bottle_neck_factor" />
+                    </tree>
+                </field>
+            </xpath>
             <xpath expr="//group[@name='product_qty']" position="inside">
                 <field name="order_qty" required="True" />
                 <field name="equipment_id" required="True" />
