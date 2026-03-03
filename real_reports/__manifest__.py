@@ -44,6 +44,7 @@
         "report/general_ledger_audit_report_format.xml",
         "report/general_ledger_audit_report_view.xml",
         "report/report_cancelled_invoices_view.xml",
+        "report/physical_inventory_count_report.xml",
     ],
     "installable": True,
 }
