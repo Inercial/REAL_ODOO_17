@@ -1,5 +1,6 @@
 from odoo import api, models
 from datetime import datetime
+from zoneinfo import ZoneInfo
 
 class PhysicalInventoryCount(models.TransientModel):
     _name = "physical.inventory.count"
@@ -39,5 +40,5 @@ ORDER BY
             'doc_model': 'physical.inventory.count',
             'docs': self.env.cr.dictfetchall(),
             'logo': self.env.company.logo,
-            'print_date': datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+            'print_date': datetime.now(ZoneInfo("America/Mexico_City")).strftime('%Y-%m-%d %H:%M:%S')
         }
