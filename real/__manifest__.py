@@ -44,6 +44,7 @@
         "account_financial_risk",
     ],
     "data": [
+        "reports/muestra.xml",
         "reports/remision.xml",
         "data/base_automation_data.xml",
         "data/crm_stage_data.xml",
