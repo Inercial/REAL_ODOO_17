@@ -34,6 +34,11 @@
                 <span t-field="o.partner_bank_id.operation_type" />
             </div>
         </xpath>
+
+        <xpath expr="//table[hasclass('table')]" position="attributes">
+            <attribute name="class">table table-sm</attribute>
+            <attribute name="style">font-size:12px;</attribute>
+        </xpath>
     </template>
 
     <template id="report_account_invoice_vendor_bill_real">
