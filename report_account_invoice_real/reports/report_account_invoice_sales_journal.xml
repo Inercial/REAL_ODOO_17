@@ -22,6 +22,11 @@
             <th name="th_user" class="text-center">CLIENTE</th>
         </xpath>
 
+        <xpath expr="//table[hasclass('table')]" position="attributes">
+            <attribute name="class">table table-sm</attribute>
+            <attribute name="style">font-size:12px;</attribute>
+        </xpath>
+
     </template>
 
     <template id="report_account_invoice_sales_journal_real">
