@@ -33,7 +33,7 @@ WHERE
     AND pp.active = true
     AND (pc.complete_name ILIKE 'PT POLVOS /%' OR pc.complete_name ILIKE 'PT EMULSIONES /%')
 ORDER BY
-    pc.complete_name DESC
+    product_name
         """)
         return {
             'doc_ids': docids,
