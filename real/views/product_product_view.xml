@@ -20,6 +20,7 @@
         <field name="inherit_id" ref="stock.view_stock_product_tree" />
         <field name="arch" type="xml">
             <xpath expr="//field[@name='virtual_available']" position="after">
+                <field name="total_qty_weight" string="Liters" sum="Liters" />
                 <field name="tons_display" string="Tons" sum="Tons" />
             </xpath>
             <xpath expr="//field[@name='name']" position="after">

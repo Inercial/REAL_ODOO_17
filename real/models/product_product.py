@@ -19,6 +19,12 @@ class ProductProduct(models.Model):
         related="categ_id.parent_id",
         store=True,
     )
+    total_qty_weight = fields.Float(compute="_compute_total_qty_weight")
+
+    @api.depends('qty_available', 'weight')
+    def _compute_total_qty_weight(self):
+        for record in self:
+            record.total_qty_weight = record.qty_available * record.weight
 
     @api.depends("qty_available")
     @api.depends_context("from_date", "to_date")
