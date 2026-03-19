@@ -234,14 +234,14 @@ class SaleOrder(models.Model):
             elif rec.client_location == "local":
                 if hours <= 36:
                     rec.order_signal = "on_time"
-                elif 36 < hours < 60:
+                elif 36 < hours < 52:
                     rec.order_signal = "due_soon"
                 else:
                     rec.order_signal = "overdue"
             elif rec.client_location == "foreigner":
-                if hours <= 72:
+                if hours <= 48:
                     rec.order_signal = "on_time"
-                elif 72 < hours < 96:
+                elif 48 < hours < 72:
                     rec.order_signal = "due_soon"
                 else:
                     rec.order_signal = "overdue"
