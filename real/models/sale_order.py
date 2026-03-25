@@ -27,7 +27,6 @@ class SaleOrder(models.Model):
     can_modify_pricelist = fields.Boolean(compute="_compute_can_modify_pricelist")
     child_tag_ids = fields.Many2many(related="partner_id.child_tag_ids")
     analytic_account_id = fields.Many2one(copy=True)
-    block_order = fields.Boolean(copy=False)
     order_signal = fields.Selection(
         [("on_time", "on time"), ("due_soon", "due soon"), ("overdue", "overdue")], compute="_compute_order_signal"
     )
@@ -128,10 +127,6 @@ class SaleOrder(models.Model):
             order.validate_no_empty_order()
             order.validate_payment_term_edit()
             order.validate_partner_shipping_id_pricelist()
-
-            if not order.create_date:
-                order.block_order = True
-
         return res
 
     def write(self, vals):
@@ -147,14 +142,11 @@ class SaleOrder(models.Model):
             seller_block = any(val not in allowed_fields for val in vals)
 
             if (
-                rec.block_order
+                rec.state != 'check'
                 and self.env.ref("real.res_users_role_seller") in self.env.user.groups_id.role_id
                 and seller_block
             ):
                 raise UserError(_("You cannot edit this quotation."))
-
-            if vals and "show_update_pricelist" not in vals and not rec.block_order:
-                vals["block_order"] = True
 
         res = super().write(vals)
         self.validate_no_empty_order()
