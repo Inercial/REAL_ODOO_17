@@ -19,6 +19,13 @@
         <field name="arch" type="xml">
             <xpath expr="//header/button[4]" position="replace">
                 <button
+                    name="confirm_quote"
+                    string="Confirm Quote"
+                    type="object"
+                    class="btn-primary"
+                    invisible="state != 'check'"
+                />
+                <button
                     name="%(sale.action_view_sale_advance_payment_inv)d"
                     string="Create Invoice"
                     type="action"

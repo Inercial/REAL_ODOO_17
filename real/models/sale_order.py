@@ -10,6 +10,13 @@ from odoo import _, api, fields, models
 from odoo.exceptions import UserError
 from odoo.tools import float_compare
 
+SALE_ORDER_STATE = [
+    ('check', "Inquiry"), #### Consulta
+    ('draft', "Quotation"),
+    ('sent', "Quotation Sent"),
+    ('sale', "Sales Order"),
+    ('cancel', "Cancelled"),
+]
 
 class SaleOrder(models.Model):
     _inherit = "sale.order"
@@ -46,6 +53,17 @@ class SaleOrder(models.Model):
     )
     way_shipment_type_id = fields.Many2one(related="partner_id.way_shipment_type_id")
     total_volume = fields.Float("Total volume", readonly=True, compute="_compute_total_volume")
+    state = fields.Selection(
+        selection=SALE_ORDER_STATE,
+        string="Status",
+        readonly=True, copy=False, index=True,
+        tracking=3,
+        default='check') ####
+
+    def confirm_quote(self):
+        for line in self:
+            if line.state == 'check':
+                line.state = 'draft'
 
     def _prepare_invoice(self):
         """Pricelist_id is set on invoice."""
