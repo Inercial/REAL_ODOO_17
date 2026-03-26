@@ -90,10 +90,7 @@ class SaleOrder(models.Model):
         """Use native method, because we need to execute first that method to
         change pricelist and then compute the price in every line.
         """
-        default_child = False
-        if self.partner_id.child_tag_ids:
-            default_child = self.partner_id.child_tag_ids[0]
-        self.partner_shipping_id = default_child
+        self.partner_shipping_id = False
         self.analytic_account_id = self.user_id.default_analytic_account_id
 
     @api.onchange("partner_shipping_id")
