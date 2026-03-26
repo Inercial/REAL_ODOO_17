@@ -37,7 +37,6 @@ class StockRequestOrder(models.Model):
         self.way_of_shipment_id = self.partner_id.way_of_shipment_id
 
         if self.partner_id.child_tag_ids:
-            self.partner_shipping_id = self.partner_id.child_tag_ids[0]
             self.child_tag_required = True
 
         if not self.partner_id.child_tag_ids:
