@@ -107,6 +107,7 @@
             </xpath>
             <xpath expr="//field[@name='partner_shipping_id']" position="after">
                 <field name="way_of_shipment_id" />
+                <field name="so_text" string="Sale Order: " />
                 <field name="order_signal" options="{'always_reload': 1}" invisible="1" />
             </xpath>
             <xpath expr="//field[@name='analytic_account_id']" position="attributes">
