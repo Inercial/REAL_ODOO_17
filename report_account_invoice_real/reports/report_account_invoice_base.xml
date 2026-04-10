@@ -71,7 +71,8 @@
                             /></b></span>
                     <span>DIRECCION: <b><t t-esc="o.partner_id.street" /></b></span>
                     <span>CP: <b><t t-esc="o.partner_id.zip" /></b></span><br />
-                    <span>CUIDAD: <b><t t-esc="o.partner_id.city" /></b></span>
+                    <span>CIUDAD: <b><t t-esc="o.partner_id.city" /></b></span>
+                    <span>ORDEN DE COMPRA: <b><t t-esc="o.invoice_line_ids.mapped('sale_line_ids.order_id')[:1].so_text" /></b></span>
                 </div>
                 <div name="delivery_information" class="col-6 d-grid" style="font-size:0.90rem;">
                     <strong style="border-bottom: 2px solid black;">DATOS DE ENTREGA:</strong>
@@ -79,13 +80,13 @@
                                 t-esc="o.partner_shipping_id.commercial_name"
                             /></b></span>
                     <span class="d-block">NOMBRE DE LA SUCURSAL: <b><t t-esc="o.partner_shipping_id.name" /></b></span>
-                    <span class="d-block">CUIDAD DE ENTREGA: <b><t t-esc="o.partner_shipping_id.city" /></b></span>
+                    <span class="d-block">CIUDAD DE ENTREGA: <b><t t-esc="o.partner_shipping_id.city" /></b></span>
                     <span class="d-block">ASESOR DE VENTAS: <b><t t-esc="o.invoice_user_id.name" /></b></span>
                     <span class="d-block">VIA DE EMBARQUE: <b><t t-esc="o.way_of_shipment_id.name" /></b></span>
                     <span class="d-block">PEDIDO: <b><t t-esc="o.invoice_origin" /></b></span>
                     <span>ENTREGA: <b><t t-esc="o.partner_shipping_id.street" /></b></span>
                     <span>CP: <b><t t-esc="o.partner_shipping_id.zip" /></b></span><br />
-                    <span>CUIDAD: <b><t t-esc="o.partner_shipping_id.city" /></b></span>
+                    <span>CIUDAD: <b><t t-esc="o.partner_shipping_id.city" /></b></span>
                 </div>
             </div>
 
@@ -286,7 +287,8 @@
                 <strong>INFORMACIÓN BANCARIA PARA SUS PAGOS</strong><br />
                 <span>NOMBRE: RECUBRIMIENTOS Y ADHESIVOS DE LA LAGUNA, S.A. DE C.V.</span><br />
                 <span>BANCO: BANORTE CUENTA: 0142557631 CLABE: 072060001425576319</span><br />
-                <span>BANCO: BANCREA CUENTA: 12000075335 CLABE: 152078120000753353</span>
+                <span>BANCO: BANCREA CUENTA: 12000075335 CLABE: 152078120000753353</span><br />
+                <span>BANCO: SANTANDER CUENTA: 65509243294 CLABE: 014060655092432944</span>
             </div>
 
             <div
