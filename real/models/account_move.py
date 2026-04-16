@@ -20,6 +20,19 @@ class AccountMove(models.Model):
     stop_inv = fields.Boolean(default=False, tracking=True)
     tons_display = fields.Float(digits="Product Unit of Measure", compute="_compute_tons", store=True, string="Tons")
     previous_folio = fields.Char()
+    xml_emisor = fields.Char()
+
+
+    def get_xml_content(self):
+        attachment = self.env['ir.attachment'].search([('res_id', '=', self.id), ('res_model', '=', self._name), ('name', 'ilike', '%.xml') ], limit=1)
+        if attachment:
+            try:
+                root = ET.fromstring(attachment.raw)
+                emisor = root.find(".//{*}Emisor")
+                if emisor is not None:
+                    self.xml_emisor = emisor.get('Nombre')
+            except Exception:
+                pass
 
     @api.depends("invoice_line_ids")
     def _compute_tons(self):
@@ -64,6 +77,7 @@ class AccountMove(models.Model):
 
     def action_post(self):
         self._chek_pdf_xml()
+        self.get_xml_content()
         return super().action_post()
 
     def _chek_pdf_xml(self):
