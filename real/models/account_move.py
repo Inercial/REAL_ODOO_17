@@ -2,8 +2,12 @@
 # License LGPL-3.0 or later (http://www.gnu.org/licenses/lgpl.html).
 
 
+import xml.etree.ElementTree as ET
+import logging
 from odoo import _, api, fields, models
 from odoo.exceptions import UserError
+
+_logger = logging.getLogger(__name__)
 
 
 class AccountMove(models.Model):
@@ -25,11 +29,11 @@ class AccountMove(models.Model):
 
     def get_xml_content(self):
         attachment = self.env['ir.attachment'].search([('res_id', '=', self.id), ('res_model', '=', self._name), ('name', 'ilike', '%.xml') ], limit=1)
-        if attachment:
+        if attachment and self.partner_id.name != 'PROVEEDOR GLOBAL':
             try:
                 root = ET.fromstring(attachment.raw)
                 emisor = root.find(".//{*}Emisor")
-                if emisor is not None:
+                if emisor:
                     self.xml_emisor = emisor.get('Nombre')
             except Exception:
                 pass
