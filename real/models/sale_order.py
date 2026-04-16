@@ -2,6 +2,7 @@
 # License LGPL-3.0 or later (http://www.gnu.org/licenses/lgpl.html).
 
 
+from markupsafe import Markup
 from datetime import datetime, timedelta
 
 import pytz
@@ -315,3 +316,59 @@ class SaleOrderLine(models.Model):
     def _compute_line_volume(self):
         for rec in self:
             rec.line_volume = (rec.product_uom_qty * rec.product_id.volume) / 1000
+
+    @api.model_create_multi
+    def create(self, vals_list):
+        lines = super(SaleOrderLine, self).create(vals_list)
+        for order in lines.mapped('order_id'):
+            relevant_lines = lines.filtered(lambda l: l.order_id == order)
+            items_html = "".join([
+                f"<li>Producto: <b>{l.product_id.display_name}</b> - Cantidad: <b>{l.product_uom_qty}</b></li>"
+                for l in relevant_lines
+            ])
+            body = Markup("<b>Notificación de sistema:</b> Registro de nuevos artículos en el pedido:<ul>{}</ul>").format(
+                Markup(items_html)
+            )
+            order.message_post(body=body)
+        return lines
+
+    def write(self, vals):
+            if 'product_uom_qty' in vals:
+                previous_qty = {line.id: line.product_uom_qty for line in self}
+                res = super(SaleOrderLine, self).write(vals)
+                orders_to_notify = self.mapped('order_id')
+                for order in orders_to_notify:
+                    lines_in_order = self.filtered(lambda l: l.order_id == order)
+                    changes_list = []
+                    for line in lines_in_order:
+                        old_val = previous_qty.get(line.id)
+                        new_val = vals.get('product_uom_qty')
+                        if old_val != new_val:
+                            changes_list.append(
+                                f"<li>Producto: <b>{line.product_id.display_name}</b> - "
+                                f"Anterior: <b>{old_val}</b> | Nuevo: <b>{new_val}</b></li>"
+                            )
+                    if changes_list:
+                        body = Markup(
+                            "<b>Ajuste de pedido:</b> Se han modificado las cantidades en las siguientes líneas:<ul>{}</ul>"
+                        ).format(Markup("".join(changes_list)))
+                        order.message_post(body=body)
+                return res
+            return super(SaleOrderLine, self).write(vals)
+
+    def unlink(self):
+        logs_by_order = {}
+        for line in self:
+            if line.order_id:
+                if line.order_id not in logs_by_order:
+                    logs_by_order[line.order_id] = ""
+                logs_by_order[line.order_id] += (
+                    f"<li>Producto: <b>{line.product_id.display_name}</b> - "
+                    f"Cantidad removida: <b>{line.product_uom_qty}</b></li>"
+                )
+        for order, items_html in logs_by_order.items():
+            body = Markup("<b>Registro de eliminación:</b> Se han removido los siguientes artículos del pedido:<ul>{}</ul>").format(
+                Markup(items_html)
+            )
+            order.message_post(body=body)
+        return super(SaleOrderLine, self).unlink()
