@@ -16,6 +16,15 @@
             </xpath>
             <xpath expr="//field[@name='purchase_vendor_bill_id']" position="after">
                 <field string="Don't pay this invoice" name="stop_inv" invisible="move_type == 'out_invoice'" />
+                <label for="xml_emisor" string="Nombre proveedor global" invisible="partner_id != 2828" />
+                <div class="o_row" invisible="partner_id != 2828">
+                    <button name="get_xml_content"
+                        type="object"
+                        icon="fa-refresh"
+                        title="Recargar XML"
+                        class="btn-link" />
+                    <field name="xml_emisor" readonly="1" />
+                </div>
             </xpath>
             <xpath expr="//field[@name='line_ids']/tree/field[@name='name']" position="after">
                 <field name="freight_cost" column_invisible="True" />
