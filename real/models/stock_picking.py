@@ -31,15 +31,20 @@ class StockPicking(models.Model):
     @api.model_create_multi
     def create(self, vals_list):
         records = super().create(vals_list)
-        for rec in records:
-            ubication = rec.client_location
-            location_id = rec.location_id.id
-            if ubication == "local" and location_id == 8:
-                rec.update(
-                    {
-                        "priority": "1",
-                    }
-                )
+        is_blocked = self.env['ir.config_parameter'].sudo().get_param('real.block_inventory_priority')
+        if is_blocked == 'True':
+            for rec in records:
+                ubication = rec.client_location
+                location_id = rec.location_id.id
+                #                  stock_location
+                # id |      name       |          complete_name
+                #  8 | Almacén General | Almacén General/Almacén General
+                if ubication == "local" and location_id == 8:
+                    rec.update(
+                        {
+                            "priority": "1",
+                        }
+                    )
         return records
 
     def _compute_hide_picking_block(self):
