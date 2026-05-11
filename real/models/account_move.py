@@ -1,11 +1,11 @@
 # Copyright 2020, Jarsa Sistemas, S.A. de C.V.
 # License LGPL-3.0 or later (http://www.gnu.org/licenses/lgpl.html).
 
-
-import xml.etree.ElementTree as ET
 import logging
 from odoo import _, api, fields, models
 from odoo.exceptions import UserError
+import xml.etree.ElementTree as ET
+
 
 _logger = logging.getLogger(__name__)
 
@@ -27,16 +27,16 @@ class AccountMove(models.Model):
     xml_emisor = fields.Char()
 
 
+
     def get_xml_content(self):
-        attachment = self.env['ir.attachment'].search([('res_id', '=', self.id), ('res_model', '=', self._name), ('name', 'ilike', '%.xml') ], limit=1)
-        if attachment and self.partner_id.name != 'PROVEEDOR GLOBAL':
-            try:
-                root = ET.fromstring(attachment.raw)
-                emisor = root.find(".//{*}Emisor")
-                if emisor:
-                    self.xml_emisor = emisor.get('Nombre')
-            except Exception:
-                pass
+        for rec in self:
+            if rec.partner_id.name == 'PROVEEDOR GLOBAL' and not rec.xml_emisor:
+                if(attachment := rec.env['ir.attachment'].search([('res_id', '=', rec.id), ('res_model', '=', rec._name), ('name', 'ilike', '%.xml')], limit=1)) and attachment.raw:
+                    try:
+                        emisor = ET.fromstring(attachment.raw).find(".//{*}Emisor")
+                        rec.xml_emisor = emisor.get('Nombre') if emisor is not None else ''
+                    except Exception:
+                        pass
 
     @api.depends("invoice_line_ids")
     def _compute_tons(self):
