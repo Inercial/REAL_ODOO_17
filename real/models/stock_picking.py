@@ -63,3 +63,9 @@ class StockPicking(models.Model):
     def button_validate(self):
         self.location_check()
         return super().button_validate()
+
+    @api.depends('move_ids.state', 'move_ids.date', 'move_type')
+    def _compute_scheduled_date(self):
+        super()._compute_scheduled_date()
+        for picking in self:
+            if picking.id: picking.scheduled_date = picking.group_id.sale_id.date_order
