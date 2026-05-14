@@ -90,7 +90,7 @@
             </div>
 
             <div>
-                <strong>NOTAS:</strong><br />
+                <strong>NOTAS:</strong><span t-field="o.note" /><br />
                 <div class="row">
                     <div class="col-6 text-center">
                         <strong>NO.TARIMAS: _____________________</strong>
