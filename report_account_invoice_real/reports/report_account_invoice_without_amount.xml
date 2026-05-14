@@ -49,10 +49,22 @@
         <xpath expr="//div[@name='total_amount_text']/span[@name='total_amount_text']" position="replace" />
 
         <xpath expr="//div[@name='signature_section']" position="replace">
-            <div class="row pt-5" style="font-size:12px;">
-                <div class="col-4" />
-                <div style="border-top:1px dotted #000;" class="col-4 text-center">
-                    <span>NOMBRE Y FIRMA DEL CLIENTE</span>
+            <div name="signature_section" class="row mt-4" style="font-size:10px">
+                <div class="col-7">
+                    <span style="justify-text: auto;">
+                        DEBO(EMOS) Y PAGARE(MOS) INCONDICIONALMENTE A LA ORDEN DE RECUBRIMIENTOS Y
+                        ADHESIVOS DE LA LAGUNA S.A DE C.V. EL
+                        DÍA DEL VENCIMIENTO DEL DOCUMENTO, EN SU DOMICILIO EN TORREÓN, COAHUILA.
+                        CAUSANDO UN INTERÉS DEL 2.75% MENSUAL, SI
+                        NO ES PAGADO A SU VENCIMIENTO. SOMETIENDONOS A LA COMPETENCIA DE LOS
+                        TRIBUNALES DE LA CIUDAD DE TORREÓN
+                        COAHUILA O A LOS QUE EL TENEDOR ELIJA.
+                    </span>
+                </div>
+                <div class="col-5 ms-3 pt-5" style="font-size:12px;">
+                    <div style="border-top:1px dotted #000;" class="text-center">
+                        <span>NOMBRE Y FIRMA DEL CLIENTE</span>
+                    </div>
                 </div>
             </div>
         </xpath>

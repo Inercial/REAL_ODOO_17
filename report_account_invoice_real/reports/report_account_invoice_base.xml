@@ -52,7 +52,7 @@
                 <br />
                 <strong name="invoice_date">FECHA DE FACTURACION:<t t-esc="o.invoice_date" /></strong>
                 <br />
-                <strong name="invoice_date_due">FECHA DE VENCIMIENTO:<t t-esc="o.invoice_date_due" /></strong>
+                <strong name="invoice_date_due">FECHA DE PAGO:<t t-esc="o.invoice_date_due" /></strong>
                 <span>LUGAR DE PAGO: CIRCUITO ENRIQUE DE LARA NO. 280 COLONIA CIUDAD INDUSTRIAL, TORREON, COAHUILA 27019</span>
             </div>
         </div>
@@ -344,7 +344,7 @@
 
             </div>
 
-            <div name="signature_section" class="row mt-4" style="font-size:10px">
+            <div name="signature_section" class="row mt-4" style="font-size:10px; page-break-inside: avoid">
                 <div class="col-7">
                     <span style="justify-text: auto;">
                         DEBO(EMOS) Y PAGARE(MOS) INCONDICIONALMENTE A LA ORDEN DE RECUBRIMIENTOS Y ADHESIVOS DE LA LAGUNA S.A DE C.V. EL
