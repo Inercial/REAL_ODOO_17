@@ -22,6 +22,7 @@ SALE_ORDER_STATE = [
 class SaleOrder(models.Model):
     _inherit = "sale.order"
 
+    commitment_date_real = fields.Datetime(string="Commitment Date", copy=False)
     so_text = fields.Text()
     comment_marketing = fields.Text()
     can_modify_invoice = fields.Boolean(compute="_compute_can_modify_invoice")

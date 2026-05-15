@@ -124,6 +124,12 @@
                 <field name="x_studio_estatus_embarques" string="Estatus embarque" />
                 <field name="x_studio_text_field_v3Z0L" string="Celular fletero" />
             </xpath>
+            <xpath expr="//field[@name='commitment_date']" position="after">
+                <field name="commitment_date_real" readonly="state == 'cancel' or locked" />
+            </xpath>
+            <xpath expr="//field[@name='commitment_date']" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath>
             <xpath expr="//group[@name='order_details']" position="inside">
                 <field name="x_studio_indicaciones_especiales" />
             </xpath>
@@ -165,11 +171,32 @@
                 <field name="way_of_shipment_id" />
                 <field name="note" />
             </xpath>
+            <xpath expr="//field[@name='commitment_date']" position="after">
+                <field name="commitment_date_real" optional="hide" />
+            </xpath>
+            <xpath expr="//field[@name='commitment_date']" position="attributes">
+                <attribute name="column_invisible">True</attribute>
+            </xpath>
             <xpath expr="//tree" position="attributes">
                 <attribute name="decoration-success">order_signal == 'on_time'</attribute>
                 <attribute name="decoration-warning">order_signal == 'due_soon'</attribute>
                 <attribute name="decoration-danger">order_signal == 'overdue'</attribute>
                 <attribute name="multi_edit">1</attribute>
+            </xpath>
+        </field>
+    </record>
+    <record id="real_view_quotation_tree_with_onboarding" model="ir.ui.view">
+        <field name="name">real.sale.order.tree</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_quotation_tree_with_onboarding" />
+        <field name="priority">1000</field>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='partner_id']" position="after">
+                <field name="commitment_date_real" optional="show" />
+            </xpath>
+
+            <xpath expr="//field[@name='commitment_date']" position="attributes">
+                <attribute name="column_invisible">True</attribute>
             </xpath>
         </field>
     </record>
