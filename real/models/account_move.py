@@ -28,8 +28,8 @@ class AccountMove(models.Model):
 
 
 
-    def get_xml_content(self):
-        for rec in self:
+    def get_xml_content(self, rec=None):
+        for rec in (self if not rec else rec):
             if rec.partner_id.name == 'PROVEEDOR GLOBAL' and not rec.xml_emisor:
                 if(attachment := rec.env['ir.attachment'].search([('res_id', '=', rec.id), ('res_model', '=', rec._name), ('name', 'ilike', '%.xml')], limit=1)) and attachment.raw:
                     try:

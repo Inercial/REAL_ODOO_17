@@ -44,6 +44,7 @@
         "account_financial_risk",
     ],
     "data": [
+        'data/ir_cron_data.xml',
         'data/ir_config_parameter_data.xml',
         "reports/muestra.xml",
         "reports/remision.xml",
