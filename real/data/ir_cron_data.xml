@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<odoo>
+
+    <record id="ir_cron_update_xml_emisor" model="ir.cron">
+        <field name="name">UPDATE xml_emisor</field>
+        <field name="model_id" ref="account.model_account_move" />
+        <field name="state">code</field>
+        <field name="code">
+today = datetime.datetime.today().strftime('%Y-%m-%d')
+last_month = (datetime.datetime.today() - datetime.timedelta(days=30)).strftime('%Y-%m-%d')
+rec = env['account.move'].search([('date', '&lt;=', today), ('date', '&gt;=', last_month), ('move_type', '=', 'in_invoice')])
+model.get_xml_content(rec)
+        </field>
+        <field name="user_id" ref="base.user_root" />
+        <field name="interval_number">1</field>
+        <field name="interval_type">days</field>
+        <field name="numbercall">-1</field>
+    </record>
+
+</odoo>
