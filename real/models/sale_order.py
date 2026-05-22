@@ -131,7 +131,7 @@ class SaleOrder(models.Model):
 
     def write(self, vals):
         for rec in self:
-            rec.message_post(body=Markup(f'{vals.get("x_studio_estatus_embarques")} <i class="fa fa-long-arrow-right mx-1 text-600" title="Cambiado"></i> <b>{rec.x_studio_estatus_embarques}</b>'))
+            rec.message_post(body=Markup(f'{rec.x_studio_estatus_embarques} <i class="fa fa-long-arrow-right mx-1 text-600" title="Cambiado"></i> <b>{vals.get("x_studio_estatus_embarques")}</b>'))
             if rec.create_date != rec.write_date and not self.env.user.has_group(
                 "real.res_groups_can_modify_sale_order_after_creation"
             ):
