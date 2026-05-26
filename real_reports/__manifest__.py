@@ -20,6 +20,7 @@
     ],
     "data": [
         "security/ir.model.access.csv",
+        "report/physical_inventory_count_report_mp.xml",
         "report/costs_and_prices_format.xml",
         "report/costs_and_prices_report_view.xml",
         "report/freight_line_format.xml",
