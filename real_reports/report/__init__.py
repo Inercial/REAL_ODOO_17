@@ -19,3 +19,4 @@ from . import costs_and_prices_report_real
 from . import general_ledger_audit_report_real
 from . import report_cancelled_invoices
 from . import physical_inventory_count
+from . import physical_inventory_count_mp
