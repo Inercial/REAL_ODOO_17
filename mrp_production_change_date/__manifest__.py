@@ -20,5 +20,4 @@
         "security/ir.model.access.csv",
         "wizards/mrp_production_change_date_wizard_view.xml",
     ],
-    "installable": True,
 }

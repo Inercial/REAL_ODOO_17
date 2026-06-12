@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="view_account_reconcile_wizard_inherit_analytic" model="ir.ui.view">
+        <field name="name">account.reconcile.wizard.form.inherit.analytic</field>
+        <field name="model">account.reconcile.wizard</field>
+        <field name="inherit_id" ref="account_accountant.view_account_reconcile_wizard" />
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='account_id']" position="after">
+                <field
+                    name="analytic_distribution"
+                    widget="analytic_distribution"
+                    groups="analytic.group_analytic_accounting"
+                    options="{'account_field': 'account_id'}"
+                />
+            </xpath>
+        </field>
+    </record>
+</odoo>

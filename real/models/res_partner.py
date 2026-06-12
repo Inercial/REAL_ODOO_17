@@ -61,6 +61,46 @@ class ResPartner(models.Model):
     sales_phone = fields.Char()
     commercial_address = fields.Char()
 
+    x_studio_boolean_field_5iE6W = fields.Boolean(string="Critico")
+    x_studio_fecha_alta_de_cliente = fields.Date(string="Fecha Alta de Cliente")
+    x_studio_departamento = fields.Selection(
+        [
+            ("Logistica", "Logistica"),
+            ("No aplica", "No aplica"),
+            ("Comercialización", "Comercialización"),
+            ("Diseño y Desarrollo", "Diseño y Desarrollo"),
+            ("Des. Organizacional", "Des. Organizacional"),
+            ("Producción", "Producción"),
+            ("Administración", "Administración"),
+            ("Operaciones", "Operaciones"),
+        ],
+        string="Departamento",
+    )
+    x_studio_extras = fields.Selection(
+        [
+            ("Maniobras", "Maniobras"),
+            ("Reparto", "Reparto"),
+            ("Maniobras y reparto", "Maniobras y reparto"),
+            ("Ninguno", "Ninguno"),
+        ],
+        string="Extras",
+    )
+    x_studio_zona = fields.Selection(
+        [
+            ("0", "0"),
+            ("1", "1"),
+            ("2", "2"),
+            ("3", "3"),
+            ("4", "4"),
+            ("5", "5"),
+            ("6", "6"),
+            ("7", "7"),
+            ("8", "8"),
+            ("9", "9"),
+        ],
+        string="Zona",
+    )
+
     def _domain_way_of_shipment(self):
         category = self.env.ref("real.res_partner_category_supplier_freight", False)
         category_id = False

@@ -6,7 +6,8 @@
         <field name="inherit_id" ref="stock_request.stock_request_order_form" />
         <field name="arch" type="xml">
             <xpath expr="//field[@name='partner_id']" position="attributes">
-                <attribute name="domain">[("is_company", "=", True)]</attribute>
+                <!-- Restrict partner selection to companies (is_company=True) or individual contacts (type='contact') -->
+                <attribute name="domain">['|', ('is_company', '=', True), ('type', '=', 'contact')]</attribute>
             </xpath>
             <xpath expr="//field[@name='expected_date']" position="after">
                 <field name="way_of_shipment_id" />
@@ -71,7 +72,7 @@
                 <attribute name="column_invisible">1</attribute>
             </xpath>
             <xpath expr="//field[@name='analytic_distribution']" position="after">
-                <field name="analytic_distribution" invisible="1"/>
+                <field name="analytic_distribution" invisible="1" />
             </xpath>
             <xpath
                 expr="//page[@name='items']/field[@name='stock_request_ids']/tree/field[@name='qty_in_progress']"

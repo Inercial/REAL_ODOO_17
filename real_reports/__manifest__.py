@@ -4,7 +4,7 @@
 {
     "name": "Real Reports",
     "summary": "Module to Generate Custom Reports for Real",
-    "version": "17.0.1.0.4",
+    "version": "17.0.1.0.12",
     "category": "Reporting",
     "author": "Jarsa",
     "website": "https://www.jarsa.com",
@@ -46,6 +46,6 @@
         "report/general_ledger_audit_report_view.xml",
         "report/report_cancelled_invoices_view.xml",
         "report/physical_inventory_count_report.xml",
+        "report/pending_tons_wizard_view.xml",
     ],
-    "installable": True,
 }

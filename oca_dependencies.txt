@@ -16,7 +16,7 @@ purchase-workflow git@github.com:Jarsa/purchase-workflow.git
 stock-logistics-reporting git@github.com:Jarsa/stock-logistics-reporting.git
 stock-logistics-request git@github.com:Jarsa/stock-logistics-request.git
 stock-logistics-workflow git@github.com:Jarsa/stock-logistics-workflow.git
-odoo-cloc git@git.jarsa.com:Jarsa/odoo-cloc.git
+odoo-cloc git@github.com:Jarsa/odoo-cloc.git
 l10n-mx-check-printing git@git.vauxoo.com:jarsa/l10n-mx-check-printing.git
 l10n-mx-edi-advance git@git.vauxoo.com:jarsa/l10n-mx-edi-advance.git
 edi-document git@git.vauxoo.com:jarsa/edi-document.git
@@ -26,3 +26,5 @@ l10n-mx-edi-related-documents git@git.vauxoo.com:jarsa/l10n-mx-edi-related-docum
 l10n-mx-edi-product-refund-accounts git@git.vauxoo.com:jarsa/l10n-mx-edi-product-refund-accounts.git
 bank-statement-import git@github.com:Jarsa/bank-statement-import.git
 stock-logistics-availability git@github.com:Jarsa/stock-logistics-availability.git
+l10n-edi-discount git@git.vauxoo.com:jarsa/l10n-edi-discount.git
+l10n-edi-hr-expense git@git.vauxoo.com:jarsa/l10n-edi-hr-expense.git

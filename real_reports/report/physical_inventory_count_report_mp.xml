@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8" ?>
 <odoo>
     <template id="report_physical_inventory_count_mp">
         <t t-call="web.html_container">
@@ -46,9 +46,12 @@
                             <tr>
                                 <td rowspan="3" class="text-center align-middle" style="width: 60%;">
                                     <div class="d-flex align-items-center justify-content-center">
-                                        <img t-if="res_company.logo"
+                                        <img
+                                            t-if="res_company.logo"
                                             t-att-src="image_data_uri(res_company.logo)"
-                                            style="max-height: 50px;" class="me-3" />
+                                            style="max-height: 50px;"
+                                            class="me-3"
+                                        />
                                         <div>
                                             <strong>
                                                 <t t-esc="res_company.name" />
@@ -59,8 +62,7 @@
                                         </div>
                                     </div>
                                 </td>
-                                <td colspan="2" class="text-center bg-light"
-                                    style="font-size: 13px;">
+                                <td colspan="2" class="text-center bg-light" style="font-size: 13px;">
                                     <strong>FORMATO</strong>
                                 </td>
                             </tr>
@@ -164,7 +166,7 @@
                     <div class="oe_title">
                         <h1>Conteo físico de inventarios</h1>
                     </div>
-                    
+
                     <group>
                         <field name="category_id" widget="selection" required="1" />
                     </group>
@@ -172,7 +174,7 @@
                 </sheet>
                 <footer>
                     <button string="Cerrar" class="btn-secondary" special="cancel" />
-                    <button name="action_print_report" string="Print Report" type="object" class="btn-primary"/>
+                    <button name="action_print_report" string="Print Report" type="object" class="btn-primary" />
                 </footer>
             </form>
         </field>

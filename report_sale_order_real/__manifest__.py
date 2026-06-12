@@ -21,5 +21,4 @@
         "reports/report_sale_order_order.xml",
         "reports/sale_order_reports.xml",
     ],
-    "installable": True,
 }

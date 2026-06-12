@@ -28,6 +28,7 @@ class StockRequestOrder(models.Model):
         domain=["|", ("company_id", "=", False), ("company_id", "=", "company_id")],
     )
     child_tag_required = fields.Boolean(default=True)
+    x_studio_descripcin_1 = fields.Char(string="Descripción")
 
     @api.onchange("partner_id")
     def onchange_partner_id(self):
@@ -47,8 +48,6 @@ class StockRequestOrder(models.Model):
         res = super().action_confirm()
         partner_id = 0
         if self.picking_ids:
-            if self.x_studio_descripcin_1:
-                    descripcin = self.x_studio_descripcin_1;
             if self.partner_shipping_id:
                 partner_id = self.partner_shipping_id.id
             else:
@@ -57,8 +56,7 @@ class StockRequestOrder(models.Model):
             self.picking_ids.write(
                 {
                     "partner_id": partner_id,
-                    "note": descripcin,
+                    "note": self.x_studio_descripcin_1 or "",
                 }
             )
         return res
-

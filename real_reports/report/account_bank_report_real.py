@@ -21,8 +21,7 @@ class AccountBankReportReal(models.Model):
         comodel_name="res.partner",
         readonly=True,
     )
-    partner_category_ids = fields.Char(
-        string='Tags',
+    supplier_type = fields.Char(
         readonly=True,
     )
     move_id = fields.Many2one(
@@ -117,8 +116,8 @@ class AccountBankReportReal(models.Model):
                         ON rpc.id = rel.category_id
                     WHERE rel.partner_id = aml.partner_id
                     AND rpc.parent_id = 398
-                ) AS partner_category_names,
-                aa.name ->> 'en_US' AS account_name,
+                ) AS supplier_type,
+                aa.name ->> 'es_MX' AS account_name,
                 aa.id AS account_id,
                 am.state,
                 aj.id AS journal_id,

@@ -34,4 +34,6 @@ from . import mrp_dump_truck_driver
 from . import mrp_license_plate
 from . import product_category_class
 from . import account_payment_line
-from . import report_stock_forecasted
+from . import stock_forecasted
+from . import mrp_bom
+from . import l10n_mx_edi_advance

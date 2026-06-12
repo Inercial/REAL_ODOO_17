@@ -18,6 +18,22 @@ class AccountPayment(models.Model):
     ref_1 = fields.Char(size=40)
     ref_2 = fields.Char(size=40)
 
+    @api.depends("partner_id", "company_id", "payment_type", "destination_journal_id", "is_internal_transfer")
+    def _compute_available_partner_bank_ids(self):
+        """For internal transfers going to a destination without its own bank account
+        (like cash), show the company's internal bank accounts as selectable
+        source/destination options in the payment form.
+        """
+        res = super()._compute_available_partner_bank_ids()
+
+        for pay in self:
+            if pay.is_internal_transfer:
+                if not pay.destination_journal_id.bank_account_id:
+                    pay.available_partner_bank_ids = pay.company_id.partner_id.bank_ids.filtered(
+                        lambda x: x.company_id in (False, pay.company_id)
+                    )._origin
+        return res
+
     def action_post(self):
         if self.payment_method_id.code == "banorte_credit_transfer" and not self.partner_bank_id:
             raise UserError(_("You need to select a partner bank account"))

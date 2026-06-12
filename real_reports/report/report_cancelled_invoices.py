@@ -9,6 +9,7 @@ from odoo.exceptions import UserError
 
 class ReportCancelledInvoices(models.TransientModel):
     _name = "report.cancelled.invoices"
+    _description = "Report Cancelled Invoices"
 
     date_start = fields.Date(required=True)
     date_end = fields.Date(required=True)
@@ -141,15 +142,10 @@ class ReportCancelledInvoicesTemplate(models.AbstractModel):
         sum_costo_linea = sum(line[6] or 0 for line in query)
 
         return {
-            "docs": self.env["account.fcr.report"].search([]),
             "today": date.today().strftime("%d-%m-%Y"),
             "query": query,
-            "date_start": datetime.strptime(data["date_start"], "%Y-%m-%d").strftime(
-                "%d-%m-%Y"
-            ),
-            "date_end": datetime.strptime(data["date_end"], "%Y-%m-%d").strftime(
-                "%d-%m-%Y"
-            ),
+            "date_start": datetime.strptime(data["date_start"], "%Y-%m-%d").strftime("%d-%m-%Y"),
+            "date_end": datetime.strptime(data["date_end"], "%Y-%m-%d").strftime("%d-%m-%Y"),
             "sum_precio_con_iva_linea": round(sum_precio_con_iva_linea, 2),
             "sum_costo_linea": round(sum_costo_linea, 2),
         }

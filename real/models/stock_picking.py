@@ -23,6 +23,12 @@ class StockPicking(models.Model):
     hide_picking_block = fields.Boolean(compute="_compute_hide_picking_block", store=False)
     machine_id = fields.Many2one("mrp.equipment", ondelete="restrict", compute="_compute_machine_name")
 
+    x_studio_char_field_Rxj40 = fields.Char(string="New Texto")
+    x_studio_many2one_field_aAHDt = fields.Many2one("stock.request", string="Solicitud de existencias")
+    x_studio_related_field_46xN8 = fields.Many2one(
+        "stock.request", related="x_studio_many2one_field_aAHDt", string="New Campo relacionado"
+    )
+
     @api.model
     def _compute_machine_name(self):
         for record in self:
@@ -31,8 +37,8 @@ class StockPicking(models.Model):
     @api.model_create_multi
     def create(self, vals_list):
         records = super().create(vals_list)
-        is_blocked = self.env['ir.config_parameter'].sudo().get_param('real.block_inventory_priority')
-        if is_blocked == 'True':
+        is_blocked = self.env["ir.config_parameter"].sudo().get_param("real.block_inventory_priority")
+        if is_blocked == "True":
             for rec in records:
                 ubication = rec.client_location
                 location_id = rec.location_id.id

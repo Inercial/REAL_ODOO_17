@@ -20,8 +20,9 @@
         <field name="model">res.partner.bank</field>
         <field name="inherit_id" ref="base.view_partner_bank_tree" />
         <field name="arch" type="xml">
+            <!-- Set the column_invisible attribute to False -->
             <xpath expr="//field[@name='acc_holder_name']" position="attributes">
-                <attribute name="invisible">0</attribute>
+                <attribute name="column_invisible">False</attribute>
             </xpath>
         </field>
     </record>

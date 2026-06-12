@@ -2,10 +2,10 @@
 # License LGPL-3.0 or later (http://www.gnu.org/licenses/lgpl.html).
 
 import logging
-from odoo import _, api, fields, models
-from odoo.exceptions import UserError
 import xml.etree.ElementTree as ET
 
+from odoo import _, api, fields, models
+from odoo.exceptions import UserError, ValidationError
 
 _logger = logging.getLogger(__name__)
 
@@ -24,19 +24,24 @@ class AccountMove(models.Model):
     stop_inv = fields.Boolean(default=False, tracking=True)
     tons_display = fields.Float(digits="Product Unit of Measure", compute="_compute_tons", store=True, string="Tons")
     previous_folio = fields.Char()
+    x_studio_tarimas = fields.Integer(string="Tarimas", copy=True)
+    x_studio_departamento = fields.Selection(related="partner_id.x_studio_departamento", string="Departamento")
     xml_emisor = fields.Char()
 
-
-
     def get_xml_content(self, rec=None):
-        for rec in (self if not rec else rec):
-            if rec.partner_id.name == 'PROVEEDOR GLOBAL' and not rec.xml_emisor:
-                if(attachment := rec.env['ir.attachment'].search([('res_id', '=', rec.id), ('res_model', '=', rec._name), ('name', 'ilike', '%.xml')], limit=1)) and attachment.raw:
+        records = rec or self
+        for move in records:
+            if move.partner_id.name == "PROVEEDOR GLOBAL" and not move.xml_emisor:
+                if (
+                    attachment := move.env["ir.attachment"].search(
+                        [("res_id", "=", move.id), ("res_model", "=", move._name), ("name", "ilike", "%.xml")], limit=1
+                    )
+                ) and attachment.raw:
                     try:
                         emisor = ET.fromstring(attachment.raw).find(".//{*}Emisor")
-                        rec.xml_emisor = emisor.get('Nombre') if emisor is not None else ''
+                        move.xml_emisor = emisor.get("Nombre") if emisor is not None else ""
                     except Exception:
-                        pass
+                        _logger.exception("Error parsing XML emisor for account.move %s", move.id)
 
     @api.depends("invoice_line_ids")
     def _compute_tons(self):
@@ -177,6 +182,42 @@ class AccountMove(models.Model):
     def _onchange_city_id(self):
         self.city_id = False
 
+    def _post(self, soft=True):
+        for move in self:
+            # detect refund generated from invoice
+            if move.move_type == "out_refund" and move.reversed_entry_id:
+                invoice = move.reversed_entry_id
+
+                analytic = invoice.invoice_line_ids.filtered(lambda line: line.analytic_distribution)[
+                    :1
+                ].analytic_distribution
+
+                if analytic:
+                    advance_lines = move.invoice_line_ids.filtered(lambda line: not line.analytic_distribution)
+                    for line in advance_lines:
+                        # copy analytic in refund
+                        line.analytic_distribution = analytic
+
+            # validate analytics in sale and purchase invoices
+            if move.journal_id.type in ("sale", "purchase"):
+                lines_missing = move.invoice_line_ids.filtered(lambda line: not line.analytic_distribution)
+                if lines_missing:
+                    raise ValidationError(_("Please fill Analytic Distribution on all move lines."))
+
+        self.env["account.analytic.line"].search([("move_line_id.move_id", "in", self.ids)]).unlink()
+
+        return super()._post(soft=soft)
+
+    def button_draft(self):
+        """Remove the analytic lines linked to the move if it is marked as draft,
+        to ensure they aren't duplicated if the move is re-posted.
+        """
+        res = super().button_draft()
+
+        self.env["account.analytic.line"].search([("move_line_id.move_id", "in", self.ids)]).unlink()
+
+        return res
+
 
 class AccountMoveLine(models.Model):
     _inherit = "account.move.line"
@@ -215,3 +256,33 @@ class AccountMoveLine(models.Model):
             if vals.get("account_id") and vals["account_id"] in accounts.ids:
                 vals["analytic_distribution"] = {"110": 100}
         return super().create(vals_list)
+
+    def _compute_account_id(self):
+        result = super()._compute_account_id()
+
+        refund_lines = self.filtered(
+            lambda line: (
+                line.display_type == "product"
+                and line.move_id.is_invoice(True)
+                and line.move_id.is_sale_document(include_receipts=True)
+            )
+        )
+
+        for line in refund_lines:
+            move = line.move_id
+
+            is_refund_like = (
+                move.move_type == "out_refund" or move.reversed_entry_id or move.amount_total < 0 or line.quantity < 0
+            )
+
+            if not is_refund_like:
+                continue
+
+            refund_account = (
+                line.product_id.categ_id.property_account_income_refund_id
+                or line.product_id.property_account_income_refund_id
+            )
+
+            if refund_account:
+                line.account_id = refund_account.id
+        return result

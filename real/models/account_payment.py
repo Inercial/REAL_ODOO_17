@@ -9,27 +9,24 @@ class AccountPayment(models.Model):
     _inherit = "account.payment"
 
     reonciliation_date = fields.Date(
-        compute="_compute_stat_buttons_from_reconciliation",
+        compute="_compute_reconciliation_date",
         store=True,
         string="Bank Reconciliation Date",
         compute_sudo=False,
     )
+    x_studio_tarimas = fields.Integer(related="move_id.x_studio_tarimas", string="Tarimas")
 
     @api.depends(
         "move_id.line_ids.matched_debit_ids",
         "move_id.line_ids.matched_credit_ids",
     )
-    def _compute_stat_buttons_from_reconciliation(self):
-        res = super()._compute_stat_buttons_from_reconciliation()
-        count = 0
+    def _compute_reconciliation_date(self):
         for rec in self:
-            count += 1
             rec.reonciliation_date = False
             if not rec.reconciled_statement_line_ids:
                 continue
             statements = self.env["account.bank.statement.line"].browse(rec.reconciled_statement_line_ids.ids)
             rec.reonciliation_date = max(statements.mapped("date"))
-        return res
 
     def action_post(self):
         self.check_invs()

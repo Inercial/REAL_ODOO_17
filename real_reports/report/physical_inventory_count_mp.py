@@ -1,27 +1,30 @@
-from odoo import api, models, fields
 from datetime import datetime
 from zoneinfo import ZoneInfo
+
+from odoo import api, fields, models
 
 
 class PhysicalInventoryCountMP(models.TransientModel):
     _name = "physical.inventory.count.mp"
 
     category_id = fields.Many2one(
-            'product.category',
-            string='Seleccionar Categoría',
-            domain=[
-                ('is_mp_category', '=', True),
-                ('parent_id', '!=', False),
-                '|', '|',
-                ('parent_path', '=ilike', '5/%'),
-                ('parent_path', '=ilike', '4/%'),
-                ('parent_path', '=ilike', '110/%')
-            ]
-        )
+        "product.category",
+        string="Seleccionar Categoría",
+        domain=[
+            ("is_mp_category", "=", True),
+            ("parent_id", "!=", False),
+            "|",
+            "|",
+            ("parent_path", "=ilike", "5/%"),
+            ("parent_path", "=ilike", "4/%"),
+            ("parent_path", "=ilike", "110/%"),
+        ],
+    )
 
     def action_print_report(self):
         complete_name = self.category_id.complete_name
-        self.env.cr.execute("""
+        self.env.cr.execute(
+            """
 SELECT
     trim(pt.name ->> 'es_MX' || ' ' || COALESCE(pav.name ->> 'es_MX', '')) AS product_name
 FROM
@@ -43,20 +46,21 @@ WHERE
     AND pc.complete_name ILIKE %(complete_name)s
 ORDER BY
     product_name
-        """, {"complete_name": complete_name},)
-        lines = {'docs': self.env.cr.dictfetchall(), 'category_name': complete_name}
-        return self.env.ref("real_reports.action_physical_inventory_count_mp")\
-            .report_action(self, data=lines)
+        """,
+            {"complete_name": complete_name},
+        )
+        lines = {"docs": self.env.cr.dictfetchall(), "category_name": complete_name}
+        return self.env.ref("real_reports.action_physical_inventory_count_mp").report_action(self, data=lines)
 
 
 class ReportPhysicalInventoryMP(models.AbstractModel):
-    _name = 'report.real_reports.report_physical_inventory_count_mp'
+    _name = "report.real_reports.report_physical_inventory_count_mp"
 
     @api.model
     def _get_report_values(self, docids, data):
         return {
-            'docs': data['docs'],
-            'category_name': data['category_name'],
-            'logo': self.env.company.logo,
-            'print_date': datetime.now(ZoneInfo("America/Mexico_City")).strftime('%Y-%m-%d %H:%M:%S')
+            "docs": data["docs"],
+            "category_name": data["category_name"],
+            "logo": self.env.company.logo,
+            "print_date": datetime.now(ZoneInfo("America/Mexico_City")).strftime("%Y-%m-%d %H:%M:%S"),
         }

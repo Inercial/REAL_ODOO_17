@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8" ?>
 <odoo>
     <template id="report_account_invoice_base_real" priority="2000">
         <t t-set="lang" t-value="o.partner_id.lang or o.company_id.partner_id.lang" />
@@ -53,7 +53,8 @@
                 <strong name="invoice_date">FECHA DE FACTURACION:<t t-esc="o.invoice_date" /></strong>
                 <br />
                 <strong name="invoice_date_due">FECHA DE PAGO:<t t-esc="o.invoice_date_due" /></strong>
-                <span>LUGAR DE PAGO: CIRCUITO ENRIQUE DE LARA NO. 280 COLONIA CIUDAD INDUSTRIAL, TORREON, COAHUILA 27019</span>
+                <br />
+                LUGAR DE PAGO: CIRCUITO ENRIQUE DE LARA NO. 280 COLONIA CIUDAD INDUSTRIAL, TORREON, COAHUILA 27019
             </div>
         </div>
         <div class="page" style="font-size:14px;">
@@ -72,8 +73,10 @@
                             /></b></span>
                     <span>DIRECCION: <b><t t-esc="o.partner_id.street" /></b></span>
                     <span>CP: <b><t t-esc="o.partner_id.zip" /></b></span><br />
-                    <span>CIUDAD: <b><t t-esc="o.partner_id.city" /></b></span>
-                    <span>ORDEN DE COMPRA: <b><t t-esc="o.invoice_line_ids.mapped('sale_line_ids.order_id')[:1].so_text" /></b></span>
+                    <span>CIUDAD: <b><t t-esc="o.partner_id.city" /></b></span><br />
+                    <span>ORDEN DE COMPRA: <b><t
+                                t-esc="o.invoice_line_ids.mapped('sale_line_ids.order_id')[:1].po_name"
+                            /></b></span>
                 </div>
                 <div name="delivery_information" class="col-6 d-grid" style="font-size:0.90rem;">
                     <strong style="border-bottom: 2px solid black;">DATOS DE ENTREGA:</strong>
