@@ -22,7 +22,7 @@
             <tree>
                 <field name="date" />
                 <field name="account_name" />
-                <field name="partner_category_ids" optional="show" />
+                <field name="supplier_type" optional="show" />
                 <field name="partner_id" optional="show" />
                 <field name="l10n_edi_employee_id" optional="show" />
                 <field name="description" />
@@ -44,6 +44,9 @@
         <field name="arch" type="xml">
             <search>
                 <field name="reference" />
+                <field name="account_name" />
+                <field name="supplier_type" />
+                <field name="partner_id" />
                 <separator />
                 <filter
                     domain="[('date','=', ((context_today()-datetime.timedelta(days=1)).strftime('%Y-%m-%d')))]"

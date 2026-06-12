@@ -14,17 +14,17 @@ class ProductProduct(models.Model):
         string="Tons",
     )
     driver_commission = fields.Boolean(default=False)
-
     parent_category_id = fields.Many2one(
         related="categ_id.parent_id",
         store=True,
     )
-    total_qty_weight = fields.Float(compute="_compute_total_qty_weight")
+    liters_display = fields.Float(compute="_compute_liters")
 
-    @api.depends('qty_available', 'weight')
-    def _compute_total_qty_weight(self):
+    @api.depends("qty_available", "weight")
+    def _compute_liters(self):
+        """Converts available quantity × unit weight into a liters display value."""
         for record in self:
-            record.total_qty_weight = record.qty_available * record.weight
+            record.liters_display = record.qty_available * record.weight
 
     @api.depends("qty_available")
     @api.depends_context("from_date", "to_date")

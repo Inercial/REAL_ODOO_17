@@ -1,0 +1,136 @@
+image: quay.io/vauxoo/dockerv:latest
+stages:
+  - pre
+  - test
+  - post
+
+precommit:
+  stage: pre
+  tags:
+    - lint
+  script:
+    - source variables.sh
+    - PRECOMMIT_HOOKS_TYPE=${PRECOMMIT_HOOKS_TYPE},-optional pre-commit-vauxoo
+
+precommit_optional:
+  stage: pre
+  allow_failure: true
+  tags:
+    - lint
+  script:
+    - pre-commit-vauxoo -t optional --fail-optional
+
+build_docker:
+  stage: pre
+  tags:
+    - build
+  script:
+    - source variables.sh
+    - vxci check_keys
+    - vxci build_image --push_image
+    # New build image built with the tag of the same git sha
+    # So, rebuild to get the new docker image
+    # TODO: Get the last build of the repo/branch to rebuild it
+    # - if [ "${CI_COMMIT_BRANCH}" == ${VERSION} ] ; then wget --post-data 'force' https://runbot.vauxoo.com/runbot/build/169142/force; fi;
+  artifacts:
+    paths:
+      - $CI_COMMIT_REF_SLUG
+
+odoo_sh_deploy:
+  stage: pre
+  tags:
+    - odoo
+  before_script:
+    - 'command -v ssh-agent >/dev/null || ( apk add --update openssh )'
+    - eval $(ssh-agent -s)
+    - source variables.sh
+    - pip install --root-user-action ignore odoo-sh-gitlab-ci
+    - odoo_sh_deploy --initialize
+  script:
+    - source variables.sh
+    - odoo_sh_deploy
+
+odoo_test:
+  stage: test
+  tags:
+    - odoo
+  needs: ["build_docker"]
+  script:
+    - source variables.sh
+    - source $CI_COMMIT_REF_SLUG/image_name.env
+    - vxci check_keys
+    - vxci test_repo --allow_deprecated
+  artifacts:
+    when: always
+    paths:
+      - $CI_COMMIT_REF_SLUG
+
+publish_coverage:
+  stage: post
+  tags:
+    - build
+  coverage: '/^TOTAL.*\s+(\d+(?:\.\d+)?\%)$/'
+  allow_failure: true
+  needs: ["odoo_test"]
+  script:
+    - source variables.sh
+    - source $CI_COMMIT_REF_SLUG/image_name.env
+    - vxci check_keys
+    - vxci push_coverage_combine
+  artifacts:
+    when: always
+    paths:
+      - $CI_COMMIT_REF_SLUG
+    reports:
+      coverage_report:
+        coverage_format: cobertura
+        path: ​$CI_COMMIT_REF_SLUG/coverage.xml
+  environment:
+    name: coverage
+    url: https://coverage.vauxoo.com/${CI_COMMIT_REF_SLUG}-${CI_PROJECT_NAME}
+
+odoo_warnings:
+  stage: post
+  tags:
+    - build
+  allow_failure: true
+  needs: ["odoo_test"]
+  script:
+    - vxci check_log --logpath="./$CI_COMMIT_REF_SLUG"
+
+auto-update-readme:
+  stage: pre
+  tags:
+    - lint
+  image: python:3.11-slim
+  script:
+    - apt-get update -qq && apt-get install -y -qq git
+    - pip install --no-cache-dir odoo-readme-bot -q
+    - odoo-readme-bot version
+    - odoo-readme-bot run
+  rules:
+    - if: '$CI_PIPELINE_SOURCE == "schedule"'
+  allow_failure: true
+
+sync-notebooklm:
+  stage: pre
+  tags:
+    - lint
+  image: python:3.11-slim
+  variables:
+    PRODUCTION_BRANCH: production
+  before_script:
+    - apt-get update -qq && apt-get install -y -qq git openssh-client
+    - eval $(ssh-agent -s)
+    - echo "$PRIVATE_DEPLOY_KEY" | tr -d '\r' | ssh-add -
+    - mkdir -p ~/.ssh && chmod 700 ~/.ssh
+    - ssh-keyscan github.com git.jarsa.com git.vauxoo.com >> ~/.ssh/known_hosts
+    - chmod 644 ~/.ssh/known_hosts
+  script:
+    - source variables.sh
+    - pip install --no-cache-dir odoo-readme-bot -q
+    - git clone --recurse-submodules -b $PRODUCTION_BRANCH $GITHUB_REPO
+    - REPOS_ROOT=$GITHUB_REPO_NAME odoo-readme-bot sync-notebooklm
+  rules:
+    - if: '$CI_PIPELINE_SOURCE == "schedule"'
+  allow_failure: true

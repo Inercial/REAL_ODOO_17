@@ -21,5 +21,4 @@
             "num2words",
         ],
     },
-    "installable": True,
 }

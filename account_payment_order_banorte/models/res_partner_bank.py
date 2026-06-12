@@ -27,7 +27,29 @@ class ResPartnerBank(models.Model):
         " reference must be the invoices that are paid."
     )
 
-    @api.depends("acc_number", "acc_holder_name")
-    def _compute_name(self):
-        for rec in self:
-            rec.name = " - ".join([rec.acc_number, rec.acc_holder_name]) if rec.acc_holder_name else rec.acc_number
+    @api.depends("acc_holder_name", "partner_id")
+    def _compute_display_name(self):
+        res = super()._compute_display_name()
+
+        for bank in self:
+            # Only modify for company-owned bank accounts (used in internal transfers)
+            # Skip if no holder name or not a company account
+            if not bank.acc_holder_name or bank.partner_id != self.env.company.partner_id:
+                continue
+
+            current_name = bank.display_name
+            holder_part = f" · {bank.acc_holder_name}"
+
+            # Insert holder after acc_number, before bank name or any suffix
+            if " - " in current_name:
+                # Has bank name: "0123456789 · BBVA (something)"
+                acc_part, rest = current_name.split(" - ", 1)
+                bank.display_name = f"{acc_part}{holder_part} · {rest}"
+            elif " (" in current_name:
+                # No bank name but has label: "0123456789 (trusted)"
+                acc_part, suffix = current_name.rsplit(" (", 1)
+                bank.display_name = f"{acc_part}{holder_part} ({suffix}"
+            else:
+                # Simple fallback
+                bank.display_name += holder_part
+        return res

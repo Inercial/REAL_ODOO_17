@@ -6,8 +6,20 @@
         <field name="inherit_id" ref="account.view_account_payment_form" />
         <field name="arch" type="xml">
             <xpath expr="//button[@name='action_post']" position="after">
+                <!--
+                    Button "Generate Payment File"
+
+                    Visible only when:
+                    - Payment is posted (state == 'posted')
+                    - It's an outbound payment (payment_type != 'inbound')
+                    - The selected payment method supports file generation
+                      (create_payment_file == True, which is a stored related field
+                       coming from payment_method_id.generate_payment_file)
+
+                    Hidden otherwise.
+                -->
                 <button
-                    invisible="state != 'posted' or payment_type == 'inbound'"
+                    invisible="state != 'posted' or payment_type == 'inbound' or not create_payment_file"
                     name="open2generated"
                     type="object"
                     string="Generate Payment File"

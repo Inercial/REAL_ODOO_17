@@ -1,18 +1,24 @@
-from odoo import api, models
 from datetime import datetime
 from zoneinfo import ZoneInfo
 
+from odoo import api, models
+
+
 class PhysicalInventoryCount(models.TransientModel):
     _name = "physical.inventory.count"
+    _description = "Physical Inventory Count"
+
 
 class ReportPhysicalInventory(models.AbstractModel):
-    _name = 'report.real_reports.report_physical_inventory_count'
+    _name = "report.real_reports.report_physical_inventory_count"
+    _description = "Report Physical Inventory Count"
 
     @api.model
     def _get_report_values(self, docids, data=None):
-        self.env.cr.execute("""
+        self.env.cr.execute(
+            """
 SELECT
-    trim(pt.name ->> 'en_US' || ' ' || COALESCE(pav.name ->> 'en_US', '')) AS product_name,
+    trim(pt.name ->> 'es_MX' || ' ' || COALESCE(pav.name ->> 'es_MX', '')) AS product_name,
     trim(replace(split_part(pc.complete_name, '/', 1), 'PT ', '')) AS complete_name,
     COALESCE(sq_sum.total_qty, 0)::integer AS quantity
 FROM
@@ -34,11 +40,12 @@ WHERE
     AND (pc.complete_name ILIKE 'PT POLVOS /%' OR pc.complete_name ILIKE 'PT EMULSIONES /%')
 ORDER BY
     product_name
-        """)
+        """
+        )
         return {
-            'doc_ids': docids,
-            'doc_model': 'physical.inventory.count',
-            'docs': self.env.cr.dictfetchall(),
-            'logo': self.env.company.logo,
-            'print_date': datetime.now(ZoneInfo("America/Mexico_City")).strftime('%Y-%m-%d %H:%M:%S')
+            "doc_ids": docids,
+            "doc_model": "physical.inventory.count",
+            "docs": self.env.cr.dictfetchall(),
+            "logo": self.env.company.logo,
+            "print_date": datetime.now(ZoneInfo("America/Mexico_City")).strftime("%Y-%m-%d %H:%M:%S"),
         }

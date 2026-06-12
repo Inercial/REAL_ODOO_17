@@ -11,7 +11,7 @@ class MrpRequest(models.Model):
     available_qty = fields.Float(compute="_compute_available_qty", store=True)
     product_max_qty = fields.Float(compute="_compute_orderpoint", store=True)
     product_min_qty = fields.Float(compute="_compute_orderpoint", store=True)
-    qty_multiple = fields.Float(compute="_compute_orderpoint")
+    qty_multiple = fields.Float(compute="_compute_orderpoint", store=True)
     qty_ordered = fields.Float(compute="_compute_qty_ordered")
     qty_in_production = fields.Float(compute="_compute_qty_in_production", store=True)
     local = fields.Float(compute="_compute_local", store=True)

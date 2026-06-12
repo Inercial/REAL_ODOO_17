@@ -18,5 +18,4 @@
         "security/ir.model.access.csv",
         "wizards/stock_picking_change_date_wizard_view.xml",
     ],
-    "installable": True,
 }

@@ -13,5 +13,4 @@
     "depends": [
         "stock_request",
     ],
-    "installable": True,
 }

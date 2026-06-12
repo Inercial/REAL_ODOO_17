@@ -10,6 +10,7 @@ class HrExpense(models.Model):
     payment_mode = fields.Selection(
         default="petty_account",
     )
+    analytic_distribution = fields.Json()
 
     @api.depends("employee_id")
     def _compute_is_editable(self):

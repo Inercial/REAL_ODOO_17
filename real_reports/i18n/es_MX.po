@@ -257,6 +257,14 @@ msgid "Cancel"
 msgstr "Cancelar"
 
 #. module: real_reports
+#: model:ir.actions.act_window,name:real_reports.action_report_cancelled_invoices_window
+#: model:ir.actions.report,name:real_reports.action_report_cancelled_invoices_template
+#: model:ir.ui.menu,name:real_reports.menu_report_cancelled_invoices
+#: model_terms:ir.ui.view,arch_db:real_reports.report_cancelled_invoices_form
+msgid "Cancelled Invoices Report"
+msgstr "Ventas Canceladas de Meses Anteriores"
+
+#. module: real_reports
 #: model_terms:ir.ui.view,arch_db:real_reports.view_account_bank_report_real_search
 #: model_terms:ir.ui.view,arch_db:real_reports.view_account_invoice_report_real_search
 msgid "Cash"
@@ -314,6 +322,11 @@ msgstr "Cant. Comprometida"
 #: model:ir.model.fields,field_description:real_reports.field_quant_report_real__commited_tons
 msgid "Commited Tons"
 msgstr "Toneladas comprometidas"
+
+#. module: real_reports
+#: model_terms:ir.ui.view,arch_db:real_reports.view_pending_tons_wizard_form
+msgid "Compute"
+msgstr "Calcular"
 
 #. module: real_reports
 #: model:ir.model.fields.selection,name:real_reports.selection__sale_invoice_report_real__l10n_mx_edi_usage__i04
@@ -498,6 +511,7 @@ msgstr "Fecha Limite"
 #: model:ir.model.fields,field_description:real_reports.field_costs_and_prices_report__date_end
 #: model:ir.model.fields,field_description:real_reports.field_freight_line_report__date_end
 #: model:ir.model.fields,field_description:real_reports.field_general_ledger_audit__date_end
+#: model:ir.model.fields,field_description:real_reports.field_report_cancelled_invoices__date_end
 msgid "Date End"
 msgstr "Fecha Final"
 
@@ -512,13 +526,24 @@ msgid "Date Planned Start"
 msgstr "Fecha de Comienzo Planificada"
 
 #. module: real_reports
+#: model_terms:ir.ui.view,arch_db:real_reports.report_cancelled_invoices_form
+msgid "Date Range"
+msgstr "Rango de Fechas"
+
+#. module: real_reports
 #: model:ir.model.fields,field_description:real_reports.field_account_fcr_report__date_start
 #: model:ir.model.fields,field_description:real_reports.field_costs_and_prices_report__date_start
 #: model:ir.model.fields,field_description:real_reports.field_freight_line_report__date_start
 #: model:ir.model.fields,field_description:real_reports.field_general_ledger_audit__date_start
 #: model:ir.model.fields,field_description:real_reports.field_mrp_report_real__date_start
+#: model:ir.model.fields,field_description:real_reports.field_report_cancelled_invoices__date_start
 msgid "Date Start"
 msgstr "Fecha Inicial"
+
+#. module: real_reports
+#: model:ir.model.fields,field_description:real_reports.field_pending_tons_wizard__datetime_input
+msgid "Datetime"
+msgstr "Fecha y hora"
 
 #. module: real_reports
 #: model:ir.model.fields,field_description:real_reports.field_collection_report_real__days_invoice
@@ -574,6 +599,11 @@ msgstr "No salió de la planta"
 #: model:ir.model.fields.selection,name:real_reports.selection__sale_invoice_report_real__rectified_invoices__different_prices
 msgid "Different prices"
 msgstr "Diferencia en precio"
+
+#. module: real_reports
+#: model_terms:ir.ui.view,arch_db:real_reports.view_pending_tons_wizard_form
+msgid "Discard"
+msgstr "Descartar"
 
 #. module: real_reports
 #: model:ir.model.fields.selection,name:real_reports.selection__credit_report_real__rectified_invoices__discounts_promp_payment
@@ -793,6 +823,11 @@ msgstr ""
 #: model:ir.model.fields.selection,name:real_reports.selection__sale_invoice_report_real__l10n_mx_edi_usage__g03
 msgid "General expenses"
 msgstr "Gastos en general"
+
+#. module: real_reports
+#: model_terms:ir.ui.view,arch_db:real_reports.report_cancelled_invoices_form
+msgid "Generate PDF"
+msgstr "Generar PDF"
 
 #. module: real_reports
 #: model:ir.model.fields,field_description:real_reports.field_sale_invoice_report_real__grouped_category_id
@@ -1240,9 +1275,35 @@ msgid "Pending Qty Local"
 msgstr "Cantidad pendiente local"
 
 #. module: real_reports
+#: model:ir.model.fields,field_description:real_reports.field_pending_tons_wizard__result_tons
+#: model_terms:ir.ui.view,arch_db:real_reports.view_pending_tons_wizard_form
+msgid "Pending Tons"
+msgstr "Tons pendientes"
+
+#. module: real_reports
+#: model:ir.actions.act_window,name:real_reports.action_pending_tons_wizard
+#: model:ir.model,name:real_reports.model_pending_tons_wizard
+#: model:ir.ui.menu,name:real_reports.menu_pending_tons_report
+#: model_terms:ir.ui.view,arch_db:real_reports.view_pending_tons_wizard_form
+msgid "Pending Tons Report"
+msgstr "Toneladas pendientes de surtir a fecha"
+
+#. module: real_reports
 #: model:ir.model.fields,field_description:real_reports.field_report_stock_quant_real__pending_total
 msgid "Pending Total"
 msgstr "Cantidad producto no asignado total"
+
+#. module: real_reports
+#: model:ir.actions.report,name:real_reports.action_physical_inventory_count
+#: model:ir.ui.menu,name:real_reports.menu_physical_inventory_report
+msgid "Physical Inventory Count"
+msgstr "Inventario Fisico"
+
+#. module: real_reports
+#: model:ir.actions.report,name:real_reports.action_physical_inventory_count_mp
+#: model:ir.ui.menu,name:real_reports.menu_physical_inventory_report_mp
+msgid "Physical Inventory Count MP"
+msgstr "Inventario Fisico MP"
 
 #. module: real_reports
 #: model:ir.model.fields.selection,name:real_reports.selection__credit_report_real__rectified_invoices__physical_retur
@@ -1259,6 +1320,11 @@ msgstr "Publicado"
 #: model:ir.model.fields,field_description:real_reports.field_sale_invoice_report_real__price_unit
 msgid "Price Unit"
 msgstr "Precio Unitario"
+
+#. module: real_reports
+#: model_terms:ir.ui.view,arch_db:real_reports.action_physical_inventory_count_mp_selector
+msgid "Print Report"
+msgstr "Imprimir Reporte"
 
 #. module: real_reports
 #: model:ir.model.fields,field_description:real_reports.field_kardex_report_real__product_id
@@ -1610,6 +1676,11 @@ msgstr "Capa de valoración de stock"
 #: model:ir.model.fields,field_description:real_reports.field_sale_invoice_report_real__subtotal
 msgid "Subtotal"
 msgstr ""
+
+#. module: real_reports
+#: model:ir.model.fields,field_description:real_reports.field_account_bank_report_real__supplier_type
+msgid "Supplier Type"
+msgstr "Tipo de Proveedor"
 
 #. module: real_reports
 #: model_terms:ir.ui.view,arch_db:real_reports.costs_and_prices_template

@@ -17,7 +17,7 @@
         <field eval="100" name="priority" />
         <field name="inherit_id" ref="sale.view_order_form" />
         <field name="arch" type="xml">
-            <xpath expr="//header/button[4]" position="replace">
+            <xpath expr="//header" position="inside">
                 <button
                     name="confirm_quote"
                     string="Confirm Quote"
@@ -25,6 +25,8 @@
                     class="btn-primary"
                     invisible="state != 'check'"
                 />
+            </xpath>
+            <xpath expr="//header/button[4]" position="replace">
                 <button
                     name="%(sale.action_view_sale_advance_payment_inv)d"
                     string="Create Invoice"
@@ -107,7 +109,7 @@
             </xpath>
             <xpath expr="//field[@name='partner_shipping_id']" position="after">
                 <field name="way_of_shipment_id" />
-                <field name="so_text" string="Sale Order: " />
+                <field name="po_name" />
                 <field name="order_signal" options="{'always_reload': 1}" invisible="1" />
             </xpath>
             <xpath expr="//field[@name='analytic_account_id']" position="attributes">
@@ -132,6 +134,9 @@
             </xpath>
             <xpath expr="//group[@name='order_details']" position="inside">
                 <field name="x_studio_indicaciones_especiales" />
+            </xpath>
+            <xpath expr="//field[@name='l10n_mx_edi_cfdi_to_public']" position="attributes">
+                <attribute name="invisible">1</attribute>
             </xpath>
         </field>
     </record>
@@ -194,7 +199,6 @@
             <xpath expr="//field[@name='partner_id']" position="after">
                 <field name="commitment_date_real" optional="show" />
             </xpath>
-
             <xpath expr="//field[@name='commitment_date']" position="attributes">
                 <attribute name="column_invisible">True</attribute>
             </xpath>

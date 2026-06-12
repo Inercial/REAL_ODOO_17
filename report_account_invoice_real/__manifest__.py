@@ -4,7 +4,7 @@
 {
     "name": "Report Account Invoice Real",
     "summary": "Modify report to adapt real requirements",
-    "version": "17.0.1.0.4",
+    "version": "17.0.1.0.10",
     "category": "Accounting",
     "author": "Jarsa",
     "website": "https://www.jarsa.com",
@@ -35,5 +35,4 @@
         "reports/report_account_invoice_poliza.xml",
         "reports/report_account_invoice_reports.xml",
     ],
-    "installable": True,
 }
