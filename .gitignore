@@ -1,3 +1,3 @@
 .vscode/settings.json
-real/models/__pycache__/__init__.cpython-310.pyc
-real/models/__pycache__/account_report.cpython-310.pyc
+**/__pycache__/
+*.pyc
