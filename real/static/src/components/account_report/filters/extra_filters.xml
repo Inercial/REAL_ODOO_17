@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<templates>
+    <t t-inherit="account_reports.AccountReportFilterExtraOptions" t-inherit-mode="extension">
+        <xpath expr="//t[@t-if='controller.filters.show_all']" position="after">
+            <t t-if="controller.filters.show_all">
+                <DropdownItem
+                    class="{ 'filter_show_all_hook': true, 'selected': controller.options.hide_columns }"
+                    onSelected="() => this.toggleFilter('hide_columns')" >
+                    Hide Columns
+                </DropdownItem>
+            </t>
+        </xpath>
+    </t>
+</templates>
