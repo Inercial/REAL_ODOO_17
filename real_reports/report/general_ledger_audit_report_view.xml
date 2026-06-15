@@ -4,34 +4,63 @@
         <field name="name">general_ledger_audit.form</field>
         <field name="model">general.ledger.audit</field>
         <field name="arch" type="xml">
-            <form>
+            <form string="Auditoría de Libro Mayor">
+                <header>
+                    <button
+                        name="action_print_report"
+                        string="Generar PDF"
+                        type="object"
+                        class="oe_highlight"
+                        icon="fa-file-pdf-o"
+                    />
+                    <button
+                        name="action_print_excel"
+                        string="Generar Excel"
+                        type="object"
+                        class="btn-primary"
+                        icon="fa-file-excel-o"
+                    />
+                </header>
                 <sheet>
+                    <div class="oe_title">
+                        <h1>Reporte de Auditoría</h1>
+                    </div>
                     <group>
-                        <group>
-                            <field name="rep_select" required="1" />
-                            <field name="date_start" required="1" />
-                            <field name="date_end" required="1" />
+                        <group string="Rango de Fechas" name="date_range">
+                            <field name="date_start" label="Desde" />
+                            <field name="date_end" label="Hasta" />
                         </group>
-                        <button name="action_print_report" string="PDF" type="object" class="oe_highlight" />
                     </group>
                 </sheet>
+                <footer>
+                    <button string="Cerrar" class="btn-secondary" special="cancel" />
+                </footer>
             </form>
         </field>
     </record>
 
     <record id="action_general_ledger_audit_template" model="ir.actions.report">
-        <field name="name">general ledger audit</field>
+        <field name="name">Libro Mayor Audit (PDF)</field>
         <field name="model">general.ledger.audit</field>
         <field name="report_type">qweb-pdf</field>
         <field name="report_name">real_reports.general_ledger_audit_template</field>
-        <field name="report_file">real_reports.general_ledger_audit_template</field>
+        <field name="report_file">Auditoria_Libro_Mayor</field>
         <field name="binding_model_id" ref="model_general_ledger_audit" />
     </record>
 
+    <record id="action_report_general_ledger_xlsx" model="ir.actions.report">
+        <field name="name">Libro Mayor Audit (Excel)</field>
+        <field name="model">general.ledger.audit</field>
+        <field name="report_type">xlsx</field>
+        <field name="report_name">real_reports.general_ledger_audit_xlsx</field>
+        <field name="report_file">Auditoria_Libro_Mayor</field>
+    </record>
+
     <record id="action_general_ledger_audit_template_real" model="ir.actions.act_window">
-        <field name="name">general ledger audit</field>
+        <field name="name">Auditoría de Libro Mayor</field>
         <field name="res_model">general.ledger.audit</field>
         <field name="view_mode">form</field>
+        <field name="target">new</field>
     </record>
 
     <menuitem
@@ -40,5 +69,4 @@
         parent="account_reports_menu"
         action="action_general_ledger_audit_template_real"
     />
-
 </odoo>

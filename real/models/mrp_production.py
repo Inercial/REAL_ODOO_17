@@ -17,6 +17,7 @@ class MrpProduction(models.Model):
     driver = fields.Many2one("mrp.dump.truck.driver")
     plate = fields.Many2one("mrp.license.plate")
     qty_of_block = fields.Boolean(default=False)
+    x_studio_frmula = fields.Char(related="bom_id.x_studio_formula", string="Fórmula")
 
     def action_confirm(self):
         res = super().action_confirm()
@@ -42,11 +43,11 @@ class MrpProduction(models.Model):
             self.driver = False
             self.plate = False
 
-    # Validación para que cuando el usuario intente agregar una cantidad mayor a 10 a la original, salte un wizard que
-    # pregunta si esto es correcto.
+    # Si el usuario intenta cambiar la cantidad en más de ±10 respecto al valor original,
+    # mostrar un wizard que confirme si el cambio es correcto.
     def pre_button_mark_done(self):
         sup = super().pre_button_mark_done()
-        if ((self.qty_producing > (self.product_qty + 10)) or (self.qty_producing < (self.product_qty - 10))) and not self.qty_of_block:
+        if abs(self.qty_producing - self.product_qty) > 10 and not self.qty_of_block:
             lines = []
             for order in self._get_quantity_produced_issues():
                 lines.append((0, 0, {"mrp_production_id": order.id, "to_backorder": True}))

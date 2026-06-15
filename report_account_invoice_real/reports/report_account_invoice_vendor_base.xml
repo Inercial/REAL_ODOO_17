@@ -91,8 +91,7 @@
                                                 />
                                                 <t
                                                     t-raw="'&lt;br/&gt;'.join(line.env['account.analytic.account'].browse(distribution_ids).mapped('name'))"
-                                                />:
-                                                <t t-out="line.analytic_distribution.get(distribution)" />
+                                                />
                                             </div>
                                         </span>
                                     </td>

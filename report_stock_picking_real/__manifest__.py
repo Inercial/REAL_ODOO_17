@@ -21,5 +21,4 @@
         "reports/report_deliveryslip.xml",
         "reports/report_stock_picking.xml",
     ],
-    "installable": True,
 }

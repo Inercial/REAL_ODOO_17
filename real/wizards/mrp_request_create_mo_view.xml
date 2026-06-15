@@ -6,7 +6,6 @@
         <field name="arch" type="xml">
             <xpath expr="//group[@name='origin']" position="replace">
                 <div class="o_row" style="align-items: baseline;">
-
                     <span class="fw-bold">Request:</span>
                     <h2>
                         <field name="mrp_request_id" options='{"no_open": True}' />

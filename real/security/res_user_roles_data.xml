@@ -202,13 +202,6 @@
     Recubrimientos ID 46.
     -->
     <record id="account_financial_risk.group_account_financial_risk_manager" model="res.groups">
-        <field
-            name="implied_ids"
-            eval="[
-                (4, ref('base.user_admin')),
-                (4, 45),
-                (4, 46),
-            ]"
-        />
+        <field name="implied_ids" eval="[(4, ref('base.user_admin')), (4, 45), (4, 46)]" />
     </record>
 </odoo>

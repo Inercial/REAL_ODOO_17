@@ -16,5 +16,4 @@
         "views/account_report.xml",
         "reports/report_account_move_payment_receipt.xml",
     ],
-    "installable": True,
 }

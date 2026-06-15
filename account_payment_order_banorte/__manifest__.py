@@ -4,7 +4,7 @@
 {
     "name": "Account Payment Order Banorte",
     "summary": "Module that install Account Payment Order Banorte",
-    "version": "17.0.1.0.0",
+    "version": "17.0.1.0.1",
     "category": "Accounting",
     "author": "Jarsa",
     "website": "https://www.jarsa.com",
@@ -25,5 +25,4 @@
         "views/account_payment_method_views.xml",
         "wizards/account_payment_line_create_view.xml",
     ],
-    "installable": True,
 }

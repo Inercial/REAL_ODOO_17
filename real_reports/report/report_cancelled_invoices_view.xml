@@ -1,19 +1,19 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8" ?>
 <odoo>
-
     <template id="report_cancelled_invoices_template">
         <t t-call="web.html_container">
             <t t-call="web.external_layout">
                 <div class="page">
-                    <table class="talbe table-borderless" style="width: 100%; border: none;"
-                        border="0">
+                    <table class="talbe table-borderless" style="width: 100%; border: none;" border="0">
                         <tr>
                             <td
-                                style="font-size: 35px; text-align: left; font-weight: bold; background-color: #FFFFFF; border: none;">
+                                style="font-size: 35px; text-align: left; font-weight: bold; background-color: #FFFFFF; border: none;"
+                            >
                                 Reporte de Facturas Canceladas de Meses Anteriores
                             </td>
                             <td
-                                style="font-size: 25px; text-align: right; background-color: #FFFFFF; border: none; white-space: nowrap;">
+                                style="font-size: 25px; text-align: right; background-color: #FFFFFF; border: none; white-space: nowrap;"
+                            >
                                 CO-149
                             </td>
                         </tr>
@@ -28,8 +28,7 @@
                         </div>
                     </div>
                     <br />
-                    <table class="table table-sm table-bordered"
-                        style="font-size: 12px; width: 100%;">
+                    <table class="table table-sm table-bordered" style="font-size: 12px; width: 100%;">
                         <thead>
                             <tr>
                                 <th>Folio</th>
@@ -110,7 +109,8 @@
                         type="object"
                         string="Generate PDF"
                         class="btn-primary"
-                        icon="fa-file-pdf-o" />
+                        icon="fa-file-pdf-o"
+                    />
                 </sheet>
             </form>
         </field>
@@ -123,6 +123,7 @@
         <field name="report_name">real_reports.report_cancelled_invoices_template</field>
         <field name="report_file">real_reports.report_cancelled_invoices_template</field>
         <field name="binding_model_id" ref="model_report_cancelled_invoices" />
+        <field name="binding_type">report</field>
     </record>
 
     <record id="action_report_cancelled_invoices_window" model="ir.actions.act_window">
@@ -138,5 +139,4 @@
         parent="sale_reports_menu"
         action="action_report_cancelled_invoices_window"
     />
-
 </odoo>

@@ -2,28 +2,29 @@
 # License LGPL-3.0 or later (http://www.gnu.org/licenses/lgpl.html).
 
 
-from markupsafe import Markup
 from datetime import datetime, timedelta
 
 import pytz
+from markupsafe import Markup, escape
 
 from odoo import _, api, fields, models
 from odoo.exceptions import UserError
 from odoo.tools import float_compare
 
 SALE_ORDER_STATE = [
-    ('check', "Inquiry"), #### Consulta
-    ('draft', "Quotation"),
-    ('sent', "Quotation Sent"),
-    ('sale', "Sales Order"),
-    ('cancel', "Cancelled"),
+    ("check", "Inquiry"),
+    ("draft", "Quotation"),
+    ("sent", "Quotation Sent"),
+    ("sale", "Sales Order"),
+    ("cancel", "Cancelled"),
 ]
+
 
 class SaleOrder(models.Model):
     _inherit = "sale.order"
 
     commitment_date_real = fields.Datetime(string="Commitment Date", copy=False)
-    so_text = fields.Text()
+    po_name = fields.Text()
     comment_marketing = fields.Text()
     can_modify_invoice = fields.Boolean(compute="_compute_can_modify_invoice")
     can_modify_quotation_date = fields.Boolean(compute="_compute_can_modify_quotation_date")
@@ -41,6 +42,27 @@ class SaleOrder(models.Model):
         compute="_compute_out_pending",
     )
 
+    x_studio_ciudad_de_entrega = fields.Char(related="partner_shipping_id.city", string="Ciudad de entrega")
+    x_studio_zona = fields.Selection(related="partner_shipping_id.x_studio_zona", string="Zona")
+    x_studio_text_field_v3Z0L = fields.Text(string="Celular fletero")
+    x_studio_estatus_embarques = fields.Selection(
+        [
+            ("1. En espera de producto", "1. En espera de producto"),
+            ("2. Producto disponible", "2. Producto disponible"),
+            ("3. Consiguiendo flete", "3. Consiguiendo flete"),
+            ("4. Flete programado", "4. Flete programado"),
+            ("5. Ya llegó el camión", "5. Ya llegó el camión"),
+            ("6. Material a consignación", "6. Material a consignación"),
+        ],
+        string="Estatus embarque",
+    )
+    x_studio_indicaciones_especiales = fields.Text(
+        related="partner_shipping_id.special_info", string="Indicaciones especiales"
+    )
+    x_studio_related_field_zMLGz = fields.Char(related="partner_shipping_id.city", string="Ciudad Entrega")
+    x_studio_zona_1 = fields.Selection(related="partner_shipping_id.x_studio_zona", string="Zona 1")
+    x_studio_special_info_client = fields.Text(related="partner_shipping_id.special_info", string="Special info")
+
     def _domain_way_of_shipment(self):
         category = self.env.ref("real.res_partner_category_supplier_freight", False)
         category_id = False
@@ -56,16 +78,20 @@ class SaleOrder(models.Model):
     way_shipment_type_id = fields.Many2one(related="partner_id.way_shipment_type_id")
     total_volume = fields.Float("Total volume", readonly=True, compute="_compute_total_volume")
     state = fields.Selection(
-        selection=SALE_ORDER_STATE,
         string="Status",
-        readonly=True, copy=False, index=True,
+        readonly=True,
+        copy=False,
+        index=True,
         tracking=3,
-        default='check') ####
+        selection_add=[("check", "Inquiry"), ("draft", "Quotation")],
+        default="check",
+        ondelete={"check": "set default"},
+    )
 
     def confirm_quote(self):
         for line in self:
-            if line.state == 'check':
-                line.state = 'draft'
+            if line.state == "check":
+                line.state = "draft"
 
     def _prepare_invoice(self):
         """Pricelist_id is set on invoice."""
@@ -92,6 +118,7 @@ class SaleOrder(models.Model):
     def _real_onchange_partner_id(self):
         """Use native method, because we need to execute first that method to
         change pricelist and then compute the price in every line.
+        Force user to select the desired shipping partner.
         """
         self.partner_shipping_id = False
         self.analytic_account_id = self.user_id.default_analytic_account_id
@@ -127,11 +154,17 @@ class SaleOrder(models.Model):
             order.validate_no_empty_order()
             order.validate_payment_term_edit()
             order.validate_partner_shipping_id_pricelist()
+
         return res
 
     def write(self, vals):
         for rec in self:
-            rec.message_post(body=Markup(f'{rec.x_studio_estatus_embarques} <i class="fa fa-long-arrow-right mx-1 text-600" title="Cambiado"></i> <b>{vals.get("x_studio_estatus_embarques")}</b>'))
+            rec.message_post(
+                body=Markup(
+                    f'{rec.x_studio_estatus_embarques} <i class="fa fa-long-arrow-right mx-1 text-600" title="Cambiado"></i> <b>{vals.get("x_studio_estatus_embarques")}</b>'
+                )
+            )
+
             if rec.create_date != rec.write_date and not self.env.user.has_group(
                 "real.res_groups_can_modify_sale_order_after_creation"
             ):
@@ -143,7 +176,7 @@ class SaleOrder(models.Model):
             seller_block = any(val not in allowed_fields for val in vals)
 
             if (
-                rec.state != 'check'
+                rec.state != "check"
                 and self.env.ref("real.res_users_role_seller") in self.env.user.groups_id.role_id
                 and seller_block
             ):
@@ -283,7 +316,7 @@ class SaleOrder(models.Model):
                         break
 
     def action_draft(self):
-        self.x_studio_estatus_embarques = "1. En espera de producto" # type: ignore[attr-defined]
+        self.x_studio_estatus_embarques = "1. En espera de producto"
         return super().action_draft()
 
 
@@ -320,42 +353,50 @@ class SaleOrderLine(models.Model):
 
     @api.model_create_multi
     def create(self, vals_list):
-        lines = super(SaleOrderLine, self).create(vals_list)
-        for order in lines.mapped('order_id'):
-            relevant_lines = lines.filtered(lambda l: l.order_id == order)
-            items_html = "".join([
-                f"<li>Producto: <b>{l.product_id.display_name}</b> - Cantidad: <b>{l.product_uom_qty}</b></li>"
-                for l in relevant_lines
-            ])
-            body = Markup("<b>Notificación de sistema:</b> Registro de nuevos artículos en el pedido:<ul>{}</ul>").format(
-                Markup(items_html)
+        lines = super().create(vals_list)
+        for order in lines.mapped("order_id"):
+            relevant_lines = lines.filtered(lambda line: line.order_id == order)
+            items_html = "".join(
+                [
+                    ("<li>Producto: <b>{}</b> - Cantidad: <b>{}</b></li>").format(
+                        escape(line.product_id.display_name),
+                        escape(line.product_uom_qty),
+                    )
+                    for line in relevant_lines
+                ]
             )
+            body = Markup(
+                "<b>Notificación de sistema:</b> Registro de nuevos artículos en el pedido:<ul>{}</ul>"
+            ).format(Markup(items_html))
             order.message_post(body=body)
         return lines
 
     def write(self, vals):
-            if 'product_uom_qty' in vals:
-                previous_qty = {line.id: line.product_uom_qty for line in self}
-                res = super(SaleOrderLine, self).write(vals)
-                orders_to_notify = self.mapped('order_id')
-                for order in orders_to_notify:
-                    lines_in_order = self.filtered(lambda l: l.order_id == order)
-                    changes_list = []
-                    for line in lines_in_order:
-                        old_val = previous_qty.get(line.id)
-                        new_val = vals.get('product_uom_qty')
-                        if old_val != new_val:
-                            changes_list.append(
-                                f"<li>Producto: <b>{line.product_id.display_name}</b> - "
-                                f"Anterior: <b>{old_val}</b> | Nuevo: <b>{new_val}</b></li>"
+        if "product_uom_qty" in vals:
+            previous_qty = {line.id: line.product_uom_qty for line in self}
+            res = super().write(vals)
+            orders_to_notify = self.mapped("order_id")
+            for order in orders_to_notify:
+                lines_in_order = self.filtered(lambda line: line.order_id == order)
+                changes_list = []
+                for line in lines_in_order:
+                    old_val = previous_qty.get(line.id)
+                    new_val = vals.get("product_uom_qty")
+                    if old_val != new_val:
+                        changes_list.append(
+                            ("<li>Producto: <b>{}</b> - Anterior: <b>{}</b> | Nuevo: <b>{}</b></li>").format(
+                                escape(line.product_id.display_name),
+                                escape(old_val),
+                                escape(new_val),
                             )
-                    if changes_list:
-                        body = Markup(
-                            "<b>Ajuste de pedido:</b> Se han modificado las cantidades en las siguientes líneas:<ul>{}</ul>"
-                        ).format(Markup("".join(changes_list)))
-                        order.message_post(body=body)
-                return res
-            return super(SaleOrderLine, self).write(vals)
+                        )
+                if changes_list:
+                    body = Markup(
+                        "<b>Ajuste de pedido:</b> Se han modificado las cantidades en las siguientes líneas:<ul>{}</ul>"
+                    ).format(Markup("".join(changes_list)))
+                    order.message_post(body=body)
+            return res
+        return super().write(vals)
 
     def unlink(self):
         logs_by_order = {}
@@ -363,13 +404,13 @@ class SaleOrderLine(models.Model):
             if line.order_id:
                 if line.order_id not in logs_by_order:
                     logs_by_order[line.order_id] = ""
-                logs_by_order[line.order_id] += (
-                    f"<li>Producto: <b>{line.product_id.display_name}</b> - "
-                    f"Cantidad removida: <b>{line.product_uom_qty}</b></li>"
+                logs_by_order[line.order_id] += ("<li>Producto: <b>{}</b> - Cantidad removida: <b>{}</b></li>").format(
+                    escape(line.product_id.display_name),
+                    escape(line.product_uom_qty),
                 )
         for order, items_html in logs_by_order.items():
-            body = Markup("<b>Registro de eliminación:</b> Se han removido los siguientes artículos del pedido:<ul>{}</ul>").format(
-                Markup(items_html)
-            )
+            body = Markup(
+                "<b>Registro de eliminación:</b> Se han removido los siguientes artículos del pedido:<ul>{}</ul>"
+            ).format(Markup(items_html))
             order.message_post(body=body)
-        return super(SaleOrderLine, self).unlink()
+        return super().unlink()

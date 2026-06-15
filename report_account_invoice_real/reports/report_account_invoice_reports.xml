@@ -24,7 +24,7 @@
         <field name="report_file">report_account_invoice_real.report_invoice_original_real</field>
         <field name="binding_model_id" ref="account.model_account_move" />
         <field name="binding_type">report</field>
-        <field name="paperformat_id" ref="paperformat_cabecera_alta"/>
+        <field name="paperformat_id" ref="paperformat_cabecera_alta" />
     </record>
 
     <record id="action_report_invoice_original_without_amount_real" model="ir.actions.report">
@@ -136,6 +136,4 @@
         <field name="binding_model_id" ref="account.model_account_move" />
         <field name="binding_type">report</field>
     </record>
-
-
 </odoo>

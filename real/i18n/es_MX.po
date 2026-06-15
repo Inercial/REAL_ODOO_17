@@ -62,6 +62,16 @@ msgid "<p><br></p>"
 msgstr ""
 
 #. module: real
+#: model_terms:ir.ui.view,arch_db:real.mrp_request_create_mo_view
+msgid "<span class=\"fw-bold\">Request:</span>"
+msgstr "<span class=\"fw-bold\">Solicitud de fabricación:</span>"
+
+#. module: real
+#: model_terms:ir.ui.view,arch_db:real.mrp_request_create_mo_view
+msgid "<span class=\"ms-3 fw-bold\">Pending Qty:</span>"
+msgstr "<span class=\"ms-3 fw-bold\">Cantidad pendiente:</span>"
+
+#. module: real
 #: model:ir.model.fields,field_description:real.field_stock_valuation_layer__accounting_date
 msgid "Accounting Date"
 msgstr "Fecha contable"
@@ -106,6 +116,12 @@ msgstr "Permitir ganar oportunidades"
 #: model:ir.model.fields,field_description:real.field_sale_order__analytic_account_id
 msgid "Analytic Account"
 msgstr "Cuenta analítica"
+
+#. module: real
+#: model:ir.model.fields,field_description:real.field_account_reconcile_wizard__analytic_distribution
+#: model:ir.model.fields,field_description:real.field_hr_expense__analytic_distribution
+msgid "Analytic Distribution"
+msgstr "Analítica"
 
 #. module: real
 #: model:crm.stage,name:real.model_crm_stage_approval_management
@@ -357,6 +373,11 @@ msgid "Can see variants and rates"
 msgstr "Puede ver variantes y tarifas"
 
 #. module: real
+#: model_terms:ir.ui.view,arch_db:real.view_mrp_production_overflow_form
+msgid "Cancel"
+msgstr "Cancelar"
+
+#. module: real
 #: model_terms:ir.ui.view,arch_db:real.mrp_production_form
 msgid "Cancelar"
 msgstr ""
@@ -416,6 +437,21 @@ msgstr "Nombre Comercial"
 #: model_terms:ir.ui.view,arch_db:real.view_res_partner_real
 msgid "Commercialization"
 msgstr "Comercialización"
+
+#. module: real
+#: model:ir.model.fields,field_description:real.field_sale_order__commitment_date_real
+msgid "Commitment Date"
+msgstr "Fecha de entrega"
+
+#. module: real
+#: model_terms:ir.ui.view,arch_db:real.mrp_request_create_mo_view
+msgid "Compute lines"
+msgstr "Calcular líneas"
+
+#. module: real
+#: model_terms:ir.ui.view,arch_db:real.real_sale_order_form
+msgid "Confirm Quote"
+msgstr "Confirmar Cotización"
 
 #. module: real
 #: model:ir.model,name:real.model_res_partner
@@ -745,6 +781,11 @@ msgid "ID"
 msgstr "ID (Identificador)"
 
 #. module: real
+#: model:ir.model.fields.selection,name:real.selection__sale_order__state__check
+msgid "Inquiry"
+msgstr "Consulta"
+
+#. module: real
 #: model_terms:ir.ui.view,arch_db:real.view_res_partner_real
 msgid "Internal notes..."
 msgstr "Notas internas..."
@@ -801,11 +842,6 @@ msgstr "Es cliente?"
 #: model:ir.model.fields,field_description:real.field_res_users__contact_is_supplier
 msgid "Is supplier?"
 msgstr "Es proveedor?"
-
-#. module: real
-#: model_terms:ir.ui.view,arch_db:real.view_mrp_production_overflow_form
-msgid "It is processing more than 10 units originally scheduled."
-msgstr "Está procesando más de 10 unidades de las originalmente programadas."
 
 #. module: real
 #: model:ir.model,name:real.model_account_move
@@ -927,11 +963,6 @@ msgstr "Desborde MRP"
 #: model:ir.model.fields,field_description:real.field_product_category_class__name
 msgid "Name"
 msgstr "Nombre"
-
-#. module: real
-#: model_terms:ir.ui.view,arch_db:real.view_mrp_production_overflow_form
-msgid "No"
-msgstr ""
 
 #. module: real
 #: model:ir.model.fields,field_description:real.field_mrp_request_create_mo__order_qty
@@ -1063,9 +1094,33 @@ msgid "Picking Notes"
 msgstr "Notas"
 
 #. module: real
+#: model:ir.actions.report,name:real.action_report_picking_prep_real
+msgid "Picking Preparation"
+msgstr "Preparacion de Pedido REAL"
+
+#. module: real
 #: model:ir.model.fields,field_description:real.field_mrp_production__plate
 msgid "Plate"
 msgstr "Placa"
+
+#. module: real
+#. odoo-python
+#: code:addons/real/models/account_move.py:0
+#, python-format
+msgid "Please fill Analytic Distribution on all move lines."
+msgstr "Favor de llenar la analitica en todas las lineas de factura."
+
+#. module: real
+#. odoo-python
+#: code:addons/real/models/purchase_order.py:0
+#, python-format
+msgid "Please fill Analytic Distribution on all product lines."
+msgstr "Favor de llenar la analitica en todas las lineas de producto."
+
+#. module: real
+#: model:ir.model.fields,field_description:real.field_sale_order__po_name
+msgid "Po Name"
+msgstr "Orden de Compra"
 
 #. module: real
 #: model_terms:ir.ui.view,arch_db:real.view_category_form_inherit_custom
@@ -1160,6 +1215,11 @@ msgstr "Orden de compra"
 #: model:ir.model,name:real.model_purchase_order_line
 msgid "Purchase Order Line"
 msgstr "Línea de orden de compra"
+
+#. module: real
+#: model:ir.actions.report,name:real.action_report_purchase_order_real
+msgid "Purchase Order Real"
+msgstr "COMPRAS - Orden de compra REAL"
 
 #. module: real
 #: model:ir.model.fields,field_description:real.field_mrp_request__qty_in_production
@@ -1670,8 +1730,17 @@ msgstr "Asistente para crear líneas de pago"
 
 #. module: real
 #: model_terms:ir.ui.view,arch_db:real.view_mrp_production_overflow_form
-msgid "Yes"
-msgstr "Si"
+msgid "Yes, continue"
+msgstr "Si, continuar"
+
+#. module: real
+#: model_terms:ir.ui.view,arch_db:real.view_mrp_production_overflow_form
+msgid ""
+"You are about to make a change of more than 10 units from the originally scheduled amount.<br/>\n"
+"Do you want to continue with this operation?"
+msgstr ""
+"Está a punto de procesar un cambio mayor a 10 unidades respecto a lo "
+"originalmente programado.<br/> ¿Desea continuar con esta operación?"
 
 #. module: real
 #. odoo-python

@@ -10,3 +10,4 @@ class ProductCategory(models.Model):
     is_mp_category = fields.Boolean("Is MP Category")
     category_class_id = fields.Many2one("product.category.class")
     ebitda_report = fields.Boolean(default=False)
+    x_studio_porcentaje = fields.Float(string="Porcentaje")
