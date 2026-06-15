@@ -37,3 +37,5 @@ from . import account_payment_line
 from . import stock_forecasted
 from . import mrp_bom
 from . import l10n_mx_edi_advance
+
+from . import account_report

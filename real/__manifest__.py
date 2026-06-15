@@ -102,6 +102,7 @@
     "assets": {
         "web.assets_backend": [
             "real/static/src/xml/analytic_distribution_override.xml",
+            "real/static/src/components/account_report/filters/extra_filters.xml",
         ],
     },
 }
