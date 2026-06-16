@@ -154,6 +154,10 @@ class StockMove(models.Model):
 
         return super().unlink()
 
+    def _compute_quantity(self):
+        super()._compute_quantity()
+        self.update({"quantity": 0}) if any(self._ids) else None
+
 
 class StockMoveLine(models.Model):
     _inherit = "stock.move.line"
