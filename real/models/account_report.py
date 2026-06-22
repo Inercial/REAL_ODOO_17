@@ -35,6 +35,6 @@ class AccountReport(models.Model):
             previous_options = {}
         previous_section_source_id = previous_options.get('sections_source_id')
         if previous_options and (not previous_section_source_id or previous_section_source_id == options['sections_source_id']):
-            options['hide_columns'] = previous_options.get('hide_columns', False)
+            options['hide_columns'] = previous_options.get('hide_columns', True)
         else:
-            options['hide_columns'] = False
+            options['hide_columns'] = True
