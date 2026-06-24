@@ -156,7 +156,8 @@ class StockMove(models.Model):
 
     def _compute_quantity(self):
         super()._compute_quantity()
-        self.update({"quantity": 0}) if any(self._ids) else None
+        for rec in self:
+            rec.update({"quantity": 0}) if rec.picking_type_id.name == "Compras" else None
 
 
 class StockMoveLine(models.Model):
