@@ -157,8 +157,10 @@ class StockMove(models.Model):
     def _compute_quantity(self):
         super()._compute_quantity()
         for rec in self:
-            rec.update({"quantity": 0}) if rec.picking_type_id.name == "Compras" else None
-
+            if rec.picking_type_id.name == "Compras" and rec.state in ("assigned", "confirmed"):
+                rec.update({"quantity": 0})
+            else:
+                pass
 
 class StockMoveLine(models.Model):
     _inherit = "stock.move.line"
