@@ -49,7 +49,7 @@
         <xpath expr="//div[@name='total_amount_text']/span[@name='total_amount_text']" position="replace" />
 
         <xpath expr="//div[@name='signature_section']" position="replace">
-            <div name="signature_section" class="row mt-4" style="font-size:10px">
+            <div name="signature_section" class="row mt-4" style="font-size:10px; page-break-inside: avoid">
                 <div class="col-7">
                     <span style="justify-text: auto;">
                         DEBO(EMOS) Y PAGARE(MOS) INCONDICIONALMENTE A LA ORDEN DE RECUBRIMIENTOS Y

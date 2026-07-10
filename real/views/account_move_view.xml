@@ -5,6 +5,11 @@
         <field name="model">account.move</field>
         <field name="inherit_id" ref="account.view_move_form" />
         <field name="arch" type="xml">
+            <xpath expr="//field[@name='invoice_date']" position="after">
+                <field name="early_payment_date" string="Early Payment Date" readonly="1"
+                    invisible="not customer_early_payment or move_type != 'out_invoice'"/>
+                <field name="customer_early_payment" invisible="1" />
+            </xpath>
             <xpath expr="//field[@widget='res_partner_many2one']" position="attributes">
                 <attribute
                     name="domain"
@@ -56,11 +61,7 @@
                 />
                 <div class="row" invisible="move_type != 'in_invoice' or not is_freight_supplier">
                     <div class="col-5">
-                        <field
-                            name="state_id"
-                            placeholder="Destination state"
-                            domain="[('country_id.code', '=', 'MX')]"
-                        />
+                        <field name="state_id" placeholder="Destination state" domain="[('country_id.code', '=', 'MX')]" />
                     </div>
                     <div class="col-7 offset-0">
                         <field name="city_id" placeholder="Destination city" domain="[('state_id', '=', state_id)]" />

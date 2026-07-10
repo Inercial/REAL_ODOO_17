@@ -4,6 +4,7 @@
 import logging
 import xml.etree.ElementTree as ET
 
+from datetime import timedelta
 from odoo import _, api, fields, models
 from odoo.exceptions import UserError, ValidationError
 
@@ -27,6 +28,13 @@ class AccountMove(models.Model):
     x_studio_tarimas = fields.Integer(string="Tarimas", copy=True)
     x_studio_departamento = fields.Selection(related="partner_id.x_studio_departamento", string="Departamento")
     xml_emisor = fields.Char()
+    early_payment_date = fields.Date(copy=False)
+    customer_early_payment = fields.Boolean(related="partner_id.prompt_payment", store="False")
+
+    @api.onchange("invoice_date")
+    def customer_early_payment_date(self):
+        for rec in self:
+            rec.early_payment_date = rec.invoice_date + timedelta(days=rec.partner_id.prompt_payment_days)
 
     def get_xml_content(self, rec=None):
         records = rec or self
@@ -87,7 +95,10 @@ class AccountMove(models.Model):
     def action_post(self):
         self._chek_pdf_xml()
         self.get_xml_content()
-        return super().action_post()
+        sup = super().action_post()
+        if self.customer_early_payment and self.move_type == "out_invoice":
+            self.customer_early_payment_date()
+        return sup
 
     def _chek_pdf_xml(self):
         mx_country = self.env.ref("base.mx")
