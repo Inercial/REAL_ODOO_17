@@ -52,9 +52,14 @@
                 <br />
                 <strong name="invoice_date">FECHA DE FACTURACION:<t t-esc="o.invoice_date" /></strong>
                 <br />
+                <t t-if="o.customer_early_payment">
+                    <strong name="invoice_date">FECHA DE PRONTO PAGO:<t t-esc="o.early_payment_date" /></strong>
+                    <br />
+                </t>
                 <strong name="invoice_date_due">FECHA DE PAGO:<t t-esc="o.invoice_date_due" /></strong>
                 <br />
-                LUGAR DE PAGO: CIRCUITO ENRIQUE DE LARA NO. 280 COLONIA CIUDAD INDUSTRIAL, TORREON, COAHUILA 27019
+                LUGAR DE PAGO: CIRCUITO ENRIQUE DE LARA NO. 280&#160;<br/>
+                COLONIA CIUDAD INDUSTRIAL, TORREON, COAHUILA 27019&#160;
             </div>
         </div>
         <div class="page" style="font-size:14px;">
