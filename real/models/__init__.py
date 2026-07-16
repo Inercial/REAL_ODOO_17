@@ -39,3 +39,4 @@ from . import mrp_bom
 from . import l10n_mx_edi_advance
 
 from . import account_report
+from . import mrp_request_create_mo
