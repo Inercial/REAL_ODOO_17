@@ -48,11 +48,9 @@ class SaleOrder(models.Model):
     x_studio_estatus_embarques = fields.Selection(
         [
             ("1. En espera de producto", "1. En espera de producto"),
-            ("2. Producto disponible", "2. Producto disponible"),
-            ("3. Consiguiendo flete", "3. Consiguiendo flete"),
-            ("4. Flete programado", "4. Flete programado"),
-            ("5. Ya llegó el camión", "5. Ya llegó el camión"),
-            ("6. Material a consignación", "6. Material a consignación"),
+            ("2. Programando flete", "2. Programando flete"),
+            ("3. Flete programado", "3. Flete programado"),
+            ("4. Ya llegó el camión", "4. Ya llegó el camión"),
         ],
         string="Estatus embarque",
     )
@@ -316,7 +314,7 @@ class SaleOrder(models.Model):
                         break
 
     def action_draft(self):
-        self.x_studio_estatus_embarques = "1. En espera de producto"
+        self.x_studio_estatus_embarques = self._fields['x_studio_estatus_embarques'].selection[0][0]
         return super().action_draft()
 
 
