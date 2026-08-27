@@ -4,7 +4,7 @@
 {
     "name": "Real Instance",
     "summary": "Module that install Real Instance",
-    "version": "17.0.1.0.37",
+    "version": "17.0.1.0.46",
     "category": "Instance",
     "author": "Jarsa",
     "website": "https://www.jarsa.com",

@@ -314,7 +314,7 @@ class SaleOrder(models.Model):
                         break
 
     def action_draft(self):
-        self.x_studio_estatus_embarques = self._fields['x_studio_estatus_embarques'].selection[0][0]
+        self.x_studio_estatus_embarques = "1. En espera de producto"
         return super().action_draft()
 
 

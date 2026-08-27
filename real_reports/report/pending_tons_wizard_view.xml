@@ -5,22 +5,31 @@
         <field name="arch" type="xml">
             <form string="Pending Tons Report" create="false" edit="false">
                 <group>
-                    <!-- Datetime input -->
                     <group col="1">
                         <field name="datetime_input" />
                     </group>
+                </group>
 
-                    <!-- Result line (label + value on same row) -->
-                    <group col="2">
-                        <label for="result_tons" string="Pending Tons" />
-                        <field name="result_tons" readonly="1" nolabel="1" class="oe_inline" widget="float" />
-                    </group>
+                <!-- Salesperson details list -->
+                <notebook>
+                    <page string="Vendedores">
+                        <field name="line_ids" readonly="1">
+                            <tree create="false" delete="false" edit="false">
+                                <field name="vendedor" />
+                                <field name="tons" sum="Total Tons" widget="float" />
+                            </tree>
+                        </field>
+                    </page>
+                </notebook>
+
+                <!-- Total Footer Summary -->
+                <group class="oe_subtotal_footer oe_right">
+                    <field name="total_tons" readonly="1" string="Total Tons" widget="float" />
                 </group>
 
                 <!-- Buttons -->
                 <footer>
                     <button name="action_compute" string="Compute" type="object" class="btn-primary" />
-
                     <button string="Discard" special="cancel" class="btn-secondary" />
                 </footer>
             </form>
