@@ -1275,12 +1275,6 @@ msgid "Pending Qty Local"
 msgstr "Cantidad pendiente local"
 
 #. module: real_reports
-#: model:ir.model.fields,field_description:real_reports.field_pending_tons_wizard__result_tons
-#: model_terms:ir.ui.view,arch_db:real_reports.view_pending_tons_wizard_form
-msgid "Pending Tons"
-msgstr "Tons pendientes"
-
-#. module: real_reports
 #: model:ir.actions.act_window,name:real_reports.action_pending_tons_wizard
 #: model:ir.model,name:real_reports.model_pending_tons_wizard
 #: model:ir.ui.menu,name:real_reports.menu_pending_tons_report
@@ -1304,6 +1298,13 @@ msgstr "Inventario Fisico"
 #: model:ir.ui.menu,name:real_reports.menu_physical_inventory_report_mp
 msgid "Physical Inventory Count MP"
 msgstr "Inventario Fisico MP"
+
+#. module: real_reports
+#: model:ir.actions.report,name:real_reports.action_physical_inventory_without_qty
+#: model:ir.ui.menu,name:real_reports.menu_physical_inventory_without_qty_report
+#: model:ir.model,name:real_reports.model_physical_inventory_without_qty
+msgid "Physical Inventory Without Quantity"
+msgstr "Inventario Fisico sin Cantidades"
 
 #. module: real_reports
 #: model:ir.model.fields.selection,name:real_reports.selection__credit_report_real__rectified_invoices__physical_retur

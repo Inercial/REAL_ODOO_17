@@ -13,12 +13,19 @@ class AccountPaymentOrder(models.Model):
 
     def generate_payment_file(self):
         self.ensure_one()
+
         if self.payment_method_id.code != "banorte_credit_transfer":
             return super().generate_payment_file()
+
         payment_line = self._process_payment_lines()
+
         return (
             payment_line.encode("ascii"),
-            "PP" + "401903" + datetime.datetime.today().strftime("%y%m%d") + self.name.lstrip("PAY0") + ".TXT",
+            self.payment_method_id.filename_prefix
+            + "401903"
+            + datetime.datetime.today().strftime("%y%m%d")
+            + self.name[-3:]
+            + ".TXT",
         )
 
     def _process_payment_lines(self):

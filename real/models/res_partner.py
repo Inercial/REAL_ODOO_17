@@ -73,6 +73,7 @@ class ResPartner(models.Model):
             ("Producción", "Producción"),
             ("Administración", "Administración"),
             ("Operaciones", "Operaciones"),
+            ("Recursos Humanos", "Recursos Humanos"),
         ],
         string="Departamento",
     )

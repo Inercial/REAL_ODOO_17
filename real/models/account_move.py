@@ -3,8 +3,8 @@
 
 import logging
 import xml.etree.ElementTree as ET
-
 from datetime import timedelta
+
 from odoo import _, api, fields, models
 from odoo.exceptions import UserError, ValidationError
 
@@ -31,10 +31,30 @@ class AccountMove(models.Model):
     early_payment_date = fields.Date(copy=False)
     customer_early_payment = fields.Boolean(related="partner_id.prompt_payment", store="False")
 
-    @api.onchange("invoice_date")
-    def customer_early_payment_date(self):
-        for rec in self:
-            rec.early_payment_date = rec.invoice_date + timedelta(days=rec.partner_id.prompt_payment_days)
+    ANALYTIC_ACCOUNT_TYPES = {
+        "income",
+        "income_other",
+        "expense",
+        "expense_direct_cost",
+        "expense_depreciation",
+    }
+
+    def _update_early_payment_date(self):
+        for move in self:
+            move.early_payment_date = False
+
+            if (
+                move.move_type == "out_invoice"
+                and move.invoice_date
+                and move.partner_id
+                and move.customer_early_payment
+            ):
+                payment_days = move.partner_id.prompt_payment_days or 0
+                move.early_payment_date = move.invoice_date + timedelta(days=payment_days)
+
+    @api.onchange("invoice_date", "partner_id", "customer_early_payment")
+    def _onchange_customer_early_payment_date(self):
+        self._update_early_payment_date()
 
     def get_xml_content(self, rec=None):
         records = rec or self
@@ -95,10 +115,9 @@ class AccountMove(models.Model):
     def action_post(self):
         self._chek_pdf_xml()
         self.get_xml_content()
-        sup = super().action_post()
-        if self.customer_early_payment and self.move_type == "out_invoice":
-            self.customer_early_payment_date()
-        return sup
+        res = super().action_post()
+        self._update_early_payment_date()
+        return res
 
     def _chek_pdf_xml(self):
         mx_country = self.env.ref("base.mx")
@@ -193,27 +212,74 @@ class AccountMove(models.Model):
     def _onchange_city_id(self):
         self.city_id = False
 
+    def _get_expense_analytic_distribution(self):
+        """Return the analytic distribution from the linked expense."""
+        self.ensure_one()
+
+        expense = self.l10n_edi_expense_id or self.env["hr.expense"].search(
+            [
+                "|",
+                ("l10n_edi_invoice_id", "=", self.id),
+                ("l10n_edi_move_id", "=", self.id),
+            ],
+            limit=1,
+        )
+
+        return expense.analytic_distribution or {}
+
+    def _get_invoice_lines_without_analytic(self):
+        """Return product invoice lines that require analytic distribution."""
+        self.ensure_one()
+
+        account_types = self.ANALYTIC_ACCOUNT_TYPES
+
+        return self.invoice_line_ids.filtered(
+            lambda line: (
+                line.display_type == "product"
+                and line.account_id
+                and line.account_id.account_type in account_types
+                and not line.analytic_distribution
+            )
+        )
+
+    def _copy_expense_analytic_distribution_to_invoice_lines(self):
+        """Copy the source expense analytic distribution to missing invoice lines."""
+        for move in self.filtered(lambda m: m.is_invoice(include_receipts=True)):
+            analytic_distribution = move._get_expense_analytic_distribution()
+
+            if analytic_distribution:
+                move._get_invoice_lines_without_analytic().write(
+                    {
+                        "analytic_distribution": analytic_distribution,
+                    }
+                )
+
+    def _copy_refund_analytic_distribution(self):
+        """Copy analytic distribution from the original invoice to its refund."""
+        for move in self.filtered(lambda m: m.move_type == "out_refund" and m.reversed_entry_id):
+            analytic_distribution = move.reversed_entry_id.invoice_line_ids.filtered(
+                lambda line: line.analytic_distribution
+            )[:1].analytic_distribution
+
+            if analytic_distribution:
+                move.invoice_line_ids.filtered(
+                    lambda line: (line.display_type == "product" and not line.analytic_distribution)
+                ).write(
+                    {
+                        "analytic_distribution": analytic_distribution,
+                    }
+                )
+
+    def _validate_invoice_analytic_distribution(self):
+        """Validate that sale and purchase invoice lines have analytic distribution."""
+        for move in self.filtered(lambda m: m.journal_id.type in ("sale", "purchase")):
+            if move._get_invoice_lines_without_analytic():
+                raise ValidationError(_("Please fill Analytic Distribution on all move lines."))
+
     def _post(self, soft=True):
-        for move in self:
-            # detect refund generated from invoice
-            if move.move_type == "out_refund" and move.reversed_entry_id:
-                invoice = move.reversed_entry_id
-
-                analytic = invoice.invoice_line_ids.filtered(lambda line: line.analytic_distribution)[
-                    :1
-                ].analytic_distribution
-
-                if analytic:
-                    advance_lines = move.invoice_line_ids.filtered(lambda line: not line.analytic_distribution)
-                    for line in advance_lines:
-                        # copy analytic in refund
-                        line.analytic_distribution = analytic
-
-            # validate analytics in sale and purchase invoices
-            if move.journal_id.type in ("sale", "purchase"):
-                lines_missing = move.invoice_line_ids.filtered(lambda line: not line.analytic_distribution)
-                if lines_missing:
-                    raise ValidationError(_("Please fill Analytic Distribution on all move lines."))
+        self._copy_expense_analytic_distribution_to_invoice_lines()
+        self._copy_refund_analytic_distribution()
+        self._validate_invoice_analytic_distribution()
 
         self.env["account.analytic.line"].search([("move_line_id.move_id", "in", self.ids)]).unlink()
 

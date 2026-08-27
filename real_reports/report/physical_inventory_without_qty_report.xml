@@ -146,7 +146,7 @@
     </template>
 
     <record id="action_physical_inventory_without_qty" model="ir.actions.report">
-        <field name="name">Physical Inventory Without Qty</field>
+        <field name="name">Physical Inventory Without Quantity</field>
         <field name="model">physical.inventory.without.qty</field>
         <field name="report_type">qweb-pdf</field>
         <field name="report_name">real_reports.report_physical_inventory_without_qty</field>
@@ -155,7 +155,7 @@
 
     <menuitem
         id="menu_physical_inventory_without_qty_report"
-        name="Physical Inventory Without Qty"
+        name="Physical Inventory Without Quantity"
         parent="quant_reports_menu"
         action="action_physical_inventory_without_qty"
         sequence="20"

@@ -4,7 +4,7 @@
 {
     "name": "Real Reports",
     "summary": "Module to Generate Custom Reports for Real",
-    "version": "17.0.1.0.12",
+    "version": "17.0.1.0.13",
     "category": "Reporting",
     "author": "Jarsa",
     "website": "https://www.jarsa.com",
@@ -20,7 +20,6 @@
     ],
     "data": [
         "security/ir.model.access.csv",
-        "report/physical_inventory_without_qty_report.xml",
         "report/physical_inventory_count_report_mp.xml",
         "report/costs_and_prices_format.xml",
         "report/costs_and_prices_report_view.xml",
@@ -48,5 +47,6 @@
         "report/report_cancelled_invoices_view.xml",
         "report/physical_inventory_count_report.xml",
         "report/pending_tons_wizard_view.xml",
+        "report/physical_inventory_without_qty_report.xml",
     ],
 }

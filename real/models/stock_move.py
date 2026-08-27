@@ -159,8 +159,7 @@ class StockMove(models.Model):
         for rec in self:
             if rec.picking_type_id.name == "Compras" and rec.state in ("assigned", "confirmed"):
                 rec.update({"quantity": 0})
-            else:
-                pass
+
 
 class StockMoveLine(models.Model):
     _inherit = "stock.move.line"

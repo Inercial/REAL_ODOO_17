@@ -58,7 +58,7 @@
                 </t>
                 <strong name="invoice_date_due">FECHA DE PAGO:<t t-esc="o.invoice_date_due" /></strong>
                 <br />
-                LUGAR DE PAGO: CIRCUITO ENRIQUE DE LARA NO. 280&#160;<br/>
+                LUGAR DE PAGO: CIRCUITO ENRIQUE DE LARA NO. 280&#160;<br />
                 COLONIA CIUDAD INDUSTRIAL, TORREON, COAHUILA 27019&#160;
             </div>
         </div>

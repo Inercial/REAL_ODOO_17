@@ -1,7 +1,8 @@
 # Copyright 2017-19 ForgeFlow S.L.
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 
-from odoo import api, fields, models
+from odoo import _, api, fields, models
+from odoo.exceptions import ValidationError
 
 
 class MrpProductionRequestCreateMo(models.TransientModel):
@@ -17,6 +18,17 @@ class MrpProductionRequestCreateMo(models.TransientModel):
     )
     product_id = fields.Many2one(related="mrp_request_id.product_id")
     product_tmpl_id = fields.Many2one(related="mrp_request_id.product_tmpl_id")
+
+    @api.constrains("order_qty")
+    def _check_order_qty(self):
+        for rec in self:
+            if rec.order_qty < 0:
+                raise ValidationError(_("The order quantity cannot be negative."))
+
+    def _prepare_product_line(self, product_line):
+        vals = super()._prepare_product_line(product_line)
+        vals["required_qty"] = self.order_qty * product_line[0].product_qty
+        return vals
 
     def _prepare_manufacturing_order(self):
         res = super()._prepare_manufacturing_order()
@@ -75,3 +87,22 @@ class MrpProductionRequestCreateMo(models.TransientModel):
     def _get_mo_qty(self):
         for rec in self:
             rec.mo_qty = rec.alternative_bom_id.product_qty
+
+
+class MrpProductionRequestCreateMoLine(models.TransientModel):
+    _inherit = "mrp.request.create.mo.line"
+
+    required_qty = fields.Float()
+
+    def _compute_bottle_neck_factor(self):
+        nonzero_qty_lines = self.filtered("product_qty")
+        zero_qty_lines = self - nonzero_qty_lines
+
+        for line in zero_qty_lines:
+            line.bottle_neck_factor = 0.0
+
+        if nonzero_qty_lines:
+            super(
+                MrpProductionRequestCreateMoLine,
+                nonzero_qty_lines,
+            )._compute_bottle_neck_factor()

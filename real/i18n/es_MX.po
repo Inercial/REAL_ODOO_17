@@ -647,6 +647,12 @@ msgid "Dump Truck Drivers"
 msgstr "Choferes de Volteo"
 
 #. module: real
+#: model:ir.model.fields,field_description:real.field_account_move__early_payment_date
+#: model_terms:ir.ui.view,arch_db:real.view_account_move_form_real
+msgid "Early Payment Date"
+msgstr "Fecha de pronto pago"
+
+#. module: real
 #: model:ir.model.fields,field_description:real.field_product_category__ebitda_report
 msgid "Ebitda Report"
 msgstr "Incluir en Reporte Ebitda"
@@ -759,6 +765,14 @@ msgstr "Tiene restricción"
 #: model:res.groups,name:real.res_groups_hide_picking_block
 msgid "Hide (un)block picking button"
 msgstr "Ocultar boton para (des)bloquear picking"
+
+#. module: real
+#. odoo-javascript
+#: code:addons/real/static/src/components/account_report/filters/extra_filters.xml:0
+#: model:ir.model.fields,field_description:real.field_account_report__filter_hide_columns
+#, python-format
+msgid "Hide Columns"
+msgstr "Ocultar columnas"
 
 #. module: real
 #: model:ir.model.fields,field_description:real.field_mrp_production__hide_dump_info
@@ -1262,6 +1276,11 @@ msgid "Remake the sequence of Journal Entries."
 msgstr "Rehaga la secuencia de los asientos contables."
 
 #. module: real
+#: model:ir.model.fields,field_description:real.field_mrp_request_create_mo_line__required_qty
+msgid "Required Qty"
+msgstr "Cantidad requerida"
+
+#. module: real
 #: model:ir.model.fields,field_description:real.field_res_partner__review_day
 #: model:ir.model.fields,field_description:real.field_res_users__review_day
 msgid "Review Day"
@@ -1521,6 +1540,13 @@ msgstr ""
 "El nombre del lote no cumple con el estándar definido.\n"
 "\n"
 "%(definition)s"
+
+#. module: real
+#. odoo-python
+#: code:addons/real/wizards/mrp_request_create_mo.py:0
+#, python-format
+msgid "The order quantity cannot be negative."
+msgstr "El número de batidas no puede ser negativo."
 
 #. module: real
 #. odoo-python
