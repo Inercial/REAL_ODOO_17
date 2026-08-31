@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="report_premixes_review_additives_template">
+        <t t-call="web.html_container">
+            <t t-call="web.external_layout">
+                <t t-foreach="docs" t-as="doc">
+                    <div class="page" style="font-size: 18px">
+                        <div class="text-center" style="font-size: 34px">
+                            <b>REVISÍON DE ADITIVOS EN PREMEZCLAS</b>
+                        </div>
+                        <div class="my-2">
+                            <strong>Lista de materiales:</strong>
+                            <span t-esc="doc.bom_id.product_tmpl_id.name" />
+                            <br />
+                            <strong>Fecha de impresión:</strong>
+                            <span
+                                t-esc="context_timestamp(datetime.datetime.now()).strftime('%d-%m-%Y %H:%M')" />
+                            <br />
+                            <strong>Cantidad:</strong>
+                            <span t-esc="doc.product_qty" />
+                        </div>
+                        <table class="table table-sm table-bordered">
+                            <thead>
+                                <tr>
+                                    <th style="text-align: left">Producto</th>
+                                    <th style="text-align: left">Por consumir</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <t t-foreach="doc.move_raw_ids" t-as="line">
+                                    <tr>
+                                        <td>
+                                            <t t-esc="line.product_id.name" />
+                                        </td>
+                                        <td>
+                                            <t t-esc="line.product_uom_qty" />
+                                        </td>
+                                    </tr>
+                                </t>
+                            </tbody>
+                        </table>
+                        <div class="text-center pt-5">
+                            <span>_________________________________________________</span>
+                            <br />
+                            <b>ADITIVOS VERIFICADOS</b>
+                        </div>
+                    </div>
+                </t>
+            </t>
+        </t>
+    </template>
+
+    <record id="actionreport_premixes_review_additives" model="ir.actions.report">
+        <field name="name">Review of additives in premixes</field>
+        <field name="model">mrp.production</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">real_reports.report_premixes_review_additives_template</field>
+        <field name="report_file">real_reports.report_premixes_review_additives_template</field>
+        <field name="binding_model_id" ref="mrp.model_mrp_production" />
+        <field name="binding_type">report</field>
+    </record>
+</odoo>
