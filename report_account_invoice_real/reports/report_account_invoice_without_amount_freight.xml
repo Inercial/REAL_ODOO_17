@@ -1,0 +1,387 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <template id="report_invoice_original_without_amount_freight_real">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="o">
+                <t t-call="web.basic_layout">
+                    <t t-set="lang" t-value="o.partner_id.lang or o.company_id.partner_id.lang" />
+                    <t t-set="o" t-value="o.with_context(lang=lang)" />
+                    <t t-if="not company">
+                        <t t-if="company_id">
+                            <t t-set="company" t-value="company_id" />
+                        </t>
+                        <t t-elif="o and 'company_id' in o and o.company_id.sudo()">
+                            <t t-set="company" t-value="o.company_id.sudo()" />
+                        </t>
+                        <t t-else="else">
+                            <t t-set="company" t-value="res_company" />
+                        </t>
+                    </t>
+
+                    <div class="header mb-4 row" style="height:150px;">
+                        <div class="col-3 text-start" style="background-color: white;">
+                            <img
+                                t-if="company.logo"
+                                t-att-src="image_data_uri(company.logo)"
+                                alt="Logo"
+                                style="height:60%; width:auto; object-fit:contain;"
+                            />
+                        </div>
+                        <div name="header_left_col" class="col-4 text-start ps-3"
+                            style="font-size:0.70rem;">
+                            <strong style="font-size:0.90rem;">RECUBRIMIENTOS Y ADHESIVOS DE <br />
+                                LA LAGUNA S.A.DE C.V.</strong>
+                            <div>
+                                <span>RAL-910124-RN9</span>
+                            </div>
+                            <div>
+                                <span>CIRCUITO ENRIQUE DE LARA NO. 280</span>
+                            </div>
+                            <div>
+                                <span>COLONIA CIUDAD INDUSTRIAL</span>
+                            </div>
+                            <div>
+                                <span>TORREON, COAHUILA. 27019</span>
+                            </div>
+                            <div>
+                                <span>
+                                    <t t-esc="company.phone" />
+                                </span>
+                            </div>
+                            <div>
+                                <span>RÉGIMEN DE PERSONAS MORALES</span>
+                            </div>
+                        </div>
+                        <div name="header_right_col" class="col-5 text-end"
+                            style="font-size:0.70rem;">
+                            <strong name="invoice_title_type"
+                                style="font-size:0.90rem;border-bottom: 2px solid black;">
+                                FACTURA FLETERO
+                            </strong>
+                            <br />
+                            <strong
+                                name="L-002" style="font-size:0.90rem;">L-002</strong>
+                            <br />
+                            <strong
+                                name="invoice_name" style="font-size:0.90rem;">
+                                <t t-esc="o.name" />
+                            </strong>
+                            <br />
+                            <span
+                                name="UUID">UUID:<t t-esc="o.l10n_mx_edi_cfdi_uuid" /></span>
+                            <br />
+                            <span
+                                name="invoice_type">TIPO DE COMPROBANTE: INGRESO</span>
+                            <br />
+                            <strong
+                                name="invoice_date">FECHA DE FACTURACION:<t t-esc="o.invoice_date" /></strong>
+                            <br />
+                            <t
+                                t-if="o.customer_early_payment">
+                                <strong name="invoice_date">FECHA DE PRONTO PAGO:<t
+                                        t-esc="o.early_payment_date" /></strong>
+                                <br />
+                            </t>
+                            <strong
+                                name="invoice_date_due">FECHA DE PAGO:<t t-esc="o.invoice_date_due" /></strong>
+                            <br />
+                            LUGAR DE PAGO: CIRCUITO ENRIQUE DE LARA NO. 280&#160;<br /> COLONIA
+                            CIUDAD INDUSTRIAL, TORREON, COAHUILA 27019&#160; </div>
+                    </div>
+                    <div class="page" style="font-size:14px;">
+                        <div class="row">
+                            <div name="fiscal_information" class="col-6" style="font-size:0.90rem;">
+                                <strong style="border-bottom: 2px solid black;">DATOS FISCALES:</strong>
+                                <span class="d-block">RAZON SOCIAL: <b>
+                                        <t t-esc="o.partner_id.name" />
+                                    </b></span>
+                                <span class="d-block">RFC: <b>
+                                        <t t-esc="o.partner_id.vat" />
+                                    </b></span>
+                                <span class="d-block">PLAZO: <b>
+                                        <t t-esc="o.invoice_payment_term_id.name" />
+                                    </b></span>
+                                <span class="d-block">FORMA DE PAGO: <b>
+                                        <t
+                                            t-esc="o.l10n_mx_edi_payment_method_id.name"
+                                        />
+                                    </b></span>
+                                <span class="d-block">METODO DE PAGO: <b>
+                                        <t t-esc="o.l10n_mx_edi_payment_policy" />
+                                    </b></span>
+                                <span class="d-block">USO DEL CFDI: <b>
+                                        <t
+                                            t-esc="o._fields['l10n_mx_edi_usage'].convert_to_export(o.l10n_mx_edi_usage, o)" />
+                                    </b></span>
+                                <span>DIRECCION: <b>
+                                        <t t-esc="o.partner_id.street" />
+                                    </b></span>
+                                <span>CP: <b>
+                                        <t t-esc="o.partner_id.zip" />
+                                    </b></span>
+                                <br />
+                                <span>CIUDAD: <b>
+                                        <t t-esc="o.partner_id.city" />
+                                    </b></span>
+                                <br />
+                                <span>ORDEN DE COMPRA: <b>
+                                        <t
+                                            t-esc="o.invoice_line_ids.mapped('sale_line_ids.order_id')[:1].po_name" />
+                                    </b></span>
+                            </div>
+                            <div name="delivery_information" class="col-6 d-grid"
+                                style="font-size:0.90rem;">
+                                <strong style="border-bottom: 2px solid black;">DATOS DE ENTREGA:</strong>
+                                <span class="d-block">NOMBRE COMERCIAL: <b>
+                                        <t t-esc="o.partner_shipping_id.commercial_name" />
+                                    </b></span>
+                                <span class="d-block">NOMBRE DE LA SUCURSAL: <b>
+                                        <t t-esc="o.partner_shipping_id.name" />
+                                    </b></span>
+                                <span class="d-block">CIUDAD DE ENTREGA: <b>
+                                        <t t-esc="o.partner_shipping_id.city" />
+                                    </b></span>
+                                <span class="d-block">ASESOR DE VENTAS: <b>
+                                        <t t-esc="o.invoice_user_id.name" />
+                                    </b></span>
+                                <span class="d-block">VIA DE EMBARQUE: <b>
+                                        <t t-esc="o.way_of_shipment_id.name" />
+                                    </b></span>
+                                <span class="d-block">PEDIDO: <b>
+                                        <t t-esc="o.invoice_origin" />
+                                    </b></span>
+                                <span>ENTREGA: <b>
+                                        <t t-esc="o.partner_shipping_id.street" />
+                                    </b></span>
+                                <span>CP: <b>
+                                        <t t-esc="o.partner_shipping_id.zip" />
+                                    </b></span>
+                                <br />
+                                <span>CIUDAD: <b>
+                                        <t t-esc="o.partner_shipping_id.city" />
+                                    </b></span>
+                            </div>
+                        </div>
+
+                        <div name="table_invoice_lines" class="mt-4">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th name="th_quantity" class="text-center">
+                                            <span>CANT.</span>
+                                        </th>
+                                        <th name="th_uom" class="text-center">
+                                            <span>U.M</span>
+                                        </th>
+                                        <th name="th_uom" class="text-center">
+                                            <span>CLAVE SAT</span>
+                                        </th>
+                                        <th name="th_uom" class="text-center">
+                                            <span>CATEGORIA SAT </span>
+                                        </th>
+                                        <th name="th_description" class="text-center">
+                                            <span>DESCRIPCIÓN</span>
+                                        </th>
+                                        <th name="th_tons" class="text-center"
+                                            t-if="o.move_type in ['out_invoice', 'out_refund']">
+                                            <span>TONELADAS</span>
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody class="invoice_tbody">
+                                    <t t-set="current_subtotal" t-value="0" />
+                                    <t
+                                        t-set="lines"
+                                        t-value="o.invoice_line_ids.sorted(key=lambda l: (-l.sequence, l.date, l.move_name, -l.id), reverse=True)"
+                                    />
+                                    <t t-foreach="lines" t-as="line">
+                                        <t
+                                            t-set="current_subtotal"
+                                            t-value="current_subtotal + line.price_subtotal"
+                                            groups="account.group_show_line_subtotals_tax_excluded"
+                                        />
+                                        <t
+                                            t-set="current_subtotal"
+                                            t-value="current_subtotal + line.price_total"
+                                            groups="account.group_show_line_subtotals_tax_included"
+                                        />
+                                        <tr>
+                                            <t t-if="line.display_type == 'product'"
+                                                name="account_invoice_line_accountable">
+                                                <td name="td_quantity" class="text-center">
+                                                    <span t-esc="'%.0f'% line.quantity" />
+                                                </td>
+                                                <td name="td_uom" class="text-center">
+                                                    <span t-field="line.product_uom_id" />
+                                                </td>
+                                                <td name="td_sat" class="text-center">
+                                                    <span
+                                                        t-field="line.product_id.unspsc_code_id.code" />
+                                                </td>
+                                                <td name="td_sat_category" class="text-center">
+                                                    <span
+                                                        t-field="line.product_id.unspsc_code_id.name" />
+                                                </td>
+                                                <td name="td_description">
+                                                    <span t-field="line.name"
+                                                        t-options="{'widget': 'text'}" />
+                                                </td>
+                                                <td name="td_tons" class="text-center"
+                                                    t-if="o.move_type in ['out_invoice', 'out_refund']">
+                                                    <span t-field="line.tons_display" />
+                                                </td>
+                                            </t>
+                                            <t t-if="line.display_type == 'line_section'">
+                                                <td colspan="99">
+                                                    <span t-field="line.name"
+                                                        t-options="{'widget': 'text'}" />
+                                                </td>
+                                                <t t-set="current_section" t-value="line" />
+                                                <t t-set="current_subtotal" t-value="0" />
+                                            </t>
+                                            <t t-if="line.display_type == 'line_note'">
+                                                <td colspan="99">
+                                                    <span t-field="line.name"
+                                                        t-options="{'widget': 'text'}" />
+                                                </td>
+                                            </t>
+                                        </tr>
+                                        <t
+                                            t-if="current_section and (line_last or lines[line_index+1].display_type == 'line_section')">
+                                            <tr class="is-subtotal text-right">
+                                                <td colspan="99">
+                                                    <strong class="mr16">Subtotal</strong>
+                                                    <span t-esc="current_subtotal"
+                                                        t-options="{'widget': 'monetary', 'display_currency': o.currency_id}" />
+                                                </td>
+                                            </tr>
+                                        </t>
+                                    </t>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <div>
+                            <strong name="toneladas_text">TONELADAS: <t t-esc="o.tons_display" /></strong>
+                            <strong name="tarimas_text">TARIMAS: <t t-esc="o.x_studio_tarimas" /></strong>
+                        </div>
+
+                        <div name="total_amount_text" class="mt-3">
+                            <t t-if="o.l10n_mx_edi_payment_policy">
+                                <br />
+                                <span t-esc="o.l10n_mx_edi_payment_policy" />
+                            </t>
+                            <t t-if="o.l10n_mx_edi_payment_method_id">
+                                <span> / </span>
+                                <span t-esc="o.l10n_mx_edi_payment_method_id.name" />
+                            </t>
+                        </div>
+
+                        <div name="limit_date" class="mt-3">
+                            <strong>LA FECHA LIMITE PARA SOLICITAR UNA REFACTURACIÓN ES A MÁS TARDAR
+                                EL DÍA 5 DEL MES SIGUIENTE</strong>
+                        </div>
+
+                        <div name="bank_payments_info" style="page-break-inside: avoid" class="mt-3">
+                            <strong>INFORMACIÓN BANCARIA PARA SUS PAGOS</strong>
+                            <br />
+                            <span>NOMBRE: RECUBRIMIENTOS Y ADHESIVOS DE LA LAGUNA, S.A. DE C.V.</span>
+                            <br />
+                            <span>BANCO: BANORTE CUENTA: 0142557631 CLABE: 072060001425576319</span>
+                            <br />
+                            <span>BANCO: BANCREA CUENTA: 12000075335 CLABE: 152078120000753353</span>
+                            <br />
+                            <span>BANCO: SANTANDER CUENTA: 65509243294 CLABE: 014060655092432944</span>
+                        </div>
+
+                        <div name="CFDI_information" class="row mt-3"
+                            style="page-break-inside: avoid" t-if="o.l10n_mx_edi_cfdi_uuid">
+                            <t t-set="cfdi_vals"
+                                t-value="o._l10n_mx_edi_get_extra_invoice_report_values()" />
+                            <t t-set="is_cfdi_signed" t-value="bool(cfdi_vals.get('uuid'))" />
+
+                            <div class="barcode col-3">
+                                <img alt="Barcode" t-att-src="cfdi_vals.get('barcode_src')" />
+                            </div>
+
+                            <div class="col-9" style="font-size:0.50rem;">
+                                <div>
+                                    <div class="text-center"
+                                        style="background-color: #878686; color:white;">
+                                        <strong>Sello Digital del emisor</strong>
+                                        <br />
+                                    </div>
+                                    <span
+                                        t-esc="cfdi_vals.get('sello', cfdi_vals.get('Sello', 'No identificado'))" />
+                                </div>
+                                <div>
+                                    <div class="text-center"
+                                        style="background-color: #878686; color:white;">
+                                        <strong>Sello digital SAT</strong>
+                                    </div>
+                                    <span
+                                        t-esc="cfdi_vals.get('sello_sat', cfdi_vals.get('sello_sat', 'No identificado'))" />
+                                </div>
+                                <div>
+                                    <div class="text-center"
+                                        style="background-color: #878686; color:white;">
+                                        <strong>Cadena Original del complemento de certificación del
+                                            SAT</strong>
+                                        <br />
+                                    </div>
+                                    <span t-if="cfdi_vals.get('cadena')"
+                                        t-esc="cfdi_vals.get('cadena')" />
+                                </div>
+                                <div>
+                                    <div class="text-center"
+                                        style="background-color: #878686; color:white;">
+                                        <strong>Información Extra</strong>
+                                        <br />
+                                    </div>
+                                    <span>Certificado del emisor: <t
+                                            t-esc="cfdi_vals.get('certificate_number')" /></span>
+                                    <span>| Certificado del SAT: <t
+                                            t-esc="cfdi_vals.get('certificate_sat_number')" /></span>
+                                    <span>| Lugar de expedición<t
+                                            t-esc="cfdi_vals.get('expedition')" /></span>
+                                    <span>| Régimen Fiscal <t t-esc="cfdi_vals.get('fiscal_regime')" /></span>
+                                    <span>| Fecha de emisión: <t
+                                            t-esc="cfdi_vals.get('emission_date_str')" /></span>
+                                    <span>| Fecha de certificación: <t
+                                            t-esc="cfdi_vals.get('stamp_date')" /></span>
+                                    <span>| Folio Fiscal <t t-esc="cfdi_vals.get('uuid')" /></span>
+                                </div>
+                                <div class="text-center">
+                                    <strong>Este documento es una representación impresa de un CFDI</strong>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div name="signature_section" class="row mt-4"
+                            style="font-size:10px; page-break-inside: avoid">
+                            <div class="col-5 mx-2 pt-5" style="font-size:12px;">
+                                <div style="border-top:1px dotted #000;" class="text-center">
+                                    <span>NOMBRE Y FIRMA DEL FLETERO</span>
+                                </div>
+                            </div>
+                            <div class="col-6 mx-2">
+                                <span style="justify-text: auto;">
+                                    DEBO(EMOS) Y PAGARE(MOS) INCONDICIONALMENTE A LA ORDEN DE
+                                    RECUBRIMIENTOS Y
+                                    ADHESIVOS DE LA LAGUNA S.A DE C.V. EL
+                                    DÍA DEL VENCIMIENTO DEL DOCUMENTO, EN SU DOMICILIO EN TORREÓN,
+                                    COAHUILA.
+                                    CAUSANDO UN INTERÉS DEL 2.75% MENSUAL, SI
+                                    NO ES PAGADO A SU VENCIMIENTO. SOMETIENDONOS A LA COMPETENCIA DE
+                                    LOS
+                                    TRIBUNALES DE LA CIUDAD DE TORREÓN
+                                    COAHUILA O A LOS QUE EL TENEDOR ELIJA.
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </t>
+            </t>
+        </t>
+    </template>
+</odoo>
