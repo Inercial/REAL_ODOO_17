@@ -18,6 +18,7 @@
     ],
     "data": [
         "views/account_move_view.xml",
+        "reports/report_account_invoice_without_amount_freight.xml",
         "reports/report_account_invoice_base.xml",
         "reports/report_account_invoice_original.xml",
         "reports/report_account_invoice_without_amount.xml",

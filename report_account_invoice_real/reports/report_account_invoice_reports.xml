@@ -38,6 +38,17 @@
         <field name="paperformat_id" ref="paperformat_cabecera_alta" />
     </record>
 
+    <record id="action_report_invoice_original_without_amount_freight_real" model="ir.actions.report">
+        <field name="name">VENTAS-FACTURA SIN IMPORTE FLETERO</field>
+        <field name="model">account.move</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">report_account_invoice_real.report_invoice_original_without_amount_freight_real</field>
+        <field name="report_file">report_account_invoice_real.report_invoice_original_without_amount_freight_real</field>
+        <field name="binding_model_id" ref="account.model_account_move" />
+        <field name="binding_type">report</field>
+        <field name="paperformat_id" ref="paperformat_cabecera_alta" />
+    </record>
+
     <record id="action_report_invoice_credit_memo_real" model="ir.actions.report">
         <field name="name">VENTAS-NOTA DE CRÉDITO</field>
         <field name="model">account.move</field>
