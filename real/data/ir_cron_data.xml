@@ -19,4 +19,39 @@ model.get_xml_content(rec)
             eval="((DateTime.now() + relativedelta(days=1)).replace(hour=13, minute=0, second=0)).strftime('%Y-%m-%d %H:%M:%S')"
         />
     </record>
+    <record id="ir_cron_update_analytic_account_display" model="ir.cron">
+        <field name="name">UPDATE analytic_account_display</field>
+        <field name="model_id" ref="account.model_account_move_line" />
+        <field name="state">code</field>
+        <field name="code">
+env.cr.execute("""
+    UPDATE account_move_line aml
+    SET analytic_account_display = COALESCE(sub.nuevo_nombre, 'Sin Cuenta Analítica')
+    FROM (
+        SELECT
+            aml_inner.id,
+            aaa.name ->> 'es_MX' AS nuevo_nombre
+        FROM account_move_line aml_inner
+        LEFT JOIN LATERAL (
+            SELECT acc.id AS account_id
+            FROM jsonb_each(aml_inner.analytic_distribution::jsonb) WITH ORDINALITY AS kv(key, value, ord)
+            CROSS JOIN LATERAL string_to_table(kv.key, ',') WITH ORDINALITY AS sub_k(account_str, sub_ord)
+            JOIN account_analytic_account acc ON acc.id = sub_k.account_str::int
+            WHERE acc.plan_id != 78
+            AND acc.active IS TRUE
+            ORDER BY kv.ord, sub_k.sub_ord
+            LIMIT 1
+        ) k ON aml_inner.analytic_distribution IS NOT NULL 
+        AND aml_inner.analytic_distribution::text != '{}'
+        LEFT JOIN account_analytic_account aaa ON aaa.id = k.account_id
+    ) sub
+    WHERE aml.id = sub.id;
+""")
+        </field>
+        <field name="active">0</field>
+        <field name="user_id" ref="base.user_root" />
+        <field name="interval_number">1</field>
+        <field name="interval_type">days</field>
+        <field name="numbercall">-1</field>
+    </record>
 </odoo>

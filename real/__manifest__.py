@@ -57,6 +57,7 @@
         "security/ir_rule_data.xml",
         "security/ir_ui_menu.xml",
         "security/res_user_roles_data.xml",
+        "views/account_move_line.xml",
         "views/account_move_view.xml",
         "views/account_payment_view.xml",
         "views/product_product_view.xml",
