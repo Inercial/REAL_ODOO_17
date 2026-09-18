@@ -299,6 +299,7 @@ class AccountMove(models.Model):
 class AccountMoveLine(models.Model):
     _inherit = "account.move.line"
 
+    analytic_account_display = fields.Char(store=True, compute="_compute_analytic_account_display")
     freight_cost = fields.Float(digits="Freight Factor")
     price_unit_without_freight = fields.Float(compute="_compute_price_unit_without_freight", store=True)
     tons_display = fields.Float(
@@ -307,6 +308,17 @@ class AccountMoveLine(models.Model):
         store=True,
         string="Tons",
     )
+
+    @api.depends("analytic_distribution")
+    def _compute_analytic_account_display(self):
+        for rec in self:
+            if not rec.analytic_distribution:
+                rec.analytic_account_display = "Sin Cuenta Analítica"
+                continue
+            acc_ids = [int(acc_id) for key in rec.analytic_distribution.keys() for acc_id in key.split(",") if acc_id.isdigit()]
+            accounts_by_id = {acc.id: acc for acc in rec.distribution_analytic_account_ids}
+            valid_account = next((accounts_by_id[acc_id] for acc_id in acc_ids if acc_id in accounts_by_id and accounts_by_id[acc_id].active and accounts_by_id[acc_id].plan_id.id != 78), None)
+            rec.analytic_account_display = valid_account.name if valid_account else "Sin Cuenta Analítica"
 
     @api.depends("quantity", "product_id")
     def _compute_tons(self):
