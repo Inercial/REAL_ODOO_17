@@ -171,3 +171,6 @@ class StockMoveLine(models.Model):
         related="product_id.categ_id.parent_id",
         store=True,
     )
+
+    def _action_done(self):
+        return super(StockMoveLine, self.with_context(skip_stock_request_message=True))._action_done()
