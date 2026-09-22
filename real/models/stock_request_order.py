@@ -4,6 +4,13 @@
 from odoo import api, fields, models
 
 
+class StockRequest(models.Model):
+    _inherit = "stock.request"
+
+    def message_post(self, **kwargs):
+        return False if self.env.context.get("skip_stock_request_message") else super().message_post(**kwargs)
+
+
 class StockRequestOrder(models.Model):
     _inherit = "stock.request.order"
 
