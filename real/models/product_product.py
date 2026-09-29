@@ -32,3 +32,13 @@ class ProductProduct(models.Model):
         for rec in self:
             tons = rec.qty_available * rec.weight / 1000
             rec.tons_display = tons
+
+
+class SupplierInfo(models.Model):
+    _inherit = "product.supplierinfo"
+
+
+    @api.onchange('partner_id')
+    def _onchange_partner_id(self):
+        super()._onchange_partner_id()
+        self.currency_id = False
