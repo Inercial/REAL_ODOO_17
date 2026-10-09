@@ -2,8 +2,8 @@
 # License LGPL-3.0 or later (http://www.gnu.org/licenses/lgpl.html).
 
 
-from datetime import datetime, timedelta
-
+from datetime import datetime
+import numpy as np
 import pytz
 from markupsafe import Markup, escape
 
@@ -235,60 +235,22 @@ class SaleOrder(models.Model):
 
     @api.model
     def _compute_order_signal(self):
-        exclude = ["Parras de la Fuente", "Francisco I. Madero", "San Pedro"]
-        # Mods to calculate the elapsed hours between the order and current dates WITHOUT considering the weekends
-        # Convert current date to current timezone
-        now = datetime.now().astimezone(pytz.timezone(self.env.user.tz))
+        tz = pytz.timezone(self.env.user.tz or "America/Mexico_City")
+        now = datetime.now(tz)
 
         for rec in self:
-            order_dt = rec.date_order.astimezone(pytz.timezone(self.env.user.tz))
-            # Get the dates BETWEEN the order and current dates (not including both)
-            dates = [order_dt.date() + timedelta(i + 1) for i in range((now.date() - order_dt.date()).days - 1)]
-            # Sum 24 hours for each day in the dates list
-            hours = 0
-            hours = sum(24 for day in dates if day.isoweekday() < 6)
-
-            # Substract or add the hours for the initial and ending dates
-            if order_dt.date() == now.date() and order_dt.isoweekday() < 6:
-                hours = (
-                    hours
-                    + (now.hour - order_dt.hour)
-                    + (now.minute / 60 - order_dt.minute / 60)
-                    + (now.second / 3600 - order_dt.second / 3600)
-                )
-            else:
-                if order_dt.isoweekday() < 6:
-                    hours = hours + 24 - order_dt.hour - order_dt.minute / 60 - order_dt.second / 3600
-                if now.isoweekday() < 6:
-                    hours = hours + now.hour + now.minute / 60 + now.second / 3600
-
-            if not any(delivery.state not in ("done", "cancel") for delivery in rec.picking_ids):
-                rec.order_signal = ""
-            elif (
-                rec.partner_shipping_id.city_id.name in exclude and rec.partner_shipping_id.state_id.name == "Coahuila"
-            ):
-                if hours <= 48:
-                    rec.order_signal = "on_time"
-                elif 48 < hours < 72:
-                    rec.order_signal = "due_soon"
-                else:
-                    rec.order_signal = "overdue"
-            elif rec.client_location == "local":
-                if hours <= 36:
-                    rec.order_signal = "on_time"
-                elif 36 < hours < 52:
-                    rec.order_signal = "due_soon"
-                else:
-                    rec.order_signal = "overdue"
-            elif rec.client_location == "foreigner":
-                if hours <= 48:
-                    rec.order_signal = "on_time"
-                elif 48 < hours < 72:
-                    rec.order_signal = "due_soon"
-                else:
-                    rec.order_signal = "overdue"
-            else:
-                rec.order_signal = "overdue"
+            if not rec.date_order or (rec.picking_ids and not any(p.state not in ("done", "cancel") for p in rec.picking_ids)):
+                rec.order_signal = False
+                continue
+            order_dt = rec.date_order.astimezone(tz)
+            if order_dt >= now:
+                rec.order_signal = "on_time"
+                continue
+            bus_days = np.busday_count(order_dt.date(), now.date())
+            hours = (bus_days * 24.0) - (order_dt.hour + (order_dt.minute / 60.0)) + (now.hour + (now.minute / 60.0))
+                              # Local                                                            # Foreign
+            on_time, due_soon = (36, 52) if getattr(rec, "client_location", False) == "local" else (48, 72)
+            rec.order_signal = "on_time" if hours <= on_time else ("due_soon" if hours < due_soon else "overdue")
 
     def _compute_out_pending(self):
         for rec in self:
