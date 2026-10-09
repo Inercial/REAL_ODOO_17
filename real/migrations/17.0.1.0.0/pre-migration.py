@@ -148,6 +148,24 @@ def _assign_auto_validate_tag_to_partner(cr):
 
 
 def migrate(cr, installed_version):
+    if not installed_version:
+        return
+    cr.execute("ALTER TABLE account_move_line ADD COLUMN IF NOT EXISTS analytic_account_display_id int4")
+    cr.execute(
+        """
+        UPDATE account_move_line aml
+           SET analytic_account_display_id = (
+               SELECT MIN(acc.id)
+                 FROM jsonb_object_keys(aml.analytic_distribution) AS k(key)
+                CROSS JOIN LATERAL string_to_table(k.key, ',') AS sk(account_str)
+                 JOIN account_analytic_account acc ON acc.id = sk.account_str::int
+                WHERE acc.plan_id != %s)
+         WHERE aml.analytic_distribution IS NOT NULL
+           AND aml.analytic_distribution != '{}'::jsonb
+        """,
+        [78],
+    )
+
     view_ids = _get_module_view_ids(cr, modules_views_to_remove)
     view_ids.extend(_get_views_ids_with_field(cr))
     view_ids = _get_all_views_with_inherit(cr, view_ids)

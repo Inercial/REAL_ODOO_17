@@ -7,7 +7,7 @@
         <field name="mode">extension</field>
         <field name="arch" type="xml">
             <xpath expr="//field[@name='analytic_distribution']" position="before">
-                <field name="analytic_account_display" optional="hide"/>
+                <field name="analytic_account_display_id" optional="hide" />
             </xpath>
         </field>
     </record>
@@ -18,9 +18,9 @@
         <field name="arch" type="xml">
             <xpath expr="//group" position="inside">
                 <filter string="Analitica"
-                        name="group_by_analytic_account_display"
-                        domain="[]"
-                        context="{'group_by': 'analytic_account_display'}"/>
+                    name="group_by_analytic_account_display_id"
+                    context="{'group_by': 'analytic_account_display_id'}"
+                />
             </xpath>
         </field>
     </record>
