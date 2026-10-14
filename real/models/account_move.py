@@ -39,6 +39,17 @@ class AccountMove(models.Model):
         "expense_depreciation",
     }
 
+    def check_duplicated_ref_ids(self):
+        for move in self:
+            if move.state != 'draft' or not move.duplicated_ref_ids:
+                continue
+            raise UserError(
+                (
+                    "The UUID entered is already associated with another document (%s).\n"
+                    "Please verify the information and try again."
+                )
+                % (", ".join(move.duplicated_ref_ids.mapped("name")))
+            )
     def _update_early_payment_date(self):
         for move in self:
             move.early_payment_date = False
@@ -115,6 +126,7 @@ class AccountMove(models.Model):
     def action_post(self):
         self._chek_pdf_xml()
         self.get_xml_content()
+        self.check_duplicated_ref_ids()
         res = super().action_post()
         self._update_early_payment_date()
         return res
