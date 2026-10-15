@@ -23,6 +23,10 @@ SALE_ORDER_STATE = [
 class SaleOrder(models.Model):
     _inherit = "sale.order"
 
+    note = fields.Html(
+        string="Terms and conditions",
+        compute='_compute_note',
+        store=True, readonly=False, precompute=True, copy=False)
     commitment_date_real = fields.Datetime(string="Commitment Date", copy=False)
     po_name = fields.Text()
     comment_marketing = fields.Text()
