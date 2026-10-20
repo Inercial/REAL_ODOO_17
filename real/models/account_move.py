@@ -39,17 +39,14 @@ class AccountMove(models.Model):
         "expense_depreciation",
     }
 
-    def check_duplicated_ref_ids(self):
+    def check_duplicated_cfdi_ids(self):
         for move in self:
-            if move.state != 'draft' or not move.duplicated_ref_ids:
-                continue
-            raise UserError(
-                (
-                    "The UUID entered is already associated with another document (%s).\n"
-                    "Please verify the information and try again."
-                )
-                % (", ".join(move.duplicated_ref_ids.mapped("name")))
-            )
+            if move.move_type == "in_invoice" and move.l10n_mx_edi_cfdi_uuid:   
+                if duplicated_moves := self.search([('move_type', '=', 'in_invoice'), ('state', '!=', 'cancel'),
+                    ('id', '!=', move.id), ('l10n_mx_edi_cfdi_uuid', '=', move.l10n_mx_edi_cfdi_uuid), ], limit=5):
+                    raise UserError(("The UID entered (%s) is already associated with another document (%s).\n"
+                        "Please verify the information and try again.") % (move.l10n_mx_edi_cfdi_uuid, ", ".join(duplicated_moves.mapped("name"))))
+
     def _update_early_payment_date(self):
         for move in self:
             move.early_payment_date = False
@@ -126,7 +123,7 @@ class AccountMove(models.Model):
     def action_post(self):
         self._chek_pdf_xml()
         self.get_xml_content()
-        self.check_duplicated_ref_ids()
+        self.check_duplicated_cfdi_ids()
         res = super().action_post()
         self._update_early_payment_date()
         return res
