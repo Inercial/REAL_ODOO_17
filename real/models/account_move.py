@@ -30,6 +30,7 @@ class AccountMove(models.Model):
     xml_emisor = fields.Char()
     early_payment_date = fields.Date(copy=False)
     customer_early_payment = fields.Boolean(related="partner_id.prompt_payment", store="False")
+    l10n_mx_edi_fp_payment_policy = fields.Selection(string="Payment Policy", selection=[('PPD', 'PPD'), ('PUE', 'PUE')])
 
     ANALYTIC_ACCOUNT_TYPES = {
         "income",
@@ -65,19 +66,17 @@ class AccountMove(models.Model):
         self._update_early_payment_date()
 
     def get_xml_content(self, rec=None):
-        records = rec or self
-        for move in records:
-            if move.partner_id.name == "PROVEEDOR GLOBAL" and not move.xml_emisor:
-                if (
-                    attachment := move.env["ir.attachment"].search(
-                        [("res_id", "=", move.id), ("res_model", "=", move._name), ("name", "ilike", "%.xml")], limit=1
-                    )
-                ) and attachment.raw:
-                    try:
-                        emisor = ET.fromstring(attachment.raw).find(".//{*}Emisor")
-                        move.xml_emisor = emisor.get("Nombre") if emisor is not None else ""
-                    except Exception:
-                        _logger.exception("Error parsing XML emisor for account.move %s", move.id)
+        for move in (rec or self):
+            if move.move_type == "in_invoice" and (attachment := move.env["ir.attachment"]\
+                .search([("res_id", "=", move.id),("res_model", "=", move._name),\
+                    ("name", "ilike", "%.xml")], limit=1)) and attachment.raw:
+                try:
+                    if move.partner_id.name == "PROVEEDOR GLOBAL" and (emisor := ET.fromstring(attachment.raw).find(".//{*}Emisor")):
+                        move.xml_emisor = emisor.get("Nombre")
+                    if metodo_pago := ET.fromstring(attachment.raw).get("MetodoPago"):
+                        move.l10n_mx_edi_fp_payment_policy = metodo_pago
+                except Exception:
+                    _logger.exception("Error parsing XML emisor for account.move %s", move.id)
 
     @api.depends("invoice_line_ids")
     def _compute_tons(self):
