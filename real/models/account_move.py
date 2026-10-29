@@ -83,22 +83,22 @@ class AccountMove(models.Model):
         for rec in self:
             rec.tons_display = sum(rec.invoice_line_ids.mapped("tons_display"))
 
-    @api.depends("move_type", "invoice_date_due", "invoice_date", "invoice_payment_term_id")
+    @api.depends("move_type", "invoice_date_due", "invoice_date", "invoice_payment_term_id", "journal_id")
     def _compute_l10n_mx_edi_payment_policy(self):
+        sw_payment_policy = True if self.env["ir.config_parameter"].sudo().get_param("real.sw_payment_policy") in ("1","True", "true") else False
         for move in self:
             move.l10n_mx_edi_payment_policy = False
+            if sw_payment_policy:
+                if move.move_type == "out_invoice":
+                    move.l10n_mx_edi_payment_policy = "PUE" if move.journal_id.id == 64 else "PPD"
+                    continue
+                if move.move_type == "out_refund":
+                    move.l10n_mx_edi_payment_policy = "PUE"
+                    continue
 
-            if (
-                move.is_invoice(include_receipts=True)
-                and move.l10n_mx_edi_is_cfdi_needed
-                and move.invoice_date_due
-                and move.invoice_date
-            ):
+            if (move.is_invoice(include_receipts=True) and move.l10n_mx_edi_is_cfdi_needed and move.invoice_date_due and move.invoice_date):
                 move.l10n_mx_edi_payment_policy = "PUE"
-
-                if move.move_type == "out_invoice" and (
-                    move.invoice_date_due > move.invoice_date or len(move.invoice_payment_term_id.line_ids) > 1
-                ):
+                if move.move_type == "out_invoice" and (move.invoice_date_due > move.invoice_date or len(move.invoice_payment_term_id.line_ids) > 1):
                     move.l10n_mx_edi_payment_policy = "PPD"
 
     def action_register_payment(self):
