@@ -71,8 +71,11 @@ class AccountMove(models.Model):
                 .search([("res_id", "=", move.id),("res_model", "=", move._name),\
                     ("name", "ilike", "%.xml")], limit=1)) and attachment.raw:
                 try:
-                    if move.partner_id.name == "PROVEEDOR GLOBAL" and (emisor := ET.fromstring(attachment.raw).find(".//{*}Emisor")):
-                        move.xml_emisor = emisor.get("Nombre")
+                    if move.partner_id.name == "PROVEEDOR GLOBAL":
+                        emisor = ET.fromstring(attachment.raw).find(".//{*}Emisor")
+                        move.xml_emisor = emisor.get("Nombre") if emisor is not None else ""
+                        if invoice_origin := move.invoice_origin:
+                            move.env["purchase.order"].search([("name", "=", invoice_origin)]).xml_emisor = move.xml_emisor
                     if metodo_pago := ET.fromstring(attachment.raw).get("MetodoPago"):
                         move.l10n_mx_edi_fp_payment_policy = metodo_pago
                 except Exception:

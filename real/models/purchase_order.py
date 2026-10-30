@@ -6,6 +6,7 @@ class PurchaseOrder(models.Model):
     _inherit = "purchase.order"
 
     currency_copy = fields.Char("Currency (Copy)", compute="_compute_currency_copy", store=False)
+    xml_emisor = fields.Char()
 
     @api.onchange("currency_id")
     def _compute_currency_copy(self):
