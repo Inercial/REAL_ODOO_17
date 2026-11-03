@@ -216,7 +216,6 @@
                             <separator string="Commercialization" />
                             <field name="samples" string="Sample Display" />
                             <field name="pamphletes" string="Pamphlet" />
-                            <field name="pricers" string="Pricers" />
                             <field name="special_info" invisible="type != 'delivery'" />
                         </group>
                         <group>

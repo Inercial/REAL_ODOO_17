@@ -47,7 +47,6 @@ class ResPartner(models.Model):
     full_record = fields.Boolean()
     pamphletes = fields.Boolean()
     samples = fields.Boolean()
-    pricers = fields.Boolean()
     child_tag_ids = fields.Many2many(
         comodel_name="res.partner",
         relation="res_partner_tag_rel",
