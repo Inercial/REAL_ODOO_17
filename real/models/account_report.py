@@ -1,8 +1,13 @@
 import io
 import re
 
-from odoo import fields, models
+from odoo import _, fields, models
 
+from collections import defaultdict
+from odoo.exceptions import UserError
+
+CFDIBCE_XSLT_CADENA = 'l10n_mx_reports/data/xslt/1.3/BalanzaComprobacion_1_2.xslt'
+CFDICATALOGO_XSLT_CADENA = 'l10n_mx_reports/data/xslt/1.3/CatalogoCuentas_1_2.xslt'
 
 class TrialBalanceCustomHandler(models.AbstractModel):
     _inherit = "account.trial.balance.report.handler"
@@ -42,6 +47,57 @@ class TrialBalanceCustomHandler(models.AbstractModel):
                     to_remove.update(range(5, line_len - 3, 3))
                     line["columns"] = [col for i, col in enumerate(line["columns"]) if i not in to_remove]
         return lines
+
+
+    def _l10n_mx_get_sat_values(self, options):
+        super()._l10n_mx_get_sat_values(options)
+        report = self.env['account.report'].browse(options['report_id'])
+        sat_options = self._l10n_mx_get_sat_options(options)
+        report_lines = report._get_lines(sat_options)
+        sat_code = re.compile(r'((\d{3})\.\d{2})')
+
+        report_lines = [line for line in report_lines if line.get('level') >= 4]
+        account_ids = [report._get_res_id_from_line_id(line['id'], 'account.account') for line in report_lines]
+        accounts = self.env['account.account'].browse(account_ids)
+        self._check_accounts_code_sat_validity(accounts, options, 'action_l10n_mx_generate_sat_xml')
+
+        account_lines = []
+        parents = defaultdict(lambda: defaultdict(int))
+        for account, line in zip(accounts, report_lines):
+            if not account.exists():
+                continue
+            is_credit_account = any([account.account_type.startswith(acc_type) for acc_type in ['liability', 'equity', 'income']])
+            balance_sign = -1 if is_credit_account else 1
+            cols = line.get('columns', [])
+            initial = balance_sign * (cols[0].get('no_format', 0.0) - cols[1].get('no_format', 0.0))
+            debit = cols[3].get('no_format', 0.0)
+            credit = cols[4].get('no_format', 0.0)
+            end = balance_sign * (cols[6].get('no_format', 0.0) - cols[7].get('no_format', 0.0))
+            pid_match = sat_code.match(line['name'])
+            if not pid_match:
+                raise UserError(_("Invalid SAT code: %s", line['name']))
+            for pid in pid_match.groups():
+                parents[pid]['initial'] += initial
+                parents[pid]['debit'] += debit
+                parents[pid]['credit'] += credit
+                parents[pid]['end'] += end
+        for pid in sorted(parents.keys()):
+            account_lines.append({
+                'number': pid,
+                'initial': '%.2f' % parents[pid]['initial'],
+                'debit': '%.2f' % parents[pid]['debit'],
+                'credit': '%.2f' % parents[pid]['credit'],
+                'end': '%.2f' % parents[pid]['end'],
+            })
+
+        report_date = fields.Date.to_date(sat_options['date']['date_from'])
+        return {
+            'vat': self.env.company.vat or '',
+            'month': str(report_date.month).zfill(2),
+            'year': report_date.year,
+            'type': 'N',
+            'accounts': account_lines,
+        }
 
 
 class AccountReport(models.Model):
