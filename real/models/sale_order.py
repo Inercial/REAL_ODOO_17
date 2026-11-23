@@ -90,10 +90,36 @@ class SaleOrder(models.Model):
         ondelete={"check": "set default"},
     )
 
+    def action_open_reward_wizard(self):
+        self.ensure_one()
+        self._update_programs_and_rewards()
+        if len(self._get_claimable_rewards()) >= 1:
+            return self.env["ir.actions.actions"]._for_xml_id("sale_loyalty.sale_loyalty_reward_wizard_action")
+        return super().action_open_reward_wizard()
+
     def confirm_quote(self):
-        for line in self:
-            if line.state == "check":
-                line.state = "draft"
+        self._update_programs_and_rewards()
+        if len(self._get_claimable_rewards()) >= 1:
+            return {
+                "name": "Promociones disponibles",
+                "type": "ir.actions.act_window",
+                "res_model": "generic.message.wizard",
+                "view_mode": "form",
+                "target": "new",
+                "context": {
+                    "default_message": "<p>Este pedido tiene promociones disponibles.<br />¿Deseas continuar con la confirmación?</p>",
+                    "default_show_continue": True,
+                    "default_target_model": self._name,
+                    "default_target_res_id": self.id,
+                },
+            }
+        return self.action_continue_after_message()
+
+    def action_continue_after_message(self):
+        self.ensure_one()
+        if self.state == "check":
+            self.write({"state": "draft"})
+        return {"type": "ir.actions.act_window_close"}
 
     def _prepare_invoice(self):
         """Pricelist_id is set on invoice."""

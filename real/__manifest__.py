@@ -10,6 +10,7 @@
     "website": "https://www.jarsa.com",
     "license": "LGPL-3",
     "depends": [
+        "sale_loyalty",
         "l10n_mx",
         "sale_management",
         "stock_customs_account_date",
@@ -80,6 +81,7 @@
         "views/way_of_shipment_view_type.xml",
         "views/hr_expense_views.xml",
         "wizards/invoice_apply_advance_view.xml",
+        "wizards/message_wizard_view.xml",
         "views/account_reconciliation_widget_template.xml",
         "wizards/mrp_request_create_mo_view.xml",
         "data/decimal_precision_data.xml",

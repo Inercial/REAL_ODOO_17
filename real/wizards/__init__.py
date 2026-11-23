@@ -9,3 +9,4 @@ from . import invoice_apply_advance_detail
 from . import account_payment_line_create
 from . import mrp_production_overflow
 from . import account_reconcile_wizard
+from . import message_wizard

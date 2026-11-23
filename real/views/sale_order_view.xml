@@ -17,7 +17,14 @@
         <field eval="100" name="priority" />
         <field name="inherit_id" ref="sale.view_order_form" />
         <field name="arch" type="xml">
-            <xpath expr="//header" position="inside">
+            <xpath expr="//button[@name='action_open_reward_wizard']" position="replace" />
+            <xpath expr="//header/button[@name='action_confirm']" position="before">
+                <button name="action_open_reward_wizard"
+                        type="object"
+                        string="Promotions"
+                        invisible="not order_line"
+                        help="Update current promotional lines and select new rewards if applicable."
+                        class="btn-success"/>
                 <button
                     name="confirm_quote"
                     string="Confirm Quote"
