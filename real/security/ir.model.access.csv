@@ -27,3 +27,4 @@ mrp_license_plate_read,mrp_license_plate_read,real.model_mrp_license_plate,mrp.g
 mrp_license_plate_manager,mrp_license_plate_manager,real.model_mrp_license_plate,mrp.group_mrp_manager,1,1,1,1
 product_category_class_manager,product_category_class_manager,real.model_product_category_class,stock.group_stock_manager,1,1,1,1
 mrp_production_overflow_manager,mrp_production_overflow_manager,real.model_mrp_production_overflow,stock.group_stock_manager,1,1,1,1
+generic_message_wizard,generic_message_wizard,real.model_generic_message_wizard,base.group_user,1,1,1,1
