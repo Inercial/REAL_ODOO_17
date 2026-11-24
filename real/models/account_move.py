@@ -4,6 +4,7 @@
 import logging
 import xml.etree.ElementTree as ET
 from datetime import timedelta
+from lxml import etree
 
 from odoo import _, api, fields, models
 from odoo.exceptions import UserError, ValidationError
@@ -39,6 +40,20 @@ class AccountMove(models.Model):
         "expense_direct_cost",
         "expense_depreciation",
     }
+
+    def reload_uuid(self):
+        for move in self:
+            if move.l10n_mx_edi_cfdi_attachment_id:
+                move._compute_l10n_mx_edi_cfdi_uuid()
+            elif attachment := self.env["ir.attachment"].search([("res_id", "=", move.id),\
+                ("res_model", "=", "account.move"), ("name", "=ilike", "%.xml"),], limit=1, order="id desc"):
+                attachment._compute_raw()
+                root = ET.fromstring(attachment.raw)
+                if (tfd := root.find(".//{*}TimbreFiscalDigital")) is None or not tfd.get("UUID"):
+                    raise UserError("No valid XML attachment was found for this document.")
+                move.l10n_mx_edi_cfdi_uuid = tfd.get("UUID")
+            else:
+                raise UserError("No valid XML attachment was found for this document.")
 
     def check_duplicated_cfdi_ids(self):
         for move in self:
