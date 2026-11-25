@@ -19,6 +19,10 @@ class MrpProductionRequestCreateMo(models.TransientModel):
     product_id = fields.Many2one(related="mrp_request_id.product_id")
     product_tmpl_id = fields.Many2one(related="mrp_request_id.product_tmpl_id")
 
+    @api.onchange("date_start")
+    def update_date_finished(self):
+        self.date_finished = self.date_start
+
     @api.constrains("order_qty")
     def _check_order_qty(self):
         for rec in self:
